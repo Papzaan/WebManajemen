@@ -41,6 +41,6 @@
 		</div>
 	</div>
 
-    <a href="/DataPegawai/tambahpegawai">Tambah Pegawai</a>
+    <a href="/DataPegawai/tambahmitra">Tambah Mitra</a>
     </body>
 </html>

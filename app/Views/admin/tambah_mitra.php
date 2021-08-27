@@ -9,7 +9,7 @@
 <body>
     <div>
     <h5>Tambah Pegawai</h5>
-    <form method="post" action="/auth/valid_register">
+    <form method="post" action="/DataPegawai/valid_tambahmitra">
             Username: <br>
             <input type="text" name="email" required><br>
             Password: <br>
