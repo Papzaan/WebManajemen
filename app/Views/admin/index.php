@@ -7,7 +7,11 @@
     <body  style="width: 70%; margin: 0 auto; padding-top: 30px;">
         <?php $session = session()?>
         <h4>Selamat datang admin!</h4>
-        <?php echo $session->get('email')?>
+        <?php foreach($user as $row):?>
+		        <tr>
+		        	<td><?=$row['nama'];?></td>
+		        </tr>
+		        <?php endforeach;?>
         <a href="/auth/logout">Logout</a>
 
 

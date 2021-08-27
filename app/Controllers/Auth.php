@@ -35,9 +35,6 @@ class Auth extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
         
-        
-        //jika tdk ada error 
-        
         //hash password digabung dengan salt
         $password = md5($data['password']);
         

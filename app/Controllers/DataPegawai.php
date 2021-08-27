@@ -12,18 +12,6 @@ class DataPegawai extends BaseController
         $this->session = session();
     }
 
-    public function tambahmitra(){
-        //halaman tambah pegawai
-        return view('admin/tambah_mitra');
-    }
-
-    public function valid_tambahmitra(){
-
-        //menangkap data post form
-        $data = $this->request->getPost();
-
-
-    }
 
 }
 

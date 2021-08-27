@@ -16,8 +16,4 @@ class UserModel extends Model
         ->join('admin','admin.id_user=user.id_user')
         ->get()->getResultArray();  
     }
-    public function postdataPegawai(){
-        //fungsi untuk tambah data mitra dan sales
-        
-    }
 }
