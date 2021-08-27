@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Agu 2021 pada 04.55
+-- Waktu pembuatan: 27 Agu 2021 pada 08.57
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -193,7 +193,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` enum('sales','mitra','admin') NOT NULL
+  `status` enum('1','2','3') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -201,9 +201,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `email`, `password`, `status`) VALUES
-(1, 'mahesadarmasatria@gmail.com', 'mahesa123', 'admin'),
-(2, 'aansanova@gmail.com', 'aansan123', 'mitra'),
-(3, 'imamharis@gmail.com', 'imamhar123', 'sales');
+(1, 'mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
+(2, 'aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '2'),
+(3, 'imamharis@gmail.com', 'imamhar123', '3'),
+(4, 'ekojulionto@gmail.com', '8e1a070e9b0340da2b0ea4f193c172f0', '2');
 
 --
 -- Indexes for dumped tables
@@ -342,7 +343,7 @@ ALTER TABLE `suplayer`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

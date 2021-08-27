@@ -35,27 +35,13 @@ class Auth extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
         
-        //jalankan validasi
-        $this->validation->run($data, 'register');
-        
-        //cek errornya
-        $errors = $this->validation->getErrors();
-        
-        //jika ada error kembalikan ke halaman register
-        if($errors){
-            session()->setFlashdata('error', $errors);
-            return redirect()->to('/auth/register');
-        }
         
         //jika tdk ada error 
         
-        //buat salt
-        $salt = uniqid('', true);
-        
         //hash password digabung dengan salt
-        $password = md5($data['password']).$salt;
+        $password = md5($data['password']);
         
-        if($data['status'] == 2){
+        //if($data['status'] == 2){
             //masukan data ke database sebagai mitra
             $this->userModel->save([
             'email' => $data['email'],
@@ -63,14 +49,14 @@ class Auth extends BaseController
             'status' => 2
             ]);
         
-        }else if($data['status'] == 3){
+        /*}else if($data['status'] == 3){
             //masukan data ke database sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
                 'password' => $password,
                 'status' => 3
                 ]);
-        }
+        }*/
         
         //arahkan ke halaman login
         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');

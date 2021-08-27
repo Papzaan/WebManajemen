@@ -11,25 +11,6 @@ class Validation
 {
 	//--------------------------------------------------------------------
 	// Setup
-	public $register = [
-        'username' => 'alpha_numeric|is_unique[user.email]',
-        'password' => 'min_length[8]|alpha_numeric_punct',
-        'confirm' => 'matches[password]'
-        ];
-        
-   public $register_errors = [
-       'email' => [
-           'alpha_numeric' => 'Username hanya boleh mengandung huruf dan angka',
-           'is_unique' => 'Username sudah dipakai'
-           ],
-        'password' => [
-            'min_length' => 'Password harus terdiri dari 8 kata',
-            'alpha_numeric_punct' => 'Password hanya boleh mengandung angka, huruf, dan karakter yang valid'
-            ],
-       'confirm' => [
-           'matches' => 'Konfirmasi password tidak cocok'
-           ]
-       ];
 	//--------------------------------------------------------------------
 
 	/**

@@ -19,6 +19,10 @@ class DataPegawai extends BaseController
 
     public function valid_tambahmitra(){
 
+        //menangkap data post form
+        $data = $this->request->getPost();
+
+
     }
 
 }
