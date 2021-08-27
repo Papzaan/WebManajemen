@@ -26,9 +26,7 @@ class Admin extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         echo view('admin/index',$data);
-        //return view('admin/index');
-
-
+        //return view('admin/index')
         
         
     }

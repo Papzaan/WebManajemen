@@ -15,7 +15,7 @@
         <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Menampilkan Data Multi Tabel </h2>
+                <h2>Menampilkan Data Diri Admin</h2>
             </div>
         </div>
     </div>
@@ -24,15 +24,15 @@
         <div class="col-lg-12 margin-tb">
 			<table class="table table-bordered">
 		        <tr>
-		            <th>email</th>
 		            <th>Nama</th>
+		            <th>Email</th>
 		            <th>no telp</th>
 		            <th>jenis kelamin</th>
 		        </tr>
 		        	<?php foreach($user as $row):?>
 		        <tr>
-		        	<td><?=$row['email'];?></td>
-		            <td><?=$row['nama'];?></td>
+		        	<td><?=$row['nama'];?></td>
+		            <td><?=$row['email'];?></td>
 		            <td><?=$row['no_telp'];?></td>
 		            <td><?=$row['jenis_kelamin'];?></td>
 		        </tr>
@@ -40,5 +40,7 @@
 		    </table>
 		</div>
 	</div>
+
+    <a href="/DataPegawai/tambahpegawai">Tambah Pegawai</a>
     </body>
 </html>
