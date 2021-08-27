@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\UserModel;
 
 class Admin extends BaseController
 {
@@ -21,8 +22,14 @@ class Admin extends BaseController
         if($this->session->get('status') != 1){
             return redirect()->to('/user');
         }
+        //tampilin data
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        echo view('admin/index',$data);
+        //return view('admin/index');
+
+
         
-        return view('admin/index');
         
     }
     

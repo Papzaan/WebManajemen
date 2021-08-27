@@ -11,4 +11,9 @@ class UserModel extends Model
     protected $allowedFields = ["email", "password", "status"];
     protected $useTimestamps = false;
     
+    public function getdataAdmin(){
+        return $this->db->table('user')
+        ->join('admin','admin.id_user=user.id_user')
+        ->get()->getResultArray();  
+    }
 }
