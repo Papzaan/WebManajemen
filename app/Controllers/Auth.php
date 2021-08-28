@@ -59,7 +59,31 @@ class Auth extends BaseController
         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');
         return redirect()->to('/auth/login');
     }
+
+    /**===========================================================*/
+
+    public function tambahmitra(){
+        $this->load->view('view_create');
+    }
     
+    function tambah_aksi(){
+		$nama = $this->input->post('nama');
+		$jenis_kelamin = $this->input->post('jenis_kelamin');
+		$alamat = $this->input->post('alamat');
+		$pekerjaan = $this->input->post('pekerjaan');
+ 
+		$data = array(
+			'nama' => $nama,
+			'jenis_kelamin' => $jenis_kelamin,
+			'alamat' => $alamat,
+			'pekerjaan' => $pekerjaan
+			);
+		$this->modelapp->input_data($data,'user');
+		redirect('controllerapp/index');
+	}
+
+    /**===========================================================*/
+
     public function valid_login()
     {
         //ambil data dari form
