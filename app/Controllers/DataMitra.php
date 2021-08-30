@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Models\UserModel;
 
-class Admin extends BaseController
+class DataMitra extends BaseController
 {
     
     public function __construct()
@@ -24,8 +24,8 @@ class Admin extends BaseController
         }
         //tampilin data
         $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
-        echo view('admin/index',$data);
+        $data['user'] = $model->tampilmitra();
+        echo view('admin/datamitra',$data);
         //return view('admin/index')   
     }
     

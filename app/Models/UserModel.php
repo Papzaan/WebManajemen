@@ -29,7 +29,10 @@ class UserModel extends Model
       ->get()->getResultArray();  
     }
 
-    public function tambahmitra($data,$table){
-		$this->db->insert($table,$data);
+    public function tampilmitra(){
+      return $this->db->table('user')
+        ->join('mitra','mitra.id_user=user.id_user')
+        ->where('status',['status' => 2])
+        ->get()->getResultArray();  
     }
 }
