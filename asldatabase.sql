@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Agu 2021 pada 08.57
+-- Waktu pembuatan: 30 Agu 2021 pada 04.49
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -202,8 +202,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `email`, `password`, `status`) VALUES
 (1, 'mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
-(2, 'aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '2'),
-(3, 'imamharis@gmail.com', 'imamhar123', '3'),
+(2, 'aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
+(3, 'imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
 (4, 'ekojulionto@gmail.com', '8e1a070e9b0340da2b0ea4f193c172f0', '2');
 
 --
