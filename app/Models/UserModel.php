@@ -10,6 +10,7 @@ class UserModel extends Model
     protected $primaryKey = "id_user";
     protected $allowedFields = ["email", "password", "status"];
     protected $useTimestamps = false;
+
     
     public function getdataAdmin(){
         return $this->db->table('user')

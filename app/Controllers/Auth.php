@@ -38,51 +38,34 @@ class Auth extends BaseController
         //hash password digabung dengan salt
         $password = md5($data['password']);
         
-        //if($data['status'] == 2){
+        if($data['mitra']){
             //masukan data ke database sebagai mitra
-            $this->UserModel->save([
+            $this->userModel->save([
             'email' => $data['email'],
             'password' => $password,
             'status' => 2
             ]);
+            $id_user = $this->userModel->where('email',$data['email']);
+            $data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
+            //nyari id_user
+            /*return $this->db->table('user')
+            ->where('email',$data['email'])
+            ->get()->getResultArray();*/
+
         
-        /*}else if($data['status'] == 3){
+        }else if($data['sales']){
             //masukan data ke database sebagai mitra
-            $this->SalesModel->save([
+            $this->userModel->save([
                 'email' => $data['email'],
                 'password' => $password,
                 'status' => 3
                 ]);
-        }*/
-        
+
+        }
         //arahkan ke halaman login
         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');
         return redirect()->to('/auth/login');
     }
-
-    /**===========================================================*/
-
-    public function tambahmitra(){
-        $this->load->view('view_create');
-    }
-    
-    function tambah_aksi(){
-		$nama = $this->input->post('nama');
-		$jenis_kelamin = $this->input->post('jenis_kelamin');
-		$alamat = $this->input->post('alamat');
-		$pekerjaan = $this->input->post('pekerjaan');
- 
-		$data = array(
-			'nama' => $nama,
-			'jenis_kelamin' => $jenis_kelamin,
-			'alamat' => $alamat,
-			'pekerjaan' => $pekerjaan
-			);
-		$this->modelapp->input_data($data,'user');
-		redirect('controllerapp/index');
-	}
-
-    /**===========================================================*/
 
     public function valid_login()
     {

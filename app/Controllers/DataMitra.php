@@ -28,5 +28,9 @@ class DataMitra extends BaseController
         echo view('admin/datamitra',$data);
         //return view('admin/index')   
     }
+
+    public function tambahmitra(){
+        
+    }
     
 }
