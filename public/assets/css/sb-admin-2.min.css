@@ -9926,12 +9926,14 @@ a:focus {
 .bg-login-image {
   background: url("AllProduct.png");
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .bg-register-image {
-  background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+  background: url("Logo ASL.png");
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 90%;
 }
 .bg-password-image {
   background: url(https://source.unsplash.com/oWTW-jNGl9I/600x800);
