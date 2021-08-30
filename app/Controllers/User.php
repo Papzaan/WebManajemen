@@ -18,9 +18,13 @@ class User extends BaseController
          //cek role dari session
          if($this->session->get('status') == 1){
             return redirect()->to('/admin');
+        }else if($this->session->get('status') == 2){
+            return redirect()->to('/mitra');
+        }else if($this->session->get('status') == 3){
+            return redirect()->to('/sales');
         }
 
-        return view('user/index');
+       // return view('user/index');
     }
     
 }

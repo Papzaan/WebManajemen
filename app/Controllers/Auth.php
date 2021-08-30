@@ -40,7 +40,7 @@ class Auth extends BaseController
         
         //if($data['status'] == 2){
             //masukan data ke database sebagai mitra
-            $this->userModel->save([
+            $this->UserModel->save([
             'email' => $data['email'],
             'password' => $password,
             'status' => 2
@@ -48,7 +48,7 @@ class Auth extends BaseController
         
         /*}else if($data['status'] == 3){
             //masukan data ke database sebagai mitra
-            $this->userModel->save([
+            $this->SalesModel->save([
                 'email' => $data['email'],
                 'password' => $password,
                 'status' => 3

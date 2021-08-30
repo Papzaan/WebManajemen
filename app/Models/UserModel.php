@@ -17,6 +17,18 @@ class UserModel extends Model
         ->get()->getResultArray();  
     }
 
+    public function getdataMitra(){
+      return $this->db->table('user')
+      ->join('mitra','mitra.id_user=user.id_user')
+      ->get()->getResultArray();  
+    }
+
+    public function getdataSales(){
+      return $this->db->table('user')
+      ->join('sales','sales.id_user=user.id_user')
+      ->get()->getResultArray();  
+    }
+
     public function tambahmitra($data,$table){
 		$this->db->insert($table,$data);
     }
