@@ -37,17 +37,27 @@ class Auth extends BaseController
         $data = $this->request->getPost();
 
         //hash password digabung dengan salt
-        //$password = md5($data['password']);
-        
-        if($data['mitra']){
-            //masukan data ke database sebagai mitra
-            /*$this->userModel->save([
-            'email' => $data['email'],
-            'password' => $password,
-            'status' => 2
-            ]);*/
-            //send data ke model regis
-            $this->UserRegis->tambahMitra($data);
+        $password = md5($data['password']);
+        //var_dump($data['jk']);
+        if($data['mitra']==2){
+            //masukan data ke tabel user sebagai mitra
+            $this->userModel->save([
+                'email' => $data['email'],
+                'password' => $password,
+                'status' => $data['mitra']
+            ]);
+            //masukan data ke tabel mitra sebagai mitra
+            $this->userRegis = new UserRegis();
+            //$this->userRegis->tambahMitra($data);
+            $this->userRegis->save([
+                'nama' => $data['nama'],
+                'nik' => $data['nik'],
+                'no_telp' => $data['no_telp'],
+                'alamat' => $data['alamat'],
+                'jenis_kelamin' => $data['jk'],
+                'email' => $data['email']
+            ]);
+            echo "<script> alert('Username sudah ada!'); </script>";
             //$id_user = $this->userModel->where('email',$data['email']);
             //$data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
             //nyari id_user

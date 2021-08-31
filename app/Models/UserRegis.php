@@ -6,23 +6,30 @@ use CodeIgniter\Model;
 
 class UserRegis extends Model
 {
-
-    public function tambahMitra($data){
+    protected $table = "mitra";
+    protected $primaryKey = "id_mitra";
+    protected $allowedFields = ["nama", "nik","no_telp","alamat","jenis_kelamin","email"];
+    protected $useTimestamps = false;
+    /*public function tambahMitra($data){
         $password = md5($data['password']);
 
-        $this->db->where('email',$data['email']);
-        $query = $this->db->get('user');
+        //$this->db->table('email',$data['email']);
+        //$query = $this->db->get('user');
+        /*$query = $this->db->table('user')
+        ->where('email',$data['email'])
+        ->get()->getResultArray();
+        //var_dump($query);
 
         if($query->num_rows()>0)
 		{
 			echo "<script> alert('Username sudah ada!'); </script>";
 		}
 		else
-		{
-			$data1 = array(
+		{*/
+			/*$data1 = array(
                 'email' => $data['email'],
                 'password' => $password,
-                'status' => $data['status']
+                'status' => $data['mitra']
             );
             $data2 = array(
                 'nama' => $data['nama'],
@@ -33,11 +40,18 @@ class UserRegis extends Model
                 'email' => $data['email'] 
             );
 
+            /*$db = db_connect('asldatabase');
+            $user = $db->table('user');
+            $mitra = $db->table('mitra');
+
+            $user->insert($data1);
+            $mitra->insert($data2);
+
             $this->db->insert('user', $data1);
             $this->db->insert('mitra', $data2);
             echo "<script> alert('Data berhasil ditambah!'); </script>";
-            redirect(base_url('data_user'), 'refresh');
-		}
+            redirect(base_url('auth/login'), 'refresh');
+		//}
 		
-    }
+    }*/
 }

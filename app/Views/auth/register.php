@@ -64,26 +64,32 @@
 
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select class="form-control col-md-12" id="jk_user" name="jenis_kelamin">
+                                                        <select class="form-control col-md-12" name="jk">
                                                             <option value="" disabled selected>Jenis kelamin</option>
                                                             <option value="laki - laki">Laki - laki</option>
                                                             <option value="perempuan">Perempuan</option>
                                                         </select>
                                                 </div>
+                                                <!--<div class="col-sm-6">
+                                                    <input type="text" class="form-control form-control-user" name="jk" id="exampleLastName" placeholder="jenis kelamin">
+                                                </div>-->
                                                 <div class="col-sm-6">
                                                     <input type="text" class="form-control form-control-user" name="no_telp" id="exampleLastName" placeholder="No Telpon">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="email" class="form-control form-control-user" name="email" id="exampleInputPassword" placeholder="email">
+                                                    <input type="text" class="form-control form-control-user" name="email" id="exampleInputPassword" placeholder="email">
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <input type="password" class="form-control form-control-user" name="password" id="exampleRepeatPassword" placeholder="Password">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="mitra" readonly value="mitra"/>
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="mitra" readonly value="2"/>
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-user btn-block" name="regismitra">Daftar Sebagai Mitra</button>
                                         </form>
