@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Agu 2021 pada 04.49
+-- Waktu pembuatan: 31 Agu 2021 pada 05.38
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL,
+  `nama` varchar(25) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
-  `alamat` varchar(250) NOT NULL,
-  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL
+  `alamat` varchar(100) NOT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `id_user`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`) VALUES
-(1, 1, 'Mahesa Darma Satria', '088274090609', 'Serbajadi 1 rt 01 rw 01 Kec.Natar Kab.Lampung Selatan Lampung', 'laki - laki');
+INSERT INTO `admin` (`id_admin`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
+(2, 'Mahesa Darma Satria', '08827409069', 'Serbajadi 1, Natar, Lampung Selatan, Lampung', 'laki - laki', 'mahesadarmasatria@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -98,20 +98,21 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `mitra` (
   `id_mitra` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(250) NOT NULL,
-  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL
+  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mitra`
 --
 
-INSERT INTO `mitra` (`id_mitra`, `id_user`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`) VALUES
-(1, 3, 'Imam Haris', '182029283029', '08282939282', 'bandar jaya, lampung tengah, lampung', 'laki - laki');
+INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
+(2, 'Imam Haris', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com'),
+(3, 'eko julianto', '2738737292', '082374846719', 'batam, batam, batam', 'laki - laki', 'ekojulionto@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -155,20 +156,20 @@ CREATE TABLE `penjualan_mitra` (
 
 CREATE TABLE `sales` (
   `id_sales` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(250) NOT NULL,
-  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL
+  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `sales`
 --
 
-INSERT INTO `sales` (`id_sales`, `id_user`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`) VALUES
-(1, 2, 'Aan Sanova', '180027199271927', '0883928199208', 'sukabumi lampung, lampung', 'laki - laki');
+INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
+(2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -190,8 +191,7 @@ CREATE TABLE `suplayer` (
 --
 
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` enum('1','2','3') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -200,11 +200,11 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `email`, `password`, `status`) VALUES
-(1, 'mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
-(2, 'aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
-(3, 'imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
-(4, 'ekojulionto@gmail.com', '8e1a070e9b0340da2b0ea4f193c172f0', '2');
+INSERT INTO `user` (`email`, `password`, `status`) VALUES
+('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
+('ekojulionto@gmail.com', '8e1a070e9b0340da2b0ea4f193c172f0', '2'),
+('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
+('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1');
 
 --
 -- Indexes for dumped tables
@@ -215,7 +215,7 @@ INSERT INTO `user` (`id_user`, `email`, `password`, `status`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `email` (`email`);
 
 --
 -- Indeks untuk tabel `barang`
@@ -242,7 +242,7 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `mitra`
   ADD PRIMARY KEY (`id_mitra`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `email` (`email`);
 
 --
 -- Indeks untuk tabel `penjualan`
@@ -267,7 +267,8 @@ ALTER TABLE `penjualan_mitra`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id_sales`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `email` (`email`),
+  ADD KEY `email_2` (`email`);
 
 --
 -- Indeks untuk tabel `suplayer`
@@ -279,7 +280,7 @@ ALTER TABLE `suplayer`
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`email`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -289,7 +290,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang`
@@ -313,7 +314,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
@@ -331,19 +332,13 @@ ALTER TABLE `penjualan_mitra`
 -- AUTO_INCREMENT untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `suplayer`
 --
 ALTER TABLE `suplayer`
   MODIFY `id_sup` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -353,7 +348,7 @@ ALTER TABLE `user`
 -- Ketidakleluasaan untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 
 --
 -- Ketidakleluasaan untuk tabel `barang`
@@ -371,7 +366,7 @@ ALTER TABLE `barang_mitra`
 -- Ketidakleluasaan untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 
 --
 -- Ketidakleluasaan untuk tabel `penjualan`
@@ -393,7 +388,7 @@ ALTER TABLE `penjualan_mitra`
 -- Ketidakleluasaan untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

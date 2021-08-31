@@ -52,4 +52,6 @@ class UserModel extends Model
         ->where('status',['status' => 3])
         ->get()->getResultArray();  
     }
+
+    
 }

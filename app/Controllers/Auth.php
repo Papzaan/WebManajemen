@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\UserRegis;
 
 class Auth extends BaseController
 {
@@ -36,15 +37,17 @@ class Auth extends BaseController
         $data = $this->request->getPost();
 
         //hash password digabung dengan salt
-        $password = md5($data['password']);
+        //$password = md5($data['password']);
         
         if($data['mitra']){
             //masukan data ke database sebagai mitra
-            $this->userModel->save([
+            /*$this->userModel->save([
             'email' => $data['email'],
             'password' => $password,
             'status' => 2
-            ]);
+            ]);*/
+            //send data ke model regis
+            $this->userRegis->tambahMitra($data);
             //$id_user = $this->userModel->where('email',$data['email']);
             //$data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
             //nyari id_user

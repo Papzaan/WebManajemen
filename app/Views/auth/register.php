@@ -66,8 +66,8 @@
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <select class="form-control col-md-12" id="jk_user" name="jenis_kelamin">
                                                             <option value="" disabled selected>Jenis kelamin</option>
-                                                            <option value="1">Laki - laki</option>
-                                                            <option value="2">Perempuan</option>
+                                                            <option value="laki - laki">Laki - laki</option>
+                                                            <option value="perempuan">Perempuan</option>
                                                         </select>
                                                 </div>
                                                 <div class="col-sm-6">
