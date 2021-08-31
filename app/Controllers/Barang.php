@@ -13,4 +13,11 @@ class Barang extends BaseController
         $data['user'] = $model->getdataAdmin();
         return view('barang/lihat_data', $data);
     }
+
+    public function input_barang()
+    {
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        return view('barang/form_input', $data);
+    }
 }
