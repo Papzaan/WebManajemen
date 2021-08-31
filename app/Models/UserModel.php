@@ -17,7 +17,7 @@ class UserModel extends Model
       $data = $session->get('email');
         return $this->db->table('user')
         ->join('admin','admin.email=user.email')
-        ->where('admin.email',['admin'=> $data])
+        ->where('admin.email',['email'=> $data])
         ->get()->getResultArray();  
     }
 
