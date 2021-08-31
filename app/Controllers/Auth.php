@@ -72,6 +72,7 @@ class Auth extends BaseController
         //ambil data dari form
         $data = $this->request->getPost();
 
+        
         //ambil data user di database yang usernamenya sama 
         $user = $this->userModel->where('email', $data['email'])->first();
 
@@ -89,6 +90,7 @@ class Auth extends BaseController
                     'email' => $user['email'],
                     'status' => $user['status']
                 ];
+                //$this->userModel->getdataMitra->insert($data);
                 $this->session->set($sessLogin);
                 if (!$this->session->set($sessLogin) == 1) {
                     return redirect()->to('/admin');

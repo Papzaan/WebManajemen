@@ -17,6 +17,7 @@
       <th>no_telp</th>
       <th>Alamat</th>
       <th>jenis kelamin</th>
+      <th>Email</th>
       <th>Status</th>
     </tr>
     <?php
@@ -30,6 +31,7 @@
       <td><?php echo $d["no_telp"] ?></td>
       <td><?php echo $d["alamat"] ?></td>
       <td><?php echo $d["jenis_kelamin"] ?></td>
+      <td><?php echo $d["email"] ?></td>
     </tr>
   <?php } ?>
 
