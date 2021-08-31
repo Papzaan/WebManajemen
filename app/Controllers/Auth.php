@@ -47,7 +47,7 @@ class Auth extends BaseController
             'status' => 2
             ]);*/
             //send data ke model regis
-            $this->userRegis->tambahMitra($data);
+            $this->UserRegis->tambahMitra($data);
             //$id_user = $this->userModel->where('email',$data['email']);
             //$data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
             //nyari id_user

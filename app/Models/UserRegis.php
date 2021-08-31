@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class UserRegis extends Model
 {
+
     public function tambahMitra($data){
         $password = md5($data['password']);
 
