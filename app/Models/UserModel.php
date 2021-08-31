@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = "user";
-    protected $primaryKey = "id_user";
+    protected $table = "admin";
+    protected $primaryKey = "id_admin";
     protected $allowedFields = ["email", "password", "status"];
     protected $useTimestamps = false;
 
