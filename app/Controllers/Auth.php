@@ -57,7 +57,7 @@ class Auth extends BaseController
                 'jenis_kelamin' => $data['jk'],
                 'email' => $data['email']
             ]);
-            echo "<script> alert('Username sudah ada!'); </script>";
+            //echo "<script> alert('Username sudah ada!'); </script>";
             //$id_user = $this->userModel->where('email',$data['email']);
             //$data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
             //nyari id_user
@@ -66,7 +66,7 @@ class Auth extends BaseController
             ->get()->getResultArray();*/
 
         
-        }else if($data['sales']){
+        }else if($data['sales']==3){
             //masukan data ke database sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
