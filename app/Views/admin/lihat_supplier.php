@@ -33,12 +33,18 @@
 
                     <tbody>
                         <tr>
+                            <?php
+                                    $no = 1;
+                                    foreach ($barang as $d) {
+                                    ?>
+                                <tr>
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $d["nama_sup"] ?></td>
+                                <td><?php echo $d["no_telp"] ?></td>
+                                <td><?php echo $d["alamat"] ?></td>
+                            <?php } ?>
 
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
                             <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                             </td>

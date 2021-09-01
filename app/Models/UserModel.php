@@ -41,16 +41,27 @@ class UserModel extends Model
     }
 
     public function tampilmitra(){
+      $session = session();
+      $data = $session->get('email');
       return $this->db->table('user')
         ->join('mitra','mitra.email=user.email')
         ->where('status',['status' => 2])
         ->get()->getResultArray();  
     }
     public function tampilsales(){
+      $session = session();
+      $data = $session->get('email');
       return $this->db->table('user')
         ->join('sales','sales.email=user.email')
         ->where('status',['status' => 3])
         ->get()->getResultArray();  
+    }
+
+    public function tampilsuplayer(){
+      $session = session();
+      $data = $session->get('email');
+      return $this->db->table('suplayer')
+        ->get()->getResultArray();
     }
 
     

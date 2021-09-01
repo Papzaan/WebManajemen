@@ -44,6 +44,7 @@ class Admin extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
+        $data['barang'] = $model->tampilsuplayer();
         echo view('admin/lihat_supplier', $data);
         //return view('admin/index')   
     }
