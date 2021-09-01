@@ -12,7 +12,7 @@ class DataMitra extends BaseController
         $this->session = session();
     }
 
-    public function index()
+    /*public function index()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -28,8 +28,9 @@ class DataMitra extends BaseController
         $data['user'] = $model->tampilmitra();
         // echo view('admin/datamitra',$data);
         return view('admin/lihat_mitra');
-    }
+    }*/
 
+<<<<<<< Updated upstream
     public function vsales()
     {
         //cek apakah ada session bernama isLogin
@@ -45,5 +46,25 @@ class DataMitra extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new UserModel();
         return view('admin/lihat_sales', $data);
+=======
+    public function tampil()
+    {
+         //cek apakah ada session bernama isLogin
+       if(!$this->session->has('isLogin')){
+        return redirect()->to('/auth/login');
+        }
+        
+        //cek role dari session
+        if($this->session->get('status') != 1){
+            return redirect()->to('/user');
+        }
+
+        //get data
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $data['barang'] = $model->tampilmitra();
+        return view('admin/lihat_mitra', $data);
+        //return view('barang/databarang', $data1);
+>>>>>>> Stashed changes
     }
 }

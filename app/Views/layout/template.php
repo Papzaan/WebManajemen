@@ -83,8 +83,13 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< Updated upstream
                         <a class="collapse-item" href="/datamitra">Mitra</a>
                         <a class="collapse-item" href="/datamitra/vsales">Sales</a>
+=======
+                        <a class="collapse-item" href="/datamitra/tampil">Mitra</a>
+                        <a class="collapse-item" href="/barang/tampil">Sales</a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </li>

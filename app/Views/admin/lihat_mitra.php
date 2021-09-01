@@ -1,5 +1,3 @@
-<!-- End of Main Content -->
-
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
@@ -8,13 +6,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Mitra</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="barang/input_barang"><button class="btn btn-primary float-right" type="button">
+            <a href="#"><button class="btn btn-primary float-right" type="button">
                     Tambah Data <i class="fas fa-plus"></i>
                 </button></a>
         </div>
@@ -23,31 +21,36 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Suplayer</th>
-                            <th>Nama Barang</th>
-                            <th>Tanggal Masuk</th>
-                            <th>Jumlah/Karton</th>
-                            <th>Harga date</th>
-                            <th>Aksi</th>
+                        <th>NO</th>
+                        <th>Nama</th>
+                        <th>NIK</th>
+                        <th>no_telp</th>
+                        <th>Alamat</th>
+                        <th>jenis kelamin</th>
+                        <th>email</th>
+                        <th>Aksis</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-
+                            <?php
+                            $no = 1;
+                            foreach ($barang as $d) {
+                            ?>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $d["nama"] ?></td>
+                        <td><?php echo $d["nik"] ?></td>
+                        <td><?php echo $d["no_telp"] ?></td>
+                        <td><?php echo $d["alamat"] ?></td>
+                        <td><?php echo $d["jenis_kelamin"] ?></td>
+                        <td><?php echo $d["email"] ?></td>
+                        <?php } ?>
 
-
-                            <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                            </td>
+                        <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                        </td>
                         </tr>
 
                         </tr>

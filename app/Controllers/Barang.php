@@ -11,7 +11,7 @@ class Barang extends BaseController
     {
         $this->session = session();
     }
-    public function index()
+    /*public function index()
     {
 
        //cek apakah ada session bernama isLogin
@@ -26,9 +26,9 @@ class Barang extends BaseController
         //tampilin data
         /*$model = new BarangModel();
         $data['user'] = $model->getbarang();
-        echo view('barang/databarang',$data);*/
+        echo view('barang/databarang',$data);
         
-    }
+    }*/
 
     public function tampil()
     {
