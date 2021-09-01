@@ -23,28 +23,33 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>NIK</th>
-                            <th>No Telepon</th>
-                            <th>Alamat</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Email</th>
-                            <th>Aksi</th>
+                        <th>NO</th>
+                        <th>Nama</th>
+                        <th>NIK</th>
+                        <th>no_telp</th>
+                        <th>Alamat</th>
+                        <th>jenis kelamin</th>
+                        <th>email</th>
+                        <th>Aksis</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-
+                            <?php
+                                $no = 1;
+                                foreach ($barang as $d) {
+                                ?>
+                            <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $d["nama"] ?></td>
+                            <td><?php echo $d["nik"] ?></td>
+                            <td><?php echo $d["no_telp"] ?></td>
+                            <td><?php echo $d["alamat"] ?></td>
+                            <td><?php echo $d["jenis_kelamin"] ?></td>
+                            <td><?php echo $d["email"] ?></td>
+                            <?php } ?>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
 
 
                             <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>

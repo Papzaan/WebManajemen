@@ -83,8 +83,8 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/datamitra">Mitra</a>
-                        <a class="collapse-item" href="/datamitra/vsales">Sales</a>
+                        <a class="collapse-item" href="/datamitra/tampil">Mitra</a>
+                        <a class="collapse-item" href="/datasales/tampil">Sales</a>
                     </div>
                 </div>
             </li>
