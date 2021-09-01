@@ -23,24 +23,24 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <th>NO</th>
-                        <th>Nama</th>
-                        <th>NIK</th>
-                        <th>no_telp</th>
-                        <th>Alamat</th>
-                        <th>jenis kelamin</th>
-                        <th>email</th>
-                        <th>Aksis</th>
+                            <th>NO</th>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>no_telp</th>
+                            <th>Alamat</th>
+                            <th>jenis kelamin</th>
+                            <th>email</th>
+                            <th>Aksis</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
                             <?php
-                                $no = 1;
-                                foreach ($barang as $d) {
-                                ?>
-                            <tr>
+                            $no = 1;
+                            foreach ($barang as $d) {
+                            ?>
+                        <tr>
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $d["nama"] ?></td>
                             <td><?php echo $d["nik"] ?></td>
@@ -48,13 +48,15 @@
                             <td><?php echo $d["alamat"] ?></td>
                             <td><?php echo $d["jenis_kelamin"] ?></td>
                             <td><?php echo $d["email"] ?></td>
-                            <?php } ?>
-                        <tr>
+                            <td>
+                                <a href="<?= base_url('admin/lihat_mitra/' . $d['id_sales'] . '/edit') ?>"> <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                </a>
+                                <a href="<?= base_url('admin/lihat_mitra/' . $d['id_sales'] . '/edit') ?>"> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
 
-
-                            <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                </a>
                             </td>
+                        <?php } ?>
+                        <tr>
                         </tr>
 
                         </tr>
