@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\UserRegis;
+use App\Models\UserRegism;
+use App\Models\UserRegiss;
 
 class Auth extends BaseController
 {
@@ -39,17 +40,17 @@ class Auth extends BaseController
         //hash password digabung dengan salt
         $password = md5($data['password']);
         //var_dump($data['jk']);
-        if($data['mitra']==2){
+        if($data['pegawai']=='mitra'){
             //masukan data ke tabel user sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
                 'password' => $password,
-                'status' => $data['mitra']
+                'status' => 2
             ]);
             //masukan data ke tabel mitra sebagai mitra
-            $this->userRegis = new UserRegis();
+            $this->userRegism = new UserRegism();
             //$this->userRegis->tambahMitra($data);
-            $this->userRegis->save([
+            $this->userRegism->save([
                 'nama' => $data['nama'],
                 'nik' => $data['nik'],
                 'no_telp' => $data['no_telp'],
@@ -66,13 +67,24 @@ class Auth extends BaseController
             ->get()->getResultArray();*/
 
         
-        }else if($data['sales']==3){
+        }else if($data['pegawai']=='sales'){
             //masukan data ke database sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
                 'password' => $password,
                 'status' => 3
                 ]);
+            //masukan data ke tabel mitra sebagai mitra
+            $this->userRegiss = new UserRegiss();
+            //$this->userRegis->tambahMitra($data);
+            $this->userRegiss->save([
+                'nama' => $data['nama'],
+                'nik' => $data['nik'],
+                'no_telp' => $data['no_telp'],
+                'alamat' => $data['alamat'],
+                'jenis_kelamin' => $data['jk'],
+                'email' => $data['email']
+            ]);
 
         }
         //arahkan ke halaman login

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserRegis extends Model
+class UserRegiss extends Model
 {
-    protected $table = "mitra";
-    protected $primaryKey = "id_mitra";
+    protected $table = "sales";
+    protected $primaryKey = "id_sales";
     protected $allowedFields = ["nama", "nik","no_telp","alamat","jenis_kelamin","email"];
     protected $useTimestamps = false;
     /*public function tambahMitra($data){

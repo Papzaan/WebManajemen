@@ -2,22 +2,51 @@
 
 namespace App\Controllers;
 
+use App\Models\BarangModel;
 use App\Models\UserModel;
 
 class Barang extends BaseController
 {
+    public function __construct()
+    {
+        $this->session = session();
+    }
     public function index()
     {
+
+       //cek apakah ada session bernama isLogin
+       if(!$this->session->has('isLogin')){
+        return redirect()->to('/auth/login');
+        }
+        
+        //cek role dari session
+        if($this->session->get('status') != 1){
+            return redirect()->to('/user');
+        }
         //tampilin data
-        $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
-        return view('barang/lihat_data', $data);
+        /*$model = new BarangModel();
+        $data['user'] = $model->getbarang();
+        echo view('barang/databarang',$data);*/
+        
     }
 
-    public function input_barang()
+    public function tampil()
     {
+        //cek apakah ada session bernama isLogin
+       if(!$this->session->has('isLogin')){
+        return redirect()->to('/auth/login');
+        }
+        
+        //cek role dari session
+        if($this->session->get('status') != 1){
+            return redirect()->to('/user');
+        }
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
-        return view('barang/form_input', $data);
+        $model = new BarangModel();
+        $data['barang'] = $model->getbarang();
+        return view('barang/lihat_data', $data);
+        //return view('barang/databarang', $data1);
+
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Agu 2021 pada 05.38
+-- Waktu pembuatan: 01 Sep 2021 pada 05.04
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -51,12 +51,19 @@ INSERT INTO `admin` (`id_admin`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`, `
 
 CREATE TABLE `barang` (
   `id_barang` int(11) NOT NULL,
-  `id_sup` int(11) NOT NULL,
+  `nama_sup` varchar(30) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `tgl_masuk` date NOT NULL,
   `jumlah` int(10) NOT NULL,
   `harga` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama`, `tgl_masuk`, `jumlah`, `harga`) VALUES
+(1, 'PT. Merak Jaya Abadi', 'BB+', '2021-06-01', 20, '500000');
 
 -- --------------------------------------------------------
 
@@ -102,7 +109,7 @@ CREATE TABLE `mitra` (
   `nik` varchar(20) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(250) NOT NULL,
-  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL COMMENT '1=laki-laki, 2=perempuan',
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -112,7 +119,9 @@ CREATE TABLE `mitra` (
 
 INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'Imam Haris', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com'),
-(3, 'eko julianto', '2738737292', '082374846719', 'batam, batam, batam', 'laki - laki', 'ekojulionto@gmail.com');
+(3, 'eko julianto', '2738737292', '082374846719', 'batam, batam, batam', 'laki - laki', 'ekojulionto@gmail.com'),
+(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com'),
+(14, 'alvijar ', '2792179837', '0895837322', 'prasanti, lampiung', 'laki - laki', 'alvijar@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -169,7 +178,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
-(2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com');
+(2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
+(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa', 'laki - laki', 'reza@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -178,11 +188,17 @@ INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kela
 --
 
 CREATE TABLE `suplayer` (
-  `id_sup` int(11) NOT NULL,
-  `nama` varchar(25) NOT NULL,
+  `nama_sup` varchar(30) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `suplayer`
+--
+
+INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
+('PT. Merak Jaya Abadi', '0821658920892', 'Jawa');
 
 -- --------------------------------------------------------
 
@@ -202,9 +218,12 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`email`, `password`, `status`) VALUES
 ('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
+('alvijar@gmail.com', 'e3f1d7cc823a0544589e05a668b848d3', '2'),
 ('ekojulionto@gmail.com', '8e1a070e9b0340da2b0ea4f193c172f0', '2'),
 ('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
-('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1');
+('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
+('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3'),
+('via@gmail.com', 'e5aef89fdd6afdd63e0114c852b0f74c', '2');
 
 --
 -- Indexes for dumped tables
@@ -222,7 +241,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
-  ADD KEY `id_sup` (`id_sup`);
+  ADD KEY `id_sup` (`nama_sup`);
 
 --
 -- Indeks untuk tabel `barang_mitra`
@@ -274,7 +293,7 @@ ALTER TABLE `sales`
 -- Indeks untuk tabel `suplayer`
 --
 ALTER TABLE `suplayer`
-  ADD PRIMARY KEY (`id_sup`);
+  ADD PRIMARY KEY (`nama_sup`);
 
 --
 -- Indeks untuk tabel `user`
@@ -296,7 +315,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_mitra`
@@ -314,7 +333,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
@@ -332,13 +351,7 @@ ALTER TABLE `penjualan_mitra`
 -- AUTO_INCREMENT untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `suplayer`
---
-ALTER TABLE `suplayer`
-  MODIFY `id_sup` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -354,7 +367,7 @@ ALTER TABLE `admin`
 -- Ketidakleluasaan untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_sup`) REFERENCES `suplayer` (`id_sup`);
+  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`nama_sup`) REFERENCES `suplayer` (`nama_sup`);
 
 --
 -- Ketidakleluasaan untuk tabel `barang_mitra`
