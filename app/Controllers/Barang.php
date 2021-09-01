@@ -70,6 +70,21 @@ class Barang extends BaseController
         $data['barang'] = $model->getbarang();
         return view('barang/form_input', $data);
     }
+    public function aksi_input(){
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //input ke tabel barang
+        $this->barangModel = new BarangModel();
+        $this->barangModel->save([
+            'nama_sup' => $data['nama_sup'],
+            'nama' => $data['nama'],
+            'tgl_masuk' => $data['tgl_masuk'],
+            'jumlah' => $data['jumlah'],
+            'harga' => $data['harga']
+        ]);
+        return redirect()->to('/barang/tampil');
+    }
 
     public function edit_barang(){
          
