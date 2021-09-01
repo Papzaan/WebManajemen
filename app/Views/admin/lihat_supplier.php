@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Sales</h1>
+    <h1 class="h3 mb-2 text-gray-800">Supplier</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -24,12 +24,9 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama</th>
-                            <th>NIK</th>
+                            <th>Nama Supplier</th>
                             <th>No Telepon</th>
                             <th>Alamat</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Email</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -42,11 +39,6 @@
                             <td>2</td>
                             <td>3</td>
                             <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-
-
                             <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                             </td>

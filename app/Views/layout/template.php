@@ -88,7 +88,12 @@
                     </div>
                 </div>
             </li>
-
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/supplier">
+                    <i class="fas fa-fw fa-user-circle"></i>
+                    <span>Supplier</span></a>
+            </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
