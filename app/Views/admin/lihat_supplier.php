@@ -33,6 +33,16 @@
 
                     <tbody>
                         <tr>
+                            <?php
+                            $no = 1;
+                            foreach ($barang as $d) {
+                            ?>
+                        <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $d["nama_sup"] ?></td>
+                            <td><?php echo $d["no_telp"] ?></td>
+                            <td><?php echo $d["alamat"] ?></td>
+                        <?php } ?>
 
                         <tr>
                             <td>1</td>
