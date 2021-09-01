@@ -17,4 +17,5 @@ class BarangModel extends Model
         return $this->db->table('barang')
         ->get()->getResultArray();
     }
+    
 }

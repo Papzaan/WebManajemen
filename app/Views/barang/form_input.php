@@ -10,6 +10,20 @@
             <h3 class='box-title'>Tambah Data Barang</h3>
         </div>
         <div class="box-body">
+        <div class="form-group">
+                <label for="nama_barang" class="control-label">Nama Supplier</label>
+                <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                <select class="form-control" id="bidang" name="bidang">
+                            <option value="" disabled selected>Pilih Supplier</option>
+                        <?php foreach ($suplayer as $row ) { ?>
+                            <option value="<?php echo $row["nama_sup"]; ?>">
+                                <?php echo $row["nama_sup"]; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- mbatas option -->
+                <div class="help-block with-errors"></div>
+            </div>
             <div class="form-group">
                 <label for="nama_barang" class="control-label">Nama Barang</label>
                 <div class="input-group">
@@ -50,7 +64,7 @@
             </div>
             <div class="box-footer">
                 <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
-                <a href="<?php echo base_url() ?>barang" class="btn btn-default ">Cancel</a>
+                <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
             </div>
             </form>
         </div><!-- /.box-body -->

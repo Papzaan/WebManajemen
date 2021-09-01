@@ -74,7 +74,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="#">Kategori</a>
-                            <a class="collapse-item" href="/barang/tampil">Barang</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/barang/tampil">Barang</a>
                         </div>
                     </div>
                 </li>
