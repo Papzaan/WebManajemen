@@ -30,7 +30,20 @@ class DataMitra extends BaseController
         return view('admin/lihat_mitra');
     }
 
-    public function tambahmitra()
+    public function vsales()
     {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new UserModel();
+        return view('admin/lihat_sales', $data);
     }
 }
