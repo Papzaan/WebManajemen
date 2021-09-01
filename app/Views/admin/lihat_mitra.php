@@ -1,3 +1,5 @@
+<!-- End of Main Content -->
+
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
@@ -33,22 +35,19 @@
 
                     <tbody>
                         <tr>
-                            <?php
-                            $no = 1;
-                            foreach ($barang as $d) {
-                            ?>
-                        <tr>
-                            <td><?php echo $no++ ?></td>
-                            <td><?php echo $d["nama_sup"] ?></td>
-                            <td><?php echo $d["nama"] ?></td>
-                            <td><?php echo $d["tgl_masuk"] ?></td>
-                            <td><?php echo $d["jumlah"] ?></td>
-                            <td><?php echo $d["harga"] ?></td>
-                        <?php } ?>
 
-                        <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                        </td>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+
+
+                            <td><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                            </td>
                         </tr>
 
                         </tr>
