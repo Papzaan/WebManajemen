@@ -34,31 +34,33 @@ class Barang extends BaseController
     public function tampil()
     {
         //cek apakah ada session bernama isLogin
-       if(!$this->session->has('isLogin')){
-        return redirect()->to('/auth/login');
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
         }
-        
+
         //cek role dari session
-        if($this->session->get('status') != 1){
+        if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
+        $data['title'] = 'Barang';
         $data['barang'] = $model->getbarang();
         return view('barang/lihat_data', $data);
         //return view('barang/databarang', $data1);
 
     }
-    public function input_barang(){
-         
+    public function input_barang()
+    {
+
         //cek apakah ada session bernama isLogin
-        if(!$this->session->has('isLogin')){
+        if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
-        
+
         //cek role dari session
-        if($this->session->get('status') != 1){
+        if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
 
@@ -67,10 +69,12 @@ class Barang extends BaseController
         $model = new SuplayModel();
         $data['suplayer'] = $model->getsuplayer();
         $model = new BarangModel();
+        $data['title'] = 'Input Barang';
         $data['barang'] = $model->getbarang();
         return view('barang/form_input', $data);
     }
-    public function aksi_input(){
+    public function aksi_input()
+    {
         //tangkap data dari form 
         $data = $this->request->getPost();
 
@@ -86,21 +90,23 @@ class Barang extends BaseController
         return redirect()->to('/barang/tampil');
     }
 
-    public function edit_barang(){
-         
+    public function edit_barang()
+    {
+
         //cek apakah ada session bernama isLogin
-        if(!$this->session->has('isLogin')){
+        if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
-        
+
         //cek role dari session
-        if($this->session->get('status') != 1){
+        if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
 
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
+        $data['title'] = 'Edit Barang';
         $data['barang'] = $model->getbarang();
         return view('barang/form_edit', $data);
     }
