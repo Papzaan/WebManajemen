@@ -29,6 +29,7 @@ class Penjualan extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
         $data['barang'] = $model->getbarang();
+        $data['title'] = 'Penjualan';
         return view('penjualan/index', $data);
         //return view('barang/databarang', $data1);
     }
@@ -48,6 +49,7 @@ class Penjualan extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
         $data['barang'] = $model->getbarang();
+        $data['title'] = 'Penjualan';
         return view('pe/lihat_data', $data);
         //return view('barang/databarang', $data1);
 
@@ -70,6 +72,7 @@ class Penjualan extends BaseController
         $model = new SuplayModel();
         $data['suplayer'] = $model->getsuplayer();
         $model = new BarangModel();
+        $data['title'] = 'Input Barang';
         $data['barang'] = $model->getbarang();
         return view('barang/form_input', $data);
     }
@@ -106,6 +109,7 @@ class Penjualan extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
+        $data['title'] = ' Edit Barang';
         $data['barang'] = $model->getbarang();
         return view('barang/form_edit', $data);
     }
