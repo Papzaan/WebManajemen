@@ -15,13 +15,12 @@
                 <?php foreach ($barang as $d) { ?>
                     <div class="col-lg-3">
                         <div class="card">
-                            <div class="card_body">
+                            <div class="card_body text-center">
                                 <h5><?php echo $d["nama"] ?></h5>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                <h5>Harga</h5>
-                                <h5>Rp.<?php echo $d["harga"] ?></h5>
-                                <a href="#" class="card-link">Card Link</a>
-                                <a href="#" class="card-link">Another Link</a>
+
+                                <label>Rp. <?php echo $d["harga"] ?></label><br>
+                                <button class="btn btn-success btn-sm"><i class="fa fa-shopping-basket"></i>Add</button>
                             </div>
                         </div>
                     </div>
