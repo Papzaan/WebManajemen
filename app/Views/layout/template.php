@@ -332,31 +332,31 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="<?php base_url(); ?>/assets/vendor/jquery/jquery.min.js"></script>
-        <script src="<?php base_url(); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="<?php base_url(); ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="<?php base_url(); ?>/assets/js/sb-admin-2.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/sb-admin-2.min.js" type="text/javascript"></script>
 
         <!-- Page level plugins -->
-        <script src="<?php base_url(); ?>/assets/vendor/chart.js/Chart.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
 
         <!-- Page level plugins -->
-        <script src="<?php base_url(); ?>/assets/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
         <!-- Page level custom scripts -->
-        <script src="<?php base_url(); ?>/assets/js/demo/chart-area-demo.js"></script>
-        <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/demo/chart-area-demo.js" type="text/javascript"></script>
+        <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js" type="text/javascript"></script>
 
         <!-- Page level custom scripts -->
-        <script src="<?php base_url(); ?>/assets/js/demo/datatables-demo.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/demo/datatables-demo.js" type="text/javascript"></script>
 
-        <script src="<?php base_url(); ?>/assets/js/jquery-1.12.4.js"></script>
-        <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/jquery-1.12.4.js" type="text/javascript"></script>
+        <script src="<?php base_url(); ?>/assets/js/jquery-ui.js" type="text/javascript"></script>
         <script>
             $(function() {
 

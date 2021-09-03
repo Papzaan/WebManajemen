@@ -45,8 +45,8 @@
                             <td><?php echo $d["jumlah"] ?></td>
                             <td><?php echo $d["harga"] ?></td>
                             <td><a href="<?php echo base_url() ?>/barang/edit_barang"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                        </td>
+                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                            </td>
                         <?php } ?>
 
                     </tbody>
