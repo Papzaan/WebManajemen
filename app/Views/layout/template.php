@@ -112,7 +112,7 @@
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
                 </li>
@@ -286,7 +286,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_1.svg" alt="...">
+                                        <img class="rounded-circle" src="/assets/img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -343,7 +343,7 @@
                                         </tr>
                                     <?php endforeach; ?>
                                 </span>
-                                <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="<?php echo base_url() ?>/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -400,15 +400,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Keluar?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="auth/logout">Logout</a>
+                        <a class="btn btn-primary" href="/auth/logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -442,7 +441,10 @@
         <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
         <script>
             $(function() {
-                $("#datepicker").datepicker();
+
+                var date = $('#datepicker').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                }).val();
             });
         </script>
 
