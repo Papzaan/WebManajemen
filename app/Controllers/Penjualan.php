@@ -11,6 +11,7 @@ class Penjualan extends BaseController
     public function __construct()
     {
         $this->session = session();
+        helper('number');
     }
     public function index()
     {

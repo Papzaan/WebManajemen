@@ -19,8 +19,9 @@
                                 <h5><?php echo $d["nama"] ?></h5>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
 
-                                <label>Rp. <?php echo $d["harga"] ?></label><br>
+                                <label> <?php echo number_to_currency($d['harga'], 'IDR'); ?></label><br>
                                 <button class="btn btn-success btn-sm"><i class="fa fa-shopping-basket"></i>Add</button>
+
                             </div>
                         </div>
                     </div>
