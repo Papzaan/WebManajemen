@@ -32,13 +32,13 @@ class DataSales extends BaseController
 
     public function tampil()
     {
-         //cek apakah ada session bernama isLogin
-       if(!$this->session->has('isLogin')){
-        return redirect()->to('/auth/login');
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
         }
-        
+
         //cek role dari session
-        if($this->session->get('status') != 1){
+        if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
 
@@ -46,6 +46,7 @@ class DataSales extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilsales();
+        $data['title'] = 'Sales';
         return view('admin/lihat_sales', $data);
         //return view('barang/databarang', $data1);
     }
