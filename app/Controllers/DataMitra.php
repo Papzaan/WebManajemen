@@ -32,13 +32,13 @@ class DataMitra extends BaseController
 
     public function tampil()
     {
-         //cek apakah ada session bernama isLogin
-       if(!$this->session->has('isLogin')){
-        return redirect()->to('/auth/login');
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
         }
-        
+
         //cek role dari session
-        if($this->session->get('status') != 1){
+        if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
 
@@ -46,6 +46,7 @@ class DataMitra extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilmitra();
+        $data['title'] = 'Mitra';
         return view('admin/lihat_mitra', $data);
         //return view('barang/databarang', $data1);
     }
