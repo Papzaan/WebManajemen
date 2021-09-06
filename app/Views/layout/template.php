@@ -344,7 +344,6 @@
         <script src="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="<?php base_url(); ?>/assets/js/demo/datatables-demo.js"></script>
 
         <!-- Page level plugins -->
         <script src="<?php base_url(); ?>/assets/vendor/chart.js/Chart.min.js"></script>
@@ -356,6 +355,12 @@
         <script>
             $(function() {
                 $("#datepicker").datepicker();
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#dataTable').DataTable();
             });
         </script>
 
