@@ -51,6 +51,28 @@ class Barang extends BaseController
         //return view('barang/databarang', $data1);
 
     }
+
+    public function stok()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new BarangModel();
+        $data['title'] = 'Stok';
+        $data['barang'] = $model->getbarang();
+        return view('barang/stok', $data);
+        //return view('barang/databarang', $data1);
+
+    }
+
     public function input_barang()
     {
 
