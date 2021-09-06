@@ -352,6 +352,7 @@
         <script src="<?php base_url(); ?>/assets/js/demo/chart-area-demo.js"></script>
         <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
 
+        <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
         <script>
             $(function() {
                 $("#datepicker").datepicker();
@@ -361,6 +362,7 @@
         <script>
             $(document).ready(function() {
                 $('#dataTable').DataTable();
+
             });
         </script>
 
