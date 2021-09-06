@@ -17,7 +17,6 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <h5><?php echo $d["nama"] ?></h5>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                                 <p class="card-text">
                                     <img src="https://majushop.id/image?id=69507.jpg&option=2&t=1626403350" width="200px" height="150px">
                                 </p>
