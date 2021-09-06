@@ -21,6 +21,8 @@
     <!-- Custom styles for this page -->
     <link href="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?php base_url(); ?>/assets/css/jquery-ui.css">
+
 </head>
 
 <body id="page-top">
@@ -96,7 +98,7 @@
                 </li>
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/barang/stok">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Stok</span></a>
                 </li>
@@ -343,6 +345,19 @@
 
         <!-- Page level custom scripts -->
         <script src="<?php base_url(); ?>/assets/js/demo/datatables-demo.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="<?php base_url(); ?>/assets/vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="<?php base_url(); ?>/assets/js/demo/chart-area-demo.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
+
+        <script>
+            $(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
 
 </body>
 
