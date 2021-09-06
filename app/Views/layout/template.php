@@ -354,15 +354,14 @@
 
         <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
         <script>
-            $(function() {
-                $("#datepicker").datepicker();
-            });
+            var date = $('#datepicker').datepicker({
+                dateFormat: 'yy-mm-dd'
+            }).val();
         </script>
-
+        <!-- Tabel -->
         <script>
             $(document).ready(function() {
                 $('#dataTable').DataTable();
-
             });
         </script>
 
