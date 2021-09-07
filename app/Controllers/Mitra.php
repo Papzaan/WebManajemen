@@ -26,7 +26,7 @@ class Mitra extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['user'] = $model->getdataMitra();
-        $data['title'] = 'Mitra';
+        $data['title'] = 'Daftar Mitra';
         echo view('mitra/index', $data);
         //return view('admin/index')
 

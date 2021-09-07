@@ -46,7 +46,7 @@ class DataSales extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilsales();
-        $data['title'] = 'Sales';
+        $data['title'] = ' Daftar Sales';
         return view('sales/lihat_sales', $data);
         //return view('barang/databarang', $data1);
     }
