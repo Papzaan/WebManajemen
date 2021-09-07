@@ -47,7 +47,7 @@ class DataMitra extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilmitra();
         $data['title'] = 'Mitra';
-        return view('admin/lihat_mitra', $data);
+        return view('mitra/lihat_mitra', $data);
         //return view('barang/databarang', $data1);
     }
 }
