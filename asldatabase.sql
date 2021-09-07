@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Sep 2021 pada 05.04
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 7.3.29
+-- Generation Time: Sep 07, 2021 at 04:41 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `admin` (`id_admin`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -59,16 +59,19 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama`, `tgl_masuk`, `jumlah`, `harga`) VALUES
-(1, 'PT. Merak Jaya Abadi', 'BB+', '2021-06-01', 20, '500000');
+(1, 'PT. Merak Jaya Abadi', 'BB+', '2021-06-01', 20, '500000'),
+(3, 'PT. Merak Jaya Abadi', '@Water', '2021-09-03', 56, '100000'),
+(4, 'PT. Merak Jaya Abadi', 'Nanoxy', '2021-09-03', 50, '500000'),
+(5, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-06', 50, '300000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang_mitra`
+-- Table structure for table `barang_mitra`
 --
 
 CREATE TABLE `barang_mitra` (
@@ -84,7 +87,7 @@ CREATE TABLE `barang_mitra` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -100,7 +103,7 @@ CREATE TABLE `customer` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mitra`
+-- Table structure for table `mitra`
 --
 
 CREATE TABLE `mitra` (
@@ -114,7 +117,7 @@ CREATE TABLE `mitra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mitra`
+-- Dumping data for table `mitra`
 --
 
 INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
@@ -126,7 +129,7 @@ INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kela
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan`
+-- Table structure for table `penjualan`
 --
 
 CREATE TABLE `penjualan` (
@@ -143,7 +146,7 @@ CREATE TABLE `penjualan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan_mitra`
+-- Table structure for table `penjualan_mitra`
 --
 
 CREATE TABLE `penjualan_mitra` (
@@ -160,7 +163,7 @@ CREATE TABLE `penjualan_mitra` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales`
+-- Table structure for table `sales`
 --
 
 CREATE TABLE `sales` (
@@ -174,7 +177,7 @@ CREATE TABLE `sales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sales`
+-- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
@@ -184,7 +187,7 @@ INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kela
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `suplayer`
+-- Table structure for table `suplayer`
 --
 
 CREATE TABLE `suplayer` (
@@ -194,7 +197,7 @@ CREATE TABLE `suplayer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `suplayer`
+-- Dumping data for table `suplayer`
 --
 
 INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
@@ -203,7 +206,7 @@ INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -213,7 +216,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`email`, `password`, `status`) VALUES
@@ -230,41 +233,41 @@ INSERT INTO `user` (`email`, `password`, `status`) VALUES
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`),
   ADD KEY `email` (`email`);
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
   ADD KEY `id_sup` (`nama_sup`);
 
 --
--- Indeks untuk tabel `barang_mitra`
+-- Indexes for table `barang_mitra`
 --
 ALTER TABLE `barang_mitra`
   ADD PRIMARY KEY (`id_barmit`),
   ADD KEY `id_mitra` (`id_mitra`);
 
 --
--- Indeks untuk tabel `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id_customer`);
 
 --
--- Indeks untuk tabel `mitra`
+-- Indexes for table `mitra`
 --
 ALTER TABLE `mitra`
   ADD PRIMARY KEY (`id_mitra`),
   ADD KEY `email` (`email`);
 
 --
--- Indeks untuk tabel `penjualan`
+-- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id_penjualan`),
@@ -273,7 +276,7 @@ ALTER TABLE `penjualan`
   ADD KEY `id_barang` (`id_barang`);
 
 --
--- Indeks untuk tabel `penjualan_mitra`
+-- Indexes for table `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
   ADD PRIMARY KEY (`id_penjumit`),
@@ -282,7 +285,7 @@ ALTER TABLE `penjualan_mitra`
   ADD KEY `id_barmit` (`id_barmit`);
 
 --
--- Indeks untuk tabel `sales`
+-- Indexes for table `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id_sales`),
@@ -290,99 +293,99 @@ ALTER TABLE `sales`
   ADD KEY `email_2` (`email`);
 
 --
--- Indeks untuk tabel `suplayer`
+-- Indexes for table `suplayer`
 --
 ALTER TABLE `suplayer`
   ADD PRIMARY KEY (`nama_sup`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `barang_mitra`
+-- AUTO_INCREMENT for table `barang_mitra`
 --
 ALTER TABLE `barang_mitra`
   MODIFY `id_barmit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `mitra`
+-- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
   MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan`
+-- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
   MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan_mitra`
+-- AUTO_INCREMENT for table `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
   MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `sales`
+-- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
   MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `admin`
+-- Constraints for table `admin`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 
 --
--- Ketidakleluasaan untuk tabel `barang`
+-- Constraints for table `barang`
 --
 ALTER TABLE `barang`
   ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`nama_sup`) REFERENCES `suplayer` (`nama_sup`);
 
 --
--- Ketidakleluasaan untuk tabel `barang_mitra`
+-- Constraints for table `barang_mitra`
 --
 ALTER TABLE `barang_mitra`
   ADD CONSTRAINT `barang_mitra_ibfk_1` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`);
 
 --
--- Ketidakleluasaan untuk tabel `mitra`
+-- Constraints for table `mitra`
 --
 ALTER TABLE `mitra`
   ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 
 --
--- Ketidakleluasaan untuk tabel `penjualan`
+-- Constraints for table `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
@@ -390,7 +393,7 @@ ALTER TABLE `penjualan`
   ADD CONSTRAINT `penjualan_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
 
 --
--- Ketidakleluasaan untuk tabel `penjualan_mitra`
+-- Constraints for table `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
   ADD CONSTRAINT `penjualan_mitra_ibfk_1` FOREIGN KEY (`id_barmit`) REFERENCES `barang_mitra` (`id_barmit`),
@@ -398,7 +401,7 @@ ALTER TABLE `penjualan_mitra`
   ADD CONSTRAINT `penjualan_mitra_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
 
 --
--- Ketidakleluasaan untuk tabel `sales`
+-- Constraints for table `sales`
 --
 ALTER TABLE `sales`
   ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
