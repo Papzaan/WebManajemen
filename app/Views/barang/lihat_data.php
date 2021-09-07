@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -36,7 +36,7 @@
                         $no = 1;
                         foreach ($barang as $d) {
                         ?>
-                            <tr id="<?php echo $d["id_barang"] ?>" >
+                            <tr id="<?php echo $d["id_barang"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama_sup"] ?></td>
                                 <td><?php echo $d["nama"] ?></td>
@@ -44,7 +44,7 @@
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
                                 <td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
                             </tr>
                         <?php } ?>
