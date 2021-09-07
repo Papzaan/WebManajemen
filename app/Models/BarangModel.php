@@ -30,5 +30,9 @@ class BarangModel extends Model
         return $this->db->table('barang')
             ->update($dataupdate, ['id_barang' => $id]);
     }
+    public function deletebarang($id){
+        return $this->db->table('barang')
+            ->delete(['id_barang' => $id]);
+    } 
     
 }

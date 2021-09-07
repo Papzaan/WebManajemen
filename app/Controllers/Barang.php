@@ -133,14 +133,7 @@ class Barang extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        //edit baranf
-        //$id_barang = $this->uri->segment(3);
-
-        /*$this->load->model('BarangModel');
-        $isi['galeri'] = $this->BarangModel->editbarang($id_barang);
-
-        $this->load->view('barang/form_edit', $isi);
-        //edit*/
+        
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new SuplayModel();
@@ -163,7 +156,7 @@ class Barang extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
 
-        //input ke tabel barang
+        //akses ke tabel barang
         $this->barangModel = new BarangModel();
         $dataupdate = [
             'nama_sup' => $data['nama_sup'],
@@ -180,6 +173,21 @@ class Barang extends BaseController
             // Deklarasikan session flashdata dengan tipe info
             echo session()->setFlashdata('info', 'Updated barang successfully');
             // Redirect ke halaman product
+            return redirect()->to('/barang/tampil');
+        }
+    }
+    public function hapus_barang($id){
+        //akses ke tabel barang
+        $this->barangModel = new BarangModel();
+        // Memanggil function delete_barang
+        $hapus = $this->barangModel->deletebarang($id);
+    
+        // Jika berhasil melakukan hapus
+        if($hapus)
+        {
+                // Deklarasikan session flashdata dengan tipe warning
+            session()->setFlashdata('warning', 'Deleted product successfully');
+            // Redirect ke halaman barang
             return redirect()->to('/barang/tampil');
         }
     }
