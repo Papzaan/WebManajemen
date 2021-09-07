@@ -14,7 +14,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="barang/input_barang"><button class="btn btn-primary float-right" type="button">
+            <a href="/datasales/tambah_sales"><button class="btn btn-primary float-right" type="button">
                     Tambah Data <i class="fas fa-plus"></i>
                 </button></a>
         </div>

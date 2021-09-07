@@ -50,4 +50,24 @@ class DataSales extends BaseController
         return view('sales/lihat_sales', $data);
         //return view('barang/databarang', $data1);
     }
+    public function tambah_sales()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+
+        //get data
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $data['barang'] = $model->tampilsales();
+        $data['title'] = ' Tambah Sales';
+        return view('sales/form_input', $data);
+        //return view('barang/databarang', $data1);
+    }
 }
