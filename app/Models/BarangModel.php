@@ -17,5 +17,12 @@ class BarangModel extends Model
         return $this->db->table('barang')
         ->get()->getResultArray();
     }
+    public function editbarang($id){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('barang')
+            ->where('barang.id_barang',['id_barang'=> $id])
+            ->get()->getResultArray();  
+    }
     
 }

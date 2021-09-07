@@ -63,6 +63,15 @@ class DataMitra extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
         //get data
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
@@ -98,5 +107,8 @@ class DataMitra extends BaseController
             'email' => $data['email']
         ]);
         return redirect()->to('/datamitra/tampil');
+    }
+    public function edit(){
+
     }
 }

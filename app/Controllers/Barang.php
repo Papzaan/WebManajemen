@@ -97,6 +97,15 @@ class Barang extends BaseController
     }
     public function aksi_input()
     {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
         //tangkap data dari form 
         $data = $this->request->getPost();
 
@@ -112,7 +121,7 @@ class Barang extends BaseController
         return redirect()->to('/barang/tampil');
     }
 
-    public function edit_barang()
+    public function edit_barang($id)
     {
 
         //cek apakah ada session bernama isLogin
@@ -124,12 +133,21 @@ class Barang extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
+        //edit baranf
+        //$id_barang = $this->uri->segment(3);
 
+        /*$this->load->model('BarangModel');
+        $isi['galeri'] = $this->BarangModel->editbarang($id_barang);
+
+        $this->load->view('barang/form_edit', $isi);
+        //edit*/
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
+        $model = new SuplayModel();
+        $data['suplayer'] = $model->getsuplayer();
         $model = new BarangModel();
         $data['title'] = 'Edit Barang';
-        $data['barang'] = $model->getbarang();
+        $data['barang'] = $model->editbarang($id);
         return view('barang/form_edit', $data);
     }
 }
