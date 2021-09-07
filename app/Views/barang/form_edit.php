@@ -10,11 +10,16 @@
             <h3 class='box-title'>Edit Data Barang</h3>
         </div>
         <div class="box-body">
-        <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Supplier</label>
+        <form class="user" method="post" action="/barang/update_barang">
+        
+                <div class="form-group">
+                    <label for="nama_sup" class="control-label">Nama Supplier</label>
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                    <?php foreach ($barang as $d) { ?>
+                    <input type="hidden" name="id_barang" id="id_barang" value="<?php echo $d["id_barang"] ?>">
                     <select class="form-control" id="nama_sup" name="nama_sup">
-                        <option value="" disabled selected>Pilih Supplier</option>
+                        <option value="<?php echo $d["nama_sup"] ?>"><?php echo $d["nama_sup"] ?></option>
+                    <?php } ?>
                         <?php foreach ($suplayer as $row) { ?>
                             <option value="<?php echo $row["nama_sup"]; ?>">
                                 <?php echo $row["nama_sup"]; ?>
@@ -29,7 +34,7 @@
                 <label for="nama_barang" class="control-label">Nama Barang</label>
                 <div class="input-group">
                 
-                    <input type="text" class="form-control" name="nama_barang" id="nama_barang" data-error="Nama Barang harus diisi"  value="<?php echo $d['nama']; ?>" required />
+                    <input type="text" class="form-control" name="nama" id="nama" data-error="Nama Barang harus diisi"  value="<?php echo $d['nama'] ?>" required />
                     
                     <span class="input-group-addon">
                     </span>
@@ -70,7 +75,7 @@
                 <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
                 <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
             </div>
-            </form>
+        </form>
         </div><!-- /.box-body -->
     </div><!-- /.box -->
 
