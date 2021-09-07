@@ -69,31 +69,32 @@ class DataMitra extends BaseController
         $data['title'] = 'Input Mitra';
         return view('mitra/form_input', $data);
     }
-    public function aksi_input(){
+    public function aksi_input()
+    {
 
-         //tangkap data dari form 
+        //tangkap data dari form 
         $data = $this->request->getPost();
 
         //hash password digabung dengan salt
         $password = md5($data['password']);
-        
-            //masukan data ke tabel user sebagai mitra
-            $this->userModel->save([
-                'email' => $data['email'],
-                'password' => $password,
-                'status' => 2
-            ]);
-            //masukan data ke tabel mitra sebagai mitra
-            $this->userRegism = new UserRegism();
-            //$this->userRegis->tambahMitra($data);
-            $this->userRegism->save([
-                'nama' => $data['nama'],
-                'nik' => $data['nik'],
-                'no_telp' => $data['no_telp'],
-                'alamat' => $data['alamat'],
-                'jenis_kelamin' => $data['jk'],
-                'email' => $data['email']
-            ]);
-            return redirect()->to('/mitra/lihat_mitra');
+
+        //masukan data ke tabel user sebagai mitra
+        $this->userModell->save([
+            'email' => $data['email'],
+            'password' => $password,
+            'status' => 2
+        ]);
+        //masukan data ke tabel mitra sebagai mitra
+        $this->userRegism = new UserRegism();
+        //$this->userRegis->tambahMitra($data);
+        $this->userRegism->save([
+            'nama' => $data['nama'],
+            'nik' => $data['nik'],
+            'no_telp' => $data['no_telp'],
+            'alamat' => $data['alamat'],
+            'jenis_kelamin' => $data['jk'],
+            'email' => $data['email']
+        ]);
+        return redirect()->to('/mitra/lihat_mitra');
     }
 }
