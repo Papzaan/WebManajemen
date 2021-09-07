@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\UserRegism;
 
 class DataMitra extends BaseController
 {
@@ -77,9 +78,10 @@ class DataMitra extends BaseController
 
         //hash password digabung dengan salt
         $password = md5($data['password']);
-
+        //masukan data ke tabel mitra sebagai mitra
+        $this->userModel = new UserModel();
         //masukan data ke tabel user sebagai mitra
-        $this->userModell->save([
+        $this->userModel->save([
             'email' => $data['email'],
             'password' => $password,
             'status' => 2
@@ -95,6 +97,6 @@ class DataMitra extends BaseController
             'jenis_kelamin' => $data['jk'],
             'email' => $data['email']
         ]);
-        return redirect()->to('/mitra/lihat_mitra');
+        return redirect()->to('/datamitra/tampil');
     }
 }

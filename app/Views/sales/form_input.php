@@ -10,7 +10,7 @@
             <h3 class='box-title'>Tambah Sales</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/auth/valid_register">
+            <form class="user" method="post" action="/datasales/aksi_input">
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap">
@@ -43,10 +43,10 @@
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat" />
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="pegawai" hidden value="mitra" />
-                </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block" name="regismitra">Daftar Sebagai Mitra</button>
+                </div>-->
+                <button type="submit" class="btn btn-primary btn-user btn-block" name="regismitra">Tambahkan Sales</button>
             </form>
         </div><!-- /.box-body -->
     </div><!-- /.box -->
