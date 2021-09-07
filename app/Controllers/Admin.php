@@ -47,7 +47,7 @@ class Admin extends BaseController
         $data['title'] = ' Daftar Supplier';
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilsuplayer();
-        echo view('admin/lihat_supplier', $data);
+        echo view('supp/lihat_supplier', $data);
         //return view('admin/index')   
     }
 }
