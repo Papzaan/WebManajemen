@@ -108,7 +108,28 @@ class DataMitra extends BaseController
         ]);
         return redirect()->to('/datamitra/tampil');
     }
-    public function edit(){
+    public function edit_mitra(){
 
+    }
+    public function update_mitra(){
+
+    }
+    public function hapus_mitra($email){
+        //akses ke tabel mitra
+        $this->userRegism = new UserRegism();
+        $this->userModel = new UserModel();
+        // Memanggil function delete_mitra
+        $hapus = $this->userRegism->deletemitra($email);
+        $hapus = $this->userModel->deleteuser($email);
+
+    
+        // Jika berhasil melakukan hapus
+        if($hapus)
+        {
+                // Deklarasikan session flashdata dengan tipe warning
+            session()->setFlashdata('warning', 'Deleted product successfully');
+            // Redirect ke halaman barang
+            return redirect()->to('/datamitra/tampil');
+        }
     }
 }

@@ -63,6 +63,10 @@ class UserModel extends Model
       return $this->db->table('suplayer')
         ->get()->getResultArray();
     }
+    public function deleteuser($email){
+      return $this->db->table('user')
+            ->delete(['email' => $email]);
+    }
 
     
 }

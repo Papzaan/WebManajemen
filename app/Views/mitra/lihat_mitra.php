@@ -47,11 +47,8 @@
                                 <td><?php echo $d["jenis_kelamin"] ?></td>
                                 <td><?php echo $d["email"] ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/lihat_mitra/' . $d['id_mitra'] . '/edit') ?>"> <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                    </a>
-                                    <a href="<?= base_url('admin/lihat_mitra/' . $d['id_mitra'] . '/edit') ?>"> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-
-                                    </a>
+                                <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
                         </tr>
                     <?php } ?>
