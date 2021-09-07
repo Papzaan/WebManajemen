@@ -45,9 +45,28 @@ class DataMitra extends BaseController
         //get data
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
-        $data['barang'] = $model->tampilmitra();
+        $data['mitra'] = $model->tampilmitra();
         $data['title'] = 'Mitra';
         return view('mitra/lihat_mitra', $data);
         //return view('barang/databarang', $data1);
+    }
+
+    public function input_mitra(){
+         //cek apakah ada session bernama isLogin
+         if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //get data
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        //$data['mitra'] = $model->tampilmitra();
+        //$data['title'] = 'Mitra';
+        return view('mitra/form_input', $data);
+       
     }
 }
