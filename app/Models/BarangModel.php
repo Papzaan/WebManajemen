@@ -24,5 +24,11 @@ class BarangModel extends Model
             ->where('barang.id_barang',['id_barang'=> $id])
             ->get()->getResultArray();  
     }
+    public function updatebarang($dataupdate, $id){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('barang')
+            ->update($dataupdate, ['id_barang' => $id]);
+    }
     
 }

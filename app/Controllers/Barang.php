@@ -150,4 +150,37 @@ class Barang extends BaseController
         $data['barang'] = $model->editbarang($id);
         return view('barang/form_edit', $data);
     }
+    public function update_barang(){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //input ke tabel barang
+        $this->barangModel = new BarangModel();
+        $dataupdate = [
+            'nama_sup' => $data['nama_sup'],
+            'nama' => $data['nama'],
+            'tgl_masuk' => $data['tgl_masuk'],
+            'jumlah' => $data['jumlah'],
+            'harga' => $data['harga']
+        ];
+        $id = $data['id_barang'];
+        $update = $this->barangModel->updatebarang($dataupdate, $id);
+        // Jika berhasil melakukan ubah
+        if($update)
+        {
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', 'Updated barang successfully');
+            // Redirect ke halaman product
+            return redirect()->to('/barang/tampil');
+        }
+    }
 }
