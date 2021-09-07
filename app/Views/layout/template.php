@@ -92,7 +92,7 @@
                 </li>
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/supplier">
+                    <a class="nav-link" href="/datasup/supplier">
                         <i class="fas fa-fw fa-user-circle"></i>
                         <span>Supplier</span></a>
                 </li>

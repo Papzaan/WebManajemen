@@ -73,8 +73,7 @@ class Barang extends BaseController
 
     }
 
-    public function input_barang()
-    {
+    public function input_barang(){
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -95,8 +94,7 @@ class Barang extends BaseController
         $data['barang'] = $model->getbarang();
         return view('barang/form_input', $data);
     }
-    public function aksi_input()
-    {
+    public function aksi_input(){
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -121,8 +119,7 @@ class Barang extends BaseController
         return redirect()->to('/barang/tampil');
     }
 
-    public function edit_barang($id)
-    {
+    public function edit_barang($id){
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {

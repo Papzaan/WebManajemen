@@ -16,5 +16,9 @@ class SuplayModel extends Model
         $data = $session->get('email');
         return $this->db->table('suplayer')
           ->get()->getResultArray();
-      }
+    }
+    public function deletesuplier($id){
+        return $this->db->table('suplayer')
+            ->delete(['nama_sup' => $id]);
+    } 
 }

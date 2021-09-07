@@ -14,7 +14,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="sup/input_supp"><button class="btn btn-primary float-right" type="button">
+            <a href="/datasup/inputsup"><button class="btn btn-primary float-right" type="button">
                     Tambah Data <i class="fas fa-plus"></i>
                 </button></a>
         </div>
@@ -43,9 +43,9 @@
                                 <td><?php echo $d["no_telp"] ?></td>
                                 <td><?php echo $d["alamat"] ?></td>
                                 <td>
-                                    <a href="#"> <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                    <a href="<?php echo base_url() ?>/datasup/edit_sup/<?php echo $d["nama_sup"] ?> "> <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                     </a>
-                                    <a href="#"> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                    <a href="<?php echo base_url() ?>/datasup/hapus_sup/<?php echo $d["nama_sup"] ?> "> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
 
                                     </a>
                                 </td>

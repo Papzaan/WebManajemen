@@ -31,7 +31,7 @@ class Admin extends BaseController
         //return view('admin/index')   
     }
 
-    public function supplier()
+    /*public function supplier()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -49,5 +49,5 @@ class Admin extends BaseController
         $data['barang'] = $model->tampilsuplayer();
         echo view('supp/lihat_supplier', $data);
         //return view('admin/index')   
-    }
+    }*/
 }

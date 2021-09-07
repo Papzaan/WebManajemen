@@ -10,11 +10,11 @@
             <h3 class='box-title'>Tambah Data Supplier</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/barang/aksi_input">
+            <form class="user" method="post" action="/datasup/aksitambah">
                 <div class="form-group">
                     <label for="nama" class="control-label">Nama Supplier</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="nama_supp" id="nama_supp" data-error="Nama Barang harus diisi" placeholder="Nama Supplier" value="" required />
+                        <input type="text" class="form-control" name="nama_sup" id="nama_sup" data-error="Nama Barang harus diisi" placeholder="Nama Supplier" value="" required />
                         <span class="input-group-addon">
                         </span>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="no_tlp" class="control-label">No Telepon</label>
                     <div class="input-group">
-                        <input type="text" name="no_tlp" id="no_tlp" data-error="No Tlp harus di isi" class="form-control" placeholder="No Telepon" required>
+                        <input type="text" name="no_telp" id="no_telp" data-error="No Telpon harus di isi" class="form-control" placeholder="No Telepon" required>
                         <span class="input-group-addon">
                         </span>
                     </div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
-                    <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
+                    <a href="<?php echo base_url() ?>/admin/supplier" class="btn btn-default ">Cancel</a>
                 </div>
             </form>
         </div><!-- /.box-body -->
