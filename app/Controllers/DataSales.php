@@ -109,4 +109,22 @@ class DataSales extends BaseController
         ]);
         return redirect()->to('/datasales/tampil');
     }
+    public function hapus_sales($email){
+        //akses ke tabel mitra
+        $this->userRegiss = new UserRegiss();
+        $this->userModel = new UserModel();
+        // Memanggil function delete_mitra
+        $hapus = $this->userRegiss->deletesales($email);
+        $hapus = $this->userModel->deleteuser($email);
+
+    
+        // Jika berhasil melakukan hapus
+        if($hapus)
+        {
+                // Deklarasikan session flashdata dengan tipe warning
+            session()->setFlashdata('warning', 'Deleted product successfully');
+            // Redirect ke halaman barang
+            return redirect()->to('/datasales/tampil');
+        }
+    }
 }
