@@ -7,7 +7,7 @@
 
     <div class='box box-primary'>
         <div class='box-header  with-border'>
-            <h3 class='box-title'>Tambah Data Barang</h3>
+            <h3 class='box-title'>Tambah Mitra</h3>
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/barang/aksi_input">
@@ -16,11 +16,7 @@
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
                     <select class="form-control" id="nama_sup" name="nama_sup">
                         <option value="" disabled selected>Pilih Supplier</option>
-                        <?php foreach ($suplayer as $row) { ?>
-                            <option value="<?php echo $row["nama_sup"]; ?>">
-                                <?php echo $row["nama_sup"]; ?>
-                            </option>
-                        <?php } ?>
+
                     </select>
                     <!-- mbatas option -->
                     <div class="help-block with-errors"></div>

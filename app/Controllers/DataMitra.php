@@ -51,9 +51,10 @@ class DataMitra extends BaseController
         //return view('barang/databarang', $data1);
     }
 
-    public function input_mitra(){
-         //cek apakah ada session bernama isLogin
-         if (!$this->session->has('isLogin')) {
+    public function input_mitra()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
 
@@ -65,8 +66,7 @@ class DataMitra extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         //$data['mitra'] = $model->tampilmitra();
-        //$data['title'] = 'Mitra';
+        $data['title'] = 'Input Mitra';
         return view('mitra/form_input', $data);
-       
     }
 }
