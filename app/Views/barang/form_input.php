@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Masuk</label>
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
