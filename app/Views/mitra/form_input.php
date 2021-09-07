@@ -10,59 +10,43 @@
             <h3 class='box-title'>Tambah Mitra</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/barang/aksi_input">
-                <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Supplier</label>
-                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <select class="form-control" id="nama_sup" name="nama_sup">
-                        <option value="" disabled selected>Pilih Supplier</option>
-
-                    </select>
-                    <!-- mbatas option -->
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="nama" class="control-label">Nama Barang</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama" id="nama" data-error="Nama Barang harus diisi" placeholder="Nama barang" value="" required />
-                        <span class="input-group-addon">
-                        </span>
+            <form class="user" method="post" action="/auth/valid_register">
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap">
                     </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="kategori" class="control-label">Tanggal Masuk</label>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user" name="nik" id="exampleLastName" placeholder="NIK">
                     </div>
-                    <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="ukuran" class="control-label">Jumlah</label>
-                    <div class="input-group">
-                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required>
-                        <span class="input-group-addon">
-                        </span>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <select class="form-control col-md-12" name="jk">
+                            <option value="" disabled selected>Jenis kelamin</option>
+                            <option value="laki - laki">Laki - laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user" name="no_telp" id="exampleLastName" placeholder="No Telpon">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="email" id="exampleInputPassword" placeholder="email">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control form-control-user" name="password" id="exampleRepeatPassword" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="harga" class="control-label">Harga</label>
-                    <div class="input-group">
-                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                        </span>
-                    </div>
-                    <div class="help-block with-errors"></div>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat" />
                 </div>
-                <div class="box-footer">
-                    <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
-                    <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="pegawai" hidden value="mitra" />
                 </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block" name="regismitra">Daftar Sebagai Mitra</button>
             </form>
         </div><!-- /.box-body -->
     </div><!-- /.box -->
