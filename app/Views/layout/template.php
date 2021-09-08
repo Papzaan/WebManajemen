@@ -372,6 +372,25 @@
                 $('#dataTable').DataTable();
             });
 
+            // $(document).ready(function() {
+            //     $('#norek').on('change', function() {
+            //         //var optionValue = $(this).val();
+            //         //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+            //         var optionText = $("#norek option:selected").val();
+
+            //         alert("Selected Option Text: " + optionText);
+            //     });
+            // });
+
+            function update() {
+                var select = document.getElementById('norekk');
+                var option = select.options[select.selectedIndex];
+
+                document.getElementById('value').value = option.value;
+            }
+
+            update();
+
             $(function() {
                 $('#rek').hide();
                 $('#payment').change(function() {
@@ -384,10 +403,6 @@
                 });
             });
         </script>
-
-
-
-
 
 </body>
 

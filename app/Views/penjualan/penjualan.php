@@ -81,14 +81,13 @@
                 <div class="form-group" id="rek">
                     <div class="col-xs-5">
                         <div class="form-group">
-                            <label for="bank">Pilih Bank</label>
-                            <select id="bank" name="metode" class="form-control" style="width:100%;">
-                                <option value="1">BSI</option>
-                                <option value="2">BNI</option>
+                            <select id="norekk" onChange="update()">
+                                <option value="-">Pilih Bank</option>
+                                <option value="7516756">BSI</option>
+                                <option value="4356574">BRI</option>
+                                <option value="2345678">Mandiri</option>
                             </select>
-                            <br /><br />
-                            <div id="tampil"></div>
-
+                            <input type="text" disabled id="value">
                         </div>
                     </div>
                 </div>
