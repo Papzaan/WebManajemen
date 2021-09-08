@@ -74,7 +74,8 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="#">Kategori</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/barang/tampil">Barang</a>
-                            <a class="collapse-item" href="<?php echo base_url() ?>/admin/pesanan">Pesanan</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/pesanan/pesanan_mitra">Pesanan Mitra</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/pesanan/pesanan_sales">Pesanan Sales</a>
                         </div>
                     </div>
                 </li>
@@ -111,6 +112,11 @@
 
 
                 <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/catatan">
+                        <i class="fa fa-book"></i>
+                        <span>Catatan Penjualan</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
@@ -151,9 +157,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="#">Login</a>
+                        <a class="collapse-item" href="#">Register</a>
+                        <a class="collapse-item" href="#">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
