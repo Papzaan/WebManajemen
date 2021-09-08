@@ -30,7 +30,7 @@ class Penjualan extends BaseController
         $model = new BarangModel();
         $data['barang'] = $model->getbarang();
         $data['title'] = 'Penjualan';
-        return view('penjualan/index', $data);
+        return view('penjualan/penjualan', $data);
         //return view('barang/databarang', $data1);
     }
 
