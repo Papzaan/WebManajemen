@@ -71,7 +71,7 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" name="submit" class="btn btn-primary ">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
                     <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
                 </div>
             </form>
