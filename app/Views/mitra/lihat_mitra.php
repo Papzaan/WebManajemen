@@ -38,7 +38,7 @@
                             $no = 1;
                             foreach ($mitra as $d) {
                             ?>
-
+                                <tr id="<?php echo $d["id_mitra"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nik"] ?></td>
