@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="<?php base_url(); ?>/assets/css/jquery-ui.css">
 
+
 </head>
 
 <body id="page-top">
@@ -144,7 +145,7 @@
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
                 </li>
@@ -365,7 +366,23 @@
             $(document).ready(function() {
                 $('#dataTable').DataTable();
             });
+
+            $(function() {
+                $('#rek').hide();
+                $('#payment').change(function() {
+                    if ($('#payment').val() == '2') {
+                        $('#rek').show();
+                        createByJson();
+                    } else {
+                        $('#rek').hide();
+                    }
+                });
+            });
         </script>
+
+
+
+
 
 </body>
 
