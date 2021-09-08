@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 
-class Admin extends BaseController
+class Pesanan extends BaseController
 {
 
     public function __construct()
@@ -12,7 +12,7 @@ class Admin extends BaseController
         $this->session = session();
     }
 
-    public function index()
+    public function pesanan_mitra()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -25,13 +25,11 @@ class Admin extends BaseController
         }
         //tampilin data
         $model = new UserModel();
-        $data['title'] = 'Dashboard Admin';
+        $data['title'] = 'Daftar Pesanan Mitra';
         $data['user'] = $model->getdataAdmin();
-        echo view('admin/index', $data);
-        //return view('admin/index')   
+        echo view('pesanan/pesanan_mitra', $data);
     }
-
-    public function pesanan()
+    public function pesanan_sales()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -44,9 +42,8 @@ class Admin extends BaseController
         }
         //tampilin data
         $model = new UserModel();
-        $data['title'] = 'Daftar Pesanan';
+        $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataAdmin();
-        echo view('pesanan/pesanan', $data);
-        //return view('admin/index')   
+        echo view('pesanan/pesanan_sales', $data);
     }
 }
