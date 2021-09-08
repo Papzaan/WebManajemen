@@ -70,6 +70,28 @@
                     </div>
                     <div class="help-block with-errors"></div>
                 </div>
+
+                <div class="form-group">
+                    <label for="payment">Metode Pembayaran</label>
+                    <select id="payment" name="metode" class="form-control" style="width:100%;">
+                        <option value="1">Cash</option>
+                        <option value="2">Transfer</option>
+                    </select>
+                </div>
+                <div class="form-group" id="rek">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="bank">Pilih Bank</label>
+                            <select id="bank" name="metode" class="form-control" style="width:100%;">
+                                <option value="1">BSI</option>
+                                <option value="2">BNI</option>
+                            </select>
+                            <br /><br />
+                            <div id="tampil"></div>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
                     <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
