@@ -109,13 +109,19 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
-
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/penjualan/catatan">
-                        <i class="fa fa-book"></i>
-                        <span>Catatan Penjualan</span></a>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Laporan</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/catatan">Laporan Penjualan</a>
+                        </div>
+                    </div>
                 </li>
+                <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
@@ -183,10 +189,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-
-
-
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
