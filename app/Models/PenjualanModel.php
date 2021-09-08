@@ -15,23 +15,26 @@ class PenjualanModel extends Model
         $session = session();
         $data = $session->get('email');
         return $this->db->table('catatan_admin')
+        ->join('kategori','kategori.nama_kategori=catatan_admin.nama_kategori')
+        ->join('admin','admin.id_admin=catatan_admin.id_admin')
+        ->join('customer','customer.id_customer=catatan_admin.id_customer')
         ->get()->getResultArray();
     }
     public function editpenjualan($id){
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('barang')
+        return $this->db->table('catatan_admin')
             ->where('barang.id_barang',['id_barang'=> $id])
             ->get()->getResultArray();  
     }
     public function updatepenjualan($dataupdate, $id){
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('barang')
+        return $this->db->table('catatan_admin')
             ->update($dataupdate, ['id_barang' => $id]);
     }
     public function deletepenjualan($id){
-        return $this->db->table('barang')
+        return $this->db->table('catatan_admin')
             ->delete(['id_barang' => $id]);
     } 
     
