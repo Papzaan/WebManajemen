@@ -108,11 +108,58 @@ class DataMitra extends BaseController
         ]);
         return redirect()->to('/datamitra/tampil');
     }
-    public function edit_mitra(){
+    public function edit_mitra($id){
 
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $data['useredit'] = $model->edituser($id);
+        $model = new UserRegism();
+        $data['mitra'] = $model->editmitra($id);
+        $data['title'] = 'Update Mitra';
+        return view('mitra/form_edit', $data);
     }
     public function update_mitra(){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
 
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        $this->userRegism = new UserRegism();
+        $dataupdate = [
+            'nama' => $data['nama'],
+            'nik' => $data['nik'],
+            'no_telp' => $data['no_telp'],
+            'alamat' => $data['alamat'],
+            'jenis_kelamin' => $data['jk'],
+            'email' => $data['email']
+        ];
+        $id = $data['id_mitra'];
+        $update = $this->userRegism->updatemitra($dataupdate, $id);
+        // Jika berhasil melakukan ubah
+        if($update)
+        {
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', 'Updated barang successfully');
+            // Redirect ke halaman product
+            return redirect()->to('/datamitra/tampil');
+        }
     }
     public function hapus_mitra($email){
         //akses ke tabel mitra

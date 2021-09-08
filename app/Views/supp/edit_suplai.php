@@ -10,7 +10,7 @@
             <h3 class='box-title'>Update Data Supplier</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/datasup/update">
+            <form class="user" method="post" action="/datasup/update_suplayer">
             <?php foreach ($suplayer as $d) { ?>
                 <div class="form-group">
                     <label for="nama" class="control-label">Nama Supplier</label>
