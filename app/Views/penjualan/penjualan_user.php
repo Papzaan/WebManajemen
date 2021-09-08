@@ -7,7 +7,7 @@
 
     <div class='box box-primary'>
         <div class='box-header  with-border'>
-            <h3 class='box-title'>Penjualan Produk</h3>
+            <h3 class='box-title'>Penjualan User</h3>
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/barang/aksi_input">
