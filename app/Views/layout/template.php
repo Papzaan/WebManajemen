@@ -113,6 +113,11 @@
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/catatan">
+                        <i class="fa fa-book"></i>
+                        <span>Catatan Penjualan</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>

@@ -94,7 +94,7 @@
                 </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                    <a href="<?php echo base_url() ?>/barang/tampil" class="btn btn-default ">Cancel</a>
+                    <a href="<?php echo base_url() ?>/penjualan/catatan" class="btn btn-default ">Cancel</a>
                 </div>
             </form>
         </div><!-- /.box-body -->
