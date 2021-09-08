@@ -31,6 +31,25 @@ class Admin extends BaseController
         //return view('admin/index')   
     }
 
+    public function pesanan()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //tampilin data
+        $model = new UserModel();
+        $data['title'] = 'Daftar Pesanan';
+        $data['user'] = $model->getdataAdmin();
+        echo view('pesanan/pesanan', $data);
+        //return view('admin/index')   
+    }
+
     /*public function supplier()
     {
         //cek apakah ada session bernama isLogin
