@@ -73,7 +73,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="#">Kategori</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/barang/tampil">Barang</a>
-                            <a class="collapse-item" href="<?php echo base_url() ?>/barang/tampil">Pesanan</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/admin/pesanan">Pesanan</a>
                         </div>
                     </div>
                 </li>
