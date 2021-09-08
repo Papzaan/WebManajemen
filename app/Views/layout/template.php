@@ -22,7 +22,8 @@
     <link href="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php base_url(); ?>/assets/css/jquery-ui.css">
-
+    <link href="<?php base_url(); ?>/assets/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?php base_url(); ?>/assets/css/buttons.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -362,6 +363,14 @@
         <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
 
         <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/jquery-3.5.1.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/jquery.dataTables.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/dataTables.buttons.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/jszip.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/pdfmake.min.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/vfs_fonts.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/buttons.html5.min.js"></script>
+
         <script>
             var date = $('#datepicker').datepicker({
                 dateFormat: 'yy-mm-dd'
@@ -370,18 +379,27 @@
         <!-- Tabel -->
         <script>
             $(document).ready(function() {
-                $('#dataTable').DataTable();
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [{
+                            extend: 'pdfHtml5',
+                            oriented: 'portrait',
+                            pageSize: 'legal',
+                            title: 'Data Barang',
+                            download: 'open',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5],
+                            },
+                            customize: function(doc) {
+                                doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                                doc.styles.tableBodyEven.alignment = 'center';
+                                doc.styles.tableBodyOdd.alignment = 'center';
+                            },
+                        },
+
+                    ]
+                });
             });
-
-            // $(document).ready(function() {
-            //     $('#norek').on('change', function() {
-            //         //var optionValue = $(this).val();
-            //         //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-            //         var optionText = $("#norek option:selected").val();
-
-            //         alert("Selected Option Text: " + optionText);
-            //     });
-            // });
 
             function update() {
                 var select = document.getElementById('norekk');
