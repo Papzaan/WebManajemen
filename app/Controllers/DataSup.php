@@ -75,7 +75,25 @@ class DataSup extends BaseController
 
 
     //edit
+    public function edit_barang($id){
 
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new SuplayModel();
+        $data['suplayer'] = $model->editsupp($id);
+        $data['title'] = 'Update Suplaier';
+        return view('supp/edit_suplai', $data);
+    }
     //hapus
     public function hapus_sup($id){
         //akses ke tabel barang

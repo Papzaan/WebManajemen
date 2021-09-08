@@ -17,6 +17,19 @@ class SuplayModel extends Model
         return $this->db->table('suplayer')
           ->get()->getResultArray();
     }
+    public function editsuplayer($id){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('suplayer')
+            ->where('suplayer.nama_sup',['nama_sup'=> $id])
+            ->get()->getResultArray();  
+    }
+    public function updatesuplayer($dataupdate, $id){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('suplayer')
+            ->update($dataupdate, ['nama_sup' => $id]);
+    }
     public function deletesuplier($id){
         return $this->db->table('suplayer')
             ->delete(['nama_sup' => $id]);
