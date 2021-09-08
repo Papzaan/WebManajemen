@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Penjualan Produk</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -23,23 +23,32 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Customer</th>
-                            <th>Nama Barang</th>
-                            <th>Tanggal</th>
+                            <th>Nama Produk</th>
+                            <th>Tanggal Jual</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
-                            <th>Alamat</th>
+                            <th>Alamat Transaksi</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <td>1</td>
-                        <td>Orang Mati</td>
-                        <td>Nanoxy</td>
-                        <td>2012-10-10</td>
-                        <td>10</td>
-                        <td>50000</td>
-                        <td>Zimbabwe</td>
-                        </tr>
+                    <?php
+                        $no = 1;
+                        foreach ($catpen as $d) {
+                        ?>
+                            <tr id="<?php echo $d["id_catat"] ?>">
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_kategori"] ?></td>
+                                <td><?php echo $d["tgl_jual"] ?></td>
+                                <td><?php echo $d["jumlah"] ?></td>
+                                <td><?php echo $d["harga"] ?></td>
+                                <td><?php echo $d["alamat_trank"] ?></td>
+                                <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_catat"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_catat"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                </td>-->
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

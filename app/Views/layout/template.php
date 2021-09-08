@@ -110,7 +110,6 @@
                 <hr class="sidebar-divider">
 
 
-
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan/catatan">

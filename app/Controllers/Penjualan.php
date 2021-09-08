@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\BarangModel;
 use App\Models\UserModel;
-use App\Models\SuplayModel;
+use App\Models\PenjualanModel;
+
 
 class Penjualan extends BaseController
 {
@@ -27,8 +27,6 @@ class Penjualan extends BaseController
         }
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
-        $model = new BarangModel();
-        $data['barang'] = $model->getbarang();
         $data['title'] = 'Penjualan';
         return view('penjualan/penjualan', $data);
         //return view('barang/databarang', $data1);
@@ -45,8 +43,8 @@ class Penjualan extends BaseController
         }
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
-        $model = new BarangModel();
-        $data['barang'] = $model->getbarang();
+        $model = new PenjualanModel();
+        $data['catpen'] = $model->getpenjualan();
         $data['title'] = 'Catatan Penjualan Admin';
         return view('penjualan/catatanpenjualan', $data);
     }
