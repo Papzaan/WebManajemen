@@ -52,27 +52,6 @@ class Barang extends BaseController
 
     }
 
-    public function stok()
-    {
-        //cek apakah ada session bernama isLogin
-        if (!$this->session->has('isLogin')) {
-            return redirect()->to('/auth/login');
-        }
-
-        //cek role dari session
-        if ($this->session->get('status') != 1) {
-            return redirect()->to('/user');
-        }
-        $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
-        $model = new BarangModel();
-        $data['title'] = 'Stok Barang';
-        $data['stok'] = $model->getstok();
-        return view('barang/stok', $data);
-        //return view('barang/databarang', $data1);
-
-    }
-
     public function input_barang(){
 
         //cek apakah ada session bernama isLogin
@@ -187,5 +166,26 @@ class Barang extends BaseController
             // Redirect ke halaman barang
             return redirect()->to('/barang/tampil');
         }
+    }
+
+    public function stok()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new BarangModel();
+        $data['title'] = 'Stok Barang';
+        $data['stok'] = $model->getstok();
+        return view('barang/stok', $data);
+        //return view('barang/databarang', $data1);
+
     }
 }

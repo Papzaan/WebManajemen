@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Sep 2021 pada 09.42
+-- Waktu pembuatan: 09 Sep 2021 pada 03.50
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -52,7 +52,7 @@ INSERT INTO `admin` (`id_admin`, `nama`, `no_telp`, `alamat`, `jenis_kelamin`, `
 CREATE TABLE `barang` (
   `id_barang` int(11) NOT NULL,
   `nama_sup` varchar(30) NOT NULL,
-  `nama` varchar(25) DEFAULT NULL,
+  `nama_kategori` varchar(25) DEFAULT NULL,
   `tgl_masuk` date NOT NULL,
   `jumlah` int(10) NOT NULL,
   `harga` varchar(30) NOT NULL
@@ -62,11 +62,9 @@ CREATE TABLE `barang` (
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama`, `tgl_masuk`, `jumlah`, `harga`) VALUES
-(1, 'PT. Merak Jaya Abadi', 'BB+', '2021-06-02', 35, '500000'),
-(4, 'PT. Merak Jaya Abadi', 'Nanoxy', '2021-09-03', 50, '500000'),
-(5, 'PT. IAM TECH', 'Nanoxy 300ml', '2021-09-06', 50, '300000'),
-(6, 'PT. IAM TECH', 'Botol', '2021-09-14', 80, '1000000');
+INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `jumlah`, `harga`) VALUES
+(7, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-06-01', 80, '500000'),
+(8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000');
 
 -- --------------------------------------------------------
 
@@ -139,17 +137,17 @@ INSERT INTO `customer` (`id_customer`, `nama`, `no_telp`, `nik`, `alamat`, `foto
 
 CREATE TABLE `kategori` (
   `nama_kategori` varchar(30) NOT NULL,
-  `harga_satuan` varchar(30) NOT NULL,
-  `harga_dusan` varchar(30) NOT NULL
+  `harga_dusan` varchar(30) NOT NULL,
+  `stok` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`nama_kategori`, `harga_satuan`, `harga_dusan`) VALUES
-('BB+ 300ml', '7000', '168000'),
-('Nanoxy 300ml', '4000', '96000');
+INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`) VALUES
+('BB+ 300ml', '168000', 80),
+('Nanoxy 300ml', '96000', 100);
 
 -- --------------------------------------------------------
 
@@ -294,7 +292,8 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
-  ADD KEY `id_sup` (`nama_sup`);
+  ADD KEY `id_sup` (`nama_sup`),
+  ADD KEY `nama` (`nama_kategori`);
 
 --
 -- Indeks untuk tabel `barang_mitra`
@@ -383,7 +382,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_mitra`
@@ -441,7 +440,8 @@ ALTER TABLE `admin`
 -- Ketidakleluasaan untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`nama_sup`) REFERENCES `suplayer` (`nama_sup`);
+  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`nama_sup`) REFERENCES `suplayer` (`nama_sup`),
+  ADD CONSTRAINT `barang_ibfk_2` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`);
 
 --
 -- Ketidakleluasaan untuk tabel `barang_mitra`
