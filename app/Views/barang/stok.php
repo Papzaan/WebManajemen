@@ -22,11 +22,8 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Suplayer</th>
                             <th>Nama Barang</th>
-                            <th>Tanggal Masuk</th>
                             <th>Jumlah/Karton</th>
-                            <th>Harga</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -38,11 +35,8 @@
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $d["nama_sup"] ?></td>
                                 <td><?php echo $d["nama"] ?></td>
-                                <td><?php echo $d["tgl_masuk"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
-                                <td><?php echo $d["harga"] ?></td>
                                 <td><a href="<?php echo base_url() ?>/barang/edit_barang"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                         <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
