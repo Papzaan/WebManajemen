@@ -67,7 +67,7 @@ class Barang extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new BarangModel();
         $data['title'] = 'Stok Barang';
-        $data['barang'] = $model->getbarang();
+        $data['stok'] = $model->getstok();
         return view('barang/stok', $data);
         //return view('barang/databarang', $data1);
 

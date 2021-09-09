@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -39,7 +39,7 @@
                             <tr id="<?php echo $d["id_barang"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama_sup"] ?></td>
-                                <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["tgl_masuk"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
