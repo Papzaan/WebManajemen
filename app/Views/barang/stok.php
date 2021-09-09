@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Kategori Barang</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -39,8 +39,9 @@
                                 <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["harga_dusan"] ?></td>
                                 <td><?php echo $d["stok"] ?></td>
-                                <td><a href="<?php echo base_url() ?>/barang/edit_barang"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                <td>
+                                <a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
                             </tr>
                         <?php } ?>

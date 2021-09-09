@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\BarangModel;
 use App\Models\UserModel;
 use App\Models\SuplayModel;
-
+use App\Models\StokModel;
 class Barang extends BaseController
 {
     public function __construct()
@@ -68,6 +68,8 @@ class Barang extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new SuplayModel();
         $data['suplayer'] = $model->getsuplayer();
+        $model = new StokModel();
+        $data['kategori'] = $model->getstok();
         $model = new BarangModel();
         $data['title'] = 'Input Barang';
         $data['barang'] = $model->getbarang();
@@ -86,16 +88,42 @@ class Barang extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
 
-        //input ke tabel barang
-        $this->barangModel = new BarangModel();
-        $this->barangModel->save([
-            'nama_sup' => $data['nama_sup'],
-            'nama' => $data['nama'],
-            'tgl_masuk' => $data['tgl_masuk'],
-            'jumlah' => $data['jumlah'],
-            'harga' => $data['harga']
-        ]);
-        return redirect()->to('/barang/tampil');
+        //panggil model stok
+        $this->stokModel = new StokModel();
+        //panggil stok berdasarkan nama kategori
+        $kate = $data['nama_kategori'];
+        $model = new StokModel();
+        $stok = $model->editstokju($kate);
+
+        //var_dump($stok);
+        //var_dump($data['jumlah']);
+        //jumlahkan
+        $upjum = $stok + $data['jumlah'];
+        //$upjum = 10 + $data['jumlah'];
+        //update stoknya
+        $dataupdate = [
+            'stok' => $upjum
+        ];
+        $kat = $data['nama_kategori'];
+        
+        $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+        // Jika berhasil melakukan ubah
+        if($update)
+        {
+
+                //input ke tabel barang
+                $this->barangModel = new BarangModel();
+                $this->barangModel->save([
+                    'nama_sup' => $data['nama_sup'],
+                    'nama_kategori' => $data['nama_kategori'],
+                    'tgl_masuk' => $data['tgl_masuk'],
+                    'jumlah' => $data['jumlah'],
+                    'harga' => $data['harga']
+                ]);
+                return redirect()->to('/barang/tampil');
+        }
+
+        
     }
 
     public function edit_barang($id){
@@ -114,6 +142,8 @@ class Barang extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new SuplayModel();
         $data['suplayer'] = $model->getsuplayer();
+        $model = new StokModel();
+        $data['kategori'] = $model->getstok();
         $model = new BarangModel();
         $data['title'] = 'Edit Barang';
         $data['barang'] = $model->editbarang($id);
@@ -136,7 +166,7 @@ class Barang extends BaseController
         $this->barangModel = new BarangModel();
         $dataupdate = [
             'nama_sup' => $data['nama_sup'],
-            'nama' => $data['nama'],
+            'nama_kategori' => $data['nama_kategori'],
             'tgl_masuk' => $data['tgl_masuk'],
             'jumlah' => $data['jumlah'],
             'harga' => $data['harga']
@@ -146,10 +176,11 @@ class Barang extends BaseController
         // Jika berhasil melakukan ubah
         if($update)
         {
-            // Deklarasikan session flashdata dengan tipe info
-            echo session()->setFlashdata('info', 'Updated barang successfully');
-            // Redirect ke halaman product
-            return redirect()->to('/barang/tampil');
+
+                // Deklarasikan session flashdata dengan tipe info
+                echo session()->setFlashdata('info', 'Updated barang successfully');
+                // Redirect ke halaman product
+                return redirect()->to('/barang/tampil');
         }
     }
     public function hapus_barang($id){
@@ -181,11 +212,50 @@ class Barang extends BaseController
         }
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
-        $model = new BarangModel();
+        $model = new StokModel();
         $data['title'] = 'Stok Barang';
         $data['stok'] = $model->getstok();
         return view('barang/stok', $data);
-        //return view('barang/databarang', $data1);
-
     }
+    public function input_stok(){
+
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new StokModel();
+        $data['title'] = 'Tambah Nama Barang';
+        $data['stok'] = $model->getstok();
+        return view('barang/tambah_stok', $data);
+    }
+    public function aksi_inputstok(){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //input ke tabel barang
+        $this->stokModel = new StokModel();
+        $this->stokModel->save([
+            'nama_kategori' => $data['nama_kategori'],
+            'harga_dusan' => $data['harga_dusan'],
+        ]);
+        return redirect()->to('/barang/stok');
+    }
+    
 }

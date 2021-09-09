@@ -30,17 +30,20 @@
                     <div class="help-block with-errors"></div>
                 </div>
             <?php foreach ($barang as $d) { ?>
-            <div class="form-group">
-                <label for="nama_barang" class="control-label">Nama Barang</label>
-                <div class="input-group">
-                
-                    <input type="text" class="form-control" name="nama" id="nama" data-error="Nama Barang harus diisi"  value="<?php echo $d['nama'] ?>" required />
-                    
-                    <span class="input-group-addon">
-                    </span>
+                <div class="form-group">
+                    <label for="nama_barang" class="control-label">Nama Barang</label>
+                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                    <select class="form-control" id="nama_kategori" name="nama_kategori">
+                        <option value="<?php echo $d["nama_kategori"] ?>"><?php echo $d["nama_kategori"] ?></option>
+                        <?php foreach ($kategori as $kr) { ?>
+                            <option value="<?php echo $kr["nama_kategori"]; ?>">
+                                <?php echo $kr["nama_kategori"]; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- mbatas option -->
+                    <div class="help-block with-errors"></div>
                 </div>
-                <div class="help-block with-errors"></div>
-            </div>
             <div class="form-group">
                 <label for="kategori" class="control-label">Tanggal Masuk</label>
                 <div class="input-group date" data-provide="datepicker">

@@ -26,18 +26,23 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <label for="nama" class="control-label">Nama Barang</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama" id="nama" data-error="Nama Barang harus diisi" placeholder="Nama barang" value="" required />
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
+                    <label for="nama_barang" class="control-label">Nama Barang</label>
+                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                    <select class="form-control" id="nama_kategori" name="nama_kategori">
+                        <option value="" disabled selected>Pilih Ketegori Barang</option>
+                        <?php foreach ($kategori as $kr) { ?>
+                            <option value="<?php echo $kr["nama_kategori"]; ?>">
+                                <?php echo $kr["nama_kategori"]; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- mbatas option -->
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Masuk</label>
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                        <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
