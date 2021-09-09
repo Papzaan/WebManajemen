@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Sep 2021 pada 03.50
+-- Waktu pembuatan: 09 Sep 2021 pada 08.49
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -64,7 +64,10 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `jumlah`, `harga`) VALUES
 (7, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-06-01', 80, '500000'),
-(8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000');
+(8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000'),
+(27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
+(28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
+(29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000');
 
 -- --------------------------------------------------------
 
@@ -146,8 +149,9 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`) VALUES
-('BB+ 300ml', '168000', 80),
-('Nanoxy 300ml', '96000', 100);
+('BB+ 300ml', '168000', 130),
+('Nanoxy 300ml', '96000', 100),
+('Nanoxy 500ml', '78000', 110);
 
 -- --------------------------------------------------------
 
@@ -382,7 +386,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_mitra`
