@@ -30,7 +30,8 @@ class DataSales extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['sales'] = $model->tampilsales();
         $data['title'] = ' Daftar Sales';
-        return view('sales/lihat_sales', $data);
+        echo view('sales/lihat_sales', $data);
+        echo view('layout/datatable');
         //return view('barang/databarang', $data1);
     }
     public function input_sales()
@@ -91,7 +92,8 @@ class DataSales extends BaseController
         ]);
         return redirect()->to('/datasales/tampil');
     }
-    public function hapus_sales($email){
+    public function hapus_sales($email)
+    {
         //akses ke tabel mitra
         $this->userRegiss = new UserRegiss();
         $this->userModel = new UserModel();
@@ -99,11 +101,10 @@ class DataSales extends BaseController
         $hapus = $this->userRegiss->deletesales($email);
         $hapus = $this->userModel->deleteuser($email);
 
-    
+
         // Jika berhasil melakukan hapus
-        if($hapus)
-        {
-                // Deklarasikan session flashdata dengan tipe warning
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
             session()->setFlashdata('warning', 'Deleted product successfully');
             // Redirect ke halaman barang
             return redirect()->to('/datasales/tampil');
