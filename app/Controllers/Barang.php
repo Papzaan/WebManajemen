@@ -6,6 +6,7 @@ use App\Models\BarangModel;
 use App\Models\UserModel;
 use App\Models\SuplayModel;
 use App\Models\StokModel;
+
 class Barang extends BaseController
 {
     public function __construct()
@@ -47,12 +48,14 @@ class Barang extends BaseController
         $model = new BarangModel();
         $data['title'] = 'Barang';
         $data['barang'] = $model->getbarang();
-        return view('barang/lihat_data', $data);
+        echo view('barang/lihat_data', $data);
+        echo view('layout/datatable');
         //return view('barang/databarang', $data1);
 
     }
 
-    public function input_barang(){
+    public function input_barang()
+    {
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -75,7 +78,8 @@ class Barang extends BaseController
         $data['barang'] = $model->getbarang();
         return view('barang/form_input', $data);
     }
-    public function aksi_input(){
+    public function aksi_input()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -105,28 +109,27 @@ class Barang extends BaseController
             'stok' => $upjum
         ];
         $kat = $data['nama_kategori'];
-        
+
         $update = $this->stokModel->updatejumstok($dataupdate, $kat);
         // Jika berhasil melakukan ubah
-        if($update)
-        {
+        if ($update) {
 
-                //input ke tabel barang
-                $this->barangModel = new BarangModel();
-                $this->barangModel->save([
-                    'nama_sup' => $data['nama_sup'],
-                    'nama_kategori' => $data['nama_kategori'],
-                    'tgl_masuk' => $data['tgl_masuk'],
-                    'jumlah' => $data['jumlah'],
-                    'harga' => $data['harga']
-                ]);
-                return redirect()->to('/barang/tampil');
+            //input ke tabel barang
+            $this->barangModel = new BarangModel();
+            $this->barangModel->save([
+                'nama_sup' => $data['nama_sup'],
+                'nama_kategori' => $data['nama_kategori'],
+                'tgl_masuk' => $data['tgl_masuk'],
+                'jumlah' => $data['jumlah'],
+                'harga' => $data['harga']
+            ]);
+            return redirect()->to('/barang/tampil');
+            echo view('template/datatables');
         }
-
-        
     }
 
-    public function edit_barang($id){
+    public function edit_barang($id)
+    {
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -137,7 +140,7 @@ class Barang extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        
+
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new SuplayModel();
@@ -149,7 +152,8 @@ class Barang extends BaseController
         $data['barang'] = $model->editbarang($id);
         return view('barang/form_edit', $data);
     }
-    public function update_barang(){
+    public function update_barang()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -174,25 +178,24 @@ class Barang extends BaseController
         $id = $data['id_barang'];
         $update = $this->barangModel->updatebarang($dataupdate, $id);
         // Jika berhasil melakukan ubah
-        if($update)
-        {
+        if ($update) {
 
-                // Deklarasikan session flashdata dengan tipe info
-                echo session()->setFlashdata('info', 'Updated barang successfully');
-                // Redirect ke halaman product
-                return redirect()->to('/barang/tampil');
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', 'Updated barang successfully');
+            // Redirect ke halaman product
+            return redirect()->to('/barang/tampil');
         }
     }
-    public function hapus_barang($id){
+    public function hapus_barang($id)
+    {
         //akses ke tabel barang
         $this->barangModel = new BarangModel();
         // Memanggil function delete_barang
         $hapus = $this->barangModel->deletebarang($id);
-    
+
         // Jika berhasil melakukan hapus
-        if($hapus)
-        {
-                // Deklarasikan session flashdata dengan tipe warning
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
             session()->setFlashdata('warning', 'Deleted product successfully');
             // Redirect ke halaman barang
             return redirect()->to('/barang/tampil');
@@ -217,7 +220,8 @@ class Barang extends BaseController
         $data['stok'] = $model->getstok();
         return view('barang/stok', $data);
     }
-    public function input_stok(){
+    public function input_stok()
+    {
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -236,7 +240,8 @@ class Barang extends BaseController
         $data['stok'] = $model->getstok();
         return view('barang/tambah_stok', $data);
     }
-    public function aksi_inputstok(){
+    public function aksi_inputstok()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -257,5 +262,4 @@ class Barang extends BaseController
         ]);
         return redirect()->to('/barang/stok');
     }
-    
 }

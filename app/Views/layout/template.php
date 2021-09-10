@@ -21,8 +21,7 @@
     <!-- Custom styles for this page -->
     <link href="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php base_url(); ?>/assets/css/jquery-ui.css">
-    <link href="<?php base_url(); ?>/assets/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="<?php base_url(); ?>/assets/css/buttons.dataTables.min.css" rel="stylesheet">
+
 
 </head>
 
