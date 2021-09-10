@@ -65,7 +65,7 @@
                         <input type="text" class="form-control form-control-user" id="harga" name="harga" placeholder="Harga Total" />
                     </div>
                     <div class="form-group">Tanggal Jual</label>
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                        <input type="text" id="datepicker" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                     </div>
                     <div class="form-group">Alamat Transaksi</label>
                         <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Transaksi" />

@@ -409,6 +409,29 @@
                 dateFormat: 'yy-mm-dd'
             }).val();
         </script>
+
+        <script>
+            $(function() {
+                $('#rek').hide();
+                $('#payment').change(function() {
+                    if ($('#payment').val() == '2') {
+                        $('#rek').show();
+                        createByJson();
+                    } else {
+                        $('#rek').hide();
+                    }
+                });
+            });
+
+            function update() {
+                var select = document.getElementById('norekk');
+                var option = select.options[select.selectedIndex];
+
+                document.getElementById('value').value = option.value;
+            }
+
+            update();
+        </script>
         <!-- Tabel -->
         <script>
             $(document).ready(function() {
@@ -433,27 +456,6 @@
                         },
 
                     ]
-                });
-            });
-
-            function update() {
-                var select = document.getElementById('norekk');
-                var option = select.options[select.selectedIndex];
-
-                document.getElementById('value').value = option.value;
-            }
-
-            update();
-
-            $(function() {
-                $('#rek').hide();
-                $('#payment').change(function() {
-                    if ($('#payment').val() == '2') {
-                        $('#rek').show();
-                        createByJson();
-                    } else {
-                        $('#rek').hide();
-                    }
                 });
             });
         </script>
