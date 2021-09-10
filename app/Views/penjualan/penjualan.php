@@ -10,7 +10,7 @@
             <h3 class='box-title'>Penjualan Produk</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/barang/aksi_input">
+            <form class="user" method="post" action="/penjualan/aksi_input">
                 <div class="form-group">
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -55,14 +55,26 @@
                         <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_admin" value="<?php echo $d["nama"] ?>" disabled/>
                     <?php } ?>
                 </div>
-                <div class="form-group">Tanggal Jual</label>
-                    <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                <div class="form-group">Nama Barang</label>
+                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                    <select class="form-control" id="nama_kategori" name="nama_kategori">
+                        <option value="" disabled selected>Pilih Ketegori Barang</option>
+                        <?php foreach ($kategori as $kr) { ?>
+                            <option value="<?php echo $kr["nama_kategori"]; ?>">
+                                <?php echo $kr["nama_kategori"]; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- mbatas option -->
                 </div>
                 <div class="form-group">Jumlah Barang</label>
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Jumlah Barang"/>
                 </div>
                 <div class="form-group">Harga Total</label>
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Harga Total"/>
+                </div>
+                <div class="form-group">Tanggal Jual</label>
+                    <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                 </div>
                 <div class="form-group">Alamat Transaksi</label>
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Transaksi"/>
