@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Sep 2021 pada 08.49
+-- Waktu pembuatan: 10 Sep 2021 pada 07.51
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -67,7 +67,8 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000'),
 (27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
-(29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000');
+(29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000'),
+(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
 
 -- --------------------------------------------------------
 
@@ -94,20 +95,23 @@ CREATE TABLE `barang_mitra` (
 CREATE TABLE `catatan_admin` (
   `id_catat` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
+  `nik_customer` varchar(20) NOT NULL,
   `nama_kategori` varchar(30) NOT NULL,
   `tgl_jual` date NOT NULL,
   `jumlah` int(11) NOT NULL,
   `harga` varchar(30) NOT NULL,
-  `alamat_trank` varchar(100) NOT NULL
+  `alamat_trank` varchar(100) NOT NULL,
+  `status` enum('lunas','belum bayar') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `catatan_admin`
 --
 
-INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `id_customer`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`) VALUES
-(1, 2, 1, 'BB+ 300ml', '2021-09-02', 20, '140000', 'zimbabwe');
+INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `nik_customer`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
+(2, 2, '1802010101', 'BB+ 300ml', '2021-09-02', 20, '500000', 'jakarta', 'lunas'),
+(7, 2, '1928293938', 'Nanoxy 500ml', '0000-00-00', 30, '68000', 'Serang, Banten, Jawa', 'lunas'),
+(8, 2, '1928293938', 'Nanoxy 500ml', '0000-00-00', 50, '1000000', 'Serang, Banten, Jawa', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -116,10 +120,10 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `id_customer`, `nama_katego
 --
 
 CREATE TABLE `customer` (
-  `id_customer` int(11) NOT NULL,
+  `nik_customer` varchar(20) NOT NULL,
   `nama` varchar(25) NOT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
   `no_telp` varchar(16) NOT NULL,
-  `nik` varchar(20) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `foto_ktp` varchar(30) NOT NULL,
   `foto_customer` varchar(30) NOT NULL
@@ -129,8 +133,9 @@ CREATE TABLE `customer` (
 -- Dumping data untuk tabel `customer`
 --
 
-INSERT INTO `customer` (`id_customer`, `nama`, `no_telp`, `nik`, `alamat`, `foto_ktp`, `foto_customer`) VALUES
-(1, 'farida', '08828198382', '12321423443', 'jakarta selatan', 'faridaktp.jpg', 'farida.jpg');
+INSERT INTO `customer` (`nik_customer`, `nama`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`) VALUES
+('1802010101', 'farida', 'perempuan', '088812234344', 'jakarta selatan', 'faridaktp.jpg', 'farida.jpg'),
+('1928293938', 'Asril Rinaldi', 'laki - laki', '0982838392', 'palembang', 'fotoktpasril.jpg', 'fotoasril.jpg');
 
 -- --------------------------------------------------------
 
@@ -150,8 +155,8 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`) VALUES
 ('BB+ 300ml', '168000', 130),
-('Nanoxy 300ml', '96000', 100),
-('Nanoxy 500ml', '78000', 110);
+('Nanoxy 300ml', '96000', 125),
+('Nanoxy 500ml', '78000', 30);
 
 -- --------------------------------------------------------
 
@@ -312,14 +317,14 @@ ALTER TABLE `barang_mitra`
 ALTER TABLE `catatan_admin`
   ADD PRIMARY KEY (`id_catat`),
   ADD KEY `id_admin` (`id_admin`),
-  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_customer` (`nik_customer`),
   ADD KEY `nama_kategori` (`nama_kategori`);
 
 --
 -- Indeks untuk tabel `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id_customer`);
+  ADD PRIMARY KEY (`nik_customer`);
 
 --
 -- Indeks untuk tabel `kategori`
@@ -386,7 +391,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_mitra`
@@ -398,13 +403,7 @@ ALTER TABLE `barang_mitra`
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `customer`
---
-ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -459,7 +458,7 @@ ALTER TABLE `barang_mitra`
 ALTER TABLE `catatan_admin`
   ADD CONSTRAINT `catatan_admin_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
   ADD CONSTRAINT `catatan_admin_ibfk_2` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`),
-  ADD CONSTRAINT `catatan_admin_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
+  ADD CONSTRAINT `catatan_admin_ibfk_3` FOREIGN KEY (`nik_customer`) REFERENCES `customer` (`nik_customer`);
 
 --
 -- Ketidakleluasaan untuk tabel `mitra`
