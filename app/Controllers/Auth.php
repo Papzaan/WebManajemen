@@ -40,7 +40,7 @@ class Auth extends BaseController
         //hash password digabung dengan salt
         $password = md5($data['password']);
         //var_dump($data['jk']);
-        if($data['pegawai']=='mitra'){
+        if ($data['pegawai'] == 'mitra') {
             //masukan data ke tabel user sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
@@ -65,15 +65,13 @@ class Auth extends BaseController
             /*return $this->db->table('user')
             ->where('email',$data['email'])
             ->get()->getResultArray();*/
-
-        
-        }else if($data['pegawai']=='sales'){
+        } else if ($data['pegawai'] == 'sales') {
             //masukan data ke database sebagai mitra
             $this->userModel->save([
                 'email' => $data['email'],
                 'password' => $password,
                 'status' => 3
-                ]);
+            ]);
             //masukan data ke tabel mitra sebagai mitra
             $this->userRegiss = new UserRegiss();
             //$this->userRegis->tambahMitra($data);
@@ -85,7 +83,6 @@ class Auth extends BaseController
                 'jenis_kelamin' => $data['jk'],
                 'email' => $data['email']
             ]);
-
         }
         //arahkan ke halaman login
         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');
@@ -97,7 +94,7 @@ class Auth extends BaseController
         //ambil data dari form
         $data = $this->request->getPost();
 
-        
+
         //ambil data user di database yang usernamenya sama 
         $user = $this->userModel->where('email', $data['email'])->first();
 
@@ -106,7 +103,10 @@ class Auth extends BaseController
             //cek password
             //jika salah arahkan lagi ke halaman login
             if ($user['password'] != md5($data['password'])) {
-                session()->setFlashdata('password', 'Password salah');
+                //session()->setFlashdata('password', 'Password salah');
+                // Set message
+                //session()->setFlashdata('login_failed', 'Email dan password salah!');
+                session()->setFlashdata('login_failed', '<div class="alert alert-danger text-center">Email dan password salah!</div>');
                 return redirect()->to('/auth/login');
             } else {
                 //jika benar, arahkan user masuk ke aplikasi 
