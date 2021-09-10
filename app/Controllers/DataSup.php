@@ -30,9 +30,11 @@ class DataSup extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['barang'] = $model->tampilsuplayer();
         echo view('supp/lihat_supplier', $data);
+        echo view('layout/datatable');
         //return view('admin/index')   
     }
-    public function inputsup(){
+    public function inputsup()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -50,7 +52,8 @@ class DataSup extends BaseController
         $data['title'] = 'Tambah Supplaier';
         return view('supp/tambah_supp', $data);
     }
-    public function aksitambah(){
+    public function aksitambah()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -59,7 +62,7 @@ class DataSup extends BaseController
         //cek role dari session
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
-        } 
+        }
         //tangkap data dari form 
         $data = $this->request->getPost();
 
@@ -75,7 +78,8 @@ class DataSup extends BaseController
 
 
     //edit
-    public function edit_sup($id){
+    public function edit_sup($id)
+    {
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -86,7 +90,7 @@ class DataSup extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        
+
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new SuplayModel();
@@ -95,7 +99,8 @@ class DataSup extends BaseController
         return view('supp/edit_suplai', $data);
     }
     //update
-    public function update_suplayer(){
+    public function update_suplayer()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -118,8 +123,7 @@ class DataSup extends BaseController
         $id = $data['nama_sup'];
         $update = $this->suplayModel->updatesuplayer($dataupdate, $id);
         // Jika berhasil melakukan ubah
-        if($update)
-        {
+        if ($update) {
             // Deklarasikan session flashdata dengan tipe info
             echo session()->setFlashdata('info', 'Updated barang successfully');
             // Redirect ke halaman product
@@ -127,16 +131,16 @@ class DataSup extends BaseController
         }
     }
     //hapus
-    public function hapus_sup($id){
+    public function hapus_sup($id)
+    {
         //akses ke tabel barang
         $this->suplayModel = new SuplayModel();
         // Memanggil function delete_barang
         $hapus = $this->suplayModel->deletesuplier($id);
-    
+
         // Jika berhasil melakukan hapus
-        if($hapus)
-        {
-                // Deklarasikan session flashdata dengan tipe warning
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
             session()->setFlashdata('warning', 'Deleted product successfully');
             // Redirect ke halaman barang
             return redirect()->to('datasup/supplier');
