@@ -35,12 +35,12 @@
                     </thead>
 
                     <tbody>
-                    <tr>
-                            <?php
-                            $no = 1;
-                            foreach ($sales as $d) {
-                            ?>
-                                <tr id="<?php echo $d["id_sales"] ?>">
+
+                        <?php
+                        $no = 1;
+                        foreach ($sales as $d) {
+                        ?>
+                            <tr id="<?php echo $d["id_sales"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nik"] ?></td>
@@ -49,11 +49,11 @@
                                 <td><?php echo $d["jenis_kelamin"] ?></td>
                                 <td><?php echo $d["email"] ?></td>
                                 <td>
-                                <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                    <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                         <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
-                        </tr>
-                    <?php } ?>
+                            </tr>
+                        <?php } ?>
 
 
 
