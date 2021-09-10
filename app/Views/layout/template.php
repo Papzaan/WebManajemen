@@ -418,7 +418,7 @@
                             extend: 'pdfHtml5',
                             oriented: 'portrait',
                             pageSize: 'legal',
-                            title: 'Data Barang',
+                            title: 'Data Barang Anugrah Semesta Lampung',
                             download: 'open',
                             exportOptions: {
                                 columns: [0, 1, 2, 3, 4, 5],
@@ -427,6 +427,8 @@
                                 doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
                                 doc.styles.tableBodyEven.alignment = 'center';
                                 doc.styles.tableBodyOdd.alignment = 'center';
+
+
                             },
                         },
 
