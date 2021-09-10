@@ -54,11 +54,35 @@ class Penjualan extends BaseController
         $kate = $data['nama_kategori'];
         $model = new StokModel();
         $stok = $model->editstokju($kate);
+        $pesan = $data['jumlah'];
         if($stok == 0){
             // kirim peringatan 
             session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
             return redirect()->to('/penjualan');
+        } else if($stok < $pesan){
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
+            return redirect()->to('/penjualan');
         } else {
+                    //masukan catatan penjualan
+                    $model1 = new UserModel();
+                    $id_admin = $model1->getdataidAdmin();
+                    $nama = $data['nama_cus'];
+                    $model2 = new UserCustomer();
+                    $nik = $model2->getnikCustomer($nama);
+                    //var_dump($nik);
+
+                    $this->penjualanModel = new PenjualanModel();
+                    $this->penjualanModel->save([
+                        'id_admin' => $id_admin,
+                        'nik_customer' => $nik,
+                        'nama_kategori' => $data['nama_kategori'],
+                        'tgl_jual' => $data['nama_kategori'],
+                        'jumlah' => $data['jumlah'],
+                        'harga' => $data['harga'],
+                        'alamat_trank' => $data['alamat'],
+                        'status' => "lunas"
+                    ]);
                     //var_dump($stok);
                     //var_dump($data['jumlah']);
                     //jumlahkan
@@ -74,25 +98,7 @@ class Penjualan extends BaseController
                     // Jika berhasil melakukan ubah
                     if($update)
                     {
-                        $model1 = new UserModel();
-                        $id_admin = $model1->getdataidAdmin();
-                        $nama = $data['nama_cus'];
-                        $model2 = new UserCustomer();
-                        $nik = $model2->getnikCustomer($nama);
-                        //var_dump($nik);
-
-                        $this->penjualanModel = new PenjualanModel();
-                        $this->penjualanModel->save([
-                            'id_admin' => $id_admin,
-                            'nik_customer' => $nik,
-                            'nama_kategori' => $data['nama_kategori'],
-                            'tgl_jual' => $data['nama_kategori'],
-                            'jumlah' => $data['jumlah'],
-                            'harga' => $data['harga'],
-                            'alamat_trank' => $data['alamat'],
-                            'status' => "lunas"
-                        ]);
-                        return redirect()->to('/penjualan');
+                        return redirect()->to('/penjualan/catatan');
                         
                     }
                 }
