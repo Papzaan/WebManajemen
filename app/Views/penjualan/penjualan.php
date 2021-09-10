@@ -51,7 +51,7 @@
                         <select class="form-control" id="nama_kategori" name="nama_kategori">
                             <option value="" disabled selected>Pilih Ketegori Barang</option>
                             <?php foreach ($kategori as $kr) { ?>
-                                <option value="<?php echo $kr["nama_kategori"]; ?>">
+                                <option id="<?php echo $kr["nama_kategori"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
                                     <?php echo $kr["nama_kategori"]; ?>
                                 </option>
                             <?php } ?>
