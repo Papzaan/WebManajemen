@@ -31,9 +31,9 @@ class Penjualan extends BaseController
         $data['kategori'] = $model->getstok();
         $data['title'] = 'Penjualan Admin';
         return view('penjualan/penjualan', $data);
-        
     }
-    public function input_penjualan(){
+    public function input_penjualan()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -62,26 +62,25 @@ class Penjualan extends BaseController
             'stok' => $upjum
         ];
         $kat = $data['nama_kategori'];
-        
+
         $update = $this->stokModel->updatejumstok($dataupdate, $kat);
         // Jika berhasil melakukan ubah
-        if($update)
-        {
+        if ($update) {
 
-                //input ke tabel barang
-                $this->barangModel = new BarangModel();
-                $this->barangModel->save([
-                    'nama_sup' => $data['nama_sup'],
-                    'nama_kategori' => $data['nama_kategori'],
-                    'tgl_masuk' => $data['tgl_masuk'],
-                    'jumlah' => $data['jumlah'],
-                    'harga' => $data['harga']
-                ]);
-                return redirect()->to('/barang/tampil');
+            //input ke tabel barang
+            $this->barangModel = new BarangModel();
+            $this->barangModel->save([
+                'nama_sup' => $data['nama_sup'],
+                'nama_kategori' => $data['nama_kategori'],
+                'tgl_masuk' => $data['tgl_masuk'],
+                'jumlah' => $data['jumlah'],
+                'harga' => $data['harga']
+            ]);
+            return redirect()->to('/barang/tampil');
         }
-
     }
-    public function catatan(){
+    public function catatan()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -96,9 +95,11 @@ class Penjualan extends BaseController
         $model = new PenjualanModel();
         $data['catpen'] = $model->getpenjualan();
         $data['title'] = 'Catatan Penjualan Admin';
-        return view('penjualan/catatanpenjualan', $data);
+        echo view('penjualan/catatanpenjualan', $data);
+        echo view('layout/datatable');
     }
-    public function penjualan_user(){
+    public function penjualan_user()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -112,6 +113,5 @@ class Penjualan extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['title'] = 'Penjualan User';
         return view('penjualan/penjualan_user', $data);
-        
     }
 }
