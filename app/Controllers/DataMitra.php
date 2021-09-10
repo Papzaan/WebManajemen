@@ -29,7 +29,8 @@ class DataMitra extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['mitra'] = $model->tampilmitra();
         $data['title'] = 'Mitra';
-        return view('mitra/lihat_mitra', $data);
+        echo view('mitra/lihat_mitra', $data);
+        echo view('layout/datatable');
         //return view('barang/databarang', $data1);
     }
 
@@ -89,7 +90,8 @@ class DataMitra extends BaseController
         ]);
         return redirect()->to('/datamitra/tampil');
     }
-    public function edit_mitra($id){
+    public function edit_mitra($id)
+    {
 
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -100,7 +102,7 @@ class DataMitra extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        
+
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $data['useredit'] = $model->edituser($id);
@@ -109,7 +111,8 @@ class DataMitra extends BaseController
         $data['title'] = 'Update Mitra';
         return view('mitra/form_edit', $data);
     }
-    public function update_mitra(){
+    public function update_mitra()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -134,15 +137,15 @@ class DataMitra extends BaseController
         $id = $data['id_mitra'];
         $update = $this->userRegism->updatemitra($dataupdate, $id);
         // Jika berhasil melakukan ubah
-        if($update)
-        {
+        if ($update) {
             // Deklarasikan session flashdata dengan tipe info
             echo session()->setFlashdata('info', 'Updated barang successfully');
             // Redirect ke halaman product
             return redirect()->to('/datamitra/tampil');
         }
     }
-    public function hapus_mitra($email){
+    public function hapus_mitra($email)
+    {
         //akses ke tabel mitra
         $this->userRegism = new UserRegism();
         $this->userModel = new UserModel();
@@ -150,11 +153,10 @@ class DataMitra extends BaseController
         $hapus = $this->userRegism->deletemitra($email);
         $hapus = $this->userModel->deleteuser($email);
 
-    
+
         // Jika berhasil melakukan hapus
-        if($hapus)
-        {
-                // Deklarasikan session flashdata dengan tipe warning
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
             session()->setFlashdata('warning', 'Deleted product successfully');
             // Redirect ke halaman barang
             return redirect()->to('/datamitra/tampil');

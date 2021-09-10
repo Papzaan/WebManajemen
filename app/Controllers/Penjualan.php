@@ -34,9 +34,9 @@ class Penjualan extends BaseController
         $data['nama_cus'] = $model->getdataCustomer();
         $data['title'] = 'Penjualan Admin';
         return view('penjualan/penjualan', $data);
-        
     }
-    public function input_penjualan(){
+    public function input_penjualan()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -98,7 +98,8 @@ class Penjualan extends BaseController
                 }
 
     }
-    public function catatan(){
+    public function catatan()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -113,9 +114,11 @@ class Penjualan extends BaseController
         $model = new PenjualanModel();
         $data['catpen'] = $model->getpenjualan();
         $data['title'] = 'Catatan Penjualan Admin';
-        return view('penjualan/catatanpenjualan', $data);
+        echo view('penjualan/catatanpenjualan', $data);
+        echo view('layout/datatable');
     }
-    public function penjualan_user(){
+    public function penjualan_user()
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -129,6 +132,5 @@ class Penjualan extends BaseController
         $data['user'] = $model->getdataAdmin();
         $data['title'] = 'Penjualan User';
         return view('penjualan/penjualan_user', $data);
-        
     }
 }

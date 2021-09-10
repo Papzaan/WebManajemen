@@ -19,10 +19,8 @@
     <link href="<?php base_url(); ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php base_url(); ?>/assets/css/jquery-ui.css">
-    <link href="<?php base_url(); ?>/assets/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="<?php base_url(); ?>/assets/css/buttons.dataTables.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -394,10 +392,6 @@
         <!-- Custom scripts for all pages-->
         <script src="<?php base_url(); ?>/assets/js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="<?php base_url(); ?>/assets/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
         <!-- Page level custom scripts -->
 
         <!-- Page level plugins -->
@@ -424,7 +418,7 @@
                             extend: 'pdfHtml5',
                             oriented: 'portrait',
                             pageSize: 'legal',
-                            title: 'Data Barang',
+                            title: 'Data Barang Anugrah Semesta Lampung',
                             download: 'open',
                             exportOptions: {
                                 columns: [0, 1, 2, 3, 4, 5],
@@ -433,6 +427,8 @@
                                 doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
                                 doc.styles.tableBodyEven.alignment = 'center';
                                 doc.styles.tableBodyOdd.alignment = 'center';
+
+
                             },
                         },
 
