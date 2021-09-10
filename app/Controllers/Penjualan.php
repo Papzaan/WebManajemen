@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\PenjualanModel;
 use App\Models\StokModel;
+use App\Models\UserCustomer;
 
 class Penjualan extends BaseController
 {
@@ -29,6 +30,8 @@ class Penjualan extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new StokModel();
         $data['kategori'] = $model->getstok();
+        $model = new UserCustomer();
+        $data['nama_cus'] = $model->getdataCustomer();
         $data['title'] = 'Penjualan Admin';
         return view('penjualan/penjualan', $data);
         
@@ -51,34 +54,48 @@ class Penjualan extends BaseController
         $kate = $data['nama_kategori'];
         $model = new StokModel();
         $stok = $model->editstokju($kate);
+        if($stok == 0){
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
+            return redirect()->to('/penjualan');
+        } else {
+                    //var_dump($stok);
+                    //var_dump($data['jumlah']);
+                    //jumlahkan
+                    $upjum = $stok - $data['jumlah'];
+                    //$upjum = 10 + $data['jumlah'];
+                    //update stoknya
+                    $dataupdate = [
+                        'stok' => $upjum
+                    ];
+                    $kat = $data['nama_kategori'];
+                    
+                    $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+                    // Jika berhasil melakukan ubah
+                    if($update)
+                    {
+                        $model1 = new UserModel();
+                        $id_admin = $model1->getdataidAdmin();
+                        $nama = $data['nama_cus'];
+                        $model2 = new UserCustomer();
+                        $nik = $model2->getnikCustomer($nama);
+                        //var_dump($nik);
 
-        //var_dump($stok);
-        //var_dump($data['jumlah']);
-        //jumlahkan
-        $upjum = $stok + $data['jumlah'];
-        //$upjum = 10 + $data['jumlah'];
-        //update stoknya
-        $dataupdate = [
-            'stok' => $upjum
-        ];
-        $kat = $data['nama_kategori'];
-        
-        $update = $this->stokModel->updatejumstok($dataupdate, $kat);
-        // Jika berhasil melakukan ubah
-        if($update)
-        {
-
-                //input ke tabel barang
-                $this->barangModel = new BarangModel();
-                $this->barangModel->save([
-                    'nama_sup' => $data['nama_sup'],
-                    'nama_kategori' => $data['nama_kategori'],
-                    'tgl_masuk' => $data['tgl_masuk'],
-                    'jumlah' => $data['jumlah'],
-                    'harga' => $data['harga']
-                ]);
-                return redirect()->to('/barang/tampil');
-        }
+                        $this->penjualanModel = new PenjualanModel();
+                        $this->penjualanModel->save([
+                            'id_admin' => $id_admin,
+                            'nik_customer' => $nik,
+                            'nama_kategori' => $data['nama_kategori'],
+                            'tgl_jual' => $data['nama_kategori'],
+                            'jumlah' => $data['jumlah'],
+                            'harga' => $data['harga'],
+                            'alamat_trank' => $data['alamat'],
+                            'status' => "lunas"
+                        ]);
+                        return redirect()->to('/penjualan');
+                        
+                    }
+                }
 
     }
     public function catatan(){

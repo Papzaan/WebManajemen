@@ -8,7 +8,7 @@ class PenjualanModel extends Model
 {
     protected $table = "catatan_admin";
     protected $primaryKey = "id_catatan";
-    protected $allowedFields = ["id_admin", "id_customer","nama_kategori","tgl_jual","jumlah","harga","alamat_trank"];
+    protected $allowedFields = ["id_admin", "nik_customer","nama_kategori","tgl_jual","jumlah","harga","alamat_trank","status"];
     protected $useTimestamps = false;
 
     public function getpenjualan(){
@@ -17,7 +17,7 @@ class PenjualanModel extends Model
         return $this->db->table('catatan_admin')
         ->join('kategori','kategori.nama_kategori=catatan_admin.nama_kategori')
         ->join('admin','admin.id_admin=catatan_admin.id_admin')
-        ->join('customer','customer.id_customer=catatan_admin.id_customer')
+        ->join('customer','customer.nik_customer=catatan_admin.nik_customer')
         ->get()->getResultArray();
     }
     public function editpenjualan($id){

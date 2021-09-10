@@ -36,7 +36,7 @@
                         $no = 1;
                         foreach ($catpen as $d) {
                         ?>
-                            <tr id="<?php echo $d["id_catat"] ?>">
+                            <tr id="<?php echo $d["nik_customer"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>
@@ -44,8 +44,8 @@
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
                                 <td><?php echo $d["alamat_trank"] ?></td>
-                                <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_catat"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_catat"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["nik_customer"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["nik_customer"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>-->
                             </tr>
                         <?php } ?>

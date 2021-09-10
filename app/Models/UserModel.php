@@ -20,6 +20,14 @@ class UserModel extends Model
         ->where('admin.email',['email'=> $data])
         ->get()->getResultArray();  
     }
+    public function getdataidAdmin(){
+      $session = session();
+      $data = $session->get('email');
+      $data1 = $this->db->query("SELECT id_admin FROM admin WHERE email='$data' " );
+      $dataa = $data1->getRowArray();
+
+      return $dataa['id_admin'];
+    }
 
     public function getdataMitra(){
       $session = session();

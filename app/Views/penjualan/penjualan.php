@@ -9,46 +9,37 @@
         <div class='box-header  with-border'>
             <h3 class='box-title'>Penjualan Produk</h3>
         </div>
+        <div>
+            <?php echo session()->getFlashdata('stok_habis');?>
+        </div>
         <div class="box-body">
-            <form class="user" method="post" action="/penjualan/aksi_input">
+            <form class="user" method="post" action="/penjualan/input_penjualan">
                 <div class="form-group">
                 <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-5 mb-3 mb-sm-0">
                     <label for="nama" class="control-label">Nama Customer</label>
-                        <input type="text" class="form-control form-control-user" name="nama_customer" id="exampleFirstName" placeholder="Nama Lengkap">
+                         <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                        <select class="form-control" id="nama_cus" name="nama_cus">
+                            <option value="" disabled selected>Pilih Nama Customer</option>
+                            <?php foreach ($nama_cus as $kr) { ?>
+                                <option value="<?php echo $kr["nama"]; ?>">
+                                    <?php echo $kr["nama"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <!-- mbatas option -->
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-5 mb-3 mb-sm-0">
                     <label for="nama" class="control-label">NIK Customer</label>
-                        <input type="text" class="form-control form-control-user" name="nik" id="exampleLastName" placeholder="NIK Customer">
+                        <input type="text" class="form-control form-control-user" name="nik_customer" id="exampleLastName" disabled>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="nama" class="control-label">Pilih Jenis Kelamin</label>
-                            <select class="form-control  col-md-12" name="jk">
-                                <option value="" disabled selected>Jenis kelamin</option>
-                                <option value="laki - laki">Laki - laki</option>
-                                <option value="perempuan">Perempuan</option>
-                            </select>
+                    <div class="col-sm-2 mb-3 mb-sm-0">
+                    <label for="nama" class="control-label">Tambah Customer</label>
+                    <a href="/datacus/inputcus"><button class="btn btn-primary" type="button">
+                                Tambah Data <i class="fas fa-plus"></i>
+                            </button></a>
                     </div>
-                    <div class="col-sm-6">
-                    <label for="nama" class="control-label">No Telpon Customer</label>
-                        <input type="text" class="form-control form-control-user" name="no_telp" id="exampleLastName" placeholder="No Telpon Customer">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="nama" class="control-label">Foto KTP Customer</label>
-                        <input type="text" class="form-control form-control-user" name="email" id="exampleInputPassword" placeholder="Foto KTP Customer">
-                    </div>
-                    <div class="col-sm-6">
-                    <label for="nama" class="control-label">Foto Customer</label>
-                        <input type="text" class="form-control form-control-user" name="password" id="exampleRepeatPassword" placeholder="Foto Customer">
-                    </div>
-                </div>
-                <div class="form-group">Alamat Customer</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Customer"/>
+                        
                 </div>
                 <div class="form-group">Nama Penjual</label>
                     <?php foreach ($user as $d) {?>
@@ -68,16 +59,16 @@
                     <!-- mbatas option -->
                 </div>
                 <div class="form-group">Jumlah Barang</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Jumlah Barang"/>
+                    <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang"/>
                 </div>
                 <div class="form-group">Harga Total</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Harga Total"/>
+                    <input type="text" class="form-control form-control-user" id="harga" name="harga" placeholder="Harga Total"/>
                 </div>
                 <div class="form-group">Tanggal Jual</label>
-                    <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                    <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                 </div>
                 <div class="form-group">Alamat Transaksi</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Transaksi"/>
+                    <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Transaksi"/>
                 </div>
                 <!-- Metode Pembayaran-->
                 <div class="form-group">

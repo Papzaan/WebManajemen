@@ -38,8 +38,8 @@ class StokModel extends Model
             ->select('stok')
             ->where('nama_kategori',['nama_kategori'=> $kate])
             ->get()->getResultArray();*/
-        $data = $this->db->query("SELECT stok FROM kategori WHERE nama_kategori='$kate' " );
-        $dataa = $data->getRowArray();
+        $data1 = $this->db->query("SELECT stok FROM kategori WHERE nama_kategori='$kate' " );
+        $dataa = $data1->getRowArray();
 
         return $dataa['stok'];
     }
