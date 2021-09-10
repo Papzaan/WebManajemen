@@ -77,7 +77,7 @@ class Penjualan extends BaseController
                         'id_admin' => $id_admin,
                         'nik_customer' => $nik,
                         'nama_kategori' => $data['nama_kategori'],
-                        'tgl_jual' => $data['nama_kategori'],
+                        'tgl_jual' => $data['tgl_jual'],
                         'jumlah' => $data['jumlah'],
                         'harga' => $data['harga'],
                         'alamat_trank' => $data['alamat'],
