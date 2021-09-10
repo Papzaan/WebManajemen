@@ -46,5 +46,6 @@ class Pesanan extends BaseController
         $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataAdmin();
         echo view('pesanan/pesanan_sales', $data);
+        echo view('layout/datatable');
     }
 }
