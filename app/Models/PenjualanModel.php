@@ -8,7 +8,7 @@ class PenjualanModel extends Model
 {
     protected $table = "catatan_admin";
     protected $primaryKey = "id_catatan";
-    protected $allowedFields = ["id_admin", "nik_customer","nama_kategori","tgl_jual","jumlah","harga","alamat_trank","status"];
+    protected $allowedFields = ["id_admin", "nik_customer","nama_kategori","tgl_jual","jumlah","harga","alamat_trank", "status"];
     protected $useTimestamps = false;
 
     public function getpenjualan(){
