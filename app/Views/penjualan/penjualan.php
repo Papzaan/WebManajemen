@@ -12,65 +12,62 @@
         <div class="box-body">
             <form class="user" method="post" action="/barang/aksi_input">
                 <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Customer</label>
-                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama_customer" id="nama_customer" data-error="Nama Customer harus diisi" placeholder="Nama Customer" value="" required />
-                        <span class="input-group-addon">
-                        </span>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="nama" class="control-label">Nama Customer</label>
+                        <input type="text" class="form-control form-control-user" name="nama_customer" id="exampleFirstName" placeholder="Nama Lengkap">
                     </div>
-                    <!-- mbatas option -->
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="nama" class="control-label">Nama Sales</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama_sales" id="nama_sales" data-error="Nama Sales harus diisi" placeholder="Nama Sales" value="" required />
-                        <span class="input-group-addon">
-                        </span>
+                    <div class="col-sm-6">
+                    <label for="nama" class="control-label">NIK Customer</label>
+                        <input type="text" class="form-control form-control-user" name="nik" id="exampleLastName" placeholder="NIK Customer">
                     </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="kategori" class="control-label">Tanggal Penjualan</label>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
-                    </div>
-                    <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="jumlah" class="control-label">Jumlah</label>
-                    <div class="input-group">
-                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required>
-                        <span class="input-group-addon">
-                        </span>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="nama" class="control-label">Pilih Jenis Kelamin</label>
+                            <select class="form-control  col-md-12" name="jk">
+                                <option value="" disabled selected>Jenis kelamin</option>
+                                <option value="laki - laki">Laki - laki</option>
+                                <option value="perempuan">Perempuan</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-6">
+                    <label for="nama" class="control-label">No Telpon Customer</label>
+                        <input type="text" class="form-control form-control-user" name="no_telp" id="exampleLastName" placeholder="No Telpon Customer">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="harga" class="control-label">Harga</label>
-                    <div class="input-group">
-                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                        </span>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="nama" class="control-label">Foto KTP Customer</label>
+                        <input type="text" class="form-control form-control-user" name="email" id="exampleInputPassword" placeholder="Foto KTP Customer">
                     </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="alamat" class="control-label">Alamat</label>
-                    <div class="input-group">
-                        <input type="text" name="alamat" id="alamat" data-error="Alamat harus di isi" class="form-control" placeholder="Alamat Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                        </span>
+                    <div class="col-sm-6">
+                    <label for="nama" class="control-label">Foto Customer</label>
+                        <input type="text" class="form-control form-control-user" name="password" id="exampleRepeatPassword" placeholder="Foto Customer">
                     </div>
-                    <div class="help-block with-errors"></div>
                 </div>
-
+                <div class="form-group">Alamat Customer</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Customer"/>
+                </div>
+                <div class="form-group">Nama Penjual</label>
+                    <?php foreach ($user as $d) {?>
+                        <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_admin" value="<?php echo $d["nama"] ?>" disabled/>
+                    <?php } ?>
+                </div>
+                <div class="form-group">Tanggal Jual</label>
+                    <input type="text" id="datepicker" data-date-format="yyyy-mm-dd" name="tgl_masuk" id="tgl_masuk" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                </div>
+                <div class="form-group">Jumlah Barang</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Jumlah Barang"/>
+                </div>
+                <div class="form-group">Harga Total</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Harga Total"/>
+                </div>
+                <div class="form-group">Alamat Transaksi</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Transaksi"/>
+                </div>
+                <!-- Metode Pembayaran-->
                 <div class="form-group">
                     <label for="payment">Metode Pembayaran</label>
                     <select id="payment" name="metode" class="form-control" style="width:100%;">
