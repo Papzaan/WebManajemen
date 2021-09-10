@@ -28,6 +28,7 @@ class Pesanan extends BaseController
         $data['title'] = 'Daftar Pesanan Mitra';
         $data['user'] = $model->getdataAdmin();
         echo view('pesanan/pesanan_mitra', $data);
+        echo view('layout/datatable');
     }
     public function pesanan_sales()
     {
