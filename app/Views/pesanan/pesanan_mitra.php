@@ -29,7 +29,7 @@
                             <th>Harga</th>
                             <th>Utang</th>
                             <th>Alamat</th>
-                            <th>pembayaran</th>
+                            <th>Pembayaran</th>
                             <th>Status</th>
                             <?php 
                             foreach ($pesmit as $d) {

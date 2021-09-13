@@ -29,7 +29,7 @@
                             <th>Harga</th>
                             <th>Utang</th>
                             <th>Alamat</th>
-                            <th>pembayaran</th>
+                            <th>Pembayaran</th>
                             <th>Status</th>
                             <!--<?php
                                 foreach ($pessal as $d) {
@@ -96,15 +96,22 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Pembayaran</h4>
+                                <h4 class="modal-title">Validasi Pembayaran</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <form action="">
-                                    <input type="text" name="bayar" id="bayar">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Bayar</button>
+                                <form class="user" method="post" action="">
+                                    <div class="form-group row">
+                                    <label for="nama" class="control-label">Saldo Pembayaran</label>
+                                        <div class="col-sm-9 mb-sm-0">
+                                            <input type="text" name="bayar" class="form-control" id="bayar">
+                                        </div>
+                                        <div class="col-sm-2 mb-sm-0">
+                                            <button type="button" class="btn btn-success right" data-dismiss="modal">Masukan</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
 
