@@ -49,7 +49,24 @@ class Mitra extends BaseController
         $data['title'] = 'Profile';
         echo view('mitra/profil', $data);
         //return view('admin/index')
+    }
 
+    public function pesanan_mitra()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
 
+        //cek role dari session
+        if ($this->session->get('status') != 2) {
+            return redirect()->to('/user');
+        }
+        //tampilin data
+        $model = new UserModel();
+        $data['title'] = 'Daftar Pesanan Mitra';
+        $data['user'] = $model->getdataAdmin();
+        echo view('mitra/pesanan', $data);
+        echo view('layout/datatable');
     }
 }
