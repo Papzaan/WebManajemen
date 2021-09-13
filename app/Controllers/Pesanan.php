@@ -54,10 +54,26 @@ class Pesanan extends BaseController
         $model = new PesananModel();
         $utang = $model->editpesmit($id_pesmit);
         $bayar = $data['bayar'];
+        
         //pengurangan hutang
-        $total = $utang - $bayar ;
+        $total = $utang['utang'] - $bayar ;
+        
+        if($total == 0){
+            if($utang['bayar'] < 3){
+                $pinal = $utang['bayar'] + 1;
+            }else{
+                $pinal = $utang['bayar'];
+            }
+        }
+        if($total != 0){
+            //penambahan pinalty
+            $pinal = $utang['bayar'] + 1;
+        }
+        
+        //var_dump($pinal);
         $dataupdate = [
             'utang' => $total,
+            'bayar' => $pinal
         ];
         $update = $this->pesananModel->updatepesmit($dataupdate, $id_pesmit);
         // Jika berhasil melakukan ubah

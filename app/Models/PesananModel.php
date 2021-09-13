@@ -30,10 +30,10 @@ class PesananModel extends Model
     public function editpesmit($id_pesmit){
         $session = session();
         $data = $session->get('email');
-        $data1 = $this->db->query("SELECT utang FROM pesanan_mitra WHERE id_pesmit='$id_pesmit' " );
+        $data1 = $this->db->query("SELECT utang , bayar FROM pesanan_mitra WHERE id_pesmit='$id_pesmit' " );
         $dataa = $data1->getRowArray();
 
-        return $dataa['utang'];  
+        return $dataa;  
     }
     public function updatepesmit($dataupdate, $id_pesmit){
         $session = session();

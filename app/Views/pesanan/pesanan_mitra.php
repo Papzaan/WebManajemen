@@ -55,6 +55,10 @@
                                 <td><?php echo $d["utang"] ?></td>
                                 <td><?php echo $d["alamat"] ?></td>
                                 <?php
+                                if ($d["bayar"] == "0") { ?>
+                                    <td><span class="bg-gradient-primary text-white">0 Kali</span></td>
+                                <?php } ?>
+                                <?php
                                 if ($d["bayar"] == "1") { ?>
                                     <td><span class="bg-gradient-success text-white">1 Kali</span></td>
                                 <?php } ?>
@@ -64,7 +68,7 @@
                                 <?php } ?>
                                 <?php
                                 if ($d["bayar"] == "3") { ?>
-                                    <td><span class="bg-gradient-warning text-white">3 Kali</span></td>
+                                    <td><span class="bg-gradient-danger text-white">3 Kali</span></td>
                                 <?php } ?>
                                 <?php
                                 if ($d["utang"] == "0") { ?>
