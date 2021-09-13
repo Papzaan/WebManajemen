@@ -27,14 +27,14 @@ class PesananModel extends Model
         ->join('sales','sales.id_sales=pesanan_sales.id_sales')
         ->get()->getResultArray();
     }
-    public function editpenjualan($id){
+    public function editpesmit($id){
         $session = session();
         $data = $session->get('email');
         return $this->db->table('catatan_admin')
             ->where('barang.id_barang',['id_barang'=> $id])
             ->get()->getResultArray();  
     }
-    public function updatepenjualan($dataupdate, $id){
+    public function updatepesmit($dataupdate, $id){
         $session = session();
         $data = $session->get('email');
         return $this->db->table('catatan_admin')

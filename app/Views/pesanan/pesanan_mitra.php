@@ -102,11 +102,11 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <form class="user" method="post" action="">
+                                <form class="user" method="post" action="/pesanan/update_pesmit">
                                     <div class="form-group row">
                                     <label for="nama" class="control-label">Saldo Pembayaran</label>
                                         <div class="col-sm-9 mb-sm-0">
-                                            <input type="text" name="bayar" class="form-control" id="bayar">
+                                            <input type="text" name="bayar" class="form-control" id="bayar" placeholder="masukan saldo">
                                         </div>
                                         <div class="col-sm-2 mb-sm-0">
                                             <button type="button" class="btn btn-success right" data-dismiss="modal">Masukan</button>
