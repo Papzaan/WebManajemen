@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Pesanan Mitra</h1>
+    <h1 class="h3 mb-2 text-gray-800">Pesanan Sales</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -22,7 +22,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Mitra</th>
+                            <th>Nama Sales</th>
                             <th>Nama Barang</th>
                             <th>Tanggal</th>
                             <th>Jumlah</th>
@@ -31,16 +31,17 @@
                             <th>Alamat</th>
                             <th>Pembayaran</th>
                             <th>Status</th>
-                            <?php 
-                            foreach ($pesmit as $d) {
-                                if($d["utang"] != "0"){?>
+                            <!--<?php
+                                foreach ($pesmit as $d) {
+                                    if ($d["utang"] != "0") { ?>
                                 <th>aksi</th>
-                            <?php }}?>
+                            <?php }
+                                } ?>-->
                         </tr>
                     </thead>
 
                     <tbody>
-                    <?php
+                        <?php
                         $no = 1;
                         foreach ($pesmit as $d) {
                         ?>
@@ -53,36 +54,76 @@
                                 <td><?php echo $d["harga"] ?></td>
                                 <td><?php echo $d["utang"] ?></td>
                                 <td><?php echo $d["alamat"] ?></td>
-                                <?php 
-                                if($d["bayar"] == "1"){?>
+                                <?php
+                                if ($d["bayar"] == "1") { ?>
                                     <td><span class="bg-gradient-success text-white">1 Kali</span></td>
-                                <?php }?>
-                                <?php 
-                                if($d["bayar"] == "2"){?>
+                                <?php } ?>
+                                <?php
+                                if ($d["bayar"] == "2") { ?>
                                     <td><span class="bg-gradient-warning text-white">2 Kali</span></td>
-                                <?php }?>
-                                <?php 
-                                if($d["bayar"] == "3"){?>
+                                <?php } ?>
+                                <?php
+                                if ($d["bayar"] == "3") { ?>
                                     <td><span class="bg-gradient-warning text-white">3 Kali</span></td>
-                                <?php }?>
-                                <?php 
-                                if($d["utang"] == "0"){?>
-                                <td><span class="bg-gradient-success text-white">Lunas</span></td>
-                                <?php }?>
-                                <?php 
-                                if($d["utang"] != "0"){?>
-                                 <td><span class="bg-gradient-danger text-white">Belum Lunas</span>
-                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> aksi</i></button>
+                                <?php } ?>
+                                <?php
+                                if ($d["utang"] == "0") { ?>
+                                    <td><span class="bg-gradient-success text-white">Lunas</span></td>
+                                <?php } ?>
+                                <?php
+                                if ($d["utang"] != "0") { ?>
+                                    <td><span class="bg-gradient-danger text-white">Belum Lunas</span>
+                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete" data-target="#myModal"><i class="fa fa-trash"> aksi</i></button>
+                                    </td>
+                                <?php } ?>
+                                <!--<?php
+                                    if ($d["utang"] != "0") { ?>
+                                 <td><a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Lunas</button>
+                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Belum Lunas</i></button>
                                 </td>
-                                <?php }?>
-                                <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                </td>-->
+                                <?php } ?>-->
+
                             </tr>
                         <?php } ?>
 
                     </tbody>
                 </table>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Validasi Pembayaran</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form class="user" method="post" action="">
+                                    <div class="form-group row">
+                                    <label for="nama" class="control-label">Saldo Pembayaran</label>
+                                        <div class="col-sm-9 mb-sm-0">
+                                            <input type="text" name="bayar" class="form-control" id="bayar">
+                                        </div>
+                                        <div class="col-sm-2 mb-sm-0">
+                                            <button type="button" class="btn btn-success right" data-dismiss="modal">Masukan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
