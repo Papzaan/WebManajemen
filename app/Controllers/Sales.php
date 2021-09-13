@@ -57,4 +57,22 @@ class Sales extends BaseController
 
 
     }
+    public function pesanan_sales()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 3) {
+            return redirect()->to('/user');
+        }
+        //tampilin data
+        $model = new UserModel();
+        $data['title'] = 'Daftar Pesanan Sales';
+        $data['user'] = $model->getdataAdmin();
+        echo view('sales/pesanan', $data);
+        echo view('layout/datatable');
+    }
 }
