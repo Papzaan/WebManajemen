@@ -45,7 +45,14 @@
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
                                 <td><?php echo $d["alamat"] ?></td>
-                                <td><?php echo $d["status"] ?></td>
+                                <?php 
+                                if($d["status"] == "lunas"){?>
+                                <td><span class="bg-gradient-success text-white">Lunas</span></td>
+                                <?php }?>
+                                <?php 
+                                if($d["status"] == "belum lunas"){?>
+                                <td><span class="bg-gradient-danger text-white">Belum Lunas</span></td>
+                                <?php }?>
                                 <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                         <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>-->
