@@ -197,7 +197,7 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="/sales/pesanan_sales">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Pesanan Saya</span></a>
                 </li>
