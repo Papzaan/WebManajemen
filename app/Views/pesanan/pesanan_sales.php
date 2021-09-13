@@ -27,8 +27,15 @@
                             <th>Tanggal</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
+                            <th>Utang</th>
                             <th>Alamat</th>
+                            <th>pembayaran</th>
                             <th>Status</th>
+                            <!--<?php 
+                            foreach ($pessal as $d) {
+                                if($d["utang"] != "0"){?>
+                                <th>aksi</th>
+                            <?php }}?>-->
                         </tr>
                     </thead>
 
@@ -44,18 +51,37 @@
                                 <td><?php echo $d["tgl_pesan"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
+                                <td><?php echo $d["utang"] ?></td>
                                 <td><?php echo $d["alamat"] ?></td>
                                 <?php 
-                                if($d["status"] == "lunas"){?>
+                                if($d["bayar"] == "1"){?>
+                                    <td><span class="bg-gradient-success text-white">1 Kali</span></td>
+                                <?php }?>
+                                <?php 
+                                if($d["bayar"] == "2"){?>
+                                    <td><span class="bg-gradient-warning text-white">2 Kali</span></td>
+                                <?php }?>
+                                <?php 
+                                if($d["bayar"] == "3"){?>
+                                    <td><span class="bg-gradient-warning text-white">3 Kali</span></td>
+                                <?php }?>
+                                <?php 
+                                if($d["utang"] == "0"){?>
                                 <td><span class="bg-gradient-success text-white">Lunas</span></td>
                                 <?php }?>
                                 <?php 
-                                if($d["status"] == "belum lunas"){?>
-                                <td><span class="bg-gradient-danger text-white">Belum Lunas</span></td>
+                                if($d["utang"] != "0"){?>
+                                <td><span class="bg-gradient-danger text-white">Belum Lunas</span>
+                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> aksi</i></button>
+                                </td>
                                 <?php }?>
-                                <!--<td><a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Lunas</button>
+                                <!--<?php 
+                                if($d["utang"] != "0"){?>
+                                 <td><a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Lunas</button>
                                     <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Belum Lunas</i></button>
-                                </td>-->
+                                </td>
+                                <?php }?>-->
+                              
                             </tr>
                         <?php } ?>
 
