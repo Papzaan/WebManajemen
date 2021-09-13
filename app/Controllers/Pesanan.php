@@ -46,20 +46,27 @@ class Pesanan extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
 
-        //akses ke tabel barang
+        //akses ke tabel pesanan mitra/sales
+        //panggil model stok
         $this->pesananModel = new PesananModel();
-        $pesananModel = [
-            'nama_sup' => $data['nama_sup'],
+        //panggil stok berdasarkan nama kategori
+        $id_pesmit = $data['id_pesan'];
+        $model = new PesananModel();
+        $utang = $model->editpesmit($id_pesmit);
+        $bayar = $data['bayar'];
+        //pengurangan hutang
+        $total = $utang - $bayar ;
+        $dataupdate = [
+            'utang' => $total,
         ];
-        $id = $data['id_barang'];
-        $update = $this->barangModel->updatebarang($dataupdate, $id);
+        $update = $this->pesananModel->updatepesmit($dataupdate, $id_pesmit);
         // Jika berhasil melakukan ubah
         if ($update) {
 
             // Deklarasikan session flashdata dengan tipe info
             echo session()->setFlashdata('info', 'Updated barang successfully');
             // Redirect ke halaman product
-            return redirect()->to('/barang/tampil');
+            return redirect()->to('/pesanan/pesanan_mitra');
         }
     }
     public function pesanan_sales()

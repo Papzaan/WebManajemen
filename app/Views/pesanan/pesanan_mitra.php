@@ -75,6 +75,43 @@
                                     <td><span class="bg-gradient-danger text-white">Belum Lunas</span>
                                         <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete" data-target="#myModal"><i class="fa fa-trash"> aksi</i></button>
                                     </td>
+                                    <!-- modal untuk bayar-->
+                                     <!-- The Modal -->
+                                        <div class="modal" id="myModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Validasi Pembayaran</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form class="user" method="post" action="/pesanan/update_pesmit">
+                                                            <div class="form-group row">
+                                                            <label class="control-label">Saldo Pembayaran : </label><label for="nama"><?php echo $d["nama"] ?></label>
+                                                                <div class="col-sm-9 mb-sm-0">
+                                                                    <input type="text" name="bayar" class="form-control" id="bayar" placeholder="masukan saldo">
+                                                                    <input type="text" name="id_pesan" class="form-control" id="id_pesan" hidden value="<?php echo $d["id_pesmit"] ?>">
+                                                                </div>
+                                                                <div class="col-sm-2 mb-sm-0">
+                                                                    <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--batas modal-->
                                 <?php } ?>
                                 <!--<?php
                                     if ($d["utang"] != "0") { ?>
@@ -87,42 +124,10 @@
                         <?php } ?>
 
                     </tbody>
+                    
                 </table>
 
-                <!-- The Modal -->
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Validasi Pembayaran</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <form class="user" method="post" action="/pesanan/update_pesmit">
-                                    <div class="form-group row">
-                                    <label for="nama" class="control-label">Saldo Pembayaran</label>
-                                        <div class="col-sm-9 mb-sm-0">
-                                            <input type="text" name="bayar" class="form-control" id="bayar" placeholder="masukan saldo">
-                                        </div>
-                                        <div class="col-sm-2 mb-sm-0">
-                                            <button type="button" class="btn btn-success right" data-dismiss="modal">Masukan</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+               
 
             </div>
         </div>

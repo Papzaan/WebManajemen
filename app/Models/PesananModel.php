@@ -27,18 +27,19 @@ class PesananModel extends Model
         ->join('sales','sales.id_sales=pesanan_sales.id_sales')
         ->get()->getResultArray();
     }
-    public function editpesmit($id){
+    public function editpesmit($id_pesmit){
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('catatan_admin')
-            ->where('barang.id_barang',['id_barang'=> $id])
-            ->get()->getResultArray();  
+        $data1 = $this->db->query("SELECT utang FROM pesanan_mitra WHERE id_pesmit='$id_pesmit' " );
+        $dataa = $data1->getRowArray();
+
+        return $dataa['utang'];  
     }
-    public function updatepesmit($dataupdate, $id){
+    public function updatepesmit($dataupdate, $id_pesmit){
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('catatan_admin')
-            ->update($dataupdate, ['id_barang' => $id]);
+        return $this->db->table('pesanan_mitra')
+            ->update($dataupdate, ['id_pesmit' => $id_pesmit]);
     }
     public function deletepenjualan($id){
         return $this->db->table('catatan_admin')
