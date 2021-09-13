@@ -6,45 +6,51 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Pesanan Mitra</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+        <!--<div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> 
             <a href="<?php echo base_url() ?>/barang/input_barang"><button class="btn btn-primary float-right" type="button">
                     Tambah Data <i class="fas fa-plus"></i>
                 </button></a>
-        </div>
+        </div>-->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Customer</th>
                             <th>Nama Mitra</th>
                             <th>Nama Barang</th>
                             <th>Tanggal</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
                             <th>Alamat</th>
-                            <th>Aksi</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <td>1</td>
-                        <td>Aan</td>
-                        <td>Imam</td>
-                        <td>Nanoxy</td>
-                        <td>2012-10-10</td>
-                        <td>10</td>
-                        <td>98000</td>
-                        <td>Bandar Lampung</td>
-                        <td>Setuju</td>
-                        </tr>
-
+                    <?php
+                        $no = 1;
+                        foreach ($pesmit as $d) {
+                        ?>
+                            <tr id="<?php echo $d["id_pesmit"] ?>">
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_kategori"] ?></td>
+                                <td><?php echo $d["tgl_pesan"] ?></td>
+                                <td><?php echo $d["jumlah"] ?></td>
+                                <td><?php echo $d["harga"] ?></td>
+                                <td><?php echo $d["alamat"] ?></td>
+                                <td><?php echo $d["status"] ?></td>
+                                <!--<td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_pesmit"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                </td>-->
+                            </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>

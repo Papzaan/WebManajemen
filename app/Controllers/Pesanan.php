@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-
+use App\Models\PesananModel;
 class Pesanan extends BaseController
 {
 
@@ -27,6 +27,8 @@ class Pesanan extends BaseController
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Mitra';
         $data['user'] = $model->getdataAdmin();
+        $model = new PesananModel();
+        $data['pesmit'] = $model->getpesananmitra();
         echo view('pesanan/pesanan_mitra', $data);
         echo view('layout/datatable');
     }
@@ -45,6 +47,8 @@ class Pesanan extends BaseController
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataAdmin();
+        $model = new PesananModel();
+        $data['pessal'] = $model->getpesanansales();
         echo view('pesanan/pesanan_sales', $data);
         echo view('layout/datatable');
     }
