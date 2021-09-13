@@ -147,7 +147,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->session->get('status') != 1) {
+            <?php if ($this->session->get('status') == 2) {
                 $this->session = session();
             ?>
 
@@ -176,6 +176,30 @@
                     <a class="nav-link" href="charts.html">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Charts</span></a>
+                </li>
+
+            <?php } ?>
+
+            <?php if ($this->session->get('status') == 3) {
+                $this->session = session();
+            ?>
+
+                <!-- Nav Sales -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/penjualan_user">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Penjualan</span></a>
+                </li>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+
+                </div>
+                </li>
+
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Pesanan Saya</span></a>
                 </li>
 
             <?php } ?>
