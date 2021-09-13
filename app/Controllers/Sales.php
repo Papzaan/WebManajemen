@@ -51,7 +51,6 @@ class Sales extends BaseController
         $data['user'] = $model->getdataSales();
         $data['title'] = 'Profile Sales';
 
-
         echo view('sales/profil', $data);
         //return view('admin/index')
 
