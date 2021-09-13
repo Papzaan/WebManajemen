@@ -23,7 +23,15 @@ class Auth extends BaseController
     public function login()
     {
         //menampilkan halaman login
-        return view('auth/login');
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return view('auth/login');
+        }
+
+
+        //echo view('admin/index', $data);
+        return redirect()->route('/');
+        //return view('auth/login');
     }
 
     public function register()
