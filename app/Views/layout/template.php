@@ -505,7 +505,7 @@
             function update_harga() {
                 var select = document.getElementById('nama_kategori');
                 var option = select.options[select.selectedIndex];
-                document.getElementById('harga').value = option.id;
+                document.getElementById('harga_barang').value = option.id;
             }
 
             update_harga();
@@ -513,7 +513,7 @@
 
         <script>
             function sum() {
-                var txtFirstNumberValue = document.getElementById('harga').value;
+                var txtFirstNumberValue = document.getElementById('harga_barang').value;
                 var txtSecondNumberValue = document.getElementById('jumlah').value;
                 var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
                 if (!isNaN(result)) {
