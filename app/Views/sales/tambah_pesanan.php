@@ -21,6 +21,7 @@
                             </option>
                         <?php } ?>
                     </select>
+                    <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" value="<?php echo $kr["harga_dusan"]; ?>" placeholder="Harga Barang" disabled>
                     <!-- mbatas option -->
                 </div>
 
