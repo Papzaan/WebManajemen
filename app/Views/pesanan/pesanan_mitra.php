@@ -76,7 +76,7 @@
                                 <?php } ?>
                                 <?php
                                 if ($d["utang"] != "0") { ?>
-                                    <td><span class="bg-gradient-danger text-white">Belum Lunas</span>
+                                    <td><span class="bg-gradient-danger text-white">BelumLunas</span>
                                         <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete" data-target="#myModal"><i class="fa fa-trash"> aksi</i></button>
                                     </td>
                                     <!-- modal untuk bayar-->

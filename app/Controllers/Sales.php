@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\UserPesanModel;
 
 class Sales extends BaseController
 {
@@ -27,12 +28,7 @@ class Sales extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataSales();
         $data['title'] = 'Sales';
-
-
         echo view('sales/index', $data);
-        //return view('admin/index')
-
-
     }
 
     public function profile()
@@ -71,6 +67,8 @@ class Sales extends BaseController
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataAdmin();
+        $model = new UserPesanModel();
+        $data['pesan'] = $model->getpesanansales();
         echo view('sales/pesanan', $data);
         echo view('layout/datatable');
     }
