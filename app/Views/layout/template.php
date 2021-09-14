@@ -499,7 +499,7 @@
             update();
         </script>
         <script>
-             function update_harga() {
+            function update_harga() {
                 var select = document.getElementById('nama_kategori');
                 var option = select.options[select.selectedIndex];
 
@@ -508,6 +508,18 @@
 
             update_harga();
         </script>
+
+        <script>
+            function sum() {
+                var txtFirstNumberValue = document.getElementById('harga').value;
+                var txtSecondNumberValue = document.getElementById('jumlah').value;
+                var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
+                if (!isNaN(result)) {
+                    document.getElementById('harga_total').value = result;
+                }
+            }
+        </script>
+
         <!-- Tabel -->
         <script>
             $(document).ready(function() {
