@@ -21,7 +21,7 @@
                             </option>
                         <?php } ?>
                     </select>
-                    <input type="text" name="harga" id="harga" class="form-control" disabled>
+                    <input type="text" name="harga" disabled id="harga" class="form-control col-2" onkeyup="sum();">
 
                     <!-- mbatas option -->
                 </div>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="jumlah" class="control-label">Jumlah</label>
                     <div class="input-group">
-                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required>
+                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required onkeyup="sum();">
                         <span class="input-group-addon">
                         </span>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
-                        <input type="text" name="harga" id="harga" class="form-control" disabled>
+                        <input type="text" name="harga" id="harga_total" class="form-control" disabled>
                         <span class="input-group-addon">
                         </span>
                         </span>
