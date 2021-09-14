@@ -10,21 +10,24 @@
             <h3 class='box-title'>Tambah Data Pesanan</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="#">
-                <div class="form-group">
-                    <label for="nama" class="control-label">Nama Barang</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" data-error="Nama Barang harus diisi" placeholder="Nama Barang" value="" required />
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                    <div class="help-block with-errors"></div>
+            <form class="user" method="post" action="/sales/aksi_pesan">
+                <div class="form-group">Nama Barang</label>
+                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                    <select class="form-control" id="nama_kategori" name="nama_kategori">
+                        <option value="" disabled selected>Pilih Ketegori Barang</option>
+                        <?php foreach ($kategori as $kr) { ?>
+                            <option id="<?php echo $kr["nama_kategori"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                <?php echo $kr["nama_kategori"]; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- mbatas option -->
                 </div>
 
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Penjualan</label>
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_pesan" id="tgl_pesan" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
