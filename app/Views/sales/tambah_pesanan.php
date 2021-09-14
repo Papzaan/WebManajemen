@@ -13,15 +13,15 @@
             <form class="user" method="post" action="/sales/aksi_pesan">
                 <div class="form-group">Nama Barang</label>
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <select class="form-control" id="nama_kategori" name="nama_kategori">
+                    <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update1()">
                         <option value="" disabled selected>Pilih Ketegori Barang</option>
                         <?php foreach ($kategori as $kr) { ?>
-                            <option id="<?php echo $kr["nama_kategori"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                            <option id="<?php echo $kr["nama_kategori"]; ?>" value="<?php echo $kr["harga_dusan"]; ?>">
                                 <?php echo $kr["nama_kategori"]; ?>
                             </option>
                         <?php } ?>
                     </select>
-                    <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" value="<?php echo $kr["harga_dusan"]; ?>" placeholder="Harga Barang" disabled>
+                    <input type="text" name="harga" id="harga" class="form-control" disabled>
                     <!-- mbatas option -->
                 </div>
 

@@ -498,6 +498,16 @@
 
             update();
         </script>
+        <script>
+             function update1() {
+                var select = document.getElementById('nama_kategori');
+                var option = select.options[select.selectedIndex];
+
+                document.getElementById('harga').value = option.value;
+            }
+
+            update1();
+        </script>
         <!-- Tabel -->
         <script>
             $(document).ready(function() {
