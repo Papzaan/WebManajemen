@@ -21,6 +21,8 @@
                             </option>
                         <?php } ?>
                     </select>
+                    <input type="text" name="harga" id="harga" class="form-control" disabled>
+
                     <!-- mbatas option -->
                 </div>
 
@@ -44,7 +46,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="harga" class="control-label">Harga</label>
+                    <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
                         <input type="text" name="harga" id="harga" class="form-control" disabled>
                         <span class="input-group-addon">
