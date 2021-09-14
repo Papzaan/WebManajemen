@@ -29,7 +29,8 @@
                             <th>Harga</th>
                             <th>Utang</th>
                             <th>Alamat</th>
-                            <th>Pembayaran</th>
+                            <th>Melakukan Pembayaran</th>
+                            <th>Metode Pembayaran</th>
                             <th>Status</th>
                             <!--<?php
                                 foreach ($pesmit as $d) {
@@ -70,6 +71,9 @@
                                 if ($d["bayar"] == "3") { ?>
                                     <td><span class="bg-gradient-danger text-white">3 Kali</span></td>
                                 <?php } ?>
+                                <!--Metode Pembayaran-->
+                                <td><?php echo $d["met_bayar"] ?></td>
+                                <!--Status Pembayaran-->
                                 <?php
                                 if ($d["utang"] == "0") { ?>
                                     <td><span class="bg-gradient-success text-white">Lunas</span></td>
