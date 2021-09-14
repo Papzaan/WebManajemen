@@ -21,7 +21,6 @@
                             </option>
                         <?php } ?>
                     </select>
-                    <input type="text" name="harga" id="harga" class="form-control" disabled>
                     <!-- mbatas option -->
                 </div>
 
@@ -47,7 +46,7 @@
                 <div class="form-group">
                     <label for="harga" class="control-label">Harga</label>
                     <div class="input-group">
-                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" disabled>
+                        <input type="text" name="harga" id="harga" class="form-control" disabled>
                         <span class="input-group-addon">
                         </span>
                         </span>
