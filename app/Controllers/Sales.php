@@ -111,6 +111,7 @@ class Sales extends BaseController
         $model = new StokModel();
         $stok = $model->editstokju($kate);
         $pesan = $data['jumlah'];
+        $harga = $data['harga'];
         var_dump($kate);
         var_dump($pesan);
     }
