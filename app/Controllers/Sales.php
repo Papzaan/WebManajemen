@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\UserPesanModel;
+use App\Models\UserPesanSModel;
 use App\Models\StokModel;
 
 
@@ -69,7 +69,7 @@ class Sales extends BaseController
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataSales();
-        $model = new UserPesanModel();
+        $model = new UserPesansModel();
         $data['pesan'] = $model->getpesanansales();
         echo view('sales/pesanan', $data);
         echo view('layout/datatable');
@@ -87,7 +87,7 @@ class Sales extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['title'] = 'Tambah Pesanan Sales';
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataSales();
         $model = new StokModel();
         $data['kategori'] = $model->getstok();
         echo view('sales/tambah_pesanan', $data);
@@ -111,10 +111,52 @@ class Sales extends BaseController
         $model = new StokModel();
         $stok = $model->editstokju($kate);
         $pesan = $data['jumlah'];
-        
-        //$harga = $data['harga_total'];
-        var_dump($kate);
-        var_dump($pesan);
-        var_dump($data['harga_total']);
+        if($stok == 0){
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
+            return redirect()->to('/sales/tambah_pes');
+        } else if($stok < $pesan){
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
+            return redirect()->to('/sales/tambah_pes');
+        } else {
+                var_dump($kate);
+                var_dump($data['tgl_pesan']);
+                var_dump($data['jumlah']);
+                var_dump($data['tgl_pesan']);
+                var_dump($data['harga_total']);
+                var_dump($data['metode']);
+                var_dump($data['id_sales']);
+                
+                
+                $this->userpesansModel = new UserPesanSModel();
+                $this->userpesansModel->save([
+                    'id_sales' => $data['id_sales'],
+                    'nama_kategori' => $data['nama_kategori'],
+                    'tgl_pesan' => $data['tgl_pesan'],
+                    'jumlah' => $data['jumlah'],
+                    'harga' => $data['harga_total'],
+                    'utang' => $data['harga_total'],
+                    'bayar' => 0,
+                    'met_bayar' => $data['metode']
+                ]);  
+                 //kurangkan
+                 $upjum = $stok - $data['jumlah'];
+                
+                 //update stoknya
+                 $dataupdate = [
+                     'stok' => $upjum
+                 ];
+                 $kat = $data['nama_kategori'];
+                 
+                 $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+                 // Jika berhasil melakukan ubah
+                 if($update)
+                 {
+                     return redirect()->to('/sales/pesanan_sales');
+                     
+                 }      
+                }
+
     }
 }

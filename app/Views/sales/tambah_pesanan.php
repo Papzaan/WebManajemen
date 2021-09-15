@@ -8,9 +8,15 @@
     <div class='box box-primary'>
         <div class='box-header  with-border'>
             <h3 class='box-title'>Tambah Data Pesanan</h3>
+            <div>
+                <?php echo session()->getFlashdata('stok_habis'); ?>
+            </div>
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/sales/aksi_pesan">
+            <?php foreach ($user as $d) { ?>
+                <input type="text" name="id_sales" value="<?= $d['id_sales']; ?>" hidden>
+            <?php } ?>
                 <div class="form-group">Nama Barang</label>
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
                     <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
@@ -21,10 +27,9 @@
                             </option>
                         <?php } ?>
                     </select>
-                    <input type="text" name="harga_barang" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
+                    <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
                     <!-- mbatas option -->
                 </div>
-
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Penjualan</label>
                     <div class="input-group date" data-provide="datepicker">
@@ -56,8 +61,8 @@
                 <div class="form-group">
                     <label for="payment">Metode Pembayaran</label>
                     <select id="payment" name="metode" class="form-control" style="width:100%;">
-                        <option value="1">Cash</option>
-                        <option value="2">Transfer</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Transfer">Transfer</option>
                     </select>
                 </div>
                 <div class="form-group" id="rek">

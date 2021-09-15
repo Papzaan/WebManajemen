@@ -544,7 +544,7 @@
             $(function() {
                 $('#rek').hide();
                 $('#payment').change(function() {
-                    if ($('#payment').val() == '2') {
+                    if ($('#payment').val() == 'Transfer') {
                         $('#rek').show();
                         createByJson();
                     } else {

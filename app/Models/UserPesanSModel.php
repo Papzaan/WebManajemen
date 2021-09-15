@@ -4,9 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserPesanModel extends Model
+class UserPesanSModel extends Model
 {
     
+    protected $table = "pesanan_sales";
+    protected $primaryKey = "id_pessal";
+    protected $allowedFields = ["id_sales","nama_kategori","tgl_pesan","jumlah","harga","utang", "bayar", "met_bayar"];
+    protected $useTimestamps = false;
 
     public function getpesanansales(){
         $session = session();
