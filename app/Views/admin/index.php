@@ -14,7 +14,6 @@
 
     <!-- Content Row -->
     <div class="row">
-
         <!-- Barang (Total) Card -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -29,11 +28,10 @@
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
                         </div>
                     </div>
-                    <a href="" class="small-box-footer">
-
-                        <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
+                <a href="" class="small-box-footer">
+                    <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
+                </a>
             </div>
         </div>
 
@@ -51,11 +49,10 @@
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
                     </div>
-                    <a href="" class="small-box-footer">
-
-                        <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
+                <a href="" class="small-box-footer">
+                    <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
+                </a>
             </div>
         </div>
 
@@ -78,11 +75,10 @@
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                         </div>
                     </div>
-                    <a href="" class="small-box-footer">
-
-                        <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
+                <a href="" class="small-box-footer">
+                    <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
+                </a>
             </div>
         </div>
 
