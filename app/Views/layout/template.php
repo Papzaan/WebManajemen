@@ -205,6 +205,29 @@
                 </li>
 
             <?php } ?>
+            <?php if ($this->session->get('status') == 4) {
+                $this->session = session();
+            ?>
+
+                <!-- Nav Sales -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Penjualan</span></a>
+                </li>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+
+                </div>
+                </li>
+
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Pesanan Saya</span></a>
+                </li>
+
+            <?php } ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -402,7 +425,7 @@
                             </li>
                         <?php } ?>
                         <!-- Profile Sales -->
-                        
+
                         <!-- Profile Salesnya Mitra-->
                         <?php if ($this->session->get('status') == 4) {
                             $this->session = session();
@@ -419,7 +442,7 @@
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="/sales/profile">
+                                    <a class="dropdown-item" href="/salesnyamitra/profile">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
