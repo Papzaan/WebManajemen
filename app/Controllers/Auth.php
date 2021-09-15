@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\UserRegism;
 use App\Models\UserRegiss;
+use App\Models\UserRegissm;
 
 class Auth extends BaseController
 {
@@ -39,11 +40,15 @@ class Auth extends BaseController
         //menampilkan halaman register
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
-            return view('auth/register');
+            //return view('auth/register');
+            $model = new UserModel();
+            $data['user'] = $model->getdatadafMitra();
+            return view('auth/register', $data);
         }
         //echo view('admin/index', $data);
         return redirect()->route('/');
         //return view('auth/login');
+        //tampilin data
     }
 
     public function valid_register()
@@ -80,23 +85,50 @@ class Auth extends BaseController
             ->where('email',$data['email'])
             ->get()->getResultArray();*/
         } else if ($data['pegawai'] == 'sales') {
-            //masukan data ke database sebagai mitra
-            $this->userModel->save([
-                'email' => $data['email'],
-                'password' => $password,
-                'status' => 3
-            ]);
-            //masukan data ke tabel mitra sebagai mitra
-            $this->userRegiss = new UserRegiss();
-            //$this->userRegis->tambahMitra($data);
-            $this->userRegiss->save([
-                'nama' => $data['nama'],
-                'nik' => $data['nik'],
-                'no_telp' => $data['no_telp'],
-                'alamat' => $data['alamat'],
-                'jenis_kelamin' => $data['jk'],
-                'email' => $data['email']
-            ]);
+            if($data['nama_mitra'] == 'admin'){
+                //masukan data ke database sebagai sales admin
+                $this->userModel->save([
+                    'email' => $data['email'],
+                    'password' => $password,
+                    'status' => 3
+                ]);
+                //masukan data ke tabel sales sebagai sales admin
+                $this->userRegiss = new UserRegiss();
+                //$this->userRegis->tambahMitra($data);
+                $this->userRegiss->save([
+                    'nama' => $data['nama'],
+                    'nik' => $data['nik'],
+                    'no_telp' => $data['no_telp'],
+                    'alamat' => $data['alamat'],
+                    'jenis_kelamin' => $data['jk'],
+                    'email' => $data['email']
+                ]);
+            }else{
+                
+
+                 //panggil id mitra berdasarkan nama mitra
+                $mitra = $data['nama_mitra'];
+                $model = new UserModel();
+                $id_mitra = $model->getidmitra($mitra);
+                //masukan data ke database sebagai sales admin
+                $this->userModel->save([
+                    'email' => $data['email'],
+                    'password' => $password,
+                    'status' => 4
+                ]);
+                //masukan data ke tabel sales sebagai sales mitra
+                $this->userRegissm = new UserRegissm();
+                //$this->userRegis->tambahMitra($data);
+                $this->userRegissm->save([
+                    'id_mitra' => $id_mitra,
+                    'nama_salmit' => $data['nama'],
+                    'nik' => $data['nik'],
+                    'no_telp' => $data['no_telp'],
+                    'alamat' => $data['alamat'],
+                    'jenis_kelamin' => $data['jk'],
+                    'email' => $data['email']
+                ]);
+            }
         }
         //arahkan ke halaman login
         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');

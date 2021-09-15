@@ -65,7 +65,7 @@ class Mitra extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Mitra';
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataMitra();
         echo view('mitra/pesanan', $data);
         echo view('layout/datatable');
     }

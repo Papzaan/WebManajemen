@@ -47,9 +47,8 @@
                 <div class="form-group">
                     <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
-                        <input type="text" name="harga_total" value="" id="harga_total" class="form-control" disabled>
+                        <input type="text" name="harga_total" id="harga_total" class="form-control" readonly>
                         <span class="input-group-addon">
-                        </span>
                         </span>
                     </div>
                     <div class="help-block with-errors"></div>
