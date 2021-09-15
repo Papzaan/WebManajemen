@@ -30,6 +30,7 @@
                             <th>Utang</th>
                             <th>Alamat</th>
                             <th>Pembayaran</th>
+                            <th>Metode Pembayaran</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -64,6 +65,7 @@
                                 if ($d["bayar"] == "3") { ?>
                                     <td><span class="bg-gradient-danger text-white">3 Kali</span></td>
                                 <?php } ?>
+                                <td><?php echo $d["met_bayar"] ?></td>
                                 <?php
                                 if ($d["utang"] == "0") { ?>
                                     <td><span class="bg-gradient-success text-white">Lunas</span></td>
