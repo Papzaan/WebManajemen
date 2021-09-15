@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\StokModel;
 
 class Admin extends BaseController
 {
@@ -27,6 +28,8 @@ class Admin extends BaseController
         $model = new UserModel();
         $data['title'] = 'Dashboard Admin';
         $data['user'] = $model->getdataAdmin();
+        $model = new StokModel();
+        $data['kategori'] = $model->getstok();
         echo view('admin/index', $data);
         //return view('admin/index')   
     }
