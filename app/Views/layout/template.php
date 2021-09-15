@@ -386,9 +386,9 @@
                         <?php } ?>
                         <!-- Profile Profile -->
 
-                        
-                         <!-- Profile Sales -->
-                         <?php if ($this->session->get('status') == 3) {
+
+                        <!-- Profile Sales -->
+                        <?php if ($this->session->get('status') == 3) {
                             $this->session = session();
                         ?>
                             <li class="nav-item dropdown no-arrow">
@@ -562,6 +562,10 @@
             update();
         </script>
         <script>
+            $("#nama_kategori").change(function() {
+                var id = $(this).children(":selected").attr("id");
+            });
+
             function update_harga() {
                 var select = document.getElementById('nama_kategori');
                 var option = select.options[select.selectedIndex];
