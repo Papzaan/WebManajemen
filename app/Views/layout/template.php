@@ -500,8 +500,9 @@
         </script>
         <script>
             $("#nama_kategori").change(function() {
-                    var id = $(this).children(":selected").attr("id");
-                    });
+                var id = $(this).children(":selected").attr("id");
+            });
+
             function update_harga() {
                 var select = document.getElementById('nama_kategori');
                 var option = select.options[select.selectedIndex];
