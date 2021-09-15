@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Sep 2021 pada 11.02
+-- Waktu pembuatan: 15 Sep 2021 pada 12.23
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -69,7 +69,8 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
 (29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000'),
 (30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000'),
-(31, 'PT. Maju Jaya', 'Baju', '2021-09-03', 80, '10000000');
+(31, 'PT. Maju Jaya', 'Baju', '2021-09-03', 80, '10000000'),
+(32, 'PT. Maju Jaya', 'Celana', '2021-09-03', 30, '3000000');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,8 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`) VALUES
 ('Baju', '120000', 60),
 ('BB+ 300ml', '168000', 55),
-('Nanoxy 300ml', '96000', 95),
+('Celana', '100000', 30),
+('Nanoxy 300ml', '96000', 93),
 ('Nanoxy 500ml', '78000', 30);
 
 -- --------------------------------------------------------
@@ -276,7 +278,8 @@ CREATE TABLE `pesanan_sales` (
 INSERT INTO `pesanan_sales` (`id_pessal`, `id_sales`, `nama_kategori`, `tgl_pesan`, `jumlah`, `harga`, `utang`, `bayar`, `met_bayar`) VALUES
 (1, 2, 'Nanoxy 500ml', '2021-09-01', 20, '78000', 0, 3, 'Transfer'),
 (2, 3, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 1, 'Transfer'),
-(3, 2, 'BB+ 300ml', '2021-09-07', 20, '500000', 0, 3, 'Cash');
+(3, 2, 'BB+ 300ml', '2021-09-07', 20, '500000', 0, 3, 'Cash'),
+(4, 2, 'Nanoxy 300ml', '2021-09-08', 2, '192000', 92000, 1, 'Cash');
 
 -- --------------------------------------------------------
 
@@ -300,7 +303,8 @@ CREATE TABLE `sales` (
 
 INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
-(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa', 'laki - laki', 'reza@gmail.com');
+(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa', 'laki - laki', 'reza@gmail.com'),
+(5, 'heri susanto', '1829201393131', '092020203', 'serbajadi2 lampung selatan, lampung', 'laki - laki', 'heri@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -324,7 +328,8 @@ CREATE TABLE `salesnya_mitra` (
 --
 
 INSERT INTO `salesnya_mitra` (`id_salmit`, `id_mitra`, `nama_salmit`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
-(1, 2, 'salmit', '293029093', '082093920', 'Aceh', 'perempuan', 'salmit@gmail.com');
+(1, 2, 'salmit', '293029093', '082093920', 'Aceh', 'perempuan', 'salmit@gmail.com'),
+(3, 13, 'nino', '13292393', '01293833', 'indonesia nino', 'laki - laki', 'nino@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -366,8 +371,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`email`, `password`, `status`) VALUES
 ('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
+('heri@gmail.com', 'af25458116a2464f9401870dff1e11f5', '3'),
 ('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
 ('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
+('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4'),
 ('purwo@gmail.com', '1607fa90be0989a3c266c5dcf6bbf168', '2'),
 ('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3'),
 ('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4'),
@@ -503,7 +510,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_mitra`
@@ -545,19 +552,19 @@ ALTER TABLE `pesanan_mitra`
 -- AUTO_INCREMENT untuk tabel `pesanan_sales`
 --
 ALTER TABLE `pesanan_sales`
-  MODIFY `id_pessal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pessal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
 --
 ALTER TABLE `salesnya_mitra`
-  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
