@@ -21,7 +21,7 @@
                             </option>
                         <?php } ?>
                     </select>
-                    <input type="text" name="harga_barang" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
+                    <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
                     <!-- mbatas option -->
                 </div>
 
