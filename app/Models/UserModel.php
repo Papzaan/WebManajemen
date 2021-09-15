@@ -38,6 +38,18 @@ class UserModel extends Model
       ->where('mitra.email',['email'=> $data])
       ->get()->getResultArray();  
     }
+    public function getdatadafMitra(){
+
+      return $this->db->table('mitra')
+      ->select('nama')
+      ->get()->getResultArray();  
+    }
+    public function getidmitra($mitra){
+      $data1 = $this->db->query("SELECT id_mitra FROM mitra WHERE nama='$mitra' " );
+        $dataa = $data1->getRowArray();
+
+        return $dataa['id_mitra'];
+    }
 
     public function getdataSales(){
       $session = session();

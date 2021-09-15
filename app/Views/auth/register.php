@@ -104,6 +104,21 @@
                                             <h1 class="h4 text-gray-900 mb-4">Daftar Sales</h1>
                                         </div>
                                         <form class="user" method="post" action="/auth/valid_register">
+                                        <!-- selector -->
+                                        <div class="form-group"></label>
+                                            <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                                            <select class="form-control" id="nama_mitra" name="nama_mitra">
+                                                <option value="" disabled selected>Pilih Mitra</option>
+                                                <option value="admin" >Admin</option>
+                                                <?php foreach ($user as $kr) { ?>
+                                                    <option id="<?php echo $kr["nama"]; ?>" value="<?php echo $kr["nama"]; ?>">
+                                                        <?php echo $kr["nama"]; ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                            <!-- mbatas option -->
+                                        </div>
+                                        <!-- selector -->
                                         <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap">

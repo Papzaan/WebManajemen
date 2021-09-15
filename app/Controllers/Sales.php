@@ -68,7 +68,7 @@ class Sales extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Sales';
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataSales();
         $model = new UserPesanModel();
         $data['pesan'] = $model->getpesanansales();
         echo view('sales/pesanan', $data);
