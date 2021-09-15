@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\UserPesanModel;
 use App\Models\StokModel;
+use App\Models\UserRegism;
+
 
 
 class Salesnyamitra extends BaseController
@@ -47,8 +49,9 @@ class Salesnyamitra extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['user'] = $model->getdataSalesnyamitra();
+        $model = new UserRegism();
+        $data['mitra'] = $model->getnamamitra();
         $data['title'] = 'Profile Sales';
-
         echo view('salesnyamitra/profil', $data);
         //return view('admin/index')
 

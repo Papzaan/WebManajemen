@@ -15,9 +15,9 @@
 
     </div>
     <div class="card-body">
-      <?php $no = 1;
+      <?php 
       foreach ($user as $d) { ?>
-      <?php } ?>
+      
       <div class="row m-l-0 m-r-0">
         <div class="col-sm-4 bg-c-lite-green user-profile">
           <div class="card-block text-center text-black">
@@ -29,6 +29,17 @@
         <div class="col-sm-8">
           <div class="card-block">
             <h6 class="m-b-20 p-b-5 b-b-default f-w-600"> <b>Information</b> </h6>
+            <center>
+                <?php 
+                  foreach ($mitra as $m) { ?>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <label><b>Mitra Dari<h6 class="text-muted f-w-400"><?php echo $m["nama"] ?></h6></label>
+                    
+                  </div>
+                </div>
+                <?php } ?>
+            </center>
             <div class="row">
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Email</p>
@@ -58,11 +69,8 @@
           </div>
         </div>
       </div>
-
-
-
-
     </div>
+    <?php } ?>
   </div>
 
 </div>

@@ -28,4 +28,12 @@ class UserRegism extends Model
         return $this->db->table('mitra')
             ->delete(['email' => $email]);
     } 
+    public function getnamamitra(){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('salesnya_mitra')
+                ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
+                ->where('salesnya_mitra.email',['email'=> $data])
+                ->get()->getResultArray();
+    }
 }
