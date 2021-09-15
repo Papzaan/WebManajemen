@@ -528,8 +528,9 @@
 
         <!-- Page level custom scripts -->
         <script src="<?php base_url(); ?>/assets/js/jquery-1.12.4.js"></script>
-        <script src="<?php base_url(); ?>/assets/js/demo/chart-area-demo.js"></script>
-        <script src="<?php base_url(); ?>/assets/js/demo/chart-pie-demo.js"></script>
+        <script src="<?php base_url(); ?>/assets/js/demo/chart-bar-demo.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
         <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
 
 
@@ -612,6 +613,34 @@
                     ]
                 });
             });
+        </script>
+
+        <script>
+            google.charts.load('visualization', "1", {
+                packages: ['corechart']
+            });
+
+            google.charts.setOnLoadCallback(drawBarChart);
+            // Pie Chart
+            google.charts.setOnLoadCallback(showBarChart);
+
+            function drawBarChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['nama_kategori', 'kategori Count'],
+                    // <?php
+                        // foreach ($productData as $row) {
+                        //     echo "['" . $row['nama_kategori'] . "'," . $row['stok'] . "],";
+                        // }
+                        // 
+                        ?>
+                ]);
+                var options = {
+
+                    is2D: true,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('myPieChart1'));
+                chart.draw(data, options);
+            }
         </script>
 
 </body>

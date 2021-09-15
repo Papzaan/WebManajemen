@@ -28,9 +28,31 @@ class Admin extends BaseController
         $model = new UserModel();
         $data['title'] = 'Dashboard Admin';
         $data['user'] = $model->getdataAdmin();
+
         $model = new StokModel();
-        $data['kategori'] = $model->getstok();
+        $data['kategori'] = $model->get_kategori();
+        // Chart
+        //  $db = \Config\Database::connect();
+        //  $builder = $db->table('kategori');
+
+        //  $query   = $builder->get();
+        // $record = $query->getResult();
+
+        // $productData = [];
+
+        // foreach ($record as $row) {
+        //     $productData[] = array(
+        //         'nama_kategori'   => $row->nama_kategori,
+        //         'stok' => floatval($row->stok)
+        //     );
+        // }
+
+        // $data['productData'] = ($productData);
+
+
+
         echo view('admin/index', $data);
+        echo view('layout/chart-pie');
         //return view('admin/index')   
     }
 
