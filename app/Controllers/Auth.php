@@ -60,6 +60,9 @@ class Auth extends BaseController
         $password = md5($data['password']);
         //var_dump($data['jk']);
         //cek email udah ada atau belum
+        $emailin = $data['email'];
+        $emailout = $data;
+        //
         if ($data['pegawai'] == 'mitra') {
             //masukan data ke tabel user sebagai mitra
             $this->userModel->save([
