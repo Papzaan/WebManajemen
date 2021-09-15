@@ -47,6 +47,14 @@ class UserModel extends Model
       ->where('sales.email',['email'=> $data])
       ->get()->getResultArray();  
     }
+    public function getdataSalesnyamitra(){
+      $session = session();
+      $data = $session->get('email');
+      return $this->db->table('user')
+      ->join('salesnya_mitra','salesnya_mitra.email=user.email')
+      ->where('salesnya_mitra.email',['email'=> $data])
+      ->get()->getResultArray();  
+    }
 
     public function tampilmitra(){
       $session = session();
