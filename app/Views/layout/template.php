@@ -363,7 +363,7 @@
                         <?php } ?>
                         <!-- Profile Profile -->
 
-                        <!-- Profile Salesnya -->
+                        <!-- Profile Salesnya Mitra-->
                         <?php if ($this->session->get('status') == 4) {
                             $this->session = session();
                         ?>
@@ -379,7 +379,7 @@
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="/salesnyamitra/profile">
+                                    <a class="dropdown-item" href="/sales/profile">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
