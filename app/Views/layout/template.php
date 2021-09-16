@@ -148,7 +148,7 @@
                 </li>
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/datasalmit/tampil">
                         <i class="fa fa-user"></i>
                         <span>Data Sales</span></a>
                 </li>
