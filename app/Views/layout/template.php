@@ -586,10 +586,65 @@
             }
         </script>
 
-        <!-- Tabel -->
+        <!-- Tabel Sales-->
         <script>
             $(document).ready(function() {
-                $('#dataTable').DataTable({
+                $('#dataTableSales').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [{
+                            extend: 'pdfHtml5',
+                            oriented: 'portrait',
+                            pageSize: 'legal',
+                            title: 'Data Barang Anugrah Semesta Lampung',
+                            download: 'open',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5],
+                            },
+                            customize: function(doc) {
+                                doc.styles.tableBodyEven.alignment = 'center';
+                                doc.styles.tableBodyOdd.alignment = 'center';
+
+
+                            },
+                        },
+
+                    ]
+                });
+            });
+        </script>
+
+        <!-- Tabel Catatan Penjualan-->
+        <script>
+            $(document).ready(function() {
+                $('#dataTableCatatanPenjualan').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [{
+                            extend: 'pdfHtml5',
+                            oriented: 'portrait',
+                            pageSize: 'legal',
+                            title: 'Data Barang Anugrah Semesta Lampung',
+                            download: 'open',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6],
+                            },
+                            customize: function(doc) {
+                                doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                                doc.styles.tableBodyEven.alignment = 'center';
+                                doc.styles.tableBodyOdd.alignment = 'center';
+
+
+                            },
+                        },
+
+                    ]
+                });
+            });
+        </script>
+
+        <!-- Tabel Barang -->
+        <script>
+            $(document).ready(function() {
+                $('#dataTableBarang').DataTable({
                     dom: 'Bfrtip',
                     buttons: [{
                             extend: 'pdfHtml5',
@@ -613,6 +668,33 @@
                 });
             });
         </script>
+        <!--  End Tabel Barang -->
+
+        <!-- Tabel Mitra -->
+        <script>
+            $(document).ready(function() {
+                $('#dataTableMitra').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [{
+                            extend: 'pdfHtml5',
+                            oriented: 'landscape',
+                            pageSize: 'legal',
+                            title: 'Data Barang Anugrah Semesta Lampung',
+                            download: 'open',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6],
+                            },
+                            customize: function(doc) {
+                                doc.styles.tableBodyEven.alignment = 'center';
+                                doc.styles.tableBodyOdd.alignment = 'center';
+                            },
+                        },
+
+                    ]
+                });
+            });
+        </script>
+        <!--  End Tabel Mitra -->
 
         <script>
             google.charts.load('visualization', "1", {
