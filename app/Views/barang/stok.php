@@ -18,14 +18,20 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table text-center  table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Barang</th>
-                            <th>Harga PerKarton</th>
-                            <th>Jumlah / Karton</th>
-                            <th>Aksi</th>
+                        <tr>
+                            <th rowspan="2">Nomor</th>
+                            <th rowspan="2">Nama Barang</th>
+                            <th colspan="3">Harga Perkarton</th>
+                            <th rowspan="2">Stok</th>
+                            <th rowspan="2">Aksi</th>
+
+                        </tr>
+                        <th>Customer</th>
+                        <th>Sales</th>
+                        <th>Mitra</th>
                         </tr>
                     </thead>
 
@@ -36,12 +42,13 @@
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $d["nama_kategori"] ?></td>
-                                <td><?php echo $d["harga_dusan"] ?></td>
-                                <td><?php echo $d["stok"] ?></td>
-                                <td>
-                                <a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                <td><?php echo $d['nama_kategori'] ?></td>
+                                <td><?php echo $d['harga_dusan'] ?></td>
+                                <td><?php echo $d['harga_dusan'] ?></td>
+                                <td><?php echo $d['harga_dusan'] ?></td>
+                                <td><?php echo $d['stok'] ?></td>
+                                <td><a href="<?php echo base_url() ?>#<?php  ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>#<?php  ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
                             </tr>
                         <?php } ?>
