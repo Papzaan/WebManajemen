@@ -24,14 +24,15 @@
                         <tr>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nomor</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nama Barang</th>
-                            <th colspan="3">Harga Perkarton</th>
+                            <th colspan="4">Harga Perkarton</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Stok</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Aksi</th>
 
                         </tr>
-                        <th>Customer</th>
-                        <th>Sales</th>
                         <th>Mitra</th>
+                        <th>Sales</th>
+                        <th>Outlet</th>
+                        <th>Customer</th>
                         </tr>
                     </thead>
 
@@ -43,8 +44,9 @@
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d['nama_kategori'] ?></td>
-                                <td><?php echo $d['harga_dusan'] ?></td>
-                                <td><?php echo $d['harga_dusan'] ?></td>
+                                <td><?php echo $d['harga_mitra'] ?></td>
+                                <td><?php echo $d['harga_sales'] ?></td>
+                                <td><?php echo $d['harga_outlet'] ?></td>
                                 <td><?php echo $d['harga_dusan'] ?></td>
                                 <td><?php echo $d['stok'] ?></td>
                                 <td><a href="<?php echo base_url() ?>#<?php  ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
