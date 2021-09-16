@@ -13,9 +13,9 @@
             </div>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/sales/aksi_pesan">
+            <form class="user" method="post" action="/mitra/aksi_pesan">
             <?php foreach ($user as $d) { ?>
-                <input type="text" name="id_sales" value="<?= $d['id_sales']; ?>" hidden>
+                <input type="text" name="id_mitra" value="<?= $d['id_mitra']; ?>" hidden>
             <?php } ?>
                 <div class="form-group">Nama Barang</label>
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
@@ -80,7 +80,7 @@
                 </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                    <a href="<?php echo base_url() ?>/sales/pesanan_sales" class="btn btn-default ">Cancel</a>
+                    <a href="<?php echo base_url() ?>/mitra/pesanan_mitra" class="btn btn-default ">Cancel</a>
                 </div>
             </form>
         </div><!-- /.box-body -->

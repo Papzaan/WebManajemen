@@ -75,7 +75,6 @@
                             <a class="collapse-item" href="#">Kategori</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/barang/tampil">Barang</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/pesanan/pesanan_mitra">Pesanan Mitra</a>
-                            <a class="collapse-item" href="<?php echo base_url() ?>/pesanan/pesanan_sales">Pesanan Sales</a>
                         </div>
                     </div>
                 </li>

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\UserPesanSModel;
+use App\Models\UserPesanModel;
 use App\Models\StokModel;
 
 
@@ -69,7 +69,7 @@ class Sales extends BaseController
         $model = new UserModel();
         $data['title'] = 'Daftar Pesanan Sales';
         $data['user'] = $model->getdataSales();
-        $model = new UserPesansModel();
+        $model = new UserPesanModel();
         $data['pesan'] = $model->getpesanansales();
         echo view('sales/pesanan', $data);
         echo view('layout/datatable');
