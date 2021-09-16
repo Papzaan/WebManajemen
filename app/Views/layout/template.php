@@ -158,18 +158,6 @@
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
                 </li>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">Login</a>
-                        <a class="collapse-item" href="#">Register</a>
-                        <a class="collapse-item" href="#">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
                 </li>
 
                 <!-- Nav Item - Charts -->
@@ -196,13 +184,6 @@
                 </div>
                 </li>
 
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/sales/pesanan_sales">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Pesanan Saya</span></a>
-                </li>
-
             <?php } ?>
             <?php if ($this->session->get('status') == 4) {
                 $this->session = session();
@@ -217,13 +198,6 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 
                 </div>
-                </li>
-
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Pesanan Saya</span></a>
                 </li>
 
             <?php } ?>
@@ -695,7 +669,33 @@
             });
         </script>
         <!--  End Tabel Mitra -->
+        <!-- Tabel Stok-->
+        <script>
+            $(document).ready(function() {
+                $('#dataTableStok').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [{
+                            extend: 'pdfHtml5',
+                            oriented: 'portrait',
+                            pageSize: 'legal',
+                            title: 'Data Barang Anugrah Semesta Lampung',
+                            download: 'open',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5],
+                            },
+                            customize: function(doc) {
+                                doc.styles.tableBodyEven.alignment = 'center';
+                                doc.styles.tableBodyOdd.alignment = 'center';
 
+
+                            },
+                        },
+
+                    ]
+                });
+            });
+        </script>
+        <!--  End Tabel stok -->
         <script>
             google.charts.load('visualization', "1", {
                 packages: ['corechart']
