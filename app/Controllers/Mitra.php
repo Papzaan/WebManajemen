@@ -128,8 +128,8 @@ class Mitra extends BaseController
                 var_dump($data['id_mitra']);
                 
                 
-                $this->userpesansModel = new UserPesanSModel();
-                $this->userpesansModel->save([
+                $this->userpesanModel = new UserPesanModel();
+                $this->userpesanModel->save([
                     'id_mitra' => $data['id_mitra'],
                     'nama_kategori' => $data['nama_kategori'],
                     'tgl_pesan' => $data['tgl_pesan'],
