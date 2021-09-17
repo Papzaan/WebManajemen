@@ -19,10 +19,10 @@
                         <div class="col-sm-5 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Nama Customer</label>
                             <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                            <select class="form-control" id="nama_cus" name="nama_cus">
+                            <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
                                 <option value="" disabled selected>Pilih Nama Customer</option>
                                 <?php foreach ($nama_cus as $kr) { ?>
-                                    <option value="<?php echo $kr["nama"]; ?>">
+                                    <option id="<?php echo $kr["nik_customer"]; ?>" value="<?php echo $kr["nama"]; ?>">
                                         <?php echo $kr["nama"]; ?>
                                     </option>
                                 <?php } ?>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-sm-5 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">NIK Customer</label>
-                            <input type="text" class="form-control form-control-user" name="nik_customer" id="exampleLastName" disabled>
+                            <input type="text" class="form-control form-control-user" name="nik_customer" id="nik_customer" readonly>
                         </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Tambah Customer</label>
@@ -48,21 +48,22 @@
                     </div>
                     <div class="form-group">Nama Barang</label>
                         <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                        <select class="form-control" id="nama_kategori" name="nama_kategori">
+                        <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
                             <option value="" disabled selected>Pilih Ketegori Barang</option>
                             <?php foreach ($kategori as $kr) { ?>
-                                <option id="<?php echo $kr["nama_kategori"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                <option id="<?php echo $kr["harga_dusan"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
                                     <?php echo $kr["nama_kategori"]; ?>
                                 </option>
                             <?php } ?>
                         </select>
+                        <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
                         <!-- mbatas option -->
                     </div>
                     <div class="form-group">Jumlah Barang</label>
-                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" />
+                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeyup="sum();" />
                     </div>
                     <div class="form-group">Harga Total</label>
-                        <input type="text" class="form-control form-control-user" id="harga" name="harga" placeholder="Harga Total" />
+                        <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total"  readonly/>
                     </div>
                     <div class="form-group">Tanggal Jual</label>
                         <input type="text" id="datepicker" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>

@@ -515,7 +515,7 @@
                 dateFormat: 'yy-mm-dd'
             }).val();
         </script>
-
+        <!-- pembayaran metode-->
         <script>
             $(function() {
                 $('#rek').hide();
@@ -538,6 +538,7 @@
 
             update();
         </script>
+        <!-- get harga barang -->
         <script>
             $("#nama_kategori").change(function() {
                 var id = $(this).children(":selected").attr("id");
@@ -551,7 +552,7 @@
 
             update_harga();
         </script>
-
+         <!-- jumlah harga -->
         <script>
             function sum() {
                 var txtFirstNumberValue = document.getElementById('harga_barang').value;
@@ -561,6 +562,20 @@
                     document.getElementById('harga_total').value = result;
                 }
             }
+        </script>
+        <!-- get nik -->
+        <script>
+            $("#nama_cus").change(function() {
+                var id = $(this).children(":selected").attr("id");
+            });
+
+            function update_nik() {
+                var select = document.getElementById('nama_cus');
+                var option = select.options[select.selectedIndex];
+                document.getElementById('nik_customer').value = option.id;
+            }
+
+            update_harga();
         </script>
 
         <!-- Tabel Sales-->

@@ -79,7 +79,7 @@ class Penjualan extends BaseController
                         'nama_kategori' => $data['nama_kategori'],
                         'tgl_jual' => $data['tgl_jual'],
                         'jumlah' => $data['jumlah'],
-                        'harga' => $data['harga'],
+                        'harga' => $data['harga_total'],
                         'alamat_trank' => $data['alamat'],
                         'status' => "lunas"
                     ]);
