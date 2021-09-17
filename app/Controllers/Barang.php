@@ -13,24 +13,6 @@ class Barang extends BaseController
     {
         $this->session = session();
     }
-    /*public function index()
-    {
-
-       //cek apakah ada session bernama isLogin
-       if(!$this->session->has('isLogin')){
-        return redirect()->to('/auth/login');
-        }
-        
-        //cek role dari session
-        if($this->session->get('status') != 1){
-            return redirect()->to('/user');
-        }
-        //tampilin data
-        /*$model = new BarangModel();
-        $data['user'] = $model->getbarang();
-        echo view('barang/databarang',$data);
-        
-    }*/
 
     public function tampil()
     {
