@@ -6,16 +6,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Stok Barang Pusat</h1>
+    <h1 class="h3 mb-2 text-gray-800">Stok Barang Mitra</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="<?php echo base_url() ?>/barang/input_stok"><button class="btn btn-primary float-right" type="button">
-                    Tambah Data <i class="fas fa-plus"></i>
-                </button></a>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table text-center  table-bordered" id="dataTableStok" width="100%" cellspacing="0">
@@ -27,7 +21,6 @@
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nama Barang</th>
                             <th colspan="4">Harga Perkarton</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Stok</th>
-                            <th rowspan="2" style="text-align: center; vertical-align: middle;">Aksi</th>
                         </tr>
                         <th>Mitra</th>
                         <th>Sales</th>
@@ -49,10 +42,6 @@
                                 <td><?php echo $d['harga_outlet'] ?></td>
                                 <td><?php echo $d['harga_dusan'] ?></td>
                                 <td><?php echo $d['stok'] ?></td>
-                                <td>
-                                    <a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>

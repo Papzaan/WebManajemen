@@ -140,6 +140,13 @@
                 $this->session = session();
             ?>
 
+                <!-- Nav Item - stok mitra -->
+                <li class="nav-item">
+                        <a class="nav-link" href="/barang_mitra/stok">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Stok</span></a>
+                    </li>
+
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan/penjualan_user">

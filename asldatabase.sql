@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Sep 2021 pada 05.54
+-- Waktu pembuatan: 17 Sep 2021 pada 04.11
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -69,22 +69,6 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
 (29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000'),
 (30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `barang_mitra`
---
-
-CREATE TABLE `barang_mitra` (
-  `id_barmit` int(11) NOT NULL,
-  `id_mitra` int(11) NOT NULL,
-  `nama` varchar(25) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  `harga` varchar(30) NOT NULL,
-  `status` enum('lunas','belum lunas') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -250,7 +234,7 @@ CREATE TABLE `pesanan_mitra` (
 INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesan`, `jumlah`, `harga`, `utang`, `bayar`, `met_bayar`) VALUES
 (1, 2, 'BB+ 300ml', '2021-09-01', 20, '50000', 0, 1, 'Cash'),
 (2, 13, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 3, 'Cash'),
-(3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 336000, 0, 'Transfer');
+(3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer');
 
 -- --------------------------------------------------------
 
@@ -310,9 +294,20 @@ INSERT INTO `salesnya_mitra` (`id_salmit`, `id_mitra`, `nama_salmit`, `nik`, `no
 
 CREATE TABLE `stok_barang_mitra` (
   `id_stokbarmit` int(11) NOT NULL,
+  `id_mitra` int(11) NOT NULL,
   `nama_kategori` varchar(30) NOT NULL,
   `stok` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `stok_barang_mitra`
+--
+
+INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok`) VALUES
+(2, 2, 'BB+ 300ml', 20),
+(3, 13, 'Nanoxy 500ml', 30),
+(4, 2, 'Nanoxy 300ml', 40),
+(5, 2, 'Nanoxy 500ml', 25);
 
 -- --------------------------------------------------------
 
@@ -381,13 +376,6 @@ ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
   ADD KEY `id_sup` (`nama_sup`),
   ADD KEY `nama` (`nama_kategori`);
-
---
--- Indeks untuk tabel `barang_mitra`
---
-ALTER TABLE `barang_mitra`
-  ADD PRIMARY KEY (`id_barmit`),
-  ADD KEY `id_mitra` (`id_mitra`);
 
 --
 -- Indeks untuk tabel `catatan_admin`
@@ -464,7 +452,8 @@ ALTER TABLE `salesnya_mitra`
 --
 ALTER TABLE `stok_barang_mitra`
   ADD PRIMARY KEY (`id_stokbarmit`),
-  ADD KEY `nama_kategori` (`nama_kategori`);
+  ADD KEY `nama_kategori` (`nama_kategori`),
+  ADD KEY `id_mitra` (`id_mitra`);
 
 --
 -- Indeks untuk tabel `suplayer`
@@ -493,12 +482,6 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `barang`
   MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT untuk tabel `barang_mitra`
---
-ALTER TABLE `barang_mitra`
-  MODIFY `id_barmit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
@@ -540,13 +523,13 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
 --
 ALTER TABLE `salesnya_mitra`
-  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
 --
 ALTER TABLE `stok_barang_mitra`
-  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -564,12 +547,6 @@ ALTER TABLE `admin`
 ALTER TABLE `barang`
   ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`nama_sup`) REFERENCES `suplayer` (`nama_sup`),
   ADD CONSTRAINT `barang_ibfk_2` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`);
-
---
--- Ketidakleluasaan untuk tabel `barang_mitra`
---
-ALTER TABLE `barang_mitra`
-  ADD CONSTRAINT `barang_mitra_ibfk_1` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`);
 
 --
 -- Ketidakleluasaan untuk tabel `catatan_admin`
@@ -620,6 +597,13 @@ ALTER TABLE `sales`
 ALTER TABLE `salesnya_mitra`
   ADD CONSTRAINT `salesnya_mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
   ADD CONSTRAINT `salesnya_mitra_ibfk_2` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`);
+
+--
+-- Ketidakleluasaan untuk tabel `stok_barang_mitra`
+--
+ALTER TABLE `stok_barang_mitra`
+  ADD CONSTRAINT `stok_barang_mitra_ibfk_1` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`),
+  ADD CONSTRAINT `stok_barang_mitra_ibfk_2` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
