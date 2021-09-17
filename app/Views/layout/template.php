@@ -89,6 +89,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/datamitra/tampil">Mitra</a>
                             <a class="collapse-item" href="/datasales/tampil">Sales</a>
+                            <a class="collapse-item" href="#">Sales Mitra</a>
                         </div>
                     </div>
                 </li>
@@ -111,12 +112,15 @@
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-fw fa-book"></i>
                         <span>Laporan</span>
                     </a>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/catatan">Laporan Penjualan</a>
+                            <a class="collapse-item" href="#">Laporan Penjualan Mitra</a>
+                            <a class="collapse-item" href="#">Laporan Penjualan Sales</a>
+                            <a class="collapse-item" href="#">Laporan Sales-Mitra</a>
                         </div>
                     </div>
                 </li>
@@ -126,7 +130,7 @@
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
                 </li>
-                
+
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
@@ -580,7 +584,7 @@
         </script>
 
         <!-- Tabel Catatan Penjualan-->
-       <script>
+        <script>
             $(document).ready(function() {
                 $('#dataTableCatatanPenjualan').DataTable({
                     dom: 'Bfrtip',
