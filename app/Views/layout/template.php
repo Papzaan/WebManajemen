@@ -146,10 +146,10 @@
 
                 <!-- Nav Item - stok mitra -->
                 <li class="nav-item">
-                        <a class="nav-link" href="/barang_mitra/stok">
-                            <i class="fas fa-fw fa-table"></i>
-                            <span>Stok</span></a>
-                    </li>
+                    <a class="nav-link" href="/barang_mitra/stok">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Stok</span></a>
+                </li>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
@@ -254,14 +254,14 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        <!-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-cart fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                 Counter - Alerts -->
+                        <!-- <span class="badge badge-danger badge-counter">3+</span>
+                            </a> -->
+                        <!-- Dropdown - Alerts -->
+                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Keranjang
                                 </h6>
@@ -277,8 +277,8 @@
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Lihat Keranjang</a>
-                            </div>
-                        </li>
+                            </div> -->
+                        <!-- </li> -->
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
