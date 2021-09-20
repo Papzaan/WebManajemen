@@ -146,6 +146,15 @@ class DataMitra extends BaseController
     }
     public function hapus_mitra($email)
     {
+         //cek apakah ada session bernama isLogin
+         if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
         //akses ke tabel mitra
         $this->userRegism = new UserRegism();
         $this->userModel = new UserModel();

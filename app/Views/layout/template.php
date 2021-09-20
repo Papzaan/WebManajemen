@@ -89,7 +89,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/datamitra/tampil">Mitra</a>
                             <a class="collapse-item" href="/datasales/tampil">Sales</a>
-                            <a class="collapse-item" href="#">Sales Mitra</a>
+                            <a class="collapse-item" href="/datasalmit/tampil_salmit">Sales Mitra</a>
                         </div>
                     </div>
                 </li>

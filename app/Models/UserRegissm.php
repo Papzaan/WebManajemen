@@ -26,4 +26,23 @@ class UserRegissm extends Model
         ->where('mitra.email',['email'=> $data])
         ->get()->getResultArray();
     }
+    public function tampilsalmita($id_mitra){
+        $session = session();
+        $data = $session->get('email');
+        //var_dump($data);
+        return $this->db->table('salesnya_mitra')  
+        ->where('id_mitra',['id_mitra'=>$id_mitra])  
+        ->get()->getResultArray();
+    }
+    public function tampilsalmit1(){
+        $session = session();
+        $data = $session->get('email');
+        //var_dump($data);
+        $data1 = $this->db->query("SELECT id_mitra FROM mitra limit 1" );
+        $dataa = $data1->getRowArray();
+        //var_dump($data1);
+        return $this->db->table('salesnya_mitra')
+        ->where('id_mitra',['id_mitra'=> $dataa['id_mitra']])
+        ->get()->getResultArray();
+    }
 }

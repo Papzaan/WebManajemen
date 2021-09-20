@@ -32,7 +32,7 @@
                     <tbody>
 
                         <?php
-                        $no = 1;
+                         $no = 1;
                         foreach ($sales as $d) {
                         ?>
                             <tr id="<?php echo $d["id_salmit"] ?>">

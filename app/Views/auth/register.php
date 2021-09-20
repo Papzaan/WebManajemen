@@ -126,7 +126,7 @@
                                                 <div class="col-sm-6">
                                                     <input type="text" class="form-control form-control-user" name="nik" id="exampleLastName" placeholder="NIK">
                                                 </div>
-                                            </div>
+                                        </div>
 
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">

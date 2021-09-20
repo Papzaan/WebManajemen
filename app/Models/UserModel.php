@@ -41,7 +41,7 @@ class UserModel extends Model
     public function getdatadafMitra(){
 
       return $this->db->table('mitra')
-      ->select('nama')
+      ->select('nama,id_mitra')
       ->get()->getResultArray();  
     }
     public function getidmitra($mitra){
