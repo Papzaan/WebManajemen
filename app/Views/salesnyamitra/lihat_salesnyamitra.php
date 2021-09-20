@@ -47,6 +47,7 @@
                             <th>Alamat</th>
                             <th>jenis kelamin</th>
                             <th>email</th>
+                            <th>Mitra</th>
                             <th>Aksis</th>
                         </tr>
                     </thead>
@@ -72,10 +73,10 @@
                                 </tr>
                             <?php }
                         } else { ?>
+
                             <?php
                             $no = 1;
                             foreach ($salesa as $d) {
-                                //if($id_mitra == $d["id_salmit"]){
                             ?>
                                 <tr id="<?php echo $d["id_salmit"] ?>">
                                     <td><?php echo $no++ ?></td>
@@ -85,6 +86,7 @@
                                     <td><?php echo $d["alamat"] ?></td>
                                     <td><?php echo $d["jenis_kelamin"] ?></td>
                                     <td><?php echo $d["email"] ?></td>
+                                    <td><?php echo $d["nama"] ?></td>
                                     <td>
                                         <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                     </td>
@@ -98,34 +100,6 @@
                         </tr>
 
                     </tbody>
-                    <?php
-                    //if (isset($_GET['id_mitra'])) {
-                    //$id_mitra=trim($_GET['id_mitra']);
-
-
-                    /*foreach ($sales as $d) {
-                                $no = 1;
-                                // if($sales['id_mitra'] == $id_mitra){
-                                //     foreach ($sales as $d) {
-                            ?>
-                            
-                        <tbody>
-                            <tr>
-                                <td><?php echo $no++ ?></td>
-                                <td><?php echo $d['nama_salmit'];?></td>
-                                <td><?php echo $d['nik'];?></td>
-                                <td><?php echo $d['no_telp'];?></td>
-                                <td><?php echo $d['alamat'];?></td>
-                                <td><?php echo $d['jenis_kelamin'];?></td>
-                                <td><?php echo $d['email'];?></td>
-                            </tr>
-                        </tbody>
-                        <?php
-                                  //  }
-                                //}
-                            }
-                        //}*/
-                    ?>
                 </table>
             </div>
         </div>

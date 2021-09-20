@@ -42,7 +42,9 @@ class UserRegissm extends Model
         $dataa = $data1->getRowArray();
         //var_dump($data1);
         return $this->db->table('salesnya_mitra')
-        ->where('id_mitra',['id_mitra'=> $dataa['id_mitra']])
+        ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
+        ->select('mitra.nama, salesnya_mitra.id_salmit, salesnya_mitra.nama_salmit, salesnya_mitra.nik, salesnya_mitra.no_telp, salesnya_mitra.alamat, salesnya_mitra.jenis_kelamin, salesnya_mitra.email')
+        ->where('mitra.id_mitra',['id_mitra'=> $dataa['id_mitra']])
         ->get()->getResultArray();
     }
 }
