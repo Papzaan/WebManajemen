@@ -47,7 +47,6 @@
                             <th>Alamat</th>
                             <th>jenis kelamin</th>
                             <th>email</th>
-                            <th>Mitra</th>
                             <th>Aksis</th>
                         </tr>
                     </thead>
@@ -86,7 +85,6 @@
                                     <td><?php echo $d["alamat"] ?></td>
                                     <td><?php echo $d["jenis_kelamin"] ?></td>
                                     <td><?php echo $d["email"] ?></td>
-                                    <td><?php echo $d["nama"] ?></td>
                                     <td>
                                         <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                     </td>
