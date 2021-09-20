@@ -25,7 +25,7 @@ class DataSalmit extends BaseController
         }
         //get data
         $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
+        $data['user'] = $model->getdataAdmin();
         $data['data_mitra'] = $model->getdatadafMitra();
         $model = new UserRegissm();
         $data['salesa'] = $model->tampilsalmit1();
@@ -53,7 +53,7 @@ class DataSalmit extends BaseController
         }else{
         //get data
         $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
+        $data['user'] = $model->getdataAdmin();
         $data['data_mitra'] = $model->getdatadafMitra();
         $model = new UserRegissm();
         $data['sales'] = $model->tampilsalmita($data1['id_mitra']);
