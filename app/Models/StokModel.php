@@ -72,6 +72,22 @@ class StokModel extends Model
         $dataa = $data1->getRowArray();
         return $dataa['SUM(stok_mitra)'];
     }
+    public function getjumlahkategori()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT COUNT(nama_kategori) FROM `kategori`");
+        $dataa = $data1->getRowArray();
+        return $dataa['COUNT(nama_kategori)'];
+    }
+    public function gettotalpenjualan_admin()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT SUM(jumlah) FROM `catatan_admin`");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(jumlah)'];
+    }
     /*public function gettotalstok()
     {
         $session = session();

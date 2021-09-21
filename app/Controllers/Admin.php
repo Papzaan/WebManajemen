@@ -37,6 +37,8 @@ class Admin extends BaseController
         $data['stok_admin'] = $model->getstokadmin();
         $data['stok_mitra'] = $model->getstokmitra();
         $data['total_stok'] = $total_stokbar;
+        $data['jumlah_kategori'] = $model->getjumlahkategori();
+        $data['tot_pen_admin'] = $model->gettotalpenjualan_admin();
         echo view('admin/index', $data);
         echo view('layout/chart-pie');
         //return view('admin/index')   
