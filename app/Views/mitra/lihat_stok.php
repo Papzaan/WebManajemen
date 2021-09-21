@@ -41,7 +41,7 @@
                                 <td><?php echo $d['harga_sales'] ?></td>
                                 <td><?php echo $d['harga_outlet'] ?></td>
                                 <td><?php echo $d['harga_dusan'] ?></td>
-                                <td><?php echo $d['stok'] ?></td>
+                                <td><?php echo $d['stok_mitra'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
