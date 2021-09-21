@@ -64,7 +64,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $tot_pen_admin; ?></div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3000</div>
                                 </div>
 
                             </div>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo base_url() ?>/penjualan/catatan" class="small-box-footer">
+                <a href="#" data-toggle="modal" data-target="#PenjualanModal" class="small-box-footer">
                     <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
                 </a>
             </div>
@@ -179,6 +179,57 @@
                                 <button class="btn btn-success"type="button">Lihat</button></a>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- total penjualan Barang Modal-->
+<div class="modal fade" id="PenjualanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row col-sm-12">
+                    <div class="col-sm-4">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Total Penjualan</h5>
+                                <h5 class="card-title">Admin</h5>
+                                <p class="card-text"> <b><?= $tot_pen_admin; ?></b> </p>
+                                <a class="nav-link" href="<?php echo base_url() ?>/penjualan/catatan">
+                                <button class="btn btn-success" type="button">Lihat</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Total Penjualan</h5>
+                                <h5 class="card-title">Mitra</h5>
+                                <p class="card-text"><b>50</b> </p>
+                                <a class="nav-link" href="#">
+                                <button class="btn btn-success"type="button">Lihat</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Total Penjualan</h5>
+                                <h5 class="card-title">Sales</h5>
+                                <p class="card-text"><b>50</b> </p>
+                                <a class="nav-link" href="#">
+                                <button class="btn btn-success"type="button">Lihat</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
