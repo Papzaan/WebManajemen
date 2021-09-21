@@ -179,14 +179,16 @@
     <div class="modal-dialog " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="row">
+                <div class="row col-sm-12">
                     <div class="col-sm-6">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
-                                <h5 class="card-title">Total Barang Admin</h5>
+                                <h5 class="card-title">Total Barang</h5>
+                                <h5 class="card-title">Admin</h5>
                                 <p class="card-text"> <b><?= $stok_admin; ?></b> </p>
-                                <button class="btn btn-success" type="button" data-dismiss="modal">Lihat</button>
+                                <a class="nav-link" href="/barang/stok">
+                                <button class="btn btn-success" type="button">Lihat</button></a>
 
                             </div>
                         </div>
@@ -195,10 +197,11 @@
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
-                                <h5 class="card-title">Total Barang Mitra</h5>
+                                <h5 class="card-title">Total Barang</h5>
+                                <h5 class="card-title">Mitra</h5>
                                 <p class="card-text"><b><?= $stok_mitra; ?></b> </p>
-                                <button class="btn btn-success" type="button" data-dismiss="modal">Lihat</button>
-
+                                <a class="nav-link" href="#">
+                                <button class="btn btn-success"type="button">Lihat</button></a>
                             </div>
 
                         </div>
