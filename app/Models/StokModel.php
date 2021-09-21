@@ -19,6 +19,7 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->get()->getResultArray();
     }
+    
     public function editstok($id)
     {
         $session = session();
@@ -27,6 +28,7 @@ class StokModel extends Model
             ->where('barang.id_barang', ['id_barang' => $id])
             ->get()->getResultArray();
     }
+
     public function updatestok($dataupdate, $id)
     {
         $session = session();
@@ -38,13 +40,8 @@ class StokModel extends Model
     {
         $session = session();
         $data = $session->get('email');
-        /*return $this->db->table('kategori')
-            ->select('stok')
-            ->where('nama_kategori',['nama_kategori'=> $kate])
-            ->get()->getResultArray();*/
         $data1 = $this->db->query("SELECT stok FROM kategori WHERE nama_kategori='$kate' ");
         $dataa = $data1->getRowArray();
-
         return $dataa['stok'];
     }
     public function updatejumstok($dataupdate, $kat)
@@ -59,9 +56,28 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->delete(['id_barang' => $id]);
     }
-
-    public function get_kategori()
+    public function getstokadmin()
     {
-        return $this->db->table('kategori')->get()->getResultArray();
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT SUM(stok) FROM kategori");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(stok)'];
     }
+    public function getstokmitra()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT SUM(stok_mitra) FROM stok_barang_mitra");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(stok_mitra)'];
+    }
+    /*public function gettotalstok()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT SUM(stok + stok_mitra) FROM kategori, stok_barang_mitra");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(stok + stok_mitra)'];
+    }*/
 }

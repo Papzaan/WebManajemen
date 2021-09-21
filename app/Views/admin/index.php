@@ -20,7 +20,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Barang</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">4000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_stok; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-cubes fa-2x text-gray-300"></i>
@@ -185,7 +185,7 @@
                             <div class="card-header">Header</div>
                             <div class="card-body">
                                 <h5 class="card-title">Total Barang Admin</h5>
-                                <p class="card-text"> <b>4000</b> </p>
+                                <p class="card-text"> <b><?= $stok_admin; ?></b> </p>
                                 <button class="btn btn-success" type="button" data-dismiss="modal">Lihat</button>
 
                             </div>
@@ -196,7 +196,7 @@
                             <div class="card-header">Header</div>
                             <div class="card-body">
                                 <h5 class="card-title">Total Barang Mitra</h5>
-                                <p class="card-text"><b>2000</b> </p>
+                                <p class="card-text"><b><?= $stok_mitra; ?></b> </p>
                                 <button class="btn btn-success" type="button" data-dismiss="modal">Lihat</button>
 
                             </div>
