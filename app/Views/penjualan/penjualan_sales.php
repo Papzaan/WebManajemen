@@ -7,94 +7,70 @@
 
     <div class='box box-primary'>
         <div class='box-header  with-border'>
-            <h3 class='box-title'>Penjualan Sales</h3>
+            <h3 class='box-title'>Penjualan Produk</h3>
+        </div>
+        <div>
+            <?php echo session()->getFlashdata('stok_habis'); ?>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/barang/aksi_input">
+            <form class="user" method="post" action="/penjualan/input_penjualan">
                 <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Customer</label>
-                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama_customer" id="nama_customer" data-error="Nama Customer harus diisi" placeholder="Nama Customer" value="" required />
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                    <!-- mbatas option -->
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="nama" class="control-label">Nama Sales</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="nama_sales" id="nama_sales" data-error="Nama Sales harus diisi" placeholder="Nama Sales" value="" required />
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="kategori" class="control-label">Tanggal Penjualan</label>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" id="datepicker" data-date-format="yyyy-mm-" name="tgl_masuk" id="tgl_masuk" data-error="harga harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
-                    </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="jumlah" class="control-label">Jumlah</label>
-                    <div class="input-group">
-                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="harga" class="control-label">Harga</label>
-                    <div class="input-group">
-                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                        </span>
-                    </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label for="alamat" class="control-label">Alamat</label>
-                    <div class="input-group">
-                        <input type="text" name="alamat" id="alamat" data-error="Alamat harus di isi" class="form-control" placeholder="Alamat Barang" required>
-                        <span class="input-group-addon">
-                        </span>
-                        </span>
-                    </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="payment">Metode Pembayaran</label>
-                    <select id="payment" name="metode" class="form-control" style="width:100%;">
-                        <option value="1">Cash</option>
-                        <option value="2">Transfer</option>
-                    </select>
-                </div>
-                <div class="form-group" id="rek">
-                    <div class="col-xs-5">
-                        <div class="form-group">
-                            <select id="norekk" onChange="update()">
-                                <option value="-">Pilih Bank</option>
-                                <option value="7516756">BSI</option>
-                                <option value="4356574">BRI</option>
-                                <option value="2345678">Mandiri</option>
+                    <div class="form-group row">
+                        <div class="col-sm-5 mb-3 mb-sm-0">
+                            <label for="nama" class="control-label">Nama Customer</label>
+                            <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                            <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
+                                <option value="" disabled selected>Pilih Nama Customer</option>
+                                1
                             </select>
-                            <input type="text" disabled id="value">
+                            <!-- mbatas option -->
                         </div>
+                        <div class="col-sm-5 mb-3 mb-sm-0">
+                            <label for="nama" class="control-label">NIK Customer</label>
+                            <input type="text" class="form-control form-control-user" name="nik_customer" id="nik_customer" readonly>
+                        </div>
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="nama" class="control-label">Tambah Customer</label>
+                            <a href="/datacus/inputcus"><button class="btn btn-primary" type="button">
+                                    Tambah Data <i class="fas fa-plus"></i>
+                                </button></a>
+                        </div>
+
                     </div>
-                </div>
-                <div class="box-footer">
-                    <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                    <a href="<?php echo base_url() ?>/penjualan/catatan" class="btn btn-default ">Cancel</a>
-                </div>
+                    <div class="form-group">Nama Penjual</label>
+                        a
+                    </div>
+                    <div class="form-group">Nama Barang</label>
+                        <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                        <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
+                            <option value="" disabled selected>Pilih Ketegori Barang</option>
+                            a
+                        </select>
+                        <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
+                        <!-- mbatas option -->
+                    </div>
+                    <div class="form-group">Jumlah Barang</label>
+                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeyup="sum();" />
+                    </div>
+                    <div class="form-group">Harga Total</label>
+                        <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total" readonly />
+                    </div>
+                    <div class="form-group">Tanggal Jual</label>
+                        <input type="text" id="datepicker" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
+                    </div>
+                    <div class="form-group">Alamat Transaksi</label>
+                        <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Transaksi" />
+                    </div>
+                    <!-- Metode Pembayaran-->
+                    <div class="form-group">
+                        <label for="payment">Metode Pembayaran</label>
+                        <input type="text" class="form-control form-control-user" id="alamat" name="alamat" value="Cash" readonly />
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
+                        <a href="<?php echo base_url() ?>/penjualan/catatan" class="btn btn-default ">Cancel</a>
+                    </div>
             </form>
         </div><!-- /.box-body -->
     </div><!-- /.box -->
