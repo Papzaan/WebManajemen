@@ -1,8 +1,8 @@
 <script>
     <?php
-    foreach ($kategori as $d) {
+    foreach ($stok as $d) {
         $ktgr[] = $d['nama_kategori'];
-        $stk[] = $d['stok'];
+        $stk[] = $d['stok_mitra'];
     }
 
     ?>
