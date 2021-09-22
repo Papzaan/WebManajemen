@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2021 pada 05.37
+-- Waktu pembuatan: 22 Sep 2021 pada 08.45
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -100,7 +100,8 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `nik_customer`, `nama_kateg
 (10, 2, '1802010101', 'BB+ 300ml', '0000-00-00', 25, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
-(14, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas');
+(14, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
+(15, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Lampung Tengah', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,7 @@ INSERT INTO `customer` (`nik_customer`, `nama`, `jenis_kelamin`, `no_telp`, `ala
 
 CREATE TABLE `customer_mitra` (
   `nik_customer_mit` varchar(20) NOT NULL,
-  `nama` varchar(25) NOT NULL,
+  `nama_cusmit` varchar(25) NOT NULL,
   `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(50) NOT NULL,
@@ -148,8 +149,9 @@ CREATE TABLE `customer_mitra` (
 -- Dumping data untuk tabel `customer_mitra`
 --
 
-INSERT INTO `customer_mitra` (`nik_customer_mit`, `nama`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_mitra`) VALUES
-('1234567899', 'liam', 'perempuan', '089928393898', 'rrq', 'ktpliam.jpg', 'liam.jpg', 2);
+INSERT INTO `customer_mitra` (`nik_customer_mit`, `nama_cusmit`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_mitra`) VALUES
+('1234567899', 'liam', 'perempuan', '089928393898', 'rrq', 'ktpliam.jpg', 'liam.jpg', 2),
+('2222223322', 'faris', 'laki - laki', '0829289344', 'banten', 'ktpfaris.jpg', 'faris.jpg', 13);
 
 -- --------------------------------------------------------
 
@@ -159,7 +161,7 @@ INSERT INTO `customer_mitra` (`nik_customer_mit`, `nama`, `jenis_kelamin`, `no_t
 
 CREATE TABLE `customer_sales` (
   `nik_customer_sal` varchar(20) NOT NULL,
-  `nama` varchar(25) NOT NULL,
+  `nama_cussal` varchar(25) NOT NULL,
   `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(50) NOT NULL,
@@ -167,6 +169,13 @@ CREATE TABLE `customer_sales` (
   `foto_customer` varchar(30) NOT NULL,
   `id_sales` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `customer_sales`
+--
+
+INSERT INTO `customer_sales` (`nik_customer_sal`, `nama_cussal`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_sales`) VALUES
+('242342342', 'jhon', 'laki - laki', '092309332', 'sulawesi', 'fotoktpjhon.jpg', 'jhon.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -188,7 +197,7 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('BB+ 300ml', '168000', 51, '88000', '118000', '138000'),
+('BB+ 300ml', '168000', 49, '88000', '118000', '138000'),
 ('Nanoxy 300ml', '96000', 91, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
@@ -226,13 +235,21 @@ INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kela
 CREATE TABLE `penjualan_mitra` (
   `id_penjumit` int(11) NOT NULL,
   `id_mitra` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
-  `id_barmit` int(11) NOT NULL,
+  `nik_customer_mit` varchar(20) NOT NULL,
+  `id_stokbarmit` int(11) NOT NULL,
   `jumlah` int(10) NOT NULL,
   `tgl_jual` date NOT NULL,
   `harga` int(30) NOT NULL,
   `alamat_trank` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjualan_mitra`
+--
+
+INSERT INTO `penjualan_mitra` (`id_penjumit`, `id_mitra`, `nik_customer_mit`, `id_stokbarmit`, `jumlah`, `tgl_jual`, `harga`, `alamat_trank`) VALUES
+(1, 2, '1234567899', 2, 20, '2021-09-02', 500000, 'jakarta'),
+(2, 13, '2222223322', 2, 20, '2021-09-02', 500000, 'banten');
 
 -- --------------------------------------------------------
 
@@ -242,15 +259,21 @@ CREATE TABLE `penjualan_mitra` (
 
 CREATE TABLE `penjualan_sales` (
   `id_penjualan` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
+  `nik_customer_sal` varchar(20) NOT NULL,
   `id_sales` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL,
-  `tgl_penjualan` date NOT NULL,
+  `nama_kategori` varchar(30) NOT NULL,
+  `tgl_jual` date NOT NULL,
   `jumlah` int(10) NOT NULL,
   `harga` varchar(30) NOT NULL,
-  `alamat_trank` varchar(45) NOT NULL,
-  `status` enum('setuju','belum setuju') NOT NULL
+  `alamat_trank` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjualan_sales`
+--
+
+INSERT INTO `penjualan_sales` (`id_penjualan`, `nik_customer_sal`, `id_sales`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`) VALUES
+(1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua');
 
 -- --------------------------------------------------------
 
@@ -471,17 +494,17 @@ ALTER TABLE `mitra`
 ALTER TABLE `penjualan_mitra`
   ADD PRIMARY KEY (`id_penjumit`),
   ADD KEY `id_mitra` (`id_mitra`),
-  ADD KEY `id_customer` (`id_customer`),
-  ADD KEY `id_barmit` (`id_barmit`);
+  ADD KEY `id_barmit` (`id_stokbarmit`),
+  ADD KEY `nik_customer_mit` (`nik_customer_mit`);
 
 --
 -- Indeks untuk tabel `penjualan_sales`
 --
 ALTER TABLE `penjualan_sales`
   ADD PRIMARY KEY (`id_penjualan`),
-  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_customer` (`nik_customer_sal`),
   ADD KEY `id_sales` (`id_sales`),
-  ADD KEY `id_barang` (`id_barang`);
+  ADD KEY `id_barang` (`nama_kategori`);
 
 --
 -- Indeks untuk tabel `pesanan_mitra`
@@ -547,7 +570,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -559,13 +582,13 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
-  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_sales`
 --
 ALTER TABLE `penjualan_sales`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
@@ -638,17 +661,17 @@ ALTER TABLE `mitra`
 -- Ketidakleluasaan untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
-  ADD CONSTRAINT `penjualan_mitra_ibfk_1` FOREIGN KEY (`id_barmit`) REFERENCES `barang_mitra` (`id_barmit`),
   ADD CONSTRAINT `penjualan_mitra_ibfk_2` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`),
-  ADD CONSTRAINT `penjualan_mitra_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
+  ADD CONSTRAINT `penjualan_mitra_ibfk_3` FOREIGN KEY (`nik_customer_mit`) REFERENCES `customer_mitra` (`nik_customer_mit`),
+  ADD CONSTRAINT `penjualan_mitra_ibfk_4` FOREIGN KEY (`id_stokbarmit`) REFERENCES `stok_barang_mitra` (`id_stokbarmit`);
 
 --
 -- Ketidakleluasaan untuk tabel `penjualan_sales`
 --
 ALTER TABLE `penjualan_sales`
-  ADD CONSTRAINT `penjualan_sales_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
   ADD CONSTRAINT `penjualan_sales_ibfk_2` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`),
-  ADD CONSTRAINT `penjualan_sales_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
+  ADD CONSTRAINT `penjualan_sales_ibfk_4` FOREIGN KEY (`nik_customer_sal`) REFERENCES `customer_sales` (`nik_customer_sal`),
+  ADD CONSTRAINT `penjualan_sales_ibfk_5` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`);
 
 --
 -- Ketidakleluasaan untuk tabel `pesanan_mitra`
