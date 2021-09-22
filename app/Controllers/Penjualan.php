@@ -131,6 +131,12 @@ class Penjualan extends BaseController
         if ($this->session->get('status') == 1) {
             return redirect()->to('/admin');
         }
+        if ($this->session->get('status') == 3) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataSales();
+            $data['title'] = 'Penjualan User';
+            return view('penjualan/penjualan_sales', $data);
+        }
         $model = new UserModel();
         $data['user'] = $model->getdataMitra();
         $data['title'] = 'Penjualan User';
