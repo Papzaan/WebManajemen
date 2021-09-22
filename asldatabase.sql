@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2021 pada 04.01
+-- Waktu pembuatan: 22 Sep 2021 pada 05.37
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -99,7 +99,8 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `nik_customer`, `nama_kateg
 (9, 2, '1802010101', 'Nanoxy 300ml', '0000-00-00', 30, '68000', 'Serang, Banten, Jawa', 'lunas'),
 (10, 2, '1802010101', 'BB+ 300ml', '0000-00-00', 25, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
-(13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas');
+(13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
+(14, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,47 @@ INSERT INTO `customer` (`nik_customer`, `nama`, `jenis_kelamin`, `no_telp`, `ala
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `customer_mitra`
+--
+
+CREATE TABLE `customer_mitra` (
+  `nik_customer_mit` varchar(20) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
+  `no_telp` varchar(16) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `foto_ktp` varchar(30) NOT NULL,
+  `foto_customer` varchar(30) NOT NULL,
+  `id_mitra` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `customer_mitra`
+--
+
+INSERT INTO `customer_mitra` (`nik_customer_mit`, `nama`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_mitra`) VALUES
+('1234567899', 'liam', 'perempuan', '089928393898', 'rrq', 'ktpliam.jpg', 'liam.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `customer_sales`
+--
+
+CREATE TABLE `customer_sales` (
+  `nik_customer_sal` varchar(20) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
+  `no_telp` varchar(16) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `foto_ktp` varchar(30) NOT NULL,
+  `foto_customer` varchar(30) NOT NULL,
+  `id_sales` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `kategori`
 --
 
@@ -146,7 +188,7 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('BB+ 300ml', '168000', 53, '88000', '118000', '138000'),
+('BB+ 300ml', '168000', 51, '88000', '118000', '138000'),
 ('Nanoxy 300ml', '96000', 91, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
@@ -396,6 +438,21 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`nik_customer`);
 
 --
+-- Indeks untuk tabel `customer_mitra`
+--
+ALTER TABLE `customer_mitra`
+  ADD PRIMARY KEY (`nik_customer_mit`),
+  ADD KEY `id_mitra` (`id_mitra`);
+
+--
+-- Indeks untuk tabel `customer_sales`
+--
+ALTER TABLE `customer_sales`
+  ADD PRIMARY KEY (`nik_customer_sal`),
+  ADD KEY `id_sales` (`id_sales`),
+  ADD KEY `id_sales_2` (`id_sales`);
+
+--
 -- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
@@ -490,7 +547,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -558,6 +615,18 @@ ALTER TABLE `catatan_admin`
   ADD CONSTRAINT `catatan_admin_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
   ADD CONSTRAINT `catatan_admin_ibfk_2` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`),
   ADD CONSTRAINT `catatan_admin_ibfk_3` FOREIGN KEY (`nik_customer`) REFERENCES `customer` (`nik_customer`);
+
+--
+-- Ketidakleluasaan untuk tabel `customer_mitra`
+--
+ALTER TABLE `customer_mitra`
+  ADD CONSTRAINT `customer_mitra_ibfk_1` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`);
+
+--
+-- Ketidakleluasaan untuk tabel `customer_sales`
+--
+ALTER TABLE `customer_sales`
+  ADD CONSTRAINT `customer_sales_ibfk_1` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`);
 
 --
 -- Ketidakleluasaan untuk tabel `mitra`
