@@ -74,23 +74,7 @@
                     <!-- Metode Pembayaran-->
                     <div class="form-group">
                         <label for="payment">Metode Pembayaran</label>
-                        <select id="payment" name="metode" class="form-control" style="width:100%;">
-                            <option value="1">Cash</option>
-                            <option value="2">Transfer</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="rek">
-                        <div class="col-xs-5">
-                            <div class="form-group">
-                                <select id="norekk" onChange="update()">
-                                    <option value="-">Pilih Bank</option>
-                                    <option value="7516756">BSI</option>
-                                    <option value="4356574">BRI</option>
-                                    <option value="2345678">Mandiri</option>
-                                </select>
-                                <input type="text" disabled id="value">
-                            </div>
-                        </div>
+                        <input type="text" class="form-control form-control-user" id="metode" name="metode" value="Cash" readonly />
                     </div>
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>

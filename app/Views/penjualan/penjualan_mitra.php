@@ -13,7 +13,7 @@
             <?php echo session()->getFlashdata('stok_habis'); ?>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/penjualan/input_penjualan">
+            <form class="user" method="post" action="#">
                 <div class="form-group">
                     <div class="form-group row">
                         <div class="col-sm-5 mb-3 mb-sm-0">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Tambah Customer</label>
-                            <a href="/datacus/inputcus"><button class="btn btn-primary" type="button">
+                            <a href="#"><button class="btn btn-primary" type="button">
                                     Tambah Data <i class="fas fa-plus"></i>
                                 </button></a>
                         </div>
@@ -64,12 +64,12 @@
                     <!-- Metode Pembayaran-->
                     <div class="form-group">
                         <label for="payment">Metode Pembayaran</label>
-                        <input type="text" class="form-control form-control-user" id="alamat" name="alamat" value="Cash" readonly />
+                        <input type="text" class="form-control form-control-user" id="metode" name="metode" value="Cash" readonly />
                     </div>
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                        <a href="<?php echo base_url() ?>/penjualan/catatan" class="btn btn-default ">Cancel</a>
+                        <a href="#" class="btn btn-default ">Cancel</a>
                     </div>
             </form>
         </div><!-- /.box-body -->

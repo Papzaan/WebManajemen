@@ -140,6 +140,6 @@ class Penjualan extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataMitra();
         $data['title'] = 'Penjualan User';
-        return view('penjualan/penjualan_user', $data);
+        return view('penjualan/penjualan_mitra', $data);
     }
 }
