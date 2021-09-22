@@ -22,22 +22,26 @@ class BarangMitraModel extends Model
         ->where('mitra.email',['email'=> $data])
         ->get()->getResultArray();
     }
-    public function editbarang($id){
+    
+    public function getjum_stok()
+    {
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('barang')
-            ->where('barang.id_barang',['id_barang'=> $id])
-            ->get()->getResultArray();  
-    }
-    public function updatebarang($dataupdate, $id){
-        $session = session();
-        $data = $session->get('email');
-        return $this->db->table('barang')
-            ->update($dataupdate, ['id_barang' => $id]);
-    }
-    public function deletebarang($id){
-        return $this->db->table('barang')
-            ->delete(['id_barang' => $id]);
+        return $this->db->table('stok_barang_mitra')
+        ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+        ->select('SUM(stok_mitra)')
+        ->where('mitra.email',['email'=> $data])
+        ->get()->getRowArray();
     } 
+    public function getjumlahkategori()
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('stok_barang_mitra')
+        ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+        ->select('COUNT(nama_kategori)')
+        ->where('mitra.email',['email'=> $data])
+        ->get()->getRowArray();
+    }
     
 }
