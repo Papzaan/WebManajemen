@@ -20,14 +20,14 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                 Total Barang</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_stok['SUM(stok_mitra)']; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-cubes fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
-        <a href="#" data-toggle="modal" data-target="#BarangModal" class="small-box-footer">
+        <a href="/barang_mitra/stok" class="small-box-footer">
           <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
         </a>
       </div>
@@ -41,14 +41,14 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                 Kategori Barang</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_kategori['COUNT(nama_kategori)']; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-list fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
-        <a href="/barang/stok" class="small-box-footer">
+        <a href="/barang_mitra/stok" class="small-box-footer">
           <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
         </a>
       </div>
@@ -148,47 +148,6 @@
 
 </div>
 <!-- /.container-fluid -->
-
-<!-- Stok Barang Modal-->
-<div class="modal fade" id="BarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="row col-sm-12">
-          <div class="col-sm-6">
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Total Barang</h5>
-                <h5 class="card-title">Admin</h5>
-                <p class="card-text"> <b>1</b> </p>
-                <a class="nav-link" href="/barang/stok">
-                  <button class="btn btn-success" type="button">Lihat</button></a>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Total Barang</h5>
-                <h5 class="card-title">Mitra</h5>
-                <p class="card-text"><b>1</b> </p>
-                <a class="nav-link" href="#">
-                  <button class="btn btn-success" type="button">Lihat</button></a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- total penjualan Barang Modal-->
 <div class="modal fade" id="PenjualanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
