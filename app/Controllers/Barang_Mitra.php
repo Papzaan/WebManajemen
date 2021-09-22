@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\BarangMitraModel;
 use App\Models\UserModel;
+use App\Models\StokModel;
 
 class Barang_Mitra extends BaseController
 {
@@ -24,8 +25,9 @@ class Barang_Mitra extends BaseController
         if ($this->session->get('status') != 2) {
             return redirect()->to('/user');
         }
+        //tampilin data
         $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataMitra();
         $model = new BarangMitraModel();
         $data['title'] = 'Stok Barang Mitra';
         $data['stok'] = $model->getstok();
@@ -45,7 +47,7 @@ class Barang_Mitra extends BaseController
         }
 
         $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataMitra();
         $model = new StokModel();
         $data['title'] = 'Tambah Nama Barang';
         $data['stok'] = $model->getstok();
