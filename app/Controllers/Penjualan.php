@@ -120,6 +120,25 @@ class Penjualan extends BaseController
         echo view('penjualan/catatanpenjualan', $data);
         echo view('layout/datatable');
     }
+    public function laporan_penmitra()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new PenjualanModel();
+        $data['penmit'] = $model->getpenjualanmitra();
+        $data['title'] = 'Catatan Penjualan Admin';
+        echo view('penjualan/laporan_penjualan_mitra', $data);
+        echo view('layout/datatable');
+    }
     public function penjualan_user()
     {
         //cek apakah ada session bernama isLogin
