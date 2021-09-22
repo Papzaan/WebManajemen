@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Sep 2021 pada 04.11
+-- Waktu pembuatan: 22 Sep 2021 pada 04.01
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -98,7 +98,8 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `nik_customer`, `nama_kateg
 (8, 2, '1928293938', 'Nanoxy 500ml', '0000-00-00', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (9, 2, '1802010101', 'Nanoxy 300ml', '0000-00-00', 30, '68000', 'Serang, Banten, Jawa', 'lunas'),
 (10, 2, '1802010101', 'BB+ 300ml', '0000-00-00', 25, '1000000', 'Serang, Banten, Jawa', 'lunas'),
-(11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas');
+(11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
+(13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,7 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
 ('BB+ 300ml', '168000', 53, '88000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 93, '63000', '69000', '76000'),
+('Nanoxy 300ml', '96000', 91, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
 -- --------------------------------------------------------
@@ -177,24 +178,6 @@ INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kela
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan`
---
-
-CREATE TABLE `penjualan` (
-  `id_penjualan` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
-  `id_sales` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL,
-  `tgl_penjualan` date NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  `harga` varchar(30) NOT NULL,
-  `alamat_trank` varchar(45) NOT NULL,
-  `status` enum('setuju','belum setuju') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `penjualan_mitra`
 --
 
@@ -207,6 +190,24 @@ CREATE TABLE `penjualan_mitra` (
   `tgl_jual` date NOT NULL,
   `harga` int(30) NOT NULL,
   `alamat_trank` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `penjualan_sales`
+--
+
+CREATE TABLE `penjualan_sales` (
+  `id_penjualan` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `id_sales` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `tgl_penjualan` date NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `harga` varchar(30) NOT NULL,
+  `alamat_trank` varchar(45) NOT NULL,
+  `status` enum('setuju','belum setuju') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -284,7 +285,8 @@ CREATE TABLE `salesnya_mitra` (
 
 INSERT INTO `salesnya_mitra` (`id_salmit`, `id_mitra`, `nama_salmit`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (1, 2, 'salmit', '293029093', '082093920', 'Aceh', 'perempuan', 'salmit@gmail.com'),
-(3, 13, 'nino', '13292393', '01293833', 'indonesia nino', 'laki - laki', 'nino@gmail.com');
+(3, 13, 'nino', '13292393', '01293833', 'indonesia nino', 'laki - laki', 'nino@gmail.com'),
+(5, 2, 'jess', '180027199271927', '08827409069', 'lampung', 'laki - laki', 'jess@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -296,14 +298,14 @@ CREATE TABLE `stok_barang_mitra` (
   `id_stokbarmit` int(11) NOT NULL,
   `id_mitra` int(11) NOT NULL,
   `nama_kategori` varchar(30) NOT NULL,
-  `stok` int(30) NOT NULL
+  `stok_mitra` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `stok_barang_mitra`
 --
 
-INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok`) VALUES
+INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
 (2, 2, 'BB+ 300ml', 20),
 (3, 13, 'Nanoxy 500ml', 30),
 (4, 2, 'Nanoxy 300ml', 40),
@@ -351,6 +353,7 @@ INSERT INTO `user` (`email`, `password`, `status`) VALUES
 ('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
 ('heri@gmail.com', 'af25458116a2464f9401870dff1e11f5', '3'),
 ('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
+('jess@gmail.com', 'ff6ae2cda9741c0f0c03bce2b6d93af9', '4'),
 ('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
 ('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4'),
 ('purwo@gmail.com', '1607fa90be0989a3c266c5dcf6bbf168', '2'),
@@ -406,15 +409,6 @@ ALTER TABLE `mitra`
   ADD KEY `email` (`email`);
 
 --
--- Indeks untuk tabel `penjualan`
---
-ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`id_penjualan`),
-  ADD KEY `id_customer` (`id_customer`),
-  ADD KEY `id_sales` (`id_sales`),
-  ADD KEY `id_barang` (`id_barang`);
-
---
 -- Indeks untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
@@ -422,6 +416,15 @@ ALTER TABLE `penjualan_mitra`
   ADD KEY `id_mitra` (`id_mitra`),
   ADD KEY `id_customer` (`id_customer`),
   ADD KEY `id_barmit` (`id_barmit`);
+
+--
+-- Indeks untuk tabel `penjualan_sales`
+--
+ALTER TABLE `penjualan_sales`
+  ADD PRIMARY KEY (`id_penjualan`),
+  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_sales` (`id_sales`),
+  ADD KEY `id_barang` (`id_barang`);
 
 --
 -- Indeks untuk tabel `pesanan_mitra`
@@ -487,7 +490,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -496,16 +499,16 @@ ALTER TABLE `mitra`
   MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan`
---
-ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
   MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `penjualan_sales`
+--
+ALTER TABLE `penjualan_sales`
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
@@ -523,7 +526,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
 --
 ALTER TABLE `salesnya_mitra`
-  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
@@ -563,20 +566,20 @@ ALTER TABLE `mitra`
   ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 
 --
--- Ketidakleluasaan untuk tabel `penjualan`
---
-ALTER TABLE `penjualan`
-  ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
-  ADD CONSTRAINT `penjualan_ibfk_2` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`),
-  ADD CONSTRAINT `penjualan_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-
---
 -- Ketidakleluasaan untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
   ADD CONSTRAINT `penjualan_mitra_ibfk_1` FOREIGN KEY (`id_barmit`) REFERENCES `barang_mitra` (`id_barmit`),
   ADD CONSTRAINT `penjualan_mitra_ibfk_2` FOREIGN KEY (`id_mitra`) REFERENCES `mitra` (`id_mitra`),
   ADD CONSTRAINT `penjualan_mitra_ibfk_3` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
+
+--
+-- Ketidakleluasaan untuk tabel `penjualan_sales`
+--
+ALTER TABLE `penjualan_sales`
+  ADD CONSTRAINT `penjualan_sales_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
+  ADD CONSTRAINT `penjualan_sales_ibfk_2` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`),
+  ADD CONSTRAINT `penjualan_sales_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
 
 --
 -- Ketidakleluasaan untuk tabel `pesanan_mitra`
