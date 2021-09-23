@@ -256,7 +256,7 @@ class Penjualan extends BaseController
             return redirect()->to('/user');
         }
         $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
+        $data['user'] = $model->getdataMitra();
         $model = new PenjualanMitraModel();
         $data['penmit'] = $model->getpenjualanmitra();
         $data['title'] = 'Laporan Penjualan Mitra';
