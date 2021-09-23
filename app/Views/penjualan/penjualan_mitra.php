@@ -13,7 +13,7 @@
             <?php echo session()->getFlashdata('stok_habis'); ?>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="#">
+            <form class="user" method="post" action="/penjualan/input_penjualan_mitra">
                 <div class="form-group">
                     <div class="form-group row">
                         <div class="col-sm-5 mb-3 mb-sm-0">
@@ -21,7 +21,11 @@
                             <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
                             <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
                                 <option value="" disabled selected>Pilih Nama Customer</option>
-                                1
+                                <?php foreach ($nama_cusmit as $kr) { ?>
+                                    <option id="<?php echo $kr["nik_customer_mit"]; ?>" value="<?php echo $kr["nama_cusmit"]; ?>">
+                                        <?php echo $kr["nama_cusmit"]; ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                             <!-- mbatas option -->
                         </div>
@@ -38,13 +42,20 @@
 
                     </div>
                     <div class="form-group">Nama Penjual</label>
-                        a
+                        <?php foreach ($user as $d) { ?>
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_mitra" value="<?php echo $d["nama"] ?>" disabled />
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id" value="<?php echo $d["id_mitra"] ?>" hidden />
+                        <?php } ?>
                     </div>
                     <div class="form-group">Nama Barang</label>
                         <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
                         <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
                             <option value="" disabled selected>Pilih Ketegori Barang</option>
-                            a
+                            <?php foreach ($kategori as $kr) { ?>
+                                <option id="<?php echo $kr["harga_dusan"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                    <?php echo $kr["nama_kategori"]; ?>
+                                </option>
+                            <?php } ?>
                         </select>
                         <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
                         <!-- mbatas option -->

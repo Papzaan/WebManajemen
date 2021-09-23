@@ -43,5 +43,23 @@ class BarangMitraModel extends Model
         ->where('mitra.email',['email'=> $data])
         ->get()->getRowArray();
     }
+    public function editstokju($kate, $id)
+    {   
+        $session = session();
+        $data = $session->get('email');
+        $session = session();
+        return $this->db->table('stok_barang_mitra')
+        ->select('stok_mitra, id_stokbarmit')
+        ->where('nama_kategori',['nama_kategori'=> $kate])
+        ->where('id_mitra',['email'=> $id])
+        ->get()->getRowArray();
+    }
+    public function updatejumstok($dataupdate, $kat)
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('stok_barang_mitra')
+            ->update($dataupdate, ['id_stokbarmit' => $kat]);
+    }
     
 }

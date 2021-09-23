@@ -18,18 +18,6 @@ class UserCustomer extends Model
         return $this->db->table('customer')
         ->get()->getResultArray();  
     }
-    public function getnikCustomer($nama){
-      $session = session();
-      $data = $session->get('email');
-      /*return $this->db->table('kategori')
-          ->select('stok')
-          ->where('nama_kategori',['nama_kategori'=> $kate])
-          ->get()->getResultArray();*/
-      $data1 = $this->db->query("SELECT nik_customer FROM customer WHERE nama='$nama' " );
-      $dataa = $data1->getRowArray();
-
-      return $dataa['nik_customer'];
-    }
     public function postdataCustomer(){
         
     }

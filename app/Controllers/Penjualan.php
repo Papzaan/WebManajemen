@@ -4,8 +4,11 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\PenjualanModel;
+use App\Models\PenjualanMitraModel;
 use App\Models\StokModel;
 use App\Models\UserCustomer;
+use App\Models\UserCustomerMitra;
+use App\Models\BarangMitraModel;
 
 class Penjualan extends BaseController
 {
@@ -67,15 +70,11 @@ class Penjualan extends BaseController
             //masukan catatan penjualan
             $model1 = new UserModel();
             $id_admin = $model1->getdataidAdmin();
-            $nama = $data['nama_cus'];
-            $model2 = new UserCustomer();
-            $nik = $model2->getnikCustomer($nama);
-            //var_dump($nik);
 
             $this->penjualanModel = new PenjualanModel();
             $this->penjualanModel->save([
                 'id_admin' => $id_admin,
-                'nik_customer' => $nik,
+                'nik_customer' => $data['nik_customer'],
                 'nama_kategori' => $data['nama_kategori'],
                 'tgl_jual' => $data['tgl_jual'],
                 'jumlah' => $data['jumlah'],
@@ -172,12 +171,77 @@ class Penjualan extends BaseController
         if ($this->session->get('status') == 3) {
             $model = new UserModel();
             $data['user'] = $model->getdataSales();
-            $data['title'] = 'Penjualan User';
+            $data['title'] = 'Penjualan Sales';
             return view('penjualan/penjualan_sales', $data);
         }
         $model = new UserModel();
         $data['user'] = $model->getdataMitra();
-        $data['title'] = 'Penjualan User';
+        $model = new BarangMitraModel();
+        $data['kategori'] = $model->getstok();
+        $model = new UserCustomerMitra();
+        $data['nama_cusmit'] = $model->getdataCustomer_Mit();
+        //var_dump($data['nama_cusmit'] );
+        $data['title'] = 'Penjualan Mitra';
         return view('penjualan/penjualan_mitra', $data);
+    }
+    public function input_penjualan_mitra()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 2) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+        //panggil model stok
+        $this->barangMitraModel = new BarangMitraModel();
+        //panggil stok berdasarkan nama kategori
+        $kate = $data['nama_kategori'];
+        $id = $data['id'];
+        $model = new BarangMitraModel();
+        $stok = $model->editstokju($kate, $id);
+        $pesan = $data['jumlah'];
+        if ($stok['stok_mitra'] == 0) {
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
+            return redirect()->to('/penjualan/penjualan_user');
+        } else if ($stok['stok_mitra']  < $pesan) {
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
+            return redirect()->to('/penjualan/penjualan_user');
+        } else {
+            //masukan catatan penjualan
+            $this->penjualanMitraModel = new PenjualanMitraModel();
+            $this->penjualanMitraModel->save([
+                'id_mitra' => $data['id'],
+                'nik_customer_mit' => $data['nik_customer'],
+                'id_stokbarmit' => $stok['id_stokbarmit'],
+                'tgl_jual' => $data['tgl_jual'],
+                'jumlah' => $data['jumlah'],
+                'harga' => $data['harga_total'],
+                'alamat_trank' => $data['alamat'],
+                'status' => "lunas"
+            ]);
+            //var_dump($stok);
+            //var_dump($data['jumlah']);
+            //jumlahkan
+            $upjum = $stok['stok_mitra'] - $data['jumlah'];
+            //$upjum = 10 + $data['jumlah'];
+            //update stoknya
+            $dataupdate = [
+                'stok_mitra' => $upjum
+            ];
+            $kat = $stok['id_stokbarmit'];
+
+            $update = $this->barangMitraModel->updatejumstok($dataupdate, $kat);
+            // Jika berhasil melakukan ubah
+            if ($update) {
+                return redirect()->to('/penjualan/penjualan_user');
+            }
+        }
     }
 }
