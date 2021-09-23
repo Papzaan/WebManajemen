@@ -14,7 +14,7 @@ class DataCus extends BaseController
         $this->session = session();
     }
 
-    public function customer()
+    /*public function customer()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -32,7 +32,7 @@ class DataCus extends BaseController
         $data['barang'] = $model->tampilsuplayer();
         echo view('supp/lihat_customer', $data);
         //return view('admin/index')   
-    }
+    }*/
     public function inputcus(){
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
