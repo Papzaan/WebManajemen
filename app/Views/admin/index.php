@@ -196,7 +196,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row col-sm-12">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
@@ -208,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
@@ -220,12 +220,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
                                 <h5 class="card-title">Total Penjualan</h5>
                                 <h5 class="card-title">Sales</h5>
+                                <p class="card-text"><b><?= $tot_pen_sales; ?></b> </p>
+                                <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_pensales">
+                                <button class="btn btn-success"type="button">Lihat</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Total Penjualan</h5>
+                                <h5 class="card-title">Salesnya Mitra</h5>
                                 <p class="card-text"><b><?= $tot_pen_sales; ?></b> </p>
                                 <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_pensales">
                                 <button class="btn btn-success"type="button">Lihat</button></a>
