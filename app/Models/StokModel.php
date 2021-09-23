@@ -80,6 +80,7 @@ class StokModel extends Model
         $dataa = $data1->getRowArray();
         return $dataa['COUNT(nama_kategori)'];
     }
+    
     public function gettotalpenjualan_admin()
     {
         $session = session();
@@ -88,12 +89,21 @@ class StokModel extends Model
         $dataa = $data1->getRowArray();
         return $dataa['SUM(jumlah)'];
     }
-    /*public function gettotalstok()
+    
+    public function gettotalpenjualan_mitra()
     {
         $session = session();
         $data = $session->get('email');
-        $data1 = $this->db->query("SELECT SUM(stok + stok_mitra) FROM kategori, stok_barang_mitra");
+        $data1 = $this->db->query("SELECT SUM(jumlah) FROM `penjualan_mitra`");
         $dataa = $data1->getRowArray();
-        return $dataa['SUM(stok + stok_mitra)'];
-    }*/
+        return $dataa['SUM(jumlah)'];
+    }
+    public function gettotalpenjualan_sales()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $data1 = $this->db->query("SELECT SUM(jumlah) FROM `penjualan_sales`");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(jumlah)'];
+    }
 }

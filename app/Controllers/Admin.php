@@ -32,13 +32,18 @@ class Admin extends BaseController
         $data['kategori'] = $model->getstok();
         $stokadmin = $model->getstokadmin();
         $stokmitra = $model->getstokmitra();
+        //untuk mendapatkan stok yang masih ada
         $total_stokbar = $stokadmin + $stokmitra;
-        //var_dump($total_stokbar);
         $data['stok_admin'] = $model->getstokadmin();
         $data['stok_mitra'] = $model->getstokmitra();
         $data['total_stok'] = $total_stokbar;
         $data['jumlah_kategori'] = $model->getjumlahkategori();
+        //untuk mendapatkan jumlah penjualan
         $data['tot_pen_admin'] = $model->gettotalpenjualan_admin();
+        $data['tot_pen_mitra'] = $model->gettotalpenjualan_mitra();
+        $data['tot_pen_sales'] = $model->gettotalpenjualan_sales();
+        $data['total_penjualan'] = $data['tot_pen_admin'] + $data['tot_pen_mitra'] + $data['tot_pen_sales'];
+        //var_dump($totalpenjualan);
         echo view('admin/index', $data);
         echo view('layout/chart-pie');
         //return view('admin/index')   
