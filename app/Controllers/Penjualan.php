@@ -232,14 +232,14 @@ class Penjualan extends BaseController
             $upjum = $stok['stok_mitra'] - $data['jumlah'];
             //$upjum = 10 + $data['jumlah'];
             //update stoknya
-            $dataupdate = [
+            $dataupdatemit = [
                 'stok_mitra' => $upjum
             ];
-            $kat = $stok['id_stokbarmit'];
+            $idbar = $stok['id_stokbarmit'];
 
-            $update = $this->barangMitraModel->updatejumstok($dataupdate, $kat);
+            $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
             // Jika berhasil melakukan ubah
-            if ($update) {
+            if ($update1) {
                 return redirect()->to('/penjualan/penjualan_user');
             }
         }

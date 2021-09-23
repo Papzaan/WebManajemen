@@ -54,12 +54,12 @@ class BarangMitraModel extends Model
         ->where('id_mitra',['email'=> $id])
         ->get()->getRowArray();
     }
-    public function updatejumstok($dataupdate, $kat)
+    public function updatejumstok($dataupdatemit, $idbar)
     {
         $session = session();
         $data = $session->get('email');
         return $this->db->table('stok_barang_mitra')
-            ->update($dataupdate, ['id_stokbarmit' => $kat]);
+            ->update($dataupdatemit, ['id_stokbarmit' => $idbar]);
     }
     
 }
