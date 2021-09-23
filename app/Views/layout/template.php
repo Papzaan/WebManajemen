@@ -150,6 +150,12 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Stok</span></a>
                 </li>
+                <!-- Laporan Penjualan Mitra -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/laporan_mitra">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>Laporan Penjualan</span></a>
+                </li>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">

@@ -244,4 +244,23 @@ class Penjualan extends BaseController
             }
         }
     }
+    public function laporan_mitra()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 2) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new PenjualanMitraModel();
+        $data['penmit'] = $model->getpenjualanmitra();
+        $data['title'] = 'Laporan Penjualan Mitra';
+        echo view('penjualan/catatanpenjualanmitra', $data);
+        echo view('layout/datatable');
+    }
 }

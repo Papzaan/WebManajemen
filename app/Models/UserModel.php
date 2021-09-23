@@ -32,7 +32,6 @@ class UserModel extends Model
     public function getdataMitra(){
       $session = session();
       $data = $session->get('email');
-      //var_dump($data);
       return $this->db->table('user')
       ->join('mitra','mitra.email=user.email')
       ->where('mitra.email',['email'=> $data])

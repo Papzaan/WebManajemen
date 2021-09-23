@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Tambah Customer</label>
-                            <a href="#"><button class="btn btn-primary" type="button">
+                            <a href="/datacus/inputcusmit"><button class="btn btn-primary" type="button">
                                     Tambah Data <i class="fas fa-plus"></i>
                                 </button></a>
                         </div>
