@@ -139,7 +139,7 @@ class DataMitra extends BaseController
         // Jika berhasil melakukan ubah
         if ($update) {
             // Deklarasikan session flashdata dengan tipe info
-            echo session()->setFlashdata('info', 'Update Pegawai Sukses');
+            echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Update Pegawai Sukses</div>');
             // Redirect ke halaman product
             return redirect()->to('/datamitra/tampil');
         }
@@ -166,7 +166,7 @@ class DataMitra extends BaseController
         // Jika berhasil melakukan hapus
         if ($hapus) {
             // Deklarasikan session flashdata dengan tipe warning
-            session()->setFlashdata('info', 'Berhasil Menghapus Pegawai');
+            session()->setFlashdata('info', '<div class="alert alert-success text-center">Berhasil Menghapus Pegawai</div>');
             // Redirect ke halaman barang
             return redirect()->to('/datamitra/tampil');
         }
