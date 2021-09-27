@@ -72,15 +72,14 @@ class BarangMitraModel extends Model
         return $dataa['SUM(jumlah)'];
     }
     public function gettotalpenjualan_salmit()
-    {//jumlahnya gagal
+    {
         $session = session();
         $data = $session->get('email');
         return $this->db->table('penjualan_salmit')
             ->join('salesnya_mitra','salesnya_mitra.id_salmit=penjualan_salmit.id_salmit')
             ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
-            ->join('customer_salmit','customer_salmit.nik_customer_salmit=penjualan_salmit.nik_customer_salmit')
-            ->select('penjualan_salmit.jumlah')
+            ->selectSum('penjualan_salmit.jumlah')
             ->where('mitra.email',['email'=> $data])
-            ->get()->getResultArray();
+            ->get()->getRowArray();
     }
 }

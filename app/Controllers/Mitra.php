@@ -36,7 +36,7 @@ class Mitra extends BaseController
         $data['jumlah_kategori'] = $model->getjumlahkategori();
         $data['tot_pen_mitra'] = $model->gettotalpenjualan_mitra();
         $data['tot_pen_salmit'] = $model->gettotalpenjualan_salmit();
-        //var_dump($data['jumlah_stok']);
+        //var_dump( $data['tot_pen_salmit']);
         echo view('mitra/index', $data);
         echo view('layout/chart-pie-mitra');
         //return view('admin/index')

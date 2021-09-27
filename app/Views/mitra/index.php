@@ -64,7 +64,7 @@
               </div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3000</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $tot_pen_mitra + $tot_pen_salmit['jumlah']; ?></div>
                 </div>
 
               </div>
@@ -173,10 +173,10 @@
               <div class="card-body">
                 <h5 class="card-title">Total Penjualan</h5>
                 <h5 class="card-title">Sales</h5>
-                <?php foreach ($tot_pen_salmit as $d) {?>
-                <p class="card-text"><b><?= $d['jumlah']; ?></b> </p>
-                <?php } ?>
-                <a class="nav-link" href="#">
+                
+                <p class="card-text"><b><?=  $tot_pen_salmit['jumlah']; ?></b> </p>
+                
+                <a class="nav-link" href="/penjualan/laporan_salesnya_mitra">
                   <button class="btn btn-success" type="button">Lihat</button></a>
               </div>
             </div>
