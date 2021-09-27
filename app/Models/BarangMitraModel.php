@@ -61,5 +61,26 @@ class BarangMitraModel extends Model
         return $this->db->table('stok_barang_mitra')
             ->update($dataupdatemit, ['id_stokbarmit' => $idbar]);
     }
-    
+    public function gettotalpenjualan_mitra()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $id =  $this->db->query("SELECT id_mitra FROM mitra WHERE email='$data'")->getRowArray();
+        $id_mitra = $id['id_mitra'];
+        $data1 = $this->db->query("SELECT SUM(jumlah) FROM penjualan_mitra WHERE id_mitra='$id_mitra' ");
+        $dataa = $data1->getRowArray();
+        return $dataa['SUM(jumlah)'];
+    }
+    public function gettotalpenjualan_salmit()
+    {//jumlahnya gagal
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('penjualan_salmit')
+            ->join('salesnya_mitra','salesnya_mitra.id_salmit=penjualan_salmit.id_salmit')
+            ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
+            ->join('customer_salmit','customer_salmit.nik_customer_salmit=penjualan_salmit.nik_customer_salmit')
+            ->select('penjualan_salmit.jumlah')
+            ->where('mitra.email',['email'=> $data])
+            ->get()->getResultArray();
+    }
 }
