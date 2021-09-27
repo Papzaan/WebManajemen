@@ -113,6 +113,39 @@ class DataSales extends BaseController
         $data['title'] = 'Update Sales';
         return view('sales/form_edit', $data);
     }
+    public function update_sales()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        $this->userRegiss = new UserRegiss();
+        $dataupdate = [
+            'nama' => $data['nama'],
+            'nik' => $data['nik'],
+            'no_telp' => $data['no_telp'],
+            'alamat' => $data['alamat'],
+            'jenis_kelamin' => $data['jk'],
+            'email' => $data['email']
+        ];
+        $id = $data['id_sales'];
+        $update = $this->userRegiss->updatesales($dataupdate, $id);
+        // Jika berhasil melakukan ubah
+        if ($update) {
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Update Pegawai Sukses</div>');
+            // Redirect ke halaman product
+            return redirect()->to('/datasales/tampil');
+        }
+    }
     public function hapus_sales($email)
     {
         //cek apakah ada session bernama isLogin

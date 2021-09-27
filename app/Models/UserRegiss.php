@@ -18,6 +18,12 @@ class UserRegiss extends Model
             ->where('sales.email',['email'=> $id])
             ->get()->getResultArray();  
     }
+    public function updatesales($dataupdate, $id){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('sales')
+            ->update($dataupdate, ['id_sales' => $id]);
+    }
     public function deletesales($email){
         return $this->db->table('sales')
             ->delete(['email' => $email]);
