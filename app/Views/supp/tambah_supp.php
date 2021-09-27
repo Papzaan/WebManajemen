@@ -41,7 +41,7 @@
                 </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
-                    <a href="<?php echo base_url() ?>/admin/supplier" class="btn btn-default ">Cancel</a>
+                    <a href="<?php echo base_url() ?>/datasup/supplier" class="btn btn-default ">Cancel</a>
                 </div>
             </form>
         </div><!-- /.box-body -->

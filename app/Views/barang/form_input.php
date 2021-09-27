@@ -11,33 +11,46 @@
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/barang/aksi_input">
-                <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Supplier</label>
-                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <select class="form-control" id="nama_sup" name="nama_sup">
-                        <option value="" disabled selected>Pilih Supplier</option>
-                        <?php foreach ($suplayer as $row) { ?>
-                            <option value="<?php echo $row["nama_sup"]; ?>">
-                                <?php echo $row["nama_sup"]; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                    <!-- mbatas option -->
-                    <div class="help-block with-errors"></div>
+                <div class="form-group row">
+                    <div class="col-sm-10 mb-3 mb-sm-0">
+                        <label for="nama" class="control-label">Nama Supplier</label>
+                        <select class="form-control" id="nama_sup" name="nama_sup">
+                            <option value="" disabled selected>Pilih Supplier</option>
+                            <?php foreach ($suplayer as $row) { ?>
+                                <option value="<?php echo $row["nama_sup"]; ?>">
+                                    <?php echo $row["nama_sup"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <!-- mbatas option -->
+                    </div>
+                    <div class="col-sm-2 mb-3 mb-sm-0">
+                        <label for="nama" class="control-label">Tambah Supplier</label>
+                        <a href="/datasup/inputsup"><button class="btn btn-primary" type="button">
+                                Tambah Data <i class="fas fa-plus"></i>
+                            </button></a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="nama_barang" class="control-label">Nama Barang</label>
-                    <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                    <select class="form-control" id="nama_kategori" name="nama_kategori">
-                        <option value="" disabled selected>Pilih Ketegori Barang</option>
-                        <?php foreach ($kategori as $kr) { ?>
-                            <option value="<?php echo $kr["nama_kategori"]; ?>">
-                                <?php echo $kr["nama_kategori"]; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                    <!-- mbatas option -->
-                    <div class="help-block with-errors"></div>
+                <!--nama barang -->
+                <div class="form-group row">
+                    <div class="col-sm-10 mb-3 mb-sm-0">
+                        <label for="nama" class="control-label">Nama Barang</label>
+                        <select class="form-control" id="nama_kategori" name="nama_kategori">
+                            <option value="" disabled selected>Pilih Supplier</option>
+                            <?php foreach ($kategori as $kr) { ?>
+                                <option value="<?php echo $kr["nama_kategori"]; ?>">
+                                    <?php echo $kr["nama_kategori"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <!-- mbatas option -->
+                    </div>
+                    <div class="col-sm-2 mb-3 mb-sm-0">
+                        <label for="nama" class="control-label">Tambah Barang</label>
+                        <a href="/barang/input_stok"><button class="btn btn-primary" type="button">
+                                Tambah Data <i class="fas fa-plus"></i>
+                            </button></a>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Masuk</label>
