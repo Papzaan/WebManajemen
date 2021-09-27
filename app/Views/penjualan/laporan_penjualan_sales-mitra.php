@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Penjualan Produk Sales</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Penjualan Produk Salesnya Mitra</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -22,6 +22,8 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Mitra</th>
+                            <th>Nama Sales</th>
                             <th>Nama Customer</th>
                             <th>Nama Produk</th>
                             <th>Tanggal Jual</th>
@@ -38,7 +40,9 @@
                         ?>
                             <tr id="">
                                 <td><?php echo $no++ ?></td>
+                                <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nama_salmit"] ?></td>
+                                <td><?php echo $d["nama_cussalmit"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["tgl_jual"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
