@@ -153,7 +153,7 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_mitra">Laporan Penjualan</a>
-                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_pensales_mitra">Laporan Penjualan Sales</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_salesnya_mitra">Laporan Penjualan Sales</a>
                         </div>
                     </div>
                 </li>
