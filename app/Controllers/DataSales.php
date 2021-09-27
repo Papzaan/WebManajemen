@@ -92,6 +92,27 @@ class DataSales extends BaseController
         ]);
         return redirect()->to('/datasales/tampil');
     }
+    public function edit_sales($id)
+    {
+
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $data['useredit'] = $model->edituser($id);
+        $model = new UserRegiss();
+        $data['sales'] = $model->editsales($id);
+        $data['title'] = 'Update Sales';
+        return view('sales/form_edit', $data);
+    }
     public function hapus_sales($email)
     {
         //cek apakah ada session bernama isLogin
