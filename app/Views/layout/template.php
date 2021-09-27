@@ -144,13 +144,19 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Stok</span></a>
                 </li>
-                <!-- Laporan Penjualan Mitra -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/penjualan/laporan_mitra">
+                 <!-- laporan Penjualan-->
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-book"></i>
-                        <span>Laporan Penjualan</span></a>
+                        <span>Laporan</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_mitra">Laporan Penjualan</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_pensales_mitra">Laporan Penjualan Sales</a>
+                        </div>
+                    </div>
                 </li>
-
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan/penjualan_user">
