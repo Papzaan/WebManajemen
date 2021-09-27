@@ -34,7 +34,8 @@
                         <div class="p-5">
                             <!-- tab -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Buat Akun Pegawai CV. Anugerah Semesta Lampung!</h1>
+                                <?php echo session()->getFlashdata('register_failed'); ?>
                             </div>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <?php $p = @$_GET['p']; ?>

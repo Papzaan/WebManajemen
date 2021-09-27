@@ -45,10 +45,7 @@ class Auth extends BaseController
             $data['user'] = $model->getdatadafMitra();
             return view('auth/register', $data);
         }
-        //echo view('admin/index', $data);
         return redirect()->route('/');
-        //return view('auth/login');
-        //tampilin data
     }
 
     public function valid_register()
@@ -59,47 +56,25 @@ class Auth extends BaseController
         //hash password digabung dengan salt
         $password = md5($data['password']);
         //var_dump($data['jk']);
-        //cek email udah ada atau belum
-        $emailin = $data['email'];
-        $emailout = $data;
-        //
-        if ($data['pegawai'] == 'mitra') {
-            //masukan data ke tabel user sebagai mitra
-            $this->userModel->save([
-                'email' => $data['email'],
-                'password' => $password,
-                'status' => 2
-            ]);
-            //masukan data ke tabel mitra sebagai mitra
-            $this->userRegism = new UserRegism();
-            //$this->userRegis->tambahMitra($data);
-            $this->userRegism->save([
-                'nama' => $data['nama'],
-                'nik' => $data['nik'],
-                'no_telp' => $data['no_telp'],
-                'alamat' => $data['alamat'],
-                'jenis_kelamin' => $data['jk'],
-                'email' => $data['email']
-            ]);
-            //echo "<script> alert('Username sudah ada!'); </script>";
-            //$id_user = $this->userModel->where('email',$data['email']);
-            //$data = $this->db->query("SELECT id_user FROM user WHERE email = 'email'");
-            //nyari id_user
-            /*return $this->db->table('user')
-            ->where('email',$data['email'])
-            ->get()->getResultArray();*/
-        } else if ($data['pegawai'] == 'sales') {
-            if($data['nama_mitra'] == 'admin'){
-                //masukan data ke database sebagai sales admin
+        //cek email sudah ada atau belum
+         //ambil data user di database yang usernamenya sama 
+        $user = $this->userModel->where('email', $data['email'])->first();
+        if($user){
+            //jika email sudah terdaftar
+            session()->setFlashdata('register_failed', '<div class="alert alert-danger text-center">Email sudah terpakai!</div>');
+            return redirect()->to('/auth/register');
+        }else{
+            if ($data['pegawai'] == 'mitra') {
+                //masukan data ke tabel user sebagai mitra
                 $this->userModel->save([
                     'email' => $data['email'],
                     'password' => $password,
-                    'status' => 3
+                    'status' => 2,
+                    'status' => 'non pegawai'
                 ]);
-                //masukan data ke tabel sales sebagai sales admin
-                $this->userRegiss = new UserRegiss();
-                //$this->userRegis->tambahMitra($data);
-                $this->userRegiss->save([
+                //masukan data ke tabel mitra sebagai mitra
+                $this->userRegism = new UserRegism();
+                $this->userRegism->save([
                     'nama' => $data['nama'],
                     'nik' => $data['nik'],
                     'no_telp' => $data['no_telp'],
@@ -107,31 +82,51 @@ class Auth extends BaseController
                     'jenis_kelamin' => $data['jk'],
                     'email' => $data['email']
                 ]);
-            }else{
-                
+            } else if ($data['pegawai'] == 'sales') {
+                if($data['nama_mitra'] == 'admin'){//menjadi salesnya admin
+                    //masukan data ke database sebagai sales admin
+                    $this->userModel->save([
+                        'email' => $data['email'],
+                        'password' => $password,
+                        'status' => 3,
+                        'status' => 'non pegawai'
+                    ]);
+                    //masukan data ke tabel sales sebagai sales admin
+                    $this->userRegiss = new UserRegiss();
+                    $this->userRegiss->save([
+                        'nama' => $data['nama'],
+                        'nik' => $data['nik'],
+                        'no_telp' => $data['no_telp'],
+                        'alamat' => $data['alamat'],
+                        'jenis_kelamin' => $data['jk'],
+                        'email' => $data['email']
+                    ]);
+                }else{
+                    
 
-                 //panggil id mitra berdasarkan nama mitra
-                $mitra = $data['nama_mitra'];
-                $model = new UserModel();
-                $id_mitra = $model->getidmitra($mitra);
-                //masukan data ke database sebagai sales admin
-                $this->userModel->save([
-                    'email' => $data['email'],
-                    'password' => $password,
-                    'status' => 4
-                ]);
-                //masukan data ke tabel sales sebagai sales mitra
-                $this->userRegissm = new UserRegissm();
-                //$this->userRegis->tambahMitra($data);
-                $this->userRegissm->save([
-                    'id_mitra' => $id_mitra,
-                    'nama_salmit' => $data['nama'],
-                    'nik' => $data['nik'],
-                    'no_telp' => $data['no_telp'],
-                    'alamat' => $data['alamat'],
-                    'jenis_kelamin' => $data['jk'],
-                    'email' => $data['email']
-                ]);
+                    //panggil id mitra berdasarkan nama mitra
+                    $mitra = $data['nama_mitra'];
+                    $model = new UserModel();
+                    $id_mitra = $model->getidmitra($mitra);
+                    //masukan data ke database sebagai sales admin
+                    $this->userModel->save([
+                        'email' => $data['email'],
+                        'password' => $password,
+                        'status' => 4,
+                        'status' => 'non pegawai'
+                    ]);
+                    //masukan data ke tabel sales sebagai sales mitra
+                    $this->userRegissm = new UserRegissm();
+                    $this->userRegissm->save([
+                        'id_mitra' => $id_mitra,
+                        'nama_salmit' => $data['nama'],
+                        'nik' => $data['nik'],
+                        'no_telp' => $data['no_telp'],
+                        'alamat' => $data['alamat'],
+                        'jenis_kelamin' => $data['jk'],
+                        'email' => $data['email']
+                    ]);
+                }
             }
         }
         //arahkan ke halaman login
@@ -152,30 +147,36 @@ class Auth extends BaseController
         if ($user) {
             //cek password
             //jika salah arahkan lagi ke halaman login
-            if ($user['password'] != md5($data['password'])) {
-                //session()->setFlashdata('password', 'Password salah');
-                // Set message
-                //session()->setFlashdata('login_failed', 'Email dan password salah!');
-                session()->setFlashdata('login_failed', '<div class="alert alert-danger text-center">Email dan password salah!</div>');
-                return redirect()->to('/auth/login');
-            } else {
-                //jika benar, arahkan user masuk ke aplikasi 
-                $sessLogin = [
-                    'isLogin' => true,
-                    'email' => $user['email'],
-                    'status' => $user['status']
-                ];
-                //$this->userModel->getdataMitra->insert($data);
-                $this->session->set($sessLogin);
-                if (!$this->session->set($sessLogin) == 1) {
-                    return redirect()->to('/admin');
+            if($user['status_kepegawaian'] == 'pegawai'){
+                if($user['password'] != md5($data['password'])) {
+                    //session()->setFlashdata('password', 'Password salah');
+                    // Set message
+                    //session()->setFlashdata('login_failed', 'Email dan password salah!');
+                    session()->setFlashdata('login_failed', '<div class="alert alert-danger text-center">Email dan password Anda salah!</div>');
+                    return redirect()->to('/auth/login');
                 } else {
-                    return redirect()->to('/user');
+                    //jika benar, arahkan user masuk ke aplikasi 
+                    $sessLogin = [
+                        'isLogin' => true,
+                        'email' => $user['email'],
+                        'status' => $user['status']
+                    ];
+                    //$this->userModel->getdataMitra->insert($data);
+                    $this->session->set($sessLogin);
+                    if (!$this->session->set($sessLogin) == 1) {
+                        return redirect()->to('/admin');
+                    } else {
+                        return redirect()->to('/user');
+                    }
                 }
+            }else{
+                 //jika username tidak ditemukan, balikkan ke halaman login
+                session()->setFlashdata('login_failed', '<div class="alert alert-danger text-center">Anda Belum Menjadi Pegawai!</div>');
+                return redirect()->to('/auth/login');
             }
         } else {
             //jika username tidak ditemukan, balikkan ke halaman login
-            session()->setFlashdata('email', 'Username tidak ditemukan');
+            session()->setFlashdata('login_failed', 'Username Anda tidak ditemukan');
             return redirect()->to('/auth/login');
         }
     }
