@@ -8,7 +8,7 @@ class StokModel extends Model
 {
     protected $table = "kategori";
     //protected $primaryKey = "nama_kategori";
-    protected $allowedFields = ["nama_kategori", "harga_dusan", "stok"];
+    protected $allowedFields = ["nama_kategori","harga_mitra", "harga_sales", "harga_outlet", "harga_dusan", "stok"];
     protected $useTimestamps = false;
 
 

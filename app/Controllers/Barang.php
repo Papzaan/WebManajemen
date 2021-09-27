@@ -243,7 +243,10 @@ class Barang extends BaseController
         $this->stokModel = new StokModel();
         $this->stokModel->save([
             'nama_kategori' => $data['nama_kategori'],
-            'harga_dusan' => $data['harga_dusan'],
+            'harga_mitra' => $data['harga_mitra'],
+            'harga_sales' => $data['harga_sales'],
+            'harga_outlet' => $data['harga_outlet'],
+            'harga_dusan' => $data['harga_dusan']
         ]);
         return redirect()->to('/barang/stok');
     }
