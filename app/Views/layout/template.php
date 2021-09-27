@@ -119,7 +119,7 @@
                             <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/catatan">Laporan Penjualan</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_penmitra">Laporan Penjualan Mitra</a>
                             <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_pensales">Laporan Penjualan Sales</a>
-                            <a class="collapse-item" href="#">Laporan Sales-Mitra</a>
+                            <a class="collapse-item" href="<?php echo base_url() ?>/penjualan/laporan_pensalmit">Laporan Sales-Mitra</a>
                         </div>
                     </div>
                 </li>
