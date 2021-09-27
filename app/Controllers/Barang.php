@@ -36,26 +36,6 @@ class Barang extends BaseController
 
     }
 
-    public function tampil1()
-    {
-        //cek apakah ada session bernama isLogin
-        if (!$this->session->has('isLogin')) {
-            return redirect()->to('/auth/login');
-        }
-
-        //cek role dari session
-        if ($this->session->get('status') != 1) {
-            return redirect()->to('/user');
-        }
-        $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
-        $model = new BarangModel();
-        $data['title'] = 'Barang';
-        $data['barang'] = $model->getbarang();
-        echo view('barang/lihat_data1', $data);
-        //return view('barang/databarang', $data1);
-
-    }
 
     public function input_barang()
     {
@@ -222,7 +202,8 @@ class Barang extends BaseController
         $model = new StokModel();
         $data['title'] = 'Stok Barang';
         $data['stok'] = $model->getstok();
-        return view('barang/stok', $data);
+        echo view('barang/stok', $data);
+        echo view('layout/datatable');
     }
     public function input_stok()
     {
