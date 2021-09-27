@@ -9,7 +9,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Salesnya Mitra</h1>
-
+    <?php echo session()->getFlashdata('info'); ?>
     <form class="user" method="post" action="/datasalmit/gettampil_salmit">
         <label for="selected">Pilih Mitra</label>
         <?php echo session()->getFlashdata('pilih_mitra'); ?>
@@ -46,7 +46,8 @@
                             <th>No Telpon</th>
                             <th>Alamat</th>
                             <th>jenis kelamin</th>
-                            <th>email</th>
+                            <th>Email</th>
+                            <th>Status</th>
                             <th>Aksis</th>
                         </tr>
                     </thead>
@@ -65,9 +66,20 @@
                                     <td><?php echo $d["alamat"] ?></td>
                                     <td><?php echo $d["jenis_kelamin"] ?></td>
                                     <td><?php echo $d["email"] ?></td>
-                                    <td>
-                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                    </td>
+                                    <td><?php echo $d["status_kepegawaian"] ?></td>
+                                    <?php
+                                    if ($d["status_kepegawaian"] == "non pegawai") { ?>
+                                        <td>
+                                            <a href="<?php echo base_url() ?>/datasalmit/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
+                                            <a href="<?php echo base_url() ?>/datasalmit/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        </td>
+                                    <?php } ?>
+                                    <?php
+                                    if ($d["status_kepegawaian"] == "pegawai") { ?>
+                                        <td>
+                                            <a href="<?php echo base_url() ?>/datasalmit/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php }
                         } else { ?>
@@ -84,9 +96,20 @@
                                     <td><?php echo $d["alamat"] ?></td>
                                     <td><?php echo $d["jenis_kelamin"] ?></td>
                                     <td><?php echo $d["email"] ?></td>
-                                    <td>
-                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                    </td>
+                                    <td><?php echo $d["status_kepegawaian"] ?></td>
+                                    <?php
+                                    if ($d["status_kepegawaian"] == "non pegawai") { ?>
+                                        <td>
+                                            <a href="<?php echo base_url() ?>/datasalmit/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
+                                            <a href="<?php echo base_url() ?>/datasalmit/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        </td>
+                                    <?php } ?>
+                                    <?php
+                                    if ($d["status_kepegawaian"] == "pegawai") { ?>
+                                        <td>
+                                            <a href="<?php echo base_url() ?>/datasalmit/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                         <?php }
                         } ?>

@@ -63,6 +63,60 @@ class DataSalmit extends BaseController
         //return view('barang/databarang', $data1);
         }
     }
+    //admin menyetujui salesnya mitra sebagai pegawai
+    public function terima_pegawai($email){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+           return redirect()->to('/auth/login');
+       }
+
+       //cek role dari session
+       if ($this->session->get('status') != 1) {
+           return redirect()->to('/user');
+       }
+
+       $dataupdate = [
+           'status_kepegawaian' => 'pegawai'
+       ];
+       $this->userModel = new UserModel();
+       $update = $this->userModel->terima_pegawai($dataupdate, $email);
+       // Jika berhasil melakukan ubah
+       if ($update) {
+
+           // Deklarasikan session flashdata dengan tipe info
+           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Salesnya Mitra Pegawai</div>');
+           // Redirect ke halaman product
+           return redirect()->to('/datasalmit/tampil_salmit');
+       }
+    }
+    //admin ngapus salesnya mitra
+    public function hapus_sales($email)
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        //akses ke tabel sales
+        $this->userRegissm = new UserRegissm();
+        $this->userModel = new UserModel();
+        // Memanggil function delete_salesmitra
+        $hapus = $this->userRegissm->deletesales($email);
+        $hapus = $this->userModel->deleteuser($email);
+
+
+        // Jika berhasil melakukan hapus
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
+            session()->setFlashdata('info', '<div class="alert alert-success text-center">Berhasil Menghapus Salesnya mitra</div>');
+            return redirect()->to('/datasalmit/tampil_salmit');
+        }
+    }
+    //tampil dimitra
     public function tampil()
     {
         //cek apakah ada session bernama isLogin
@@ -85,31 +139,5 @@ class DataSalmit extends BaseController
         echo view('layout/datatable');
         //return view('barang/databarang', $data1);
     }
-    public function hapus_sales($email)
-    {
-        //cek apakah ada session bernama isLogin
-        if (!$this->session->has('isLogin')) {
-            return redirect()->to('/auth/login');
-        }
-
-        //cek role dari session
-        if ($this->session->get('status') != 2) {
-            return redirect()->to('/user');
-        }
-        //akses ke tabel mitra
-        $this->userRegissm = new UserRegissm();
-        $this->userModel = new UserModel();
-        // Memanggil function delete_mitra
-        $hapus = $this->userRegissm->deletesales($email);
-        $hapus = $this->userModel->deleteuser($email);
-
-
-        // Jika berhasil melakukan hapus
-        if ($hapus) {
-            // Deklarasikan session flashdata dengan tipe warning
-            session()->setFlashdata('warning', 'Deleted product successfully');
-            // Redirect ke halaman barang
-            return redirect()->to('/datasalmit/tampil');
-        }
-    }
+    
 }

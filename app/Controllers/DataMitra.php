@@ -195,5 +195,5 @@ class DataMitra extends BaseController
            // Redirect ke halaman product
            return redirect()->to('/datamitra/tampil');
        }
-   }
+    }
 }

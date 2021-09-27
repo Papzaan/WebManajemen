@@ -70,7 +70,7 @@ class Auth extends BaseController
                     'email' => $data['email'],
                     'password' => $password,
                     'status' => 2,
-                    'status' => 'non pegawai'
+                    'status_kepegawaian' => 'non pegawai'
                 ]);
                 //masukan data ke tabel mitra sebagai mitra
                 $this->userRegism = new UserRegism();
@@ -89,7 +89,7 @@ class Auth extends BaseController
                         'email' => $data['email'],
                         'password' => $password,
                         'status' => 3,
-                        'status' => 'non pegawai'
+                        'status_kepegawaian' => 'non pegawai'
                     ]);
                     //masukan data ke tabel sales sebagai sales admin
                     $this->userRegiss = new UserRegiss();
@@ -113,7 +113,7 @@ class Auth extends BaseController
                         'email' => $data['email'],
                         'password' => $password,
                         'status' => 4,
-                        'status' => 'non pegawai'
+                        'status_kepegawaian' => 'non pegawai'
                     ]);
                     //masukan data ke tabel sales sebagai sales mitra
                     $this->userRegissm = new UserRegissm();
