@@ -36,6 +36,27 @@ class Barang extends BaseController
 
     }
 
+    public function tampil1()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new BarangModel();
+        $data['title'] = 'Barang';
+        $data['barang'] = $model->getbarang();
+        echo view('barang/lihat_data1', $data);
+        //return view('barang/databarang', $data1);
+
+    }
+
     public function input_barang()
     {
 
@@ -58,7 +79,8 @@ class Barang extends BaseController
         $model = new BarangModel();
         $data['title'] = 'Input Barang';
         $data['barang'] = $model->getbarang();
-        return view('barang/form_input', $data);
+        echo view('layout/datepicker');
+        echo view('barang/form_input', $data);
     }
     public function aksi_input()
     {

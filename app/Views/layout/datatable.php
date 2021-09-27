@@ -3,8 +3,9 @@
 <link href="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script src="<?php base_url(); ?>/assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="<?php base_url(); ?>/assets/js/jquery-3.5.1.js"></script>
-<script src="<?php base_url(); ?>/assets/js/jquery.dataTables.min.js"></script>
+<!--  -->
+<!-- <script src="<?php base_url(); ?>/assets/js/jquery-3.5.1.js"></script> -->
+<!-- <script src="<?php base_url(); ?>/assets/js/jquery.dataTables.min.js"></script> -->
 <script src="<?php base_url(); ?>/assets/js/dataTables.buttons.min.js"></script>
 <script src="<?php base_url(); ?>/assets/js/jszip.min.js"></script>
 <script src="<?php base_url(); ?>/assets/js/pdfmake.min.js"></script>
