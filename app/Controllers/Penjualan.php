@@ -171,8 +171,8 @@ class Penjualan extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         $model = new PenjualanModel();
-        $data['pensal'] = $model->getpenjualansales();
-        $data['title'] = 'Laporan Penjualan Sales';
+        $data['pensalmit'] = $model->getpenjualansalmit();
+        $data['title'] = 'Laporan Penjualan Salesnya Mitra';
         echo view('penjualan/laporan_penjualan_sales-mitra', $data);
         echo view('layout/datatable');
     }

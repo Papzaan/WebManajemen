@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Sep 2021 pada 04.09
+-- Waktu pembuatan: 27 Sep 2021 pada 06.21
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -185,6 +185,30 @@ INSERT INTO `customer_sales` (`nik_customer_sal`, `nama_cussal`, `jenis_kelamin`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `customer_salmit`
+--
+
+CREATE TABLE `customer_salmit` (
+  `nik_customer_salmit` varchar(20) NOT NULL,
+  `nama_cussalmit` varchar(25) NOT NULL,
+  `jenis_kelamin` enum('laki - laki','perempuan') NOT NULL,
+  `no_telp` varchar(16) NOT NULL,
+  `alamat` varchar(45) NOT NULL,
+  `foto_ktp` varchar(30) NOT NULL,
+  `foto_customer` varchar(30) NOT NULL,
+  `id_salmit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `customer_salmit`
+--
+
+INSERT INTO `customer_salmit` (`nik_customer_salmit`, `nama_cussalmit`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_salmit`) VALUES
+('122323445', 'jesica', 'perempuan', '08675445', 'jakarta jesica', 'jesicaktp.jpg', 'jesica.jpg', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `kategori`
 --
 
@@ -228,8 +252,7 @@ CREATE TABLE `mitra` (
 
 INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'Imam Haris syafaat', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com'),
-(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com'),
-(18, 'Purwo', '19893217974', '088928983', 'sukabumi', 'laki - laki', 'purwo@gmail.com');
+(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -288,6 +311,30 @@ INSERT INTO `penjualan_sales` (`id_penjualan`, `nik_customer_sal`, `id_sales`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `penjualan_salmit`
+--
+
+CREATE TABLE `penjualan_salmit` (
+  `id_penjualan` int(11) NOT NULL,
+  `nik_customer_salmit` varchar(20) NOT NULL,
+  `id_salmit` int(11) NOT NULL,
+  `id_stokbarmit` int(11) NOT NULL,
+  `tgl_jual` date NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `harga` varchar(30) NOT NULL,
+  `alamat_trank` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjualan_salmit`
+--
+
+INSERT INTO `penjualan_salmit` (`id_penjualan`, `nik_customer_salmit`, `id_salmit`, `id_stokbarmit`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`) VALUES
+(1, '122323445', 5, 2, '2021-09-02', 20, '30000', 'jakarta lampung');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pesanan_mitra`
 --
 
@@ -312,8 +359,8 @@ INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesa
 (2, 13, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 3, 'Cash'),
 (3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer'),
 (4, 2, 'BB+ 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
-(7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 487000, 1, 'Cash'),
-(8, 2, 'BB+ 300ml', '2021-09-24', 5, '440000', 440000, 0, 'Cash'),
+(7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 0, 2, 'Cash'),
+(8, 2, 'BB+ 300ml', '2021-09-24', 5, '440000', 0, 2, 'Cash'),
 (9, 2, 'BB+ 300ml', '2021-09-25', 10, '880000', 880000, 0, 'Transfer');
 
 -- --------------------------------------------------------
@@ -338,8 +385,7 @@ CREATE TABLE `sales` (
 
 INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
-(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa', 'laki - laki', 'reza@gmail.com'),
-(5, 'heri susanto', '1829201393131', '092020203', 'serbajadi2 lampung selatan, lampung', 'laki - laki', 'heri@gmail.com');
+(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa tengah', 'laki - laki', 'reza@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -366,7 +412,7 @@ INSERT INTO `salesnya_mitra` (`id_salmit`, `id_mitra`, `nama_salmit`, `nik`, `no
 (1, 2, 'salmit', '293029093', '082093920', 'Aceh', 'perempuan', 'salmit@gmail.com'),
 (3, 13, 'nino', '13292393', '01293833', 'indonesia nino', 'laki - laki', 'nino@gmail.com'),
 (5, 2, 'jess', '180027199271927', '08827409069', 'lampung', 'laki - laki', 'jess@gmail.com'),
-(6, 2, 'jonathan', '03484308', '080080', 'bumi', 'perempuan', 'jo@gmail.com');
+(8, 2, 'jonathan', '343243', '42432', 'jonathan jakarta barat', 'laki - laki', 'jo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -432,13 +478,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`email`, `password`, `status`, `status_kepegawaian`) VALUES
 ('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3', 'pegawai'),
-('heri@gmail.com', 'af25458116a2464f9401870dff1e11f5', '3', 'pegawai'),
 ('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2', 'pegawai'),
 ('jess@gmail.com', 'ff6ae2cda9741c0f0c03bce2b6d93af9', '4', 'pegawai'),
 ('jo@gmail.com', '54533eebc61004baa7a6f12b90785816', '4', 'pegawai'),
 ('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1', 'pegawai'),
 ('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4', 'pegawai'),
-('purwo@gmail.com', '1607fa90be0989a3c266c5dcf6bbf168', '2', 'pegawai'),
 ('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3', 'pegawai'),
 ('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4', 'pegawai'),
 ('via@gmail.com', 'e5aef89fdd6afdd63e0114c852b0f74c', '2', 'pegawai');
@@ -493,6 +537,13 @@ ALTER TABLE `customer_sales`
   ADD KEY `id_sales_2` (`id_sales`);
 
 --
+-- Indeks untuk tabel `customer_salmit`
+--
+ALTER TABLE `customer_salmit`
+  ADD PRIMARY KEY (`nik_customer_salmit`),
+  ADD KEY `id_salmit` (`id_salmit`);
+
+--
 -- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
@@ -522,6 +573,15 @@ ALTER TABLE `penjualan_sales`
   ADD KEY `id_customer` (`nik_customer_sal`),
   ADD KEY `id_sales` (`id_sales`),
   ADD KEY `id_barang` (`nama_kategori`);
+
+--
+-- Indeks untuk tabel `penjualan_salmit`
+--
+ALTER TABLE `penjualan_salmit`
+  ADD PRIMARY KEY (`id_penjualan`),
+  ADD KEY `nik_customer_salmit` (`nik_customer_salmit`),
+  ADD KEY `id_salmit` (`id_salmit`),
+  ADD KEY `id_stokbarmit` (`id_stokbarmit`);
 
 --
 -- Indeks untuk tabel `pesanan_mitra`
@@ -608,6 +668,12 @@ ALTER TABLE `penjualan_sales`
   MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `penjualan_salmit`
+--
+ALTER TABLE `penjualan_salmit`
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
 --
 ALTER TABLE `pesanan_mitra`
@@ -623,7 +689,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
 --
 ALTER TABLE `salesnya_mitra`
-  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
@@ -669,6 +735,12 @@ ALTER TABLE `customer_sales`
   ADD CONSTRAINT `customer_sales_ibfk_1` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`);
 
 --
+-- Ketidakleluasaan untuk tabel `customer_salmit`
+--
+ALTER TABLE `customer_salmit`
+  ADD CONSTRAINT `customer_salmit_ibfk_1` FOREIGN KEY (`id_salmit`) REFERENCES `salesnya_mitra` (`id_salmit`);
+
+--
 -- Ketidakleluasaan untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
@@ -689,6 +761,14 @@ ALTER TABLE `penjualan_sales`
   ADD CONSTRAINT `penjualan_sales_ibfk_2` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`),
   ADD CONSTRAINT `penjualan_sales_ibfk_4` FOREIGN KEY (`nik_customer_sal`) REFERENCES `customer_sales` (`nik_customer_sal`),
   ADD CONSTRAINT `penjualan_sales_ibfk_5` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori` (`nama_kategori`);
+
+--
+-- Ketidakleluasaan untuk tabel `penjualan_salmit`
+--
+ALTER TABLE `penjualan_salmit`
+  ADD CONSTRAINT `penjualan_salmit_ibfk_1` FOREIGN KEY (`id_stokbarmit`) REFERENCES `stok_barang_mitra` (`id_stokbarmit`),
+  ADD CONSTRAINT `penjualan_salmit_ibfk_2` FOREIGN KEY (`nik_customer_salmit`) REFERENCES `customer_salmit` (`nik_customer_salmit`),
+  ADD CONSTRAINT `penjualan_salmit_ibfk_3` FOREIGN KEY (`id_salmit`) REFERENCES `salesnya_mitra` (`id_salmit`);
 
 --
 -- Ketidakleluasaan untuk tabel `pesanan_mitra`
