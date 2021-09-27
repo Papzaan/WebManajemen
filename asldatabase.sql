@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Sep 2021 pada 06.21
+-- Waktu pembuatan: 27 Sep 2021 pada 06.56
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -204,7 +204,8 @@ CREATE TABLE `customer_salmit` (
 --
 
 INSERT INTO `customer_salmit` (`nik_customer_salmit`, `nama_cussalmit`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_salmit`) VALUES
-('122323445', 'jesica', 'perempuan', '08675445', 'jakarta jesica', 'jesicaktp.jpg', 'jesica.jpg', 5);
+('122323445', 'jesica', 'perempuan', '08675445', 'jakarta jesica', 'jesicaktp.jpg', 'jesica.jpg', 5),
+('23323323', 'nanonano', 'laki - laki', '32423424', 'nano lampung', 'nanoktp.jpg', 'nano.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -298,15 +299,16 @@ CREATE TABLE `penjualan_sales` (
   `tgl_jual` date NOT NULL,
   `jumlah` int(10) NOT NULL,
   `harga` varchar(30) NOT NULL,
-  `alamat_trank` varchar(45) NOT NULL
+  `alamat_trank` varchar(45) NOT NULL,
+  `status` enum('lunas','belum lunas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `penjualan_sales`
 --
 
-INSERT INTO `penjualan_sales` (`id_penjualan`, `nik_customer_sal`, `id_sales`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`) VALUES
-(1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua');
+INSERT INTO `penjualan_sales` (`id_penjualan`, `nik_customer_sal`, `id_sales`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
+(1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -322,15 +324,17 @@ CREATE TABLE `penjualan_salmit` (
   `tgl_jual` date NOT NULL,
   `jumlah` int(10) NOT NULL,
   `harga` varchar(30) NOT NULL,
-  `alamat_trank` varchar(45) NOT NULL
+  `alamat_trank` varchar(45) NOT NULL,
+  `status` enum('lunas','belum lunas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `penjualan_salmit`
 --
 
-INSERT INTO `penjualan_salmit` (`id_penjualan`, `nik_customer_salmit`, `id_salmit`, `id_stokbarmit`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`) VALUES
-(1, '122323445', 5, 2, '2021-09-02', 20, '30000', 'jakarta lampung');
+INSERT INTO `penjualan_salmit` (`id_penjualan`, `nik_customer_salmit`, `id_salmit`, `id_stokbarmit`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
+(1, '122323445', 5, 2, '2021-09-02', 20, '30000', 'jakarta lampung', 'lunas'),
+(2, '23323323', 3, 3, '2021-09-01', 30, '500000', 'jakarta nano', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -671,7 +675,7 @@ ALTER TABLE `penjualan_sales`
 -- AUTO_INCREMENT untuk tabel `penjualan_salmit`
 --
 ALTER TABLE `penjualan_salmit`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
