@@ -56,7 +56,6 @@
                         if (isset($_POST['id_mitra'])) {
                             $no = 1;
                             foreach ($sales as $d) {
-                                //if($id_mitra == $d["id_salmit"]){
                         ?>
                                 <tr id="<?php echo $d["id_salmit"] ?>">
                                     <td><?php echo $no++ ?></td>
