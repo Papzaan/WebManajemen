@@ -84,7 +84,7 @@ class DataSalmit extends BaseController
        if ($update) {
 
            // Deklarasikan session flashdata dengan tipe info
-           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Salesnya Mitra Pegawai</div>');
+           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Salesnya Mitra Sebagai Pegawai</div>');
            // Redirect ke halaman product
            return redirect()->to('/datasalmit/tampil_salmit');
        }

@@ -53,8 +53,8 @@
                                 <?php
                                 if ($d["status_kepegawaian"] == "non pegawai") { ?>
                                     <td>
-                                    <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
-                                            <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                    <a href="<?php echo base_url() ?>/datasales/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
+                                            <a href="<?php echo base_url() ?>/datasales/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                     </td>
                                 <?php } ?>
                                 <?php

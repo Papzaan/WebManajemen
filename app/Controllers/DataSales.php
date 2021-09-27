@@ -92,6 +92,31 @@ class DataSales extends BaseController
         ]);
         return redirect()->to('/datasales/tampil');
     }
+    public function terima_pegawai($email){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+           return redirect()->to('/auth/login');
+       }
+
+       //cek role dari session
+       if ($this->session->get('status') != 1) {
+           return redirect()->to('/user');
+       }
+
+       $dataupdate = [
+           'status_kepegawaian' => 'pegawai'
+       ];
+       $this->userModel = new UserModel();
+       $update = $this->userModel->terima_pegawai($dataupdate, $email);
+       // Jika berhasil melakukan ubah
+       if ($update) {
+
+           // Deklarasikan session flashdata dengan tipe info
+           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Sales sebagai Pegawai</div>');
+           // Redirect ke halaman product
+           return redirect()->to('/datasales/tampil');
+       }
+    }
     public function edit_sales($id)
     {
 
