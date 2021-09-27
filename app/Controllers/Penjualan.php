@@ -139,7 +139,7 @@ class Penjualan extends BaseController
         echo view('layout/datatable');
     }
     public function laporan_pensales()
-    {
+    {//penjualan sales admin
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -157,8 +157,27 @@ class Penjualan extends BaseController
         echo view('penjualan/laporan_penjualan_sales', $data);
         echo view('layout/datatable');
     }
+    public function laporan_pensalmit()
+    {//penjualan sales admin
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new PenjualanModel();
+        $data['pensal'] = $model->getpenjualansales();
+        $data['title'] = 'Laporan Penjualan Sales';
+        echo view('penjualan/laporan_penjualan_sales-mitra', $data);
+        echo view('layout/datatable');
+    }
     public function penjualan_user()
-    {
+    {//penjualan sales dan mitranya admin, saat mereka login
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
