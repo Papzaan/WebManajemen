@@ -139,7 +139,7 @@ class DataMitra extends BaseController
         // Jika berhasil melakukan ubah
         if ($update) {
             // Deklarasikan session flashdata dengan tipe info
-            echo session()->setFlashdata('info', 'Updated barang successfully');
+            echo session()->setFlashdata('info', 'Update Pegawai Sukses');
             // Redirect ke halaman product
             return redirect()->to('/datamitra/tampil');
         }
@@ -166,9 +166,34 @@ class DataMitra extends BaseController
         // Jika berhasil melakukan hapus
         if ($hapus) {
             // Deklarasikan session flashdata dengan tipe warning
-            session()->setFlashdata('warning', 'Deleted product successfully');
+            session()->setFlashdata('info', 'Berhasil Menghapus Pegawai');
             // Redirect ke halaman barang
             return redirect()->to('/datamitra/tampil');
         }
     }
+    public function terima_pegawai($email){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+           return redirect()->to('/auth/login');
+       }
+
+       //cek role dari session
+       if ($this->session->get('status') != 1) {
+           return redirect()->to('/user');
+       }
+
+       $dataupdate = [
+           'status_kepegawaian' => 'pegawai'
+       ];
+       $this->userModel = new UserModel();
+       $update = $this->userModel->terima_pegawai($dataupdate, $email);
+       // Jika berhasil melakukan ubah
+       if ($update) {
+
+           // Deklarasikan session flashdata dengan tipe info
+           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Pegawai Mitra</div>');
+           // Redirect ke halaman product
+           return redirect()->to('/datamitra/tampil');
+       }
+   }
 }

@@ -6,8 +6,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Mitra</h1>
-
+    <h1 class="h3 mb-2 text-gray-800">Data Mitra</h1>
+    <?php echo session()->getFlashdata('info'); ?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -28,6 +28,7 @@
                             <th>Alamat</th>
                             <th>jenis kelamin</th>
                             <th>email</th>
+                            <th>Status</th>
                             <th>Aksis</th>
                         </tr>
                     </thead>
@@ -45,10 +46,21 @@
                                 <td><?php echo $d["alamat"] ?></td>
                                 <td><?php echo $d["jenis_kelamin"] ?></td>
                                 <td><?php echo $d["email"] ?></td>
-                                <td>
-                                    <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                </td>
+                                <td><?php echo $d["status_kepegawaian"] ?></td>
+                                <?php
+                                if ($d["status_kepegawaian"] == "non pegawai") { ?>
+                                    <td>
+                                    <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
+                                            <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                    </td>
+                                <?php } ?>
+                                <?php
+                                if ($d["status_kepegawaian"] == "pegawai") { ?>
+                                    <td>
+                                        <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                            <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
 

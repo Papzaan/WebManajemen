@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2021 pada 08.45
+-- Waktu pembuatan: 27 Sep 2021 pada 04.09
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -101,7 +101,10 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `nik_customer`, `nama_kateg
 (11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
 (14, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
-(15, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Lampung Tengah', 'lunas');
+(15, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Lampung Tengah', 'lunas'),
+(16, 2, '1928293938', 'BB+ 300ml', '2021-09-22', 9, '1512000', 'serbajadi', 'lunas'),
+(17, 2, '1802010101', 'Nanoxy 300ml', '2021-09-23', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
+(18, 2, '325346546', 'BB+ 300ml', '2021-09-23', 2, '336000', 'bogor, jawa', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -126,6 +129,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`nik_customer`, `nama`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`) VALUES
 ('1802010101', 'farida', 'perempuan', '088812234344', 'jakarta selatan', 'faridaktp.jpg', 'farida.jpg'),
 ('1928293938', 'Asril Rinaldi', 'laki - laki', '0982838392', 'palembang', 'fotoktpasril.jpg', 'fotoasril.jpg'),
+('29203093092039', 'hamzah', 'laki - laki', '082028038', 'jakarta selatan', 'fotoktphamzah.jpg', 'fotohamzah.jpg'),
 ('325346546', 'lili', 'laki - laki', '07665456', 'metro', 'fotoktplili.jpg', 'fotolili.jpg');
 
 -- --------------------------------------------------------
@@ -151,7 +155,8 @@ CREATE TABLE `customer_mitra` (
 
 INSERT INTO `customer_mitra` (`nik_customer_mit`, `nama_cusmit`, `jenis_kelamin`, `no_telp`, `alamat`, `foto_ktp`, `foto_customer`, `id_mitra`) VALUES
 ('1234567899', 'liam', 'perempuan', '089928393898', 'rrq', 'ktpliam.jpg', 'liam.jpg', 2),
-('2222223322', 'faris', 'laki - laki', '0829289344', 'banten', 'ktpfaris.jpg', 'faris.jpg', 13);
+('2222223322', 'faris', 'laki - laki', '0829289344', 'banten', 'ktpfaris.jpg', 'faris.jpg', 13),
+('2391801948', 'Toni', 'laki - laki', '02903802830', 'banjar masin', 'fotoktptoni.jpg', 'fototoni.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -197,8 +202,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('BB+ 300ml', '168000', 49, '88000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 91, '63000', '69000', '76000'),
+('BB+ 300ml', '168000', 20, '88000', '118000', '138000'),
+('Nanoxy 300ml', '96000', 80, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
 -- --------------------------------------------------------
@@ -240,16 +245,21 @@ CREATE TABLE `penjualan_mitra` (
   `jumlah` int(10) NOT NULL,
   `tgl_jual` date NOT NULL,
   `harga` int(30) NOT NULL,
-  `alamat_trank` varchar(45) NOT NULL
+  `alamat_trank` varchar(45) NOT NULL,
+  `status` enum('lunas','belum lunas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `penjualan_mitra`
 --
 
-INSERT INTO `penjualan_mitra` (`id_penjumit`, `id_mitra`, `nik_customer_mit`, `id_stokbarmit`, `jumlah`, `tgl_jual`, `harga`, `alamat_trank`) VALUES
-(1, 2, '1234567899', 2, 20, '2021-09-02', 500000, 'jakarta'),
-(2, 13, '2222223322', 2, 20, '2021-09-02', 500000, 'banten');
+INSERT INTO `penjualan_mitra` (`id_penjumit`, `id_mitra`, `nik_customer_mit`, `id_stokbarmit`, `jumlah`, `tgl_jual`, `harga`, `alamat_trank`, `status`) VALUES
+(1, 2, '1234567899', 2, 20, '2021-09-02', 500000, 'jakarta', 'lunas'),
+(2, 13, '2222223322', 2, 20, '2021-09-02', 500000, 'banten', 'lunas'),
+(4, 2, '1234567899', 2, 3, '2021-09-23', 504000, 'karang', 'lunas'),
+(5, 2, '1234567899', 2, 3, '2021-09-23', 504000, 'karang', 'lunas'),
+(6, 2, '2391801948', 4, 10, '2021-09-23', 960000, 'Serang, Banten, Jawa', 'lunas'),
+(7, 2, '1234567899', 2, 2, '2021-09-24', 336000, 'MGL', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -300,7 +310,11 @@ CREATE TABLE `pesanan_mitra` (
 INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesan`, `jumlah`, `harga`, `utang`, `bayar`, `met_bayar`) VALUES
 (1, 2, 'BB+ 300ml', '2021-09-01', 20, '50000', 0, 1, 'Cash'),
 (2, 13, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 3, 'Cash'),
-(3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer');
+(3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer'),
+(4, 2, 'BB+ 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
+(7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 487000, 1, 'Cash'),
+(8, 2, 'BB+ 300ml', '2021-09-24', 5, '440000', 440000, 0, 'Cash'),
+(9, 2, 'BB+ 300ml', '2021-09-25', 10, '880000', 880000, 0, 'Transfer');
 
 -- --------------------------------------------------------
 
@@ -351,7 +365,8 @@ CREATE TABLE `salesnya_mitra` (
 INSERT INTO `salesnya_mitra` (`id_salmit`, `id_mitra`, `nama_salmit`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (1, 2, 'salmit', '293029093', '082093920', 'Aceh', 'perempuan', 'salmit@gmail.com'),
 (3, 13, 'nino', '13292393', '01293833', 'indonesia nino', 'laki - laki', 'nino@gmail.com'),
-(5, 2, 'jess', '180027199271927', '08827409069', 'lampung', 'laki - laki', 'jess@gmail.com');
+(5, 2, 'jess', '180027199271927', '08827409069', 'lampung', 'laki - laki', 'jess@gmail.com'),
+(6, 2, 'jonathan', '03484308', '080080', 'bumi', 'perempuan', 'jo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -371,9 +386,9 @@ CREATE TABLE `stok_barang_mitra` (
 --
 
 INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
-(2, 2, 'BB+ 300ml', 20),
+(2, 2, 'BB+ 300ml', 30),
 (3, 13, 'Nanoxy 500ml', 30),
-(4, 2, 'Nanoxy 300ml', 40),
+(4, 2, 'Nanoxy 300ml', 39),
 (5, 2, 'Nanoxy 500ml', 25);
 
 -- --------------------------------------------------------
@@ -407,24 +422,26 @@ INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
 CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` enum('1','2','3','4') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales, 4=salmit'
+  `status` enum('1','2','3','4') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales, 4=salmit',
+  `status_kepegawaian` enum('pegawai','non pegawai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`email`, `password`, `status`) VALUES
-('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3'),
-('heri@gmail.com', 'af25458116a2464f9401870dff1e11f5', '3'),
-('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2'),
-('jess@gmail.com', 'ff6ae2cda9741c0f0c03bce2b6d93af9', '4'),
-('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1'),
-('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4'),
-('purwo@gmail.com', '1607fa90be0989a3c266c5dcf6bbf168', '2'),
-('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3'),
-('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4'),
-('via@gmail.com', 'e5aef89fdd6afdd63e0114c852b0f74c', '2');
+INSERT INTO `user` (`email`, `password`, `status`, `status_kepegawaian`) VALUES
+('aansanova@gmail.com', '84c1429608e310ce25524b29c4027934', '3', 'pegawai'),
+('heri@gmail.com', 'af25458116a2464f9401870dff1e11f5', '3', 'pegawai'),
+('imamharis@gmail.com', '4ec5bd0e06c9aeb02bec530ac3ad617d', '2', 'pegawai'),
+('jess@gmail.com', 'ff6ae2cda9741c0f0c03bce2b6d93af9', '4', 'pegawai'),
+('jo@gmail.com', '54533eebc61004baa7a6f12b90785816', '4', 'pegawai'),
+('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1', 'pegawai'),
+('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4', 'pegawai'),
+('purwo@gmail.com', '1607fa90be0989a3c266c5dcf6bbf168', '2', 'pegawai'),
+('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3', 'pegawai'),
+('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4', 'pegawai'),
+('via@gmail.com', 'e5aef89fdd6afdd63e0114c852b0f74c', '2', 'pegawai');
 
 --
 -- Indexes for dumped tables
@@ -570,7 +587,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -582,7 +599,7 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
-  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_sales`
@@ -594,7 +611,7 @@ ALTER TABLE `penjualan_sales`
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
 --
 ALTER TABLE `pesanan_mitra`
-  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `sales`
@@ -606,7 +623,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
 --
 ALTER TABLE `salesnya_mitra`
-  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_salmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`

@@ -25,8 +25,5 @@ class User extends BaseController
         }else if($this->session->get('status') == 4){
             return redirect()->to('/salesnyamitra');
         }
-
-       // return view('user/index');
     }
-    
 }

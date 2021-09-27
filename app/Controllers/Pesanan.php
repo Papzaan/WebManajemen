@@ -45,8 +45,7 @@ class Pesanan extends BaseController
         }
         //tangkap data dari form 
         $data = $this->request->getPost();
-
-        //akses ke tabel pesanan mitra/sales
+        
         //panggil model stok
         $this->pesananModel = new PesananModel();
         //panggil stok berdasarkan nama kategori

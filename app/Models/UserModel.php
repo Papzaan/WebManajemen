@@ -75,6 +75,12 @@ class UserModel extends Model
         ->where('status',['status' => 2])
         ->get()->getResultArray();  
     }
+    public function terima_pegawai($dataupdate, $email){
+      $session = session();
+      $data = $session->get('email');
+      return $this->db->table('user')
+          ->update($dataupdate, ['email' => $email]);
+    }
     public function tampilsales(){
       $session = session();
       $data = $session->get('email');
