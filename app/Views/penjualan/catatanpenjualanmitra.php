@@ -12,7 +12,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTableCatatanPenjualan" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTableCatatanPenjualanMitra" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -27,23 +27,23 @@
                     </thead>
 
                     <tbody>
-                        
+
                         <?php
-                            $no = 1;
-                            foreach ($penmit as $d) {
-                            ?>
-                                <tr id="">
-                                    <td><?php echo $no++ ?></td>
-                                    <td><?php echo $d["nama"] ?></td>
-                                    <td><?php echo $d["nama_cusmit"] ?></td>
-                                    <td><?php echo $d["nama_kategori"] ?></td>
-                                    <td><?php echo $d["tgl_jual"] ?></td>
-                                    <td><?php echo $d["jumlah"] ?></td>
-                                    <td><?php echo $d["harga"] ?></td>
-                                    <td><?php echo $d["alamat_trank"] ?></td>
-                                </tr>
-                            <?php } ?>
-                        
+                        $no = 1;
+                        foreach ($penmit as $d) {
+                        ?>
+                            <tr id="">
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_cusmit"] ?></td>
+                                <td><?php echo $d["nama_kategori"] ?></td>
+                                <td><?php echo $d["tgl_jual"] ?></td>
+                                <td><?php echo $d["jumlah"] ?></td>
+                                <td><?php echo $d["harga"] ?></td>
+                                <td><?php echo $d["alamat_trank"] ?></td>
+                            </tr>
+                        <?php } ?>
+
                     </tbody>
                 </table>
             </div>
