@@ -20,38 +20,6 @@
                     </div>
                     <div class="help-block with-errors"></div>
                 </div>
-                <div class="form-group">
-                    <label for="no_tlp" class="control-label">Harga Mitra</label>
-                    <div class="input-group">
-                        <input type="text" name="harga_mitra" id="harga_mitra" data-error="No Telpon harus di isi" class="form-control" placeholder="Harga Perkarton" required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="no_tlp" class="control-label">Harga Sales</label>
-                    <div class="input-group">
-                        <input type="text" name="harga_sales" id="harga_sales" data-error="No Telpon harus di isi" class="form-control" placeholder="Harga Perkarton" required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="no_tlp" class="control-label">Harga Outlet</label>
-                    <div class="input-group">
-                        <input type="text" name="harga_outlet" id="harga_outlet" data-error="No Telpon harus di isi" class="form-control" placeholder="Harga Perkarton" required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="no_tlp" class="control-label">Harga Customer</label>
-                    <div class="input-group">
-                        <input type="text" name="harga_dusan" id="harga_dusan" data-error="No Telpon harus di isi" class="form-control" placeholder="Harga Perkarton" required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
                     <a href="<?php echo base_url() ?>/barang/stok" class="btn btn-default ">Cancel</a>

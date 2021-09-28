@@ -51,7 +51,7 @@
                                 <td><?php echo $d['stok'] ?></td>
                                 <td>
                                     <a href="<?php echo base_url() ?>/barang/edit_stok/<?php echo $d["nama_kategori"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        <a href="<?php echo base_url() ?>/barang/hapus_stok/<?php echo $d["nama_kategori"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                 </td>
                             </tr>
                         <?php } ?>

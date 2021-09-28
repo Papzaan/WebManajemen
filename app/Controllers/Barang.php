@@ -267,6 +267,21 @@ class Barang extends BaseController
              return redirect()->to('/barang/stok');
          }
     }
+    public function hapus_stok($id)
+    {
+        //akses ke tabel barang
+        $this->stokModel = new StokModel();
+        // Memanggil function delete_barang
+        $hapus = $this->stokModel->deletestok($id);
+
+        // Jika berhasil melakukan hapus
+        if ($hapus) {
+            // Deklarasikan session flashdata dengan tipe warning
+            session()->setFlashdata('warning', 'Deleted Barang sukses');
+            // Redirect ke halaman barang
+            return redirect()->to('/barang/stok');
+        }
+    }
     public function input_stok()
     {
 
@@ -305,10 +320,10 @@ class Barang extends BaseController
         $this->stokModel = new StokModel();
         $this->stokModel->save([
             'nama_kategori' => $data['nama_kategori'],
-            'harga_mitra' => $data['harga_mitra'],
-            'harga_sales' => $data['harga_sales'],
-            'harga_outlet' => $data['harga_outlet'],
-            'harga_dusan' => $data['harga_dusan']
+            'harga_mitra' => '0',
+            'harga_sales' => '0',
+            'harga_outlet' => '0',
+            'harga_dusan' => '0'
         ]);
         return redirect()->to('/barang/stok');
     }

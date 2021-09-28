@@ -36,6 +36,10 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->update($dataupdate, ['nama_kategori' => $id]);
     }
+    public function deletestok($id){
+        return $this->db->table('kategori')
+            ->delete(['nama_kategori' => $id]);
+    }
     public function editstokju($kate)
     {
         $session = session();
@@ -50,11 +54,6 @@ class StokModel extends Model
         $data = $session->get('email');
         return $this->db->table('kategori')
             ->update($dataupdate, ['nama_kategori' => $kat]);
-    }
-    public function deletestok($id)
-    {
-        return $this->db->table('kategori')
-            ->delete(['id_barang' => $id]);
     }
     public function getstokadmin()
     {
