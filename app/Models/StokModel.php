@@ -34,7 +34,7 @@ class StokModel extends Model
         $session = session();
         $data = $session->get('email');
         return $this->db->table('kategori')
-            ->update($dataupdate, ['id_barang' => $id]);
+            ->update($dataupdate, ['nama_kategori' => $id]);
     }
     public function editstokju($kate)
     {

@@ -10,7 +10,7 @@
             <h3 class='box-title'>Edit Data Barang</h3>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/barang/aksi_updatestok">
+            <form class="user" method="post" action="/barang/update_stok">
             <?php foreach ($edit_stok as $d) { ?>
                 <div class="form-group">
                     <label for="nama" class="control-label">Nama Barang</label>
@@ -49,6 +49,14 @@
                     <label for="no_tlp" class="control-label">Harga Customer</label>
                     <div class="input-group">
                         <input type="text" name="harga_dusan" id="harga_dusan" data-error="No Telpon harus di isi" value="<?php echo $d["harga_dusan"] ?>" class="form-control" required>
+                        <span class="input-group-addon">
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="no_tlp" class="control-label">Stok Barang</label>
+                    <div class="input-group">
+                        <input type="text" name="stok" id="stok" data-error="No Telpon harus di isi" value="<?php echo $d["stok"] ?>" class="form-control" required>
                         <span class="input-group-addon">
                         </span>
                     </div>

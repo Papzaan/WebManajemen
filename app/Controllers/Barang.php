@@ -231,10 +231,41 @@ class Barang extends BaseController
         $data['user'] = $model->getdataAdmin();
         $model = new StokModel();
         $data['edit_stok'] = $model->edit_stok($id);
-        var_dump($id);
-        var_dump($data['edit_stok']);
         $data['title'] = 'Update Stok Barang';
         return view('barang/edit_stok', $data);
+    }
+    public function update_stok(){
+         //cek apakah ada session bernama isLogin
+         if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+         //tangkap data dari form 
+         $data = $this->request->getPost();
+
+         //akses ke tabel barang
+         $this->stokModel = new StokModel();
+         $dataupdate = [
+             'nama_kategori' => $data['nama_kategori'],
+             'harga_mitra' => $data['harga_mitra'],
+             'harga_sales' => $data['harga_sales'],
+             'harga_outlet' => $data['harga_outlet'],
+             'harga_dusan' => $data['harga_dusan'],
+             'stok' => $data['stok']
+         ];
+         $id = $data['nama_kategori'];
+         $update = $this->stokModel->updatestok($dataupdate, $id);
+         // Jika berhasil melakukan ubah
+         if ($update) {
+             // Deklarasikan session flashdata dengan tipe info
+             echo session()->setFlashdata('info', 'Updated barang successfully');
+             // Redirect ke halaman product
+             return redirect()->to('/barang/stok');
+         }
     }
     public function input_stok()
     {
