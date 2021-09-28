@@ -42,7 +42,8 @@ class Admin extends BaseController
         $data['tot_pen_admin'] = $model->gettotalpenjualan_admin();
         $data['tot_pen_mitra'] = $model->gettotalpenjualan_mitra();
         $data['tot_pen_sales'] = $model->gettotalpenjualan_sales();
-        $data['total_penjualan'] = $data['tot_pen_admin'] + $data['tot_pen_mitra'] + $data['tot_pen_sales'];
+        $data['tot_pen_salmit'] = $model->gettotalpenjualan_salmit();
+        $data['total_penjualan'] = $data['tot_pen_admin'] + $data['tot_pen_mitra'] + $data['tot_pen_sales'] + $data['tot_pen_salmit'];
         //var_dump($totalpenjualan);
         echo view('admin/index', $data);
         echo view('layout/chart-pie');

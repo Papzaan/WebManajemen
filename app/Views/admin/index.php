@@ -237,9 +237,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">Total Penjualan</h5>
                                 <h5 class="card-title">Salesnya Mitra</h5>
-                                <p class="card-text"><b><?= $tot_pen_sales; ?></b> </p>
-                                <a class="nav-link" href="#">
-                                <button class="btn btn-success"type="button">belum di ada kodingan</button></a>
+                                <p class="card-text"><b><?= $tot_pen_salmit; ?></b> </p>
+                                <a class="nav-link" href="/penjualan/laporan_pensalmit">
+                                <button class="btn btn-success"type="button">Lihat</button></a>
                             </div>
                         </div>
                     </div>
