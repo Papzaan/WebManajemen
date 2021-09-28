@@ -32,6 +32,8 @@ class Sales extends BaseController
         $data['title'] = 'Sales';
         $model = new StokModel();
         $data['kategori'] = $model->getstok();
+        $data['tot_pen_sales'] = $model->gettotalpenjualansales();
+        //var_dump($data['tot_pen_sales']);
         echo view('sales/index', $data);
         echo view('layout/chart-pie-sales');
         echo view('layout/chart-bar-sales');

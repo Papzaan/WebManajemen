@@ -106,6 +106,16 @@ class StokModel extends Model
         $dataa = $data1->getRowArray();
         return $dataa['SUM(jumlah)'];
     }
+    public function gettotalpenjualansales()
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('penjualan_sales')
+        ->join('sales','sales.id_sales=penjualan_sales.id_sales')
+        ->selectSum('penjualan_sales.jumlah')
+        ->where('sales.email',['email'=>$data])
+        ->get()->getRowArray();
+    }
     public function gettotalpenjualan_salmit()
     {
         $session = session();

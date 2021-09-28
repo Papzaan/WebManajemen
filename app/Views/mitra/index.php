@@ -173,9 +173,7 @@
               <div class="card-body">
                 <h5 class="card-title">Total Penjualan</h5>
                 <h5 class="card-title">Sales</h5>
-                
                 <p class="card-text"><b><?=  $tot_pen_salmit['jumlah']; ?></b> </p>
-                
                 <a class="nav-link" href="/penjualan/laporan_salesnya_mitra">
                   <button class="btn btn-success" type="button">Lihat</button></a>
               </div>
