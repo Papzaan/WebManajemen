@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\UserCustomer;
 use App\Models\UserCustomerMitra;
+use App\Models\UserCustomerSales;
 
 class DataCus extends BaseController
 {
@@ -72,21 +73,32 @@ class DataCus extends BaseController
         ]);
         return redirect()->to('/penjualan');
     }
-    public function inputcusmit(){
+    public function inputcustomer(){
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
 
         //cek role dari session
-        if ($this->session->get('status') != 2) {
+        if ($this->session->get('status') == 2) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataMitra();
+            $data['title'] = 'Tambah Customer Mitra';
+            return view('customer/tambah_customer_mitra', $data);
+        }else 
+        if($this->session->get('status') == 3){
+            $model = new UserModel();
+            $data['user'] = $model->getdataSales();
+            $data['title'] = 'Tambah Customer Sales';
+            return view('customer/tambah_customer_sales', $data);
+        }else
+        if($this->session->get('status') == 4){
+        
+        }else{
             return redirect()->to('/user');
         }
 
-        $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
-        $data['title'] = 'Tambah Customer Mitra';
-        return view('customer/tambah_customer_mitra', $data);
+        
     }
     public function aksitambahcusmit(){
         //cek apakah ada session bernama isLogin
@@ -110,6 +122,30 @@ class DataCus extends BaseController
            'alamat' => $data['alamat'],
            'id_mitra' => $data['id_mitra']
        ]);
-       return redirect()->to('/penjualan/laporan_mitra');
+       return redirect()->to('/penjualan/penjualan_user');
    }
+   public function aksitambahcussal(){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+        return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 3) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //input ke tabel barang
+        $this->userCustomerSales = new UserCustomerSales();
+        $this->userCustomerSales->save([
+            'no_telp_customer_sal' => $data['no_telp_customer_sal'],
+            'nama_cussal' => $data['nama'],
+            'jenis_kelamin' => $data['jk'],
+            'alamat' => $data['alamat'],
+            'id_sales' => $data['id_sales']
+        ]);
+        return redirect()->to('/penjualan/penjualan_user');
+    }
 }
