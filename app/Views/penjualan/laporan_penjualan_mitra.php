@@ -18,6 +18,7 @@
                             <th>No.</th>
                             <th>Nama Mitra</th>
                             <th>Nama Customer</th>
+                            <th>Nomer Telepone</th>
                             <th>Nama Produk</th>
                             <th>Tanggal Jual</th>
                             <th>Jumlah</th>
@@ -36,6 +37,7 @@
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nama_cusmit"] ?></td>
+                                <td><?php echo $d["no_telp_customer_mit"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["tgl_jual"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
