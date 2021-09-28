@@ -215,7 +215,7 @@
                         <span>Penjualan</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/penjualan/laporan_sales_mitra">
                         <i class="fas fa-fw fa-clipboard-list"></i>
                         <span>Catatan Penjualan Sales</span></a>
                 </li>
