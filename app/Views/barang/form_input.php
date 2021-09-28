@@ -72,7 +72,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="harga" class="control-label">Harga</label>
+                    <label for="harga" class="control-label">Harga Perkarton</label>
+                    <div class="input-group">
+                        <input type="text" name="harga_karton" id="harga_karton" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
+                        <span class="input-group-addon">
+                        </span>
+                        </span>
+                    </div>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
                         <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
                         <span class="input-group-addon">
