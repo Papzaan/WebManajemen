@@ -10,12 +10,6 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="<?php echo base_url() ?>/Penjualan"><button class="btn btn-primary float-right" type="button">
-                    Tambah Data <i class="fas fa-plus"></i>
-                </button></a>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTableCatatanPenjualanSalmit" width="100%" cellspacing="0">
@@ -25,6 +19,7 @@
                             <th>Mitra</th>
                             <th>Nama Sales</th>
                             <th>Nama Customer</th>
+                            <th>Nomer Telepone</th>
                             <th>Nama Produk</th>
                             <th>Tanggal Jual</th>
                             <th>Jumlah</th>
@@ -43,6 +38,7 @@
                                 <td><?php echo $d["nama"] ?></td>
                                 <td><?php echo $d["nama_salmit"] ?></td>
                                 <td><?php echo $d["nama_cussalmit"] ?></td>
+                                <td><?php echo $d["no_telp_customer_salmit"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["tgl_jual"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
