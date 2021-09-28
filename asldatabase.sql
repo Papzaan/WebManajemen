@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Sep 2021 pada 03.36
+-- Waktu pembuatan: 28 Sep 2021 pada 09.17
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -174,6 +174,8 @@ CREATE TABLE `customer_sales` (
 --
 
 INSERT INTO `customer_sales` (`no_telp_customer_sal`, `nama_cussal`, `jenis_kelamin`, `alamat`, `id_sales`) VALUES
+('0809293009', 'aldous', 'laki - laki', 'sumatra utara', 2),
+('09843024', 'rio', 'laki - laki', 'papua newginie', 3),
 ('242342342', 'jhon', 'laki - laki', 'sulawesi', 2);
 
 -- --------------------------------------------------------
@@ -218,9 +220,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('baju', '60000', 0, '30000', '40000', '45000'),
-('BB+ 300ml', '168000', 18, '88000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 80, '63000', '69000', '76000'),
+('BB+ 300ml', '168000', 16, '88000', '118000', '138000'),
+('Nanoxy 300ml', '96000', 60, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
 -- --------------------------------------------------------
@@ -276,7 +277,8 @@ INSERT INTO `penjualan_mitra` (`id_penjumit`, `id_mitra`, `no_telp_customer_mit`
 (5, 2, '1234567899', 2, 3, '2021-09-23', 504000, 'karang', 'lunas'),
 (6, 2, '2391801948', 4, 10, '2021-09-23', 960000, 'Serang, Banten, Jawa', 'lunas'),
 (7, 2, '1234567899', 2, 2, '2021-09-24', 336000, 'MGL', 'lunas'),
-(8, 2, '0708008908', 2, 2, '2021-09-03', 336000, 'bogor, jawa', 'lunas');
+(8, 2, '0708008908', 2, 2, '2021-09-03', 336000, 'bogor, jawa', 'lunas'),
+(9, 2, '0708008908', 4, 9, '2021-09-03', 864000, 'Lampung Tengah', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -301,7 +303,10 @@ CREATE TABLE `penjualan_sales` (
 --
 
 INSERT INTO `penjualan_sales` (`id_penjualan`, `no_telp_customer_sal`, `id_sales`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
-(1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua', 'lunas');
+(1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua', 'lunas'),
+(2, '242342342', 2, 'Nanoxy 300ml', '2021-09-03', 20, '1920000', 'lampung barat', 'lunas'),
+(3, '242342342', 2, 'BB+ 300ml', '2021-09-23', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
+(4, '09843024', 3, 'Nanoxy 300ml', '2021-09-02', 30, '500000', 'jakarta lampung', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -328,7 +333,8 @@ CREATE TABLE `penjualan_salmit` (
 INSERT INTO `penjualan_salmit` (`id_penjualan`, `no_telp_customer_salmit`, `id_salmit`, `id_stokbarmit`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
 (1, '122323445', 5, 2, '2021-09-02', 20, '30000', 'jakarta lampung', 'lunas'),
 (2, '23323323', 3, 3, '2021-09-01', 30, '500000', 'jakarta nano', 'lunas'),
-(3, '122323445', 5, 2, '2021-09-02', 30, '500000', 'papua', 'lunas');
+(3, '122323445', 5, 2, '2021-09-02', 30, '500000', 'papua', 'lunas'),
+(4, '122323445', 5, 2, '2021-09-03', 8, '1344000', 'banten, banteng', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -430,9 +436,9 @@ CREATE TABLE `stok_barang_mitra` (
 --
 
 INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
-(2, 2, 'BB+ 300ml', 28),
+(2, 2, 'BB+ 300ml', 20),
 (3, 13, 'Nanoxy 500ml', 30),
-(4, 2, 'Nanoxy 300ml', 39),
+(4, 2, 'Nanoxy 300ml', 30),
 (5, 2, 'Nanoxy 500ml', 25);
 
 -- --------------------------------------------------------
@@ -657,19 +663,19 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT untuk tabel `penjualan_mitra`
 --
 ALTER TABLE `penjualan_mitra`
-  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_penjumit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_sales`
 --
 ALTER TABLE `penjualan_sales`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_salmit`
 --
 ALTER TABLE `penjualan_salmit`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
