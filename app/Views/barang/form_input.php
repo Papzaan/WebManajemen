@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label for="ukuran" class="control-label">Jumlah</label>
                     <div class="input-group">
-                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required>
+                        <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" placeholder="Jumlah Barang" required onkeyup="sumbarang();">
                         <span class="input-group-addon">
                         </span>
                     </div>
@@ -74,7 +74,7 @@
                 <div class="form-group">
                     <label for="harga" class="control-label">Harga Perkarton</label>
                     <div class="input-group">
-                        <input type="text" name="harga_karton" id="harga_karton" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
+                        <input type="text" name="harga_karton" id="harga_karton" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required onkeyup="sumbarang();">
                         <span class="input-group-addon">
                         </span>
                         </span>
@@ -84,7 +84,7 @@
                 <div class="form-group">
                     <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
-                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Barang" required>
+                        <input type="text" name="harga" id="harga" data-error="harga harus di isi" class="form-control" placeholder="Harga Total" readonly>
                         <span class="input-group-addon">
                         </span>
                         </span>

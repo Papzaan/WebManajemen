@@ -39,8 +39,8 @@
                                     Tambah Data <i class="fas fa-plus"></i>
                                 </button></a>
                         </div>
-
                     </div>
+
                     <div class="form-group">Nama Penjual</label>
                         <?php foreach ($user as $d) { ?>
                             <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_salmit" value="<?php echo $d["nama_salmit"] ?>" disabled />

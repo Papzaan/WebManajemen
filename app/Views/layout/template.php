@@ -572,6 +572,18 @@
                 }
             }
         </script>
+
+        <!-- jumlah harga Barang dari supplier-->
+        <script>
+            function sumbarang() {
+                var txtFirstNumberValue = document.getElementById('harga_karton').value;
+                var txtSecondNumberValue = document.getElementById('jumlah').value;
+                var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
+                if (!isNaN(result)) {
+                    document.getElementById('harga').value = result;
+                }
+            }
+        </script>
         <!-- get nik -->
         <script>
             $("#nama_cus").change(function() {
