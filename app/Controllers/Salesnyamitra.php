@@ -34,7 +34,7 @@ class Salesnyamitra extends BaseController
         $data['user'] = $model->getdataSalesnyamitra();
         $data['title'] = 'Salesnya Mitra';
         $model = new BarangMitraModel();
-        $data['stok'] = $model->getstok();
+        $data['stok'] = $model->getstoksm();
         echo view('salesnyamitra/index', $data);
         echo view('layout/chart-pie-salesnya-mitra');
         echo view('layout/chart-bar-salesnya-mitra');
