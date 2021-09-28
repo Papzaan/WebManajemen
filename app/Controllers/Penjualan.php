@@ -40,7 +40,8 @@ class Penjualan extends BaseController
         $model = new UserCustomer();
         $data['nama_cus'] = $model->getdataCustomer();
         $data['title'] = 'Penjualan Admin';
-        return view('penjualan/penjualan', $data);
+        echo view('penjualan/penjualan', $data);
+        echo view('layout/datepicker');
     }
     public function input_penjualan()
     {
@@ -143,7 +144,7 @@ class Penjualan extends BaseController
         echo view('layout/datatable');
     }
     public function laporan_pensales()
-    {//penjualan sales admin
+    { //penjualan sales admin
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -162,7 +163,7 @@ class Penjualan extends BaseController
         echo view('layout/datatable');
     }
     public function laporan_pensalmit()
-    {//penjualan sales admin
+    { //penjualan sales admin
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -181,7 +182,7 @@ class Penjualan extends BaseController
         echo view('layout/datatable');
     }
     public function penjualan_user()
-    {//penjualan sales dan mitranya admin, saat mereka login
+    { //penjualan sales dan mitranya admin, saat mereka login
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
@@ -190,7 +191,7 @@ class Penjualan extends BaseController
         //cek role dari session
         if ($this->session->get('status') == 1) {
             return redirect()->to('/admin');
-        }else 
+        } else 
         if ($this->session->get('status') == 3) {
             $model = new UserModel();
             $data['user'] = $model->getdataSales();
@@ -199,9 +200,9 @@ class Penjualan extends BaseController
             $model = new UserCustomerSales();
             $data['nama_cus'] = $model->getdataCustomer_Sal();
             $data['title'] = 'Penjualan Sales';
-            return view('penjualan/penjualan_sales', $data);
-
-        }else
+            echo view('penjualan/penjualan_sales', $data);
+            echo view('layout/datepicker');
+        } else
         if ($this->session->get('status') == 2) {
             $model = new UserModel();
             $data['user'] = $model->getdataMitra();
@@ -211,8 +212,9 @@ class Penjualan extends BaseController
             $data['nama_cusmit'] = $model->getdataCustomer_Mit();
             //var_dump($data['nama_cusmit'] );
             $data['title'] = 'Penjualan Mitra';
-            return view('penjualan/penjualan_mitra', $data);
-        }else
+            echo view('penjualan/penjualan_mitra', $data);
+            echo view('layout/datepicker');
+        } else
         if ($this->session->get('status') == 4) {
             $model = new UserModel();
             $data['user'] = $model->getdataSalesnyamitra();
@@ -222,11 +224,11 @@ class Penjualan extends BaseController
             $data['nama_cusmit'] = $model->getdataCustomer_SalMit();
             //var_dump($data['nama_cusmit'] );
             $data['title'] = 'Penjualan Sales-Mitra';
-            return view('penjualan/penjualan_salmit', $data);
-        }else{
+            echo view('penjualan/penjualan_salmit', $data);
+            echo view('layout/datepicker');
+        } else {
             return redirect()->to('/user');
         }
-        
     }
     public function input_penjualan_mitra()
     {
@@ -320,7 +322,7 @@ class Penjualan extends BaseController
 
             $this->penjualansalesModel = new PenjualanSalesModel();
             $this->penjualansalesModel->save([
-                'id_sales' =>$data['id'],
+                'id_sales' => $data['id'],
                 'no_telp_customer_sal' => $data['no_telp_customer'],
                 'nama_kategori' => $data['nama_kategori'],
                 'tgl_jual' => $data['tgl_jual'],
