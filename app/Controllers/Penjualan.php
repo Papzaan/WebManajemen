@@ -299,7 +299,7 @@ class Penjualan extends BaseController
         $model = new PenjualanSalesMitraModel();
         $data['pensalmit'] = $model->getpenjualansalmit();
         $data['title'] = 'Laporan Penjualan Salesnya Mitra';
-        echo view('penjualan/catatanpenjualansalmit', $data);
+        echo view('penjualan/laporanpenjualansalmit', $data);
         echo view('layout/datatable');
     }
 }
