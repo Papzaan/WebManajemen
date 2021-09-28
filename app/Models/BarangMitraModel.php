@@ -52,8 +52,19 @@ class BarangMitraModel extends Model
         $data = $session->get('email');
         return $this->db->table('stok_barang_mitra')
         ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
-        ->select('COUNT(nama_kategori)')
+        ->selectCount('stok_barang_mitra.nama_kategori')
         ->where('mitra.email',['email'=> $data])
+        ->get()->getRowArray();
+    }
+    public function getjumlahkategorisales()
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('stok_barang_mitra')
+        ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+        ->join('salesnya_mitra','salesnya_mitra.id_mitra=mitra.id_mitra')
+        ->selectCount('stok_barang_mitra.nama_kategori')
+        ->where('salesnya_mitra.email',['email'=> $data])
         ->get()->getRowArray();
     }
     public function editstokju($kate, $id)
@@ -93,6 +104,16 @@ class BarangMitraModel extends Model
             ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
             ->selectSum('penjualan_salmit.jumlah')
             ->where('mitra.email',['email'=> $data])
+            ->get()->getRowArray();
+    }
+    public function gettotalpenjualan_sales()
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('penjualan_salmit')
+            ->join('salesnya_mitra','salesnya_mitra.id_salmit=penjualan_salmit.id_salmit')
+            ->selectSum('penjualan_salmit.jumlah')
+            ->where('salesnya_mitra.email',['email'=>$data])
             ->get()->getRowArray();
     }
 }
