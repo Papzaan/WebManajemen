@@ -13,7 +13,7 @@
             <?php echo session()->getFlashdata('stok_habis'); ?>
         </div>
         <div class="box-body">
-            <form class="user" method="post" action="/penjualan/input_penjualan_mitra">
+            <form class="user" method="post" action="/penjualan/input_penjualan_salmit">
                 <div class="form-group">
                     <div class="form-group row">
                         <div class="col-sm-5 mb-3 mb-sm-0">
@@ -44,7 +44,7 @@
                     <div class="form-group">Nama Penjual</label>
                         <?php foreach ($user as $d) { ?>
                             <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_salmit" value="<?php echo $d["nama_salmit"] ?>" disabled />
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id" value="<?php echo $d["id_salmit"] ?>" readonly />
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id" value="<?php echo $d["id_salmit"] ?>" hidden />
                         <?php } ?>
                     </div>
                     <div class="form-group">Nama Barang</label>
@@ -80,7 +80,7 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                        <a href="#" class="btn btn-default ">Cancel</a>
+                        <a href="/penjualan/laporan_sales_mitra" class="btn btn-default ">Cancel</a>
                     </div>
             </form>
         </div><!-- /.box-body -->

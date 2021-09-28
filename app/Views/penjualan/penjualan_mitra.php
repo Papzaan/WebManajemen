@@ -80,7 +80,7 @@
 
                     <div class="box-footer">
                         <button type="submit" name="submit" class="btn btn-primary ">Pesan</button>
-                        <a href="#" class="btn btn-default ">Cancel</a>
+                        <a href="/penjualan/laporan_mitra" class="btn btn-default ">Cancel</a>
                     </div>
             </form>
         </div><!-- /.box-body -->
