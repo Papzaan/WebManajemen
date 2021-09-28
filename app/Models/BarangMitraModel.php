@@ -25,8 +25,6 @@ class BarangMitraModel extends Model
     public function getstoksm(){
         $session = session();
         $data = $session->get('email');
-        //$data1 = $this->db->query("SELECT id_mitra FROM salesnya_mitra where email='$data'" );
-        //$dataa = $data1->getRowArray();
         return $this->db->table('stok_barang_mitra')
         ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
         ->join('salesnya_mitra','salesnya_mitra.id_mitra=mitra.id_mitra')

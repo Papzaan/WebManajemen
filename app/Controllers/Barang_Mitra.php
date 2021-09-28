@@ -20,18 +20,28 @@ class Barang_Mitra extends BaseController
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
-
         //cek role dari session
-        if ($this->session->get('status') != 2) {
+        if ($this->session->get('status') == 2) {
+           //tampilin data
+            $model = new UserModel();
+            $data['user'] = $model->getdataMitra();
+            $model = new BarangMitraModel();
+            $data['title'] = 'Stok Barang Mitra';
+            $data['stok'] = $model->getstok();
+            return view('mitra/lihat_stok', $data);
+        }else
+        if ($this->session->get('status') == 4) {
+            //tampilin data
+            $model = new UserModel();
+            $data['user'] = $model->getdataSalesnyamitra();
+            $model = new BarangMitraModel();
+            $data['title'] = 'Stok Barang Mitra';
+            $data['stok'] = $model->getstoksm();
+            return view('salesnyamitra/lihat_stok', $data);
+        }else{
             return redirect()->to('/user');
         }
-        //tampilin data
-        $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
-        $model = new BarangMitraModel();
-        $data['title'] = 'Stok Barang Mitra';
-        $data['stok'] = $model->getstok();
-        return view('mitra/lihat_stok', $data);
+        
     }
     public function input_stok()
     {
