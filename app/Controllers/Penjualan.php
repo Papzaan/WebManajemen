@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\PenjualanModel;
 use App\Models\PenjualanMitraModel;
+use App\Models\PenjualanSalesModel;
 use App\Models\PenjualanSalesMitraModel;
 use App\Models\StokModel;
 use App\Models\UserCustomer;
@@ -300,6 +301,25 @@ class Penjualan extends BaseController
         $data['pensalmit'] = $model->getpenjualansalmit();
         $data['title'] = 'Laporan Penjualan Salesnya Mitra';
         echo view('penjualan/laporanpenjualansalmit', $data);
+        echo view('layout/datatable');
+    }
+    public function laporan_sales()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 3) {
+            return redirect()->to('/user');
+        }
+        $model = new UserModel();
+        $data['user'] = $model->getdataSales();
+        $model = new PenjualanSalesModel();
+        $data['pensal'] = $model->getpenjualansales();
+        $data['title'] = 'Laporan Penjualan Sales';
+        echo view('penjualan/catatanpenjualansales', $data);
         echo view('layout/datatable');
     }
 }

@@ -189,9 +189,9 @@
                         <span>Penjualan</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/penjualan/penjualan_user">
+                    <a class="nav-link" href="/penjualan/laporan_sales">
                         <i class="fas fa-fw fa-clipboard-list"></i>
-                        <span>Catatan penjualan sales</span></a>
+                        <span>Catatan Penjualan Sales</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan/penjualan_user">
@@ -217,7 +217,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-clipboard-list"></i>
-                        <span>Catatan penjualan Sales</span></a>
+                        <span>Catatan Penjualan Sales</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
