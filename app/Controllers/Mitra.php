@@ -39,6 +39,7 @@ class Mitra extends BaseController
         //var_dump( $data['tot_pen_salmit']);
         echo view('mitra/index', $data);
         echo view('layout/chart-pie-mitra');
+        echo view('layout/chart-bar-mitra');
         //return view('admin/index')
 
 
@@ -164,7 +165,7 @@ class Mitra extends BaseController
             $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
             // Jika berhasil melakukan ubah
             if ($update) {
-                if($update1){
+                if ($update1) {
                     return redirect()->to('/mitra/pesanan_mitra');
                 }
             }
