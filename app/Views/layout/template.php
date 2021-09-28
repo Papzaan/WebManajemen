@@ -188,6 +188,16 @@
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/penjualan_user">
+                        <i class="fas fa-fw fa-clipboard-list"></i>
+                        <span>Catatan penjualan sales</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/penjualan_user">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Stok</span></a>
+                </li>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 
                 </div>
@@ -198,11 +208,21 @@
                 $this->session = session();
             ?>
 
-                <!-- Nav Sales -->
+                <!-- Nav Sales Mitra -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Penjualan</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-clipboard-list"></i>
+                        <span>Catatan penjualan Sales</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Stok</span></a>
                 </li>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 
