@@ -35,7 +35,7 @@
                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
               </div>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="/penjualan/laporan_sales_mitra" class="small-box-footer">
 
               <i class="fa fa-arrow-circle-right"></i>
             </a>
