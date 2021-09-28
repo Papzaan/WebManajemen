@@ -17,33 +17,19 @@
                         <input type="text" class="form-control form-control-user" name="nama" id="exampleInputPassword" placeholder="Nama Lengkap">
                     </div>
                     <div class="col-sm-6">
-                    <label for="nama" class="control-label">NIK Customer</label>
-                        <input type="text" class="form-control form-control-user" name="nik_customer" id="exampleRepeatPassword" placeholder="NIK Customer">
+                    <label for="nama" class="control-label">NO Telepone</label>
+                        <input type="text" class="form-control form-control-user" name="no_telp_customer" id="exampleRepeatPassword" placeholder="No Telepone Customer">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
                     <label for="nama" class="control-label">Pilih Jenis Kelamin</label>
                             <select class="form-control  col-md-12" name="jk">
                                 <option value="" disabled selected>Jenis kelamin</option>
                                 <option value="laki - laki">Laki - laki</option>
                                 <option value="perempuan">Perempuan</option>
                             </select>
-                    </div>
-                    <div class="col-sm-6">
-                    <label for="nama" class="control-label">No Telpon Customer</label>
-                        <input type="text" class="form-control form-control-user" name="no_telp" id="exampleLastName" placeholder="No Telpon Customer">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="nama" class="control-label">Foto KTP Customer</label>
-                        <input type="text" class="form-control form-control-user" name="foto_ktp" id="exampleInputPassword" placeholder="Foto KTP Customer">
-                    </div>
-                    <div class="col-sm-6">
-                    <label for="nama" class="control-label">Foto Customer</label>
-                        <input type="text" class="form-control form-control-user" name="foto_customer" id="exampleRepeatPassword" placeholder="Foto Customer">
                     </div>
                 </div>
                 <div class="form-group">Alamat Customer</label>

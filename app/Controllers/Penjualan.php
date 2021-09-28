@@ -75,7 +75,7 @@ class Penjualan extends BaseController
             $this->penjualanModel = new PenjualanModel();
             $this->penjualanModel->save([
                 'id_admin' => $id_admin,
-                'nik_customer' => $data['nik_customer'],
+                'no_telp_customer' => $data['no_telp_customer'],
                 'nama_kategori' => $data['nama_kategori'],
                 'tgl_jual' => $data['tgl_jual'],
                 'jumlah' => $data['jumlah'],

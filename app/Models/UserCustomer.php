@@ -8,7 +8,7 @@ class UserCustomer extends Model
 {
     protected $table = "customer";
     //protected $primaryKey = "nik_customer";
-    protected $allowedFields = [ "nik_customer", "nama","jenis_kelamin", "no_telp", "alamat", "foto_ktp", "foto_customer"];
+    protected $allowedFields = [ "no_telp_customer", "nama","jenis_kelamin", "alamat"];
     protected $useTimestamps = false;
 
     

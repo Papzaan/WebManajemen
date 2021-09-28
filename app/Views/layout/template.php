@@ -562,7 +562,7 @@
             function update_nik() {
                 var select = document.getElementById('nama_cus');
                 var option = select.options[select.selectedIndex];
-                document.getElementById('nik_customer').value = option.id;
+                document.getElementById('no_telp_customer').value = option.id;
             }
 
             update_harga();

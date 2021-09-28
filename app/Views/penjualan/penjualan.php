@@ -22,7 +22,7 @@
                             <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
                                 <option value="" disabled selected>Pilih Nama Customer</option>
                                 <?php foreach ($nama_cus as $kr) { ?>
-                                    <option id="<?php echo $kr["nik_customer"]; ?>" value="<?php echo $kr["nama"]; ?>">
+                                    <option id="<?php echo $kr["no_telp_customer"]; ?>" value="<?php echo $kr["nama"]; ?>">
                                         <?php echo $kr["nama"]; ?>
                                     </option>
                                 <?php } ?>
@@ -30,8 +30,8 @@
                             <!-- mbatas option -->
                         </div>
                         <div class="col-sm-5 mb-3 mb-sm-0">
-                            <label for="nama" class="control-label">NIK Customer</label>
-                            <input type="text" class="form-control form-control-user" name="nik_customer" id="nik_customer" readonly>
+                            <label for="nama" class="control-label">No Telepone Customer</label>
+                            <input type="text" class="form-control form-control-user" name="no_telp_customer" id="no_telp_customer" readonly>
                         </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Tambah Customer</label>
