@@ -104,15 +104,12 @@ class DataCus extends BaseController
        //input ke tabel barang
        $this->userCustomerMitra = new UserCustomerMitra();
        $this->userCustomerMitra->save([
-           'nik_customer_mit' => $data['nik_customer'],
+           'no_telp_customer_mit' => $data['no_telp_customer_mit'],
            'nama_cusmit' => $data['nama'],
            'jenis_kelamin' => $data['jk'],
-           'no_telp' => $data['no_telp'],
            'alamat' => $data['alamat'],
-           'foto_ktp' => $data['foto_ktp'],
-           'foto_customer' => $data['foto_customer'],
            'id_mitra' => $data['id_mitra']
        ]);
-       return redirect()->to('/penjualan/penjualan_user');
+       return redirect()->to('/penjualan/laporan_mitra');
    }
 }

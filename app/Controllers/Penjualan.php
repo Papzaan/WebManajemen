@@ -238,7 +238,7 @@ class Penjualan extends BaseController
             $this->penjualanMitraModel = new PenjualanMitraModel();
             $this->penjualanMitraModel->save([
                 'id_mitra' => $data['id'],
-                'nik_customer_mit' => $data['nik_customer'],
+                'no_telp_customer_mit' => $data['no_telp_customer'],
                 'id_stokbarmit' => $stok['id_stokbarmit'],
                 'tgl_jual' => $data['tgl_jual'],
                 'jumlah' => $data['jumlah'],
