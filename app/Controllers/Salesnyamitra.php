@@ -37,7 +37,7 @@ class Salesnyamitra extends BaseController
         $data['stok'] = $model->getstoksm();
         $data['jumlah_kategori'] = $model->getjumlahkategorisales();
         $data['tot_pen_salmit'] = $model->gettotalpenjualan_sales();
-        var_dump($data['tot_pen_salmit']);
+        //var_dump($data['tot_pen_salmit']);
         echo view('salesnyamitra/index', $data);
         echo view('layout/chart-pie-salesnya-mitra');
         echo view('layout/chart-bar-salesnya-mitra');
