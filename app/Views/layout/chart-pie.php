@@ -19,8 +19,8 @@
             labels: <?php echo json_encode($ktgr); ?>,
             datasets: [{
                 data: <?php echo json_encode($stk); ?>,
-                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#00cc00', '#ffff00', '#3333cc'],
+                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#008000', '#b3b300', '#1f1f7a'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },
