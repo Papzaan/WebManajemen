@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\UserPesanModel;
+use App\Models\BarangMitraModel;
 use App\Models\StokModel;
 use App\Models\UserRegism;
 
@@ -32,7 +33,11 @@ class Salesnyamitra extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataSalesnyamitra();
         $data['title'] = 'Salesnya Mitra';
+        $model = new BarangMitraModel();
+        $data['stok'] = $model->getstok();
         echo view('salesnyamitra/index', $data);
+        echo view('layout/chart-pie-salesnya-mitra');
+        echo view('layout/chart-bar-salesnya-mitra');
     }
 
     public function profile()
