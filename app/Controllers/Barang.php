@@ -216,6 +216,26 @@ class Barang extends BaseController
         }
         
     }
+    public function edit_stok($id){
+         //cek apakah ada session bernama isLogin
+         if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
+
+        $model = new UserModel();
+        $data['user'] = $model->getdataAdmin();
+        $model = new StokModel();
+        $data['edit_stok'] = $model->edit_stok($id);
+        var_dump($id);
+        var_dump($data['edit_stok']);
+        $data['title'] = 'Update Stok Barang';
+        return view('barang/edit_stok', $data);
+    }
     public function input_stok()
     {
 

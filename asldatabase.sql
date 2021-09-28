@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Sep 2021 pada 09.17
+-- Waktu pembuatan: 28 Sep 2021 pada 10.12
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -63,11 +63,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `jumlah`, `harga`) VALUES
-(7, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-06-01', 80, '500000'),
+(7, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-06-01', 80, '500000'),
 (8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000'),
 (27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
-(29, 'PT. Merak Jaya Abadi', 'BB+ 300ml', '2021-09-14', 50, '68000'),
+(29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 50, '68000'),
 (30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
 
 -- --------------------------------------------------------
@@ -93,19 +93,19 @@ CREATE TABLE `catatan_admin` (
 --
 
 INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `no_telp_customer`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
-(2, 2, '1802010101', 'BB+ 300ml', '2021-09-02', 20, '500000', 'jakarta', 'lunas'),
+(2, 2, '1802010101', 'BBplus 300ml', '2021-09-02', 20, '500000', 'jakarta', 'lunas'),
 (7, 2, '1928293938', 'Nanoxy 500ml', '0000-00-00', 30, '68000', 'Serang, Banten, Jawa', 'lunas'),
 (8, 2, '1928293938', 'Nanoxy 500ml', '0000-00-00', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (9, 2, '1802010101', 'Nanoxy 300ml', '0000-00-00', 30, '68000', 'Serang, Banten, Jawa', 'lunas'),
-(10, 2, '1802010101', 'BB+ 300ml', '0000-00-00', 25, '1000000', 'Serang, Banten, Jawa', 'lunas'),
-(11, 2, '1928293938', 'BB+ 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
+(10, 2, '1802010101', 'BBplus 300ml', '0000-00-00', 25, '1000000', 'Serang, Banten, Jawa', 'lunas'),
+(11, 2, '1928293938', 'BBplus 300ml', '2021-09-03', 50, '1000000', 'Serang, Banten, Jawa', 'lunas'),
 (13, 2, '1928293938', 'Nanoxy 300ml', '2021-09-17', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
-(14, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
-(15, 2, '325346546', 'BB+ 300ml', '2021-09-22', 2, '336000', 'Lampung Tengah', 'lunas'),
-(16, 2, '1928293938', 'BB+ 300ml', '2021-09-22', 9, '1512000', 'serbajadi', 'lunas'),
+(14, 2, '325346546', 'BBplus 300ml', '2021-09-22', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
+(15, 2, '325346546', 'BBplus 300ml', '2021-09-22', 2, '336000', 'Lampung Tengah', 'lunas'),
+(16, 2, '1928293938', 'BBplus 300ml', '2021-09-22', 9, '1512000', 'serbajadi', 'lunas'),
 (17, 2, '1802010101', 'Nanoxy 300ml', '2021-09-23', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
-(18, 2, '325346546', 'BB+ 300ml', '2021-09-23', 2, '336000', 'bogor, jawa', 'lunas'),
-(19, 2, '080909090808', 'BB+ 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas');
+(18, 2, '325346546', 'BBplus 300ml', '2021-09-23', 2, '336000', 'bogor, jawa', 'lunas'),
+(19, 2, '080909090808', 'BBplus 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -220,7 +220,7 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('BB+ 300ml', '168000', 16, '88000', '118000', '138000'),
+('BBplus 300ml', '168000', 16, '88000', '118000', '138000'),
 ('Nanoxy 300ml', '96000', 60, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
 
@@ -305,7 +305,7 @@ CREATE TABLE `penjualan_sales` (
 INSERT INTO `penjualan_sales` (`id_penjualan`, `no_telp_customer_sal`, `id_sales`, `nama_kategori`, `tgl_jual`, `jumlah`, `harga`, `alamat_trank`, `status`) VALUES
 (1, '242342342', 2, 'Nanoxy 300ml', '2021-09-22', 20, '500000', 'papua', 'lunas'),
 (2, '242342342', 2, 'Nanoxy 300ml', '2021-09-03', 20, '1920000', 'lampung barat', 'lunas'),
-(3, '242342342', 2, 'BB+ 300ml', '2021-09-23', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
+(3, '242342342', 2, 'BBplus 300ml', '2021-09-23', 2, '336000', 'Serang, Banten, Jawa', 'lunas'),
 (4, '09843024', 3, 'Nanoxy 300ml', '2021-09-02', 30, '500000', 'jakarta lampung', 'lunas');
 
 -- --------------------------------------------------------
@@ -359,13 +359,13 @@ CREATE TABLE `pesanan_mitra` (
 --
 
 INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesan`, `jumlah`, `harga`, `utang`, `bayar`, `met_bayar`) VALUES
-(1, 2, 'BB+ 300ml', '2021-09-01', 20, '50000', 0, 1, 'Cash'),
+(1, 2, 'BBplus 300ml', '2021-09-01', 20, '50000', 0, 1, 'Cash'),
 (2, 13, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 3, 'Cash'),
-(3, 2, 'BB+ 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer'),
-(4, 2, 'BB+ 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
+(3, 2, 'BBplus 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer'),
+(4, 2, 'BBplus 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
 (7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 0, 2, 'Cash'),
-(8, 2, 'BB+ 300ml', '2021-09-24', 5, '440000', 0, 2, 'Cash'),
-(9, 2, 'BB+ 300ml', '2021-09-25', 10, '880000', 880000, 0, 'Transfer');
+(8, 2, 'BBplus 300ml', '2021-09-24', 5, '440000', 0, 2, 'Cash'),
+(9, 2, 'BBplus 300ml', '2021-09-25', 10, '880000', 880000, 0, 'Transfer');
 
 -- --------------------------------------------------------
 
@@ -436,7 +436,7 @@ CREATE TABLE `stok_barang_mitra` (
 --
 
 INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
-(2, 2, 'BB+ 300ml', 20),
+(2, 2, 'BBplus 300ml', 20),
 (3, 13, 'Nanoxy 500ml', 30),
 (4, 2, 'Nanoxy 300ml', 30),
 (5, 2, 'Nanoxy 500ml', 25);

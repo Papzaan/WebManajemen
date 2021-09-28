@@ -20,12 +20,12 @@ class StokModel extends Model
             ->get()->getResultArray();
     }
     
-    public function editstok($id)
-    {
+    public function edit_stok($id)
+    {//admin update dari kategori
         $session = session();
         $data = $session->get('email');
         return $this->db->table('kategori')
-            ->where('barang.id_barang', ['id_barang' => $id])
+            ->where('kategori.nama_kategori',['nama_kategori' => $id])
             ->get()->getResultArray();
     }
 
