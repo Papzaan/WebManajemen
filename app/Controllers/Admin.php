@@ -47,6 +47,7 @@ class Admin extends BaseController
         //var_dump($totalpenjualan);
         echo view('admin/index', $data);
         echo view('layout/chart-pie');
+        echo view('layout/chart-bar');
         //return view('admin/index')   
     }
 
