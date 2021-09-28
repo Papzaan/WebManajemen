@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Mitra</th>
+                            <th>Nama Sales</th>
                             <th>Nama Customer</th>
                             <th>Nomer Telepone</th>
                             <th>Nama Produk</th>
