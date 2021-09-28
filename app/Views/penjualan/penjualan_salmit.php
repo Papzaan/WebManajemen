@@ -44,7 +44,8 @@
                     <div class="form-group">Nama Penjual</label>
                         <?php foreach ($user as $d) { ?>
                             <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_salmit" value="<?php echo $d["nama_salmit"] ?>" disabled />
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id" value="<?php echo $d["id_salmit"] ?>" hidden />
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id_salmit" value="<?php echo $d["id_salmit"] ?>" hidden />
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id_mitra" value="<?php echo $d["id_mitra"] ?>" hidden />
                         <?php } ?>
                     </div>
                     <div class="form-group">Nama Barang</label>
