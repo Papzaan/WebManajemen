@@ -36,7 +36,6 @@
               </div>
             </div>
             <a href="/penjualan/laporan_sales_mitra" class="small-box-footer">
-
               <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
