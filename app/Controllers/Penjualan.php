@@ -10,6 +10,7 @@ use App\Models\PenjualanSalesMitraModel;
 use App\Models\StokModel;
 use App\Models\UserCustomer;
 use App\Models\UserCustomerMitra;
+use App\Models\UserCustomerSales;
 use App\Models\BarangMitraModel;
 
 class Penjualan extends BaseController
@@ -188,22 +189,32 @@ class Penjualan extends BaseController
         //cek role dari session
         if ($this->session->get('status') == 1) {
             return redirect()->to('/admin');
-        }
+        }else 
         if ($this->session->get('status') == 3) {
             $model = new UserModel();
             $data['user'] = $model->getdataSales();
+            $model = new StokModel();
+            $data['kategori'] = $model->getstok();
+            $model = new UserCustomerSales();
+            $data['nama_cus'] = $model->getdataCustomer_Sal();
             $data['title'] = 'Penjualan Sales';
             return view('penjualan/penjualan_sales', $data);
+
+        }else
+        if ($this->session->get('status') == 2) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataMitra();
+            $model = new BarangMitraModel();
+            $data['kategori'] = $model->getstok();
+            $model = new UserCustomerMitra();
+            $data['nama_cusmit'] = $model->getdataCustomer_Mit();
+            //var_dump($data['nama_cusmit'] );
+            $data['title'] = 'Penjualan Mitra';
+            return view('penjualan/penjualan_mitra', $data);
+        }else{
+            return redirect()->to('/user');
         }
-        $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
-        $model = new BarangMitraModel();
-        $data['kategori'] = $model->getstok();
-        $model = new UserCustomerMitra();
-        $data['nama_cusmit'] = $model->getdataCustomer_Mit();
-        //var_dump($data['nama_cusmit'] );
-        $data['title'] = 'Penjualan Mitra';
-        return view('penjualan/penjualan_mitra', $data);
+        
     }
     public function input_penjualan_mitra()
     {
@@ -262,6 +273,63 @@ class Penjualan extends BaseController
             // Jika berhasil melakukan ubah
             if ($update1) {
                 return redirect()->to('/penjualan/penjualan_user');
+            }
+        }
+    }
+    public function input_penjualan_sales()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 3) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+        //panggil model stok
+        $this->stokModel = new StokModel();
+        //panggil stok berdasarkan nama kategori
+        $kate = $data['nama_kategori'];
+        $model = new StokModel();
+        $stok = $model->editstokju($kate);
+        $pesan = $data['jumlah'];
+        if ($stok == 0) {
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
+            return redirect()->to('/penjualan/penjualan_user');
+        } else if ($stok < $pesan) {
+            // kirim peringatan 
+            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
+            return redirect()->to('/penjualan/penjualan_user');
+        } else {
+
+            $this->penjualansalesModel = new PenjualanSalesModel();
+            $this->penjualansalesModel->save([
+                'id_sales' =>$data['id'],
+                'no_telp_customer_sal' => $data['no_telp_customer'],
+                'nama_kategori' => $data['nama_kategori'],
+                'tgl_jual' => $data['tgl_jual'],
+                'jumlah' => $data['jumlah'],
+                'harga' => $data['harga_total'],
+                'alamat_trank' => $data['alamat'],
+                'status' => "lunas"
+            ]);
+            //jumlahkan
+            $upjum = $stok - $data['jumlah'];
+
+            //update stoknya
+            $dataupdate = [
+                'stok' => $upjum
+            ];
+            $kat = $data['nama_kategori'];
+
+            $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+            // Jika berhasil melakukan ubah
+            if ($update) {
+                return redirect()->to('/penjualan/laporan_sales');
             }
         }
     }

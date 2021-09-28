@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class PenjualanSalesModel extends Model
 {
-    protected $table = "penjualan_salmit";
+    protected $table = "penjualan_sales";
     protected $primaryKey = "id_penjualan";
-    protected $allowedFields = ["id_salmit", "no_telp_customer_salmit","id_stokbarmit","jumlah", "tgl_jual","harga","alamat_trank", "status"];
+    protected $allowedFields = ["id_sales", "no_telp_customer_sal","nama_kategori","jumlah", "tgl_jual","harga","alamat_trank", "status"];
     protected $useTimestamps = false;
     
     public function getpenjualansales(){

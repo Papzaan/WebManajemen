@@ -17,10 +17,5 @@ class UserCustomer extends Model
       $data = $session->get('email');
         return $this->db->table('customer')
         ->get()->getResultArray();  
-    }
-    public function postdataCustomer(){
-        
-    }
-
-    
+    } 
 }
