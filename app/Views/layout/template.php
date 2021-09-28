@@ -194,7 +194,7 @@
                         <span>Catatan Penjualan Sales</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/penjualan/penjualan_user">
+                    <a class="nav-link" href="/barang/stok">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Stok</span></a>
                 </li>

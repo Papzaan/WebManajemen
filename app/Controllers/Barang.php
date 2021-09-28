@@ -194,16 +194,27 @@ class Barang extends BaseController
         }
 
         //cek role dari session
-        if ($this->session->get('status') != 1) {
+        if ($this->session->get('status') == 1) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataAdmin();
+            $model = new StokModel();
+            $data['title'] = 'Stok Barang';
+            $data['stok'] = $model->getstok();
+            echo view('barang/stok', $data);
+            echo view('layout/datatable');
+        }else
+        if ($this->session->get('status') == 3) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataSales();
+            $model = new StokModel();
+            $data['title'] = 'Stok Barang';
+            $data['stok'] = $model->getstok();
+            echo view('barang/stoks', $data);
+            echo view('layout/datatable');
+        }else{
             return redirect()->to('/user');
         }
-        $model = new UserModel();
-        $data['user'] = $model->getdataAdmin();
-        $model = new StokModel();
-        $data['title'] = 'Stok Barang';
-        $data['stok'] = $model->getstok();
-        echo view('barang/stok', $data);
-        echo view('layout/datatable');
+        
     }
     public function input_stok()
     {
