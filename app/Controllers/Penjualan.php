@@ -11,6 +11,7 @@ use App\Models\StokModel;
 use App\Models\UserCustomer;
 use App\Models\UserCustomerMitra;
 use App\Models\UserCustomerSales;
+use App\Models\UserCustomerSalMit;
 use App\Models\BarangMitraModel;
 
 class Penjualan extends BaseController
@@ -211,6 +212,17 @@ class Penjualan extends BaseController
             //var_dump($data['nama_cusmit'] );
             $data['title'] = 'Penjualan Mitra';
             return view('penjualan/penjualan_mitra', $data);
+        }else
+        if ($this->session->get('status') == 4) {
+            $model = new UserModel();
+            $data['user'] = $model->getdataSalesnyamitra();
+            $model = new BarangMitraModel();
+            $data['kategori'] = $model->getstoksm();
+            $model = new UserCustomerSalMit();
+            $data['nama_cusmit'] = $model->getdataCustomer_SalMit();
+            //var_dump($data['nama_cusmit'] );
+            $data['title'] = 'Penjualan Sales-Mitra';
+            return view('penjualan/penjualan_salmit', $data);
         }else{
             return redirect()->to('/user');
         }
