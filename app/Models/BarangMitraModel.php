@@ -8,7 +8,7 @@ class BarangMitraModel extends Model
 {
     protected $table = "stok_barang_mitra";
     protected $primaryKey = "id_stokbarmit";
-    protected $allowedFields = ["id_mitra","nama_kategori","stok"];
+    protected $allowedFields = ["id_mitra","nama_kategori","stok_mitra"];
     protected $useTimestamps = false;
     
 

@@ -166,6 +166,7 @@ class Mitra extends BaseController
                 ];
                 $kat = $data['nama_kategori'];
                 $idbar = $stokmit['id_stokbarmit'];
+                $this->stokModel = new StokModel();
                 $update = $this->stokModel->updatejumstok($dataupdate, $kat);
                 $this->barangMitraModel = new BarangMitraModel();
                 $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
@@ -182,7 +183,7 @@ class Mitra extends BaseController
             $this->barangMitraModel->save([
                 'id_mitra' => $data['id_mitra'],
                 'nama_kategori' => $data['nama_kategori'],
-                'stok' => $data['stok']
+                'stok_mitra' => '0'
             ]);
             //lanjutkan aksi masukin ke laporan pemesanan
             //panggil stok berdasarkan nama kategori
@@ -228,6 +229,7 @@ class Mitra extends BaseController
                 ];
                 $kat = $data['nama_kategori'];
                 $idbar = $stokmit['id_stokbarmit'];
+                $this->stokModel = new StokModel();
                 $update = $this->stokModel->updatejumstok($dataupdate, $kat);
                 $this->barangMitraModel = new BarangMitraModel();
                 $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
