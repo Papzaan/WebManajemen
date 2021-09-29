@@ -598,7 +598,6 @@
 
             update_harga();
         </script>
-
         <!-- Tabel Sales-->
         <script>
             $(document).ready(function() {

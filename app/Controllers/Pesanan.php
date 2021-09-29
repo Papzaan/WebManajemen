@@ -50,6 +50,7 @@ class Pesanan extends BaseController
         $this->pesananModel = new PesananModel();
         //panggil stok berdasarkan nama kategori
         $id_pesmit = $data['id_pesan'];
+        var_dump($id_pesmit);
         $model = new PesananModel();
         $utang = $model->editpesmit($id_pesmit);
         $bayar = $data['bayar'];

@@ -102,7 +102,7 @@
                                                             <label class="control-label">Saldo Pembayaran : </label><label for="nama"><?php echo $d["nama"] ?></label>
                                                                 <div class="col-sm-9 mb-sm-0">
                                                                     <input type="text" name="bayar" class="form-control" id="bayar" placeholder="masukan saldo">
-                                                                    <input type="text" name="id_pesan" class="form-control" id="id_pesan" hidden value="<?php echo $d["id_pesmit"] ?>">
+                                                                    <input type="text" name="id_pesan" class="form-control" id="id_pesan" readonly value="<?php echo $d["id_pesmit"] ?>">
                                                                 </div>
                                                                 <div class="col-sm-2 mb-sm-0">
                                                                     <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
