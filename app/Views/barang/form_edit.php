@@ -58,7 +58,16 @@
             <div class="form-group">
                 <label for="ukuran" class="control-label">Jumlah</label>
                 <div class="input-group">
-                    <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" value="<?php echo $d["jumlah"] ?>" required>
+                    <input type="text" name="jumlah" id="jumlah" data-error="harga harus di isi" class="form-control" value="<?php echo $d["jumlah"] ?>" readonly required>
+                    <span class="input-group-addon">
+                    </span>
+                </div>
+            </div>
+            <!-- tambah/kurang -->
+            <div class="form-group">
+                <label for="ukuran" class="control-label">Tambah</label>
+                <div class="input-group">
+                    <input type="text" name="jumlah_tambah" id="jumlah_tambah" data-error="harga harus di isi" class="form-control"  required>
                     <span class="input-group-addon">
                     </span>
                 </div>
