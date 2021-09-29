@@ -101,6 +101,7 @@ class Mitra extends BaseController
         $model = new StokModel();
         $data['kategori'] = $model->getstok();
         echo view('mitra/tambah_pesanan', $data);
+        echo view('layout/datepicker');
     }
     public function aksi_pesan()
     {
