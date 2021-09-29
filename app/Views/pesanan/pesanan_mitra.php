@@ -81,11 +81,31 @@
                                 <?php
                                 if ($d["utang"] != "0") { ?>
                                     <td><span class="bg-gradient-danger text-white">BelumLunas</span>
-                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete" data-target="#myModal"><i class="fa fa-trash"> aksi</i></button>
+                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete" data-target="#myModal<?= $d["id_pesmit"] ?>"><i class="fa fa-trash"> aksi</i></button>
                                     </td>
-                                    <!-- modal untuk bayar-->
-                                     <!-- The Modal -->
-                                        <div class="modal" id="myModal">
+                                   
+                                <?php } ?>
+                                <!--<?php
+                                    if ($d["utang"] != "0") { ?>
+                                 <td><a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Lunas</button>
+                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Belum Lunas</i></button>
+                                </td>
+                                <?php } ?>-->
+
+                            </tr>
+                        <?php } ?>
+
+                        
+                    </tbody>
+                    
+                </table>
+                                         <!-- modal untuk bayar-->
+                                     <!-- The edit Modal -->
+                                <?php
+                                $no = 1;
+                                foreach ($pesmit as $d) {
+                                ?>
+                                     <div class="modal" id="myModal<?= $d["id_pesmit"] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -119,22 +139,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    <?php } ?>
                                         <!--batas modal-->
-                                <?php } ?>
-                                <!--<?php
-                                    if ($d["utang"] != "0") { ?>
-                                 <td><a href="#"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Lunas</button>
-                                    <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Belum Lunas</i></button>
-                                </td>
-                                <?php } ?>-->
-
-                            </tr>
-                        <?php } ?>
-
-                    </tbody>
-                    
-                </table>
-
                
 
             </div>
