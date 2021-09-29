@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Sep 2021 pada 10.12
+-- Waktu pembuatan: 29 Sep 2021 pada 08.18
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -68,7 +68,8 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
 (29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 50, '68000'),
-(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
+(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000'),
+(34, 'PT. Merak Jaya Abadi', '@water 550ml', '2021-09-29', 5, '150000');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,8 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `no_telp_customer`, `nama_k
 (16, 2, '1928293938', 'BBplus 300ml', '2021-09-22', 9, '1512000', 'serbajadi', 'lunas'),
 (17, 2, '1802010101', 'Nanoxy 300ml', '2021-09-23', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
 (18, 2, '325346546', 'BBplus 300ml', '2021-09-23', 2, '336000', 'bogor, jawa', 'lunas'),
-(19, 2, '080909090808', 'BBplus 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas');
+(19, 2, '080909090808', 'BBplus 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas'),
+(20, 2, '08020390390', '@water 550ml', '2021-09-29', 2, '120000', 'Lampung Tengah', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -125,6 +127,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`no_telp_customer`, `nama`, `jenis_kelamin`, `alamat`) VALUES
+('08020390390', 'aziz', 'laki - laki', 'bandar jaya'),
 ('080909090808', 'alucard', 'laki - laki', 'land of down'),
 ('1802010101', 'farida', 'perempuan', 'jakarta selatan'),
 ('1928293938', 'Asril Rinaldi', 'laki - laki', 'palembang'),
@@ -220,9 +223,10 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('BBplus 300ml', '168000', 16, '88000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 60, '63000', '69000', '76000'),
-('Nanoxy 500ml', '78000', 30, '59100', '66000', '72000');
+('@water 550ml', '60000', 65, '30000', '40000', '45000'),
+('BBplus 300ml', '168000', 20, '88000', '118000', '138000'),
+('Nanoxy 300ml', '96000', 55, '63000', '69000', '76000'),
+('Nanoxy 500ml', '78000', 23, '59100', '66000', '72000');
 
 -- --------------------------------------------------------
 
@@ -365,7 +369,13 @@ INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesa
 (4, 2, 'BBplus 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
 (7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 0, 2, 'Cash'),
 (8, 2, 'BBplus 300ml', '2021-09-24', 5, '440000', 0, 2, 'Cash'),
-(9, 2, 'BBplus 300ml', '2021-09-25', 10, '880000', 880000, 0, 'Transfer');
+(9, 2, 'BBplus 300ml', '2021-09-25', 10, '880000', 0, 1, 'Transfer'),
+(11, 2, 'BBplus 300ml', '2021-09-08', 2, '176000', 0, 3, 'Transfer'),
+(15, 13, 'BBplus 300ml', '2021-09-08', 3, '264000', 0, 3, 'Cash'),
+(16, 13, 'Nanoxy 500ml', '2021-09-24', 7, '413700', 0, 3, 'Cash'),
+(17, 13, '@water 550ml', '2021-09-29', 8, '240000', 0, 1, 'Cash'),
+(18, 13, 'Nanoxy 300ml', '2021-09-29', 5, '315000', 215000, 1, 'Cash'),
+(19, 2, '@water 550ml', '2021-09-08', 5, '150000', 40000, 2, 'Cash');
 
 -- --------------------------------------------------------
 
@@ -389,7 +399,8 @@ CREATE TABLE `sales` (
 
 INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
-(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa tengah', 'laki - laki', 'reza@gmail.com');
+(3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa tengah', 'laki - laki', 'reza@gmail.com'),
+(6, 'bang sabri', '1029033903', '09080807809', 'metro barat', 'laki - laki', 'sabri@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -436,10 +447,14 @@ CREATE TABLE `stok_barang_mitra` (
 --
 
 INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
-(2, 2, 'BBplus 300ml', 20),
-(3, 13, 'Nanoxy 500ml', 30),
+(2, 2, 'BBplus 300ml', 22),
+(3, 13, 'Nanoxy 500ml', 37),
 (4, 2, 'Nanoxy 300ml', 30),
-(5, 2, 'Nanoxy 500ml', 25);
+(5, 2, 'Nanoxy 500ml', 25),
+(8, 13, 'BBplus 300ml', 3),
+(9, 13, '@water 550ml', 8),
+(10, 13, 'Nanoxy 300ml', 5),
+(11, 2, '@water 550ml', 5);
 
 -- --------------------------------------------------------
 
@@ -460,7 +475,7 @@ CREATE TABLE `suplayer` (
 INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
 ('PT. IAM TECH', '082323232323', 'Lampung Tengah'),
 ('PT. Maju Jaya', '0979786687', 'sjdakjdjsdfkjsd'),
-('PT. Merak Jaya Abadi', '0821658920892', 'Jawa'),
+('PT. Merak Jaya Abadi', '0090908080886', 'cibubur'),
 ('PT. Sejahtera', '999999', 'indonesia');
 
 -- --------------------------------------------------------
@@ -488,6 +503,7 @@ INSERT INTO `user` (`email`, `password`, `status`, `status_kepegawaian`) VALUES
 ('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1', 'pegawai'),
 ('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4', 'pegawai'),
 ('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3', 'pegawai'),
+('sabri@gmail.com', '2cd14e948e5d160d3409636ca8c126d0', '3', 'pegawai'),
 ('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4', 'pegawai'),
 ('via@gmail.com', 'e5aef89fdd6afdd63e0114c852b0f74c', '2', 'pegawai');
 
@@ -645,13 +661,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
 --
 ALTER TABLE `catatan_admin`
-  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_catat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `mitra`
@@ -681,13 +697,13 @@ ALTER TABLE `penjualan_salmit`
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
 --
 ALTER TABLE `pesanan_mitra`
-  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_sales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `salesnya_mitra`
@@ -699,7 +715,7 @@ ALTER TABLE `salesnya_mitra`
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
 --
 ALTER TABLE `stok_barang_mitra`
-  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
