@@ -53,6 +53,9 @@
                     <label for="harga" class="control-label">Harga Total</label>
                     <div class="input-group">
                         <input type="text" name="harga_total" id="harga_total" class="form-control" readonly>
+                        <?php foreach ($user as $d) { ?>
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id_mitra" value="<?php echo $d["id_mitra"] ?>" hidden />
+                        <?php } ?>
                         <span class="input-group-addon">
                         </span>
                     </div>

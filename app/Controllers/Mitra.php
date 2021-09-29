@@ -117,59 +117,68 @@ class Mitra extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
         //panggil model stok
-        $this->stokModel = new StokModel();
-        //panggil stok berdasarkan nama kategori
-        $kate = $data['nama_kategori'];
-        $model = new StokModel();
-        $stok = $model->editstokju($kate);
-        $pesan = $data['jumlah'];
-        if ($stok == 0) {
-            // kirim peringatan 
-            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
-            return redirect()->to('/mitra/tambah_pes');
-        } else if ($stok < $pesan) {
-            // kirim peringatan 
-            session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
-            return redirect()->to('/mitra/tambah_pes');
-        } else {
+        $this->barangMitraModel = new BarangMitraModel();
+        $adakategori = $this->barangMitraModel->where('nama_kategori', $data['nama_kategori'])->where('id_mitra', $data['id_mitra'])->first();
+        
+        //cek ada kategori atau tidak
+        if($adakategori){
+            //kondisi ada kategori
+                //panggil stok berdasarkan nama kategori
+            $kate = $data['nama_kategori'];
+            $model = new StokModel();
+            $stok = $model->editstokju($kate);
+            $pesan = $data['jumlah'];
+            if ($stok == 0) {
+                // kirim peringatan 
+                session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Habis!!!!</div>');
+                return redirect()->to('/mitra/tambah_pes');
+            } else if ($stok < $pesan) {
+                // kirim peringatan 
+                session()->setFlashdata('stok_habis',  '<div class="alert alert-danger text-center">Stok Kurang Dari Pesanan!!!!</div>');
+                return redirect()->to('/mitra/tambah_pes');
+            } else {
 
-            $this->userpesanModel = new UserPesanModel();
-            $this->userpesanModel->save([
-                'id_mitra' => $data['id_mitra'],
-                'nama_kategori' => $data['nama_kategori'],
-                'tgl_pesan' => $data['tgl_pesan'],
-                'jumlah' => $data['jumlah'],
-                'harga' => $data['harga_total'],
-                'utang' => $data['harga_total'],
-                'bayar' => 0,
-                'met_bayar' => $data['metode']
-            ]);
-            //kurangkan
-            $upjum = $stok - $data['jumlah'];
-            //update stoknya
-            $dataupdate = [
-                'stok' => $upjum
-            ];
+                $this->userpesanModel = new UserPesanModel();
+                $this->userpesanModel->save([
+                    'id_mitra' => $data['id_mitra'],
+                    'nama_kategori' => $data['nama_kategori'],
+                    'tgl_pesan' => $data['tgl_pesan'],
+                    'jumlah' => $data['jumlah'],
+                    'harga' => $data['harga_total'],
+                    'utang' => $data['harga_total'],
+                    'bayar' => 0,
+                    'met_bayar' => $data['metode']
+                ]);
+                //kurangkan
+                $upjum = $stok - $data['jumlah'];
+                //update stoknya
+                $dataupdate = [
+                    'stok' => $upjum
+                ];
 
-            //tambah stok kemitra
-            $model = new BarangMitraModel();
-            $id = $data['id_mitra'];
-            $stokmit = $model->editstokju($kate, $id);
-            $upstokmit = $stokmit['stok_mitra'] + $data['jumlah'];
-            $dataupdatemit = [
-                'stok_mitra' => $upstokmit
-            ];
-            $kat = $data['nama_kategori'];
-            $idbar = $stokmit['id_stokbarmit'];
-            $update = $this->stokModel->updatejumstok($dataupdate, $kat);
-            $this->barangMitraModel = new BarangMitraModel();
-            $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
-            // Jika berhasil melakukan ubah
-            if ($update) {
-                if ($update1) {
-                    return redirect()->to('/mitra/pesanan_mitra');
+                //tambah stok kemitra
+                $model = new BarangMitraModel();
+                $id = $data['id_mitra'];
+                $stokmit = $model->editstokju($kate, $id);
+                $upstokmit = $stokmit['stok_mitra'] + $data['jumlah'];
+                $dataupdatemit = [
+                    'stok_mitra' => $upstokmit
+                ];
+                $kat = $data['nama_kategori'];
+                $idbar = $stokmit['id_stokbarmit'];
+                $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+                $this->barangMitraModel = new BarangMitraModel();
+                $update1 = $this->barangMitraModel->updatejumstok($dataupdatemit, $idbar);
+                // Jika berhasil melakukan ubah
+                if ($update) {
+                    if ($update1) {
+                        return redirect()->to('/mitra/pesanan_mitra');
+                    }
                 }
             }
+        }else{
+            //masukin kategori ke barang mitra
         }
+        
     }
 }
