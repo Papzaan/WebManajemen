@@ -279,16 +279,16 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <!-- <li class="nav-item dropdown no-arrow mx-1">
+                        <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shopping-cart fa-fw"></i>
-                                 Counter - Alerts -->
-                        <!-- <span class="badge badge-danger badge-counter">3+</span>
-                            </a> -->
-                        <!-- Dropdown - Alerts -->
-                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Keranjang
+                                    Alerts Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
@@ -297,13 +297,13 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">Nonoxy</div>
-                                        <span class="font-weight-bold">300 ML!</span>
+                                        <div class="small text-gray-500">Bayar Bang</div>
+                                        <span class="font-weight-bold">Nanoxy</span>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Lihat Keranjang</a>
-                            </div> -->
-                        <!-- </li> -->
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
