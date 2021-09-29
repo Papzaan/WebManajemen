@@ -149,26 +149,51 @@ class Barang extends BaseController
         }
         //tangkap data dari form 
         $data = $this->request->getPost();
+        if($data['sum'] == 'tambah'){
+            //akses ke tabel barang tambah barang
+            $hasil = $data['jumlah'] + $data['jumlah_tambah'];
+            $this->barangModel = new BarangModel();
+            $dataupdate = [
+                'nama_sup' => $data['nama_sup'],
+                'nama_kategori' => $data['nama_kategori'],
+                'tgl_masuk' => $data['tgl_masuk'],
+                'jumlah' => $hasil,
+                'harga' => $data['harga']
+            ];
+            $id = $data['id_barang'];
+            $update = $this->barangModel->updatebarang($dataupdate, $id);
+            // Jika berhasil melakukan ubah
+            if ($update) {
 
-        //akses ke tabel barang
-        $this->barangModel = new BarangModel();
-        $dataupdate = [
-            'nama_sup' => $data['nama_sup'],
-            'nama_kategori' => $data['nama_kategori'],
-            'tgl_masuk' => $data['tgl_masuk'],
-            'jumlah' => $data['jumlah'],
-            'harga' => $data['harga']
-        ];
-        $id = $data['id_barang'];
-        $update = $this->barangModel->updatebarang($dataupdate, $id);
-        // Jika berhasil melakukan ubah
-        if ($update) {
+                // Deklarasikan session flashdata dengan tipe info
+                echo session()->setFlashdata('info', 'Updated barang successfully');
+                // Redirect ke halaman product
+                return redirect()->to('/barang/tampil');
+            }
+        }else if($data['sum'] == 'kurang'){
+            
+            //akses ke tabel barang tambah barang
+            $hasil = $data['jumlah'] - $data['jumlah_tambah'];
+            $this->barangModel = new BarangModel();
+            $dataupdate = [
+                'nama_sup' => $data['nama_sup'],
+                'nama_kategori' => $data['nama_kategori'],
+                'tgl_masuk' => $data['tgl_masuk'],
+                'jumlah' => $hasil,
+                'harga' => $data['harga']
+            ];
+            $id = $data['id_barang'];
+            $update = $this->barangModel->updatebarang($dataupdate, $id);
+            // Jika berhasil melakukan ubah
+            if ($update) {
 
-            // Deklarasikan session flashdata dengan tipe info
-            echo session()->setFlashdata('info', 'Updated barang successfully');
-            // Redirect ke halaman product
-            return redirect()->to('/barang/tampil');
+                // Deklarasikan session flashdata dengan tipe info
+                echo session()->setFlashdata('info', 'Updated barang successfully');
+                // Redirect ke halaman product
+                return redirect()->to('/barang/tampil');
+            }
         }
+        
     }
     public function hapus_barang($id)
     {
