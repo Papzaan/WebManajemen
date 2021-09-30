@@ -33,7 +33,7 @@
                         <th>Mitra Super 1</th>
                         <th>Mitra Super 2</th>
                         <th>Mitra Biasa</th>
-                        <th>Outlet</th>
+                        <th>Sales/Outlet</th>
                         <th>Customer</th>
 
                     </thead>

@@ -60,6 +60,36 @@ class Barang_Mitra extends BaseController
        $model = new BarangMitraModel();
        $data['edit_stok'] = $model->edit_stok($id);
        $data['title'] = 'Update Stok Barang Mitra';
-       return view('barang/edit_stok', $data);
+       return view('mitra/edit_stok', $data);
    }
+   public function update_stok(){
+    //cek apakah ada session bernama isLogin
+    if (!$this->session->has('isLogin')) {
+       return redirect()->to('/auth/login');
+   }
+
+   //cek role dari session
+   if ($this->session->get('status') != 2) {
+       return redirect()->to('/user');
+   }
+    //tangkap data dari form 
+    $data = $this->request->getPost();
+
+    //akses ke tabel barang
+    $this->barangMitraModel = new BarangMitraModel();
+    $dataupdate = [
+        'nama_kategori' => $data['nama_kategori'],
+        'harga_outlet' => $data['harga_outlet'],
+        'harga_customer' => $data['harga_customer']
+    ];
+    $id = $data['id_stok'];
+    $update = $this->barangMitraModel->updatestok($dataupdate, $id);
+    // Jika berhasil melakukan ubah
+    if ($update) {
+        // Deklarasikan session flashdata dengan tipe info
+        echo session()->setFlashdata('info', 'Updated barang successfully');
+        // Redirect ke halaman product
+        return redirect()->to('/barang_mitra/stok');
+    }
+}
 }

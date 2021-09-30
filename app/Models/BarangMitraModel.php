@@ -8,19 +8,38 @@ class BarangMitraModel extends Model
 {
     protected $table = "stok_barang_mitra";
     protected $primaryKey = "id_stokbarmit";
-    protected $allowedFields = ["id_mitra","nama_kategori","stok_mitra"];
+    protected $allowedFields = ["id_mitra","nama_kategori","harga_outlet", "harga_customer","stok_mitra"];
     protected $useTimestamps = false;
     
 
     public function getstok(){
         $session = session();
         $data = $session->get('email');
-        return $this->db->table('stok_barang_mitra')
-        ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
-        ->join('kategori','kategori.nama_kategori=stok_barang_mitra.nama_kategori')
-        ->select('stok_barang_mitra.id_stokbarmit, stok_barang_mitra.harga_customer, kategori.harga_mitra, stok_barang_mitra.harga_sales, stok_barang_mitra.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
-        ->where('mitra.email',['email'=> $data])
-        ->get()->getResultArray();
+        $kedudukan =  $this->db->query("SELECT kedudukan FROM mitra WHERE email='$data' ");
+        $dataa = $kedudukan->getRowArray();
+        if($dataa['kedudukan'] == 'md'){
+            return $this->db->table('stok_barang_mitra')
+            ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+            ->join('kategori','kategori.nama_kategori=stok_barang_mitra.nama_kategori')
+            ->select('stok_barang_mitra.id_stokbarmit, stok_barang_mitra.harga_customer, kategori.harga_mitra, stok_barang_mitra.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
+            ->where('mitra.email',['email'=> $data])
+            ->get()->getResultArray();
+        }else if($dataa['kedudukan'] == 'md1'){
+            return $this->db->table('stok_barang_mitra')
+            ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+            ->join('kategori','kategori.nama_kategori=stok_barang_mitra.nama_kategori')
+            ->select('stok_barang_mitra.id_stokbarmit, stok_barang_mitra.harga_customer, kategori.harga_mitra1, stok_barang_mitra.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
+            ->where('mitra.email',['email'=> $data])
+            ->get()->getResultArray();
+        }else if($dataa['kedudukan'] == 'md2'){
+            return $this->db->table('stok_barang_mitra')
+            ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+            ->join('kategori','kategori.nama_kategori=stok_barang_mitra.nama_kategori')
+            ->select('stok_barang_mitra.id_stokbarmit, stok_barang_mitra.harga_customer, kategori.harga_mitra2, stok_barang_mitra.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
+            ->where('mitra.email',['email'=> $data])
+            ->get()->getResultArray();
+        }
+       
     }
     public function getstoksm(){
         $session = session();
@@ -64,6 +83,22 @@ class BarangMitraModel extends Model
         ->selectCount('stok_barang_mitra.nama_kategori')
         ->where('salesnya_mitra.email',['email'=> $data])
         ->get()->getRowArray();
+    }
+    public function edit_stok($id)
+    {//admin update dari kategori
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('stok_barang_mitra')
+            ->where('stok_barang_mitra.id_stokbarmit',['id_stokbarmit' => $id])
+            ->get()->getResultArray();
+    }
+
+    public function updatestok($dataupdate, $id)
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('stok_barang_mitra')
+            ->update($dataupdate, ['id_stokbarmit' => $id]);
     }
     public function editstokju($kate, $id)
     {   
