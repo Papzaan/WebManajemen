@@ -39,6 +39,14 @@ class StokModel extends Model
                 ->get()->getResultArray();
         }
     }
+    public function getharga_stokadmin($kate){
+        //$kate menampung nilai nama kategori dari kontroller
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('kategori')
+        ->where('nama_kategori',['nama_kategori' => $kate])
+        ->get()->getRowArray();
+    }
     public function edit_stok($id)
     {//admin update dari kategori
         $session = session();

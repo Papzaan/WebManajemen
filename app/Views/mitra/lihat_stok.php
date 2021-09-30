@@ -52,7 +52,7 @@
                                 <td><?php echo $d['stok_mitra'] ?></td>
                                 <td>
                                     <a href="<?php echo base_url() ?>/barang_mitra/edit_stok/<?php echo $d["id_stokbarmit"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        <!-- <a href="#"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button> -->
                                 </td>
                             </tr>
                         <?php } ?>
