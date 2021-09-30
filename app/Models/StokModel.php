@@ -8,7 +8,7 @@ class StokModel extends Model
 {
     protected $table = "kategori";
     //protected $primaryKey = "nama_kategori";
-    protected $allowedFields = ["nama_kategori","harga_mitra", "harga_sales", "harga_outlet", "harga_dusan", "stok"];
+    protected $allowedFields = ["nama_kategori", "harga_sales","harga_mitra1", "harga_mitra2","harga_mitra", "harga_outlet", "harga_dusan", "stok"];
     protected $useTimestamps = false;
 
 
@@ -19,7 +19,26 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->get()->getResultArray();
     }
-    
+    public function getstokm()
+    {
+        $session = session();
+        $data = $session->get('email');
+        $kedudukan =  $this->db->query("SELECT kedudukan FROM mitra WHERE email='$data' ");
+        $dataa = $kedudukan->getRowArray();
+        if($dataa['kedudukan'] == 'md'){
+            return $this->db->table('kategori')
+                ->select('nama_kategori, harga_mitra')
+                ->get()->getResultArray();
+        }else if($dataa['kedudukan'] == 'md1'){
+            return $this->db->table('kategori')
+                ->select('nama_kategori, harga_mitra1')
+                ->get()->getResultArray();
+        }else if($dataa['kedudukan'] == 'md2'){
+            return $this->db->table('kategori')
+                ->select('nama_kategori, harga_mitra2')
+                ->get()->getResultArray();
+        }
+    }
     public function edit_stok($id)
     {//admin update dari kategori
         $session = session();

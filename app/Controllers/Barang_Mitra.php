@@ -43,46 +43,23 @@ class Barang_Mitra extends BaseController
         }
         
     }
-    public function input_stok()
-    {
-
+    
+    public function edit_stok($id){
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
-            return redirect()->to('/auth/login');
-        }
+           return redirect()->to('/auth/login');
+       }
 
-        //cek role dari session
-        if ($this->session->get('status') != 1) {
-            return redirect()->to('/user');
-        }
+       //cek role dari session
+       if ($this->session->get('status') != 2) {
+           return redirect()->to('/user');
+       }
 
-        $model = new UserModel();
-        $data['user'] = $model->getdataMitra();
-        $model = new StokModel();
-        $data['title'] = 'Tambah Nama Barang';
-        $data['stok'] = $model->getstok();
-        return view('barang/tambah_stok', $data);
-    }
-    public function aksi_inputstok()
-    {
-        //cek apakah ada session bernama isLogin
-        if (!$this->session->has('isLogin')) {
-            return redirect()->to('/auth/login');
-        }
-
-        //cek role dari session
-        if ($this->session->get('status') != 1) {
-            return redirect()->to('/user');
-        }
-        //tangkap data dari form 
-        $data = $this->request->getPost();
-
-        //input ke tabel barang
-        $this->stokModel = new StokModel();
-        $this->stokModel->save([
-            'nama_kategori' => $data['nama_kategori'],
-            'harga_dusan' => $data['harga_dusan'],
-        ]);
-        return redirect()->to('/barang/stok');
-    }
+       $model = new UserModel();
+       $data['user'] = $model->getdataMitra();
+       $model = new BarangMitraModel();
+       $data['edit_stok'] = $model->edit_stok($id);
+       $data['title'] = 'Update Stok Barang Mitra';
+       return view('barang/edit_stok', $data);
+   }
 }

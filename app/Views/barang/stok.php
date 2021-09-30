@@ -25,12 +25,14 @@
                         <tr>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nomor</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nama Barang</th>
-                            <th colspan="4">Harga Perkarton</th>
+                            <th colspan="6">Harga Perkarton</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Stok</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Aksi</th>
                         </tr>
-                        <th>Mitra</th>
-                        <th>Sales</th>
+                        <th>Sales Executiv</th>
+                        <th>Mitra Super 1</th>
+                        <th>Mitra Super 2</th>
+                        <th>Mitra Biasa</th>
                         <th>Outlet</th>
                         <th>Customer</th>
 
@@ -44,8 +46,10 @@
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d['nama_kategori'] ?></td>
-                                <td><?php echo $d['harga_mitra'] ?></td>
                                 <td><?php echo $d['harga_sales'] ?></td>
+                                <td><?php echo $d['harga_mitra1'] ?></td>
+                                <td><?php echo $d['harga_mitra2'] ?></td>
+                                <td><?php echo $d['harga_mitra'] ?></td>
                                 <td><?php echo $d['harga_outlet'] ?></td>
                                 <td><?php echo $d['harga_dusan'] ?></td>
                                 <td><?php echo $d['stok'] ?></td>

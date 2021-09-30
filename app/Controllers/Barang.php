@@ -276,6 +276,8 @@ class Barang extends BaseController
          $this->stokModel = new StokModel();
          $dataupdate = [
              'nama_kategori' => $data['nama_kategori'],
+             'harga_mitra1' => $data['harga_mitra1'],
+             'harga_mitra2' => $data['harga_mitra2'],
              'harga_mitra' => $data['harga_mitra'],
              'harga_sales' => $data['harga_sales'],
              'harga_outlet' => $data['harga_outlet'],
@@ -346,6 +348,8 @@ class Barang extends BaseController
         $this->stokModel->save([
             'nama_kategori' => $data['nama_kategori'],
             'harga_mitra' => '0',
+            'harga_mitra1' => '0',
+            'harga_mitra2' => '0',
             'harga_sales' => '0',
             'harga_outlet' => '0',
             'harga_dusan' => '0'

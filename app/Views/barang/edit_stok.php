@@ -22,14 +22,6 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <label for="no_tlp" class="control-label">Harga Mitra</label>
-                    <div class="input-group">
-                        <input type="text" name="harga_mitra" id="harga_mitra" data-error="No Telpon harus di isi" value="<?php echo $d["harga_mitra"] ?>" class="form-control"  required>
-                        <span class="input-group-addon">
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="no_tlp" class="control-label">Harga Sales</label>
                     <div class="input-group">
                         <input type="text" name="harga_sales" id="harga_sales" data-error="No Telpon harus di isi" value="<?php echo $d["harga_sales"] ?>" class="form-control" required>
@@ -37,6 +29,31 @@
                         </span>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="no_tlp" class="control-label">Harga Super 1</label>
+                    <div class="input-group">
+                        <input type="text" name="harga_mitra1" id="harga_mitra1" data-error="No Telpon harus di isi" value="<?php echo $d["harga_mitra1"] ?>" class="form-control"  required>
+                        <span class="input-group-addon">
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="no_tlp" class="control-label">Harga Super 2</label>
+                    <div class="input-group">
+                        <input type="text" name="harga_mitra2" id="harga_mitra2" data-error="No Telpon harus di isi" value="<?php echo $d["harga_mitra2"] ?>" class="form-control"  required>
+                        <span class="input-group-addon">
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="no_tlp" class="control-label">Harga Mitra</label>
+                    <div class="input-group">
+                        <input type="text" name="harga_mitra" id="harga_mitra" data-error="No Telpon harus di isi" value="<?php echo $d["harga_mitra"] ?>" class="form-control"  required>
+                        <span class="input-group-addon">
+                        </span>
+                    </div>
+                </div>
+               
                 <div class="form-group">
                     <label for="no_tlp" class="control-label">Harga Outlet</label>
                     <div class="input-group">

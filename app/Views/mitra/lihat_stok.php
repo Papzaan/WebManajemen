@@ -21,6 +21,7 @@
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Nama Barang</th>
                             <th colspan="4">Harga Perkarton</th>
                             <th rowspan="2" style="text-align: center; vertical-align: middle;">Stok</th>
+                            <th rowspan="2" style="text-align: center; vertical-align: middle;">Aksi</th>
                         </tr>
                         <th>Mitra</th>
                         <th>Sales</th>
@@ -34,14 +35,18 @@
                         $no = 1;
                         foreach ($stok as $d) {
                         ?>
-                            <tr>
+                            <tr id="<?php echo $d['id_stokbarmit'] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d['nama_kategori'] ?></td>
                                 <td><?php echo $d['harga_mitra'] ?></td>
                                 <td><?php echo $d['harga_sales'] ?></td>
                                 <td><?php echo $d['harga_outlet'] ?></td>
-                                <td><?php echo $d['harga_dusan'] ?></td>
+                                <td><?php echo $d['harga_customer'] ?></td>
                                 <td><?php echo $d['stok_mitra'] ?></td>
+                                <td>
+                                    <a href="<?php echo base_url() ?>/barang_mitra/edit_stok/<?php echo $d["id_stokbarmit"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                        <a href="<?php echo base_url() ?>/barang_mitra/hapus_stok/<?php echo $d["id_stokbarmit"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>

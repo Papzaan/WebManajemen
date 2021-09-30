@@ -14,9 +14,9 @@
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/mitra/aksi_pesan">
-            <?php foreach ($user as $d) { ?>
+            <?php foreach ($user as $d) { 
+                if($d['kedudukan'] == 'md'){?>
                 <input type="text" name="id_mitra" value="<?= $d['id_mitra']; ?>" hidden>
-            <?php } ?>
                 <div class="form-group">Nama Barang</label>
                     <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
                     <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
@@ -30,6 +30,40 @@
                     <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
                     <!-- mbatas option -->
                 </div>
+                <?php }else 
+                if($d['kedudukan'] == 'md1'){ ?>
+                    <input type="text" name="id_mitra" value="<?= $d['id_mitra']; ?>" hidden>
+                    <div class="form-group">Nama Barang</label>
+                        <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                        <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
+                            <option value="" disabled selected>Pilih Ketegori Barang</option>
+                            <?php foreach ($kategori as $kr) { ?>
+                                <option id="<?php echo $kr["harga_mitra1"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                    <?php echo $kr["nama_kategori"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
+                        <!-- mbatas option -->
+                    </div>
+                <?php }else 
+                if($d['kedudukan'] == 'md2'){ ?>
+                    <input type="text" name="id_mitra" value="<?= $d['id_mitra']; ?>" hidden>
+                    <div class="form-group">Nama Barang</label>
+                        <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                        <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
+                            <option value="" disabled selected>Pilih Ketegori Barang</option>
+                            <?php foreach ($kategori as $kr) { ?>
+                                <option id="<?php echo $kr["harga_mitra2"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                    <?php echo $kr["nama_kategori"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <input type="text" disabled id="harga_barang" class="form-control col-2" onkeyup="sum();">
+                        <!-- mbatas option -->
+                    </div>
+
+            <?php }} ?>
                 <div class="form-group">
                     <label for="kategori" class="control-label">Tanggal Penjualan</label>
                     <div class="input-group date" data-provide="datepicker">
