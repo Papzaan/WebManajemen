@@ -193,6 +193,11 @@
                         <span>Catatan Penjualan Sales</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-clipboard-list"></i>
+                        <span>Catatan Transaksi Mitra</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/barang/stok">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Stok</span></a>
@@ -388,7 +393,7 @@
                                 <a class="nav-link dropdown-toggle " href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small text-capitalize"><?php foreach ($user as $row) : ?>
                                             <tr>
-                                                <td><?= $row['nama']; ?></td>
+                                                <td><?= $row['nama_se']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </span>

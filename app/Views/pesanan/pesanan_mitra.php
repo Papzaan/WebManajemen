@@ -23,6 +23,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Mitra</th>
+                            <th>Sales Executiv</th>
                             <th>Nama Barang</th>
                             <th>Tanggal</th>
                             <th>Jumlah</th>
@@ -49,6 +50,7 @@
                             <tr id="<?php echo $d["id_pesmit"] ?>">
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_se"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>
                                 <td><?php echo $d["tgl_pesan"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Sep 2021 pada 08.18
+-- Waktu pembuatan: 30 Sep 2021 pada 04.04
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -69,7 +69,7 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
 (29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 50, '68000'),
 (30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000'),
-(34, 'PT. Merak Jaya Abadi', '@water 550ml', '2021-09-29', 5, '150000');
+(34, 'PT. Merak Jaya Abadi', '@water 550ml', '2021-09-29', 20, '150000');
 
 -- --------------------------------------------------------
 
@@ -223,7 +223,7 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('@water 550ml', '60000', 65, '30000', '40000', '45000'),
+('@water 550ml', '60000', 40, '30000', '40000', '45000'),
 ('BBplus 300ml', '168000', 20, '88000', '118000', '138000'),
 ('Nanoxy 300ml', '96000', 55, '63000', '69000', '76000'),
 ('Nanoxy 500ml', '78000', 23, '59100', '66000', '72000');
@@ -241,16 +241,17 @@ CREATE TABLE `mitra` (
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(250) NOT NULL,
   `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL COMMENT '1=laki-laki, 2=perempuan',
-  `email` varchar(30) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `id_sales` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mitra`
 --
 
-INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
-(2, 'Imam Haris syafaat', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com'),
-(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com');
+INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`, `id_sales`) VALUES
+(2, 'Imam Haris syafaat', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com', 2),
+(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -374,8 +375,8 @@ INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesa
 (15, 13, 'BBplus 300ml', '2021-09-08', 3, '264000', 0, 3, 'Cash'),
 (16, 13, 'Nanoxy 500ml', '2021-09-24', 7, '413700', 0, 3, 'Cash'),
 (17, 13, '@water 550ml', '2021-09-29', 8, '240000', 0, 1, 'Cash'),
-(18, 13, 'Nanoxy 300ml', '2021-09-29', 5, '315000', 215000, 1, 'Cash'),
-(19, 2, '@water 550ml', '2021-09-08', 5, '150000', 40000, 2, 'Cash');
+(18, 13, 'Nanoxy 300ml', '2021-09-29', 5, '315000', 0, 3, 'Cash'),
+(20, 2, '@water 550ml', '2021-09-29', 25, '750000', 0, 3, 'Transfer');
 
 -- --------------------------------------------------------
 
@@ -385,7 +386,7 @@ INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesa
 
 CREATE TABLE `sales` (
   `id_sales` int(11) NOT NULL,
-  `nama` varchar(25) NOT NULL,
+  `nama_se` varchar(25) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `no_telp` varchar(16) NOT NULL,
   `alamat` varchar(250) NOT NULL,
@@ -397,7 +398,7 @@ CREATE TABLE `sales` (
 -- Dumping data untuk tabel `sales`
 --
 
-INSERT INTO `sales` (`id_sales`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
+INSERT INTO `sales` (`id_sales`, `nama_se`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
 (2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
 (3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa tengah', 'laki - laki', 'reza@gmail.com'),
 (6, 'bang sabri', '1029033903', '09080807809', 'metro barat', 'laki - laki', 'sabri@gmail.com');
@@ -454,7 +455,7 @@ INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `
 (8, 13, 'BBplus 300ml', 3),
 (9, 13, '@water 550ml', 8),
 (10, 13, 'Nanoxy 300ml', 5),
-(11, 2, '@water 550ml', 5);
+(12, 2, '@water 550ml', 25);
 
 -- --------------------------------------------------------
 
@@ -487,7 +488,7 @@ INSERT INTO `suplayer` (`nama_sup`, `no_telp`, `alamat`) VALUES
 CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` enum('1','2','3','4') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales, 4=salmit',
+  `status` enum('1','2','3','4') NOT NULL COMMENT '1=Admin,2=Mitra,3=Sales Executiv, 4=salmit',
   `status_kepegawaian` enum('pegawai','non pegawai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -574,7 +575,8 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `mitra`
   ADD PRIMARY KEY (`id_mitra`),
-  ADD KEY `email` (`email`);
+  ADD KEY `email` (`email`),
+  ADD KEY `id_sales` (`id_sales`);
 
 --
 -- Indeks untuk tabel `penjualan_mitra`
@@ -697,7 +699,7 @@ ALTER TABLE `penjualan_salmit`
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
 --
 ALTER TABLE `pesanan_mitra`
-  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `sales`
@@ -715,7 +717,7 @@ ALTER TABLE `salesnya_mitra`
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
 --
 ALTER TABLE `stok_barang_mitra`
-  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -764,7 +766,8 @@ ALTER TABLE `customer_salmit`
 -- Ketidakleluasaan untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `mitra_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
+  ADD CONSTRAINT `mitra_ibfk_2` FOREIGN KEY (`id_sales`) REFERENCES `sales` (`id_sales`);
 
 --
 -- Ketidakleluasaan untuk tabel `penjualan_mitra`

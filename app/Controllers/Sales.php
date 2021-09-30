@@ -29,7 +29,7 @@ class Sales extends BaseController
         //tampilin data
         $model = new UserModel();
         $data['user'] = $model->getdataSales();
-        $data['title'] = 'Sales';
+        $data['title'] = 'Sales Executiv';
         $model = new StokModel();
         $data['kategori'] = $model->getstok();
         $data['jumlah_kategori'] = $model->getjumlahkategori();
