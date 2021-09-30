@@ -525,7 +525,7 @@
         <script src="<?php base_url(); ?>/assets/js/jquery-1.12.4.js"></script>
         <script src="<?php base_url(); ?>/assets/js/jquery-ui.js"></script>
 
-        <script src="<?php base_url(); ?>/assets/js/jquery.js"></script>
+
         <script src="<?php base_url(); ?>/assets/js/select2.min.js"></script>
         <script>
             $(".theSelect").select2();
