@@ -85,4 +85,24 @@ class Pesanan extends BaseController
             return redirect()->to('/pesanan/pesanan_mitra');
         }
     }
+    public function transaksi_mitra()
+    {//aksinya sales executive
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 3) {
+            return redirect()->to('/user');
+        }
+        //tampilin data
+        $model = new UserModel();
+        $data['title'] = 'Daftar Transaksi Mitra';
+        $data['user'] = $model->getdataSales();
+        $model = new PesananModel();
+        $data['pesmit'] = $model->gettransaksimitra();
+        echo view('sales/catatan_pesanan_mitra', $data);
+        echo view('layout/datatable');
+    }
 }
