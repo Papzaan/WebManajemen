@@ -15,7 +15,7 @@
                 <input type="hidden" name="id_sales" id="id_sales" value="<?php echo $d["id_sales"] ?>">
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap" value="<?php echo $d["nama"] ?>">
+                        <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap" value="<?php echo $d["nama_se"] ?>">
                     </div>
                     <div class="col-sm-6">
                         <input type="text" class="form-control form-control-user" name="nik" id="exampleLastName" placeholder="NIK" value="<?php echo $d["nik"] ?>">

@@ -52,7 +52,7 @@ class PenjualanModel extends Model
         return $this->db->table('penjualan_sales')
         ->join('sales','sales.id_sales=penjualan_sales.id_sales')
         ->join('customer_sales','customer_sales.no_telp_customer_sal=penjualan_sales.no_telp_customer_sal')
-        ->select('penjualan_sales.jumlah, penjualan_sales.tgl_jual, penjualan_sales.harga, penjualan_sales.alamat_trank, sales.nama, penjualan_sales.nama_kategori, customer_sales.nama_cussal, customer_sales.no_telp_customer_sal')
+        ->select('penjualan_sales.jumlah, penjualan_sales.tgl_jual, penjualan_sales.harga, penjualan_sales.alamat_trank, sales.nama_se, penjualan_sales.nama_kategori, customer_sales.nama_cussal, customer_sales.no_telp_customer_sal')
         ->get()->getResultArray();
     }
     public function getpenjualansalmit(){

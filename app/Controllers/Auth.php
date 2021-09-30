@@ -94,7 +94,7 @@ class Auth extends BaseController
                     //masukan data ke tabel sales sebagai sales admin
                     $this->userRegiss = new UserRegiss();
                     $this->userRegiss->save([
-                        'nama' => $data['nama'],
+                        'nama_se' => $data['nama'],
                         'nik' => $data['nik'],
                         'no_telp' => $data['no_telp'],
                         'alamat' => $data['alamat'],

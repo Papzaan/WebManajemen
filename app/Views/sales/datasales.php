@@ -25,7 +25,7 @@
     ?>
     <tr>
       <td><?php echo $no++ ?></td>
-      <td><?php echo $d["nama"] ?></td>
+      <td><?php echo $d["nama_se"] ?></td>
       <td><?php echo $d["nik"] ?></td>
       <td><?php echo $d["no_telp"] ?></td>
       <td><?php echo $d["alamat"] ?></td>

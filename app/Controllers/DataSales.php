@@ -77,13 +77,14 @@ class DataSales extends BaseController
         $this->userModel->save([
             'email' => $data['email'],
             'password' => $password,
-            'status' => 3
+            'status' => 3,
+            'status_kepegawaian' => 'pegawai'
         ]);
         //masukan data ke tabel mitra sebagai mitra
         $this->userRegiss = new UserRegiss();
         //$this->userRegis->tambahMitra($data);
         $this->userRegiss->save([
-            'nama' => $data['nama'],
+            'nama_se' => $data['nama'],
             'nik' => $data['nik'],
             'no_telp' => $data['no_telp'],
             'alamat' => $data['alamat'],
@@ -154,7 +155,7 @@ class DataSales extends BaseController
 
         $this->userRegiss = new UserRegiss();
         $dataupdate = [
-            'nama' => $data['nama'],
+            'nama_se' => $data['nama'],
             'nik' => $data['nik'],
             'no_telp' => $data['no_telp'],
             'alamat' => $data['alamat'],
