@@ -679,12 +679,12 @@
                     dom: 'Blfrtip',
                     buttons: [{
                             extend: 'pdfHtml5',
-                            oriented: 'portrait',
+                            orientation: 'landscape',
                             pageSize: 'legal',
                             title: 'Catatan Penjualan Pusat',
                             download: 'open',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6],
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7],
                             },
                             customize: function(doc) {
                                 doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
