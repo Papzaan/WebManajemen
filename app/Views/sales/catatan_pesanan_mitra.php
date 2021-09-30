@@ -18,7 +18,7 @@
         </div>-->
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class=" table-bordered table-hover" id="datatabletransaksi_mitra" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -84,7 +84,7 @@
                                 if ($d["utang"] != "0") { ?>
                                     <td><span class="bg-gradient-danger text-white">BelumLunas</span>
                                     </td>
-                                   
+
                                 <?php } ?>
                                 <!--<?php
                                     if ($d["utang"] != "0") { ?>
@@ -96,10 +96,10 @@
                             </tr>
                         <?php } ?>
 
-                        
+
                     </tbody>
-                    
-                </table>                 
+
+                </table>
             </div>
         </div>
     </div>
