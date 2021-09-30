@@ -193,7 +193,7 @@
                         <span>Catatan Penjualan Sales</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/pesanan/transaksi_mitra">
                         <i class="fas fa-fw fa-clipboard-list"></i>
                         <span>Catatan Transaksi Mitra</span></a>
                 </li>

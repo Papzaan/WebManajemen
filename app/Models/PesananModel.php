@@ -17,7 +17,7 @@ class PesananModel extends Model
         return $this->db->table('pesanan_mitra')
         ->join('kategori','kategori.nama_kategori=pesanan_mitra.nama_kategori')
         ->join('mitra','mitra.id_mitra=pesanan_mitra.id_mitra')
-        ->join('sales','sales.id_sales=mitra.id_mitra')
+        ->join('sales','sales.id_sales=mitra.id_sales')
         ->get()->getResultArray();
     }
     public function editpesmit($id_pesmit){
@@ -34,4 +34,14 @@ class PesananModel extends Model
         return $this->db->table('pesanan_mitra')
             ->update($dataupdate, ['id_pesmit' => $id_pesmit]);
     }   
+    public function gettransaksimitra(){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('pesanan_mitra')
+        ->join('kategori','kategori.nama_kategori=pesanan_mitra.nama_kategori')
+        ->join('mitra','mitra.id_mitra=pesanan_mitra.id_mitra')
+        ->join('sales','sales.id_sales=mitra.id_sales')
+        ->where('sales.email',['email' => $data])
+        ->get()->getResultArray();
+    }
 }
