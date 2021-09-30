@@ -34,7 +34,7 @@
                         ?>
                             <tr id="">
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $d["nama"] ?></td>
+                                <td><?php echo $d["nama_se"] ?></td>
                                 <td><?php echo $d["nama_cussal"] ?></td>
                                 <td><?php echo $d["no_telp_customer_sal"] ?></td>
                                 <td><?php echo $d["nama_kategori"] ?></td>

@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">Nama Penjual</label>
                         <?php foreach ($user as $d) { ?>
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_admin" value="<?php echo $d["nama"] ?>" disabled />
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="nama_admin" value="<?php echo $d["nama_se"] ?>" disabled />
                             <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="id" value="<?php echo $d["id_sales"] ?>" hidden />
                         <?php } ?>
                     </div>
