@@ -19,7 +19,7 @@
                         <div class="col-sm-5 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Nama Customer</label>
                             <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                            <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
+                            <select class="form-control theSelect" id="nama_cus" name="nama_cus" onChange="update_nik()">
                                 <option value="" disabled selected>Pilih Nama Customer</option>
                                 <?php foreach ($nama_cus as $kr) { ?>
                                     <option id="<?php echo $kr["no_telp_customer"]; ?>" value="<?php echo $kr["nama"]; ?>">
@@ -63,7 +63,7 @@
                         <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeyup="sum();" />
                     </div>
                     <div class="form-group">Harga Total</label>
-                        <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total"  readonly/>
+                        <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total" readonly />
                     </div>
                     <div class="form-group">Tanggal Jual</label>
                         <input type="text" id="datepicker" name="tgl_jual" id="tgl_jual" data-error="Tanggal harus di isi" class="form-control" placeholder="MM/DD/YYYY" required>
