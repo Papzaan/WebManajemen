@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Sep 2021 pada 04.04
+-- Waktu pembuatan: 30 Sep 2021 pada 08.31
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -68,8 +68,7 @@ INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `ju
 (27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
 (28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
 (29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 50, '68000'),
-(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000'),
-(34, 'PT. Merak Jaya Abadi', '@water 550ml', '2021-09-29', 20, '150000');
+(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
 
 -- --------------------------------------------------------
 
@@ -106,8 +105,7 @@ INSERT INTO `catatan_admin` (`id_catat`, `id_admin`, `no_telp_customer`, `nama_k
 (16, 2, '1928293938', 'BBplus 300ml', '2021-09-22', 9, '1512000', 'serbajadi', 'lunas'),
 (17, 2, '1802010101', 'Nanoxy 300ml', '2021-09-23', 2, '192000', 'Serang, Banten, Jawa', 'lunas'),
 (18, 2, '325346546', 'BBplus 300ml', '2021-09-23', 2, '336000', 'bogor, jawa', 'lunas'),
-(19, 2, '080909090808', 'BBplus 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas'),
-(20, 2, '08020390390', '@water 550ml', '2021-09-29', 2, '120000', 'Lampung Tengah', 'lunas');
+(19, 2, '080909090808', 'BBplus 300ml', '2021-09-01', 2, '336000', 'Lampung Tengah', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -213,8 +211,10 @@ CREATE TABLE `kategori` (
   `nama_kategori` varchar(30) NOT NULL,
   `harga_dusan` varchar(30) NOT NULL COMMENT 'untuk customer',
   `stok` int(30) NOT NULL,
-  `harga_mitra` varchar(30) NOT NULL,
   `harga_sales` varchar(30) NOT NULL,
+  `harga_mitra1` varchar(30) NOT NULL,
+  `harga_mitra2` varchar(30) NOT NULL,
+  `harga_mitra` varchar(30) NOT NULL,
   `harga_outlet` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -222,11 +222,11 @@ CREATE TABLE `kategori` (
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_mitra`, `harga_sales`, `harga_outlet`) VALUES
-('@water 550ml', '60000', 40, '30000', '40000', '45000'),
-('BBplus 300ml', '168000', 20, '88000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 55, '63000', '69000', '76000'),
-('Nanoxy 500ml', '78000', 23, '59100', '66000', '72000');
+INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_sales`, `harga_mitra1`, `harga_mitra2`, `harga_mitra`, `harga_outlet`) VALUES
+('@water 550ml', '150000', 8, '100000', '110000', '120000', '125000', '130000'),
+('BBplus 300ml', '168000', 14, '88000', '103000', '110000', '118000', '138000'),
+('Nanoxy 300ml', '96000', 55, '63000', '65000', '', '69000', '76000'),
+('Nanoxy 500ml', '78000', 23, '59100', '62000', '', '66000', '72000');
 
 -- --------------------------------------------------------
 
@@ -242,16 +242,18 @@ CREATE TABLE `mitra` (
   `alamat` varchar(250) NOT NULL,
   `jenis_kelamin` enum('laki - laki','perempuan') DEFAULT NULL COMMENT '1=laki-laki, 2=perempuan',
   `email` varchar(30) NOT NULL,
-  `id_sales` int(11) NOT NULL
+  `id_sales` int(11) NOT NULL,
+  `kedudukan` enum('md','md1','md2') NOT NULL COMMENT 'md= mitra biasa, md1=mitra super 1, md2=mitra super 2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mitra`
 --
 
-INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`, `id_sales`) VALUES
-(2, 'Imam Haris syafaat', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com', 2),
-(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com', 3);
+INSERT INTO `mitra` (`id_mitra`, `nama`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`, `id_sales`, `kedudukan`) VALUES
+(2, 'Imam Haris syafaat', '180027199271927', '08282939282', 'Bandar jaya, lampung tengah, Lampung', 'laki - laki', 'imamharis@gmail.com', 2, 'md'),
+(13, 'Oktaviani Rohayu', '18203830290493', '0829273392', 'Serang, Banten, Jawa', 'perempuan', 'via@gmail.com', 3, 'md1'),
+(19, 'pergunu lampung', '123442112', '080920909', 'pergunu lampung indonesia', 'laki - laki', 'pergunu@gmail.com', 2, 'md1');
 
 -- --------------------------------------------------------
 
@@ -365,18 +367,15 @@ CREATE TABLE `pesanan_mitra` (
 
 INSERT INTO `pesanan_mitra` (`id_pesmit`, `id_mitra`, `nama_kategori`, `tgl_pesan`, `jumlah`, `harga`, `utang`, `bayar`, `met_bayar`) VALUES
 (1, 2, 'BBplus 300ml', '2021-09-01', 20, '50000', 0, 1, 'Cash'),
-(2, 13, 'Nanoxy 300ml', '2021-09-01', 100, '500000', 0, 3, 'Cash'),
-(3, 2, 'BBplus 300ml', '2021-09-08', 2, '336000', 0, 2, 'Transfer'),
 (4, 2, 'BBplus 300ml', '2021-09-23', 3, '264000', 0, 1, 'Cash'),
-(7, 2, 'Nanoxy 300ml', '2021-09-23', 9, '567000', 0, 2, 'Cash'),
 (8, 2, 'BBplus 300ml', '2021-09-24', 5, '440000', 0, 2, 'Cash'),
 (9, 2, 'BBplus 300ml', '2021-09-25', 10, '880000', 0, 1, 'Transfer'),
-(11, 2, 'BBplus 300ml', '2021-09-08', 2, '176000', 0, 3, 'Transfer'),
 (15, 13, 'BBplus 300ml', '2021-09-08', 3, '264000', 0, 3, 'Cash'),
 (16, 13, 'Nanoxy 500ml', '2021-09-24', 7, '413700', 0, 3, 'Cash'),
-(17, 13, '@water 550ml', '2021-09-29', 8, '240000', 0, 1, 'Cash'),
 (18, 13, 'Nanoxy 300ml', '2021-09-29', 5, '315000', 0, 3, 'Cash'),
-(20, 2, '@water 550ml', '2021-09-29', 25, '750000', 0, 3, 'Transfer');
+(21, 2, 'BBplus 300ml', '2021-09-08', 2, '236000', 236000, 0, 'Cash'),
+(22, 2, 'BBplus 300ml', '2021-09-03', 2, '236000', 236000, 0, 'Cash'),
+(23, 2, 'BBplus 300ml', '2021-09-08', 2, '236000', 236000, 0, 'Cash');
 
 -- --------------------------------------------------------
 
@@ -399,7 +398,7 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id_sales`, `nama_se`, `nik`, `no_telp`, `alamat`, `jenis_kelamin`, `email`) VALUES
-(2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung', 'laki - laki', 'aansanova@gmail.com'),
+(2, 'aan sanova', '180027199271927', '0883928199208', 'Sukabumi, Bandar Lampung, Lampung, indonesia', 'laki - laki', 'aansanova@gmail.com'),
 (3, 'Reza aji pratama', '360201827292', '08823747383', 'bogor, jawa tengah', 'laki - laki', 'reza@gmail.com'),
 (6, 'bang sabri', '1029033903', '09080807809', 'metro barat', 'laki - laki', 'sabri@gmail.com');
 
@@ -440,6 +439,8 @@ CREATE TABLE `stok_barang_mitra` (
   `id_stokbarmit` int(11) NOT NULL,
   `id_mitra` int(11) NOT NULL,
   `nama_kategori` varchar(30) NOT NULL,
+  `harga_outlet` varchar(30) NOT NULL,
+  `harga_customer` varchar(30) NOT NULL,
   `stok_mitra` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -447,15 +448,13 @@ CREATE TABLE `stok_barang_mitra` (
 -- Dumping data untuk tabel `stok_barang_mitra`
 --
 
-INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `stok_mitra`) VALUES
-(2, 2, 'BBplus 300ml', 22),
-(3, 13, 'Nanoxy 500ml', 37),
-(4, 2, 'Nanoxy 300ml', 30),
-(5, 2, 'Nanoxy 500ml', 25),
-(8, 13, 'BBplus 300ml', 3),
-(9, 13, '@water 550ml', 8),
-(10, 13, 'Nanoxy 300ml', 5),
-(12, 2, '@water 550ml', 25);
+INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `harga_outlet`, `harga_customer`, `stok_mitra`) VALUES
+(2, 2, 'BBplus 300ml', '138000', '168000', 28),
+(3, 13, 'Nanoxy 500ml', '', '', 37),
+(4, 2, 'Nanoxy 300ml', '76000', '96000', 30),
+(5, 2, 'Nanoxy 500ml', '72000', '78000', 25),
+(8, 13, 'BBplus 300ml', '', '', 3),
+(10, 13, 'Nanoxy 300ml', '', '', 5);
 
 -- --------------------------------------------------------
 
@@ -503,6 +502,7 @@ INSERT INTO `user` (`email`, `password`, `status`, `status_kepegawaian`) VALUES
 ('jo@gmail.com', '54533eebc61004baa7a6f12b90785816', '4', 'pegawai'),
 ('mahesadarmasatria@gmail.com', '3051085ddce70013d6c496bd86b4dbe1', '1', 'pegawai'),
 ('nino@gmail.com', '6b6ed714bbf04a11070c2687ac776420', '4', 'pegawai'),
+('pergunu@gmail.com', '85f9077dfedd16a1b82b9581ab489707', '2', 'pegawai'),
 ('reza@gmail.com', '3ed6e995474bc6dddef7a6fc9b97c965', '3', 'pegawai'),
 ('sabri@gmail.com', '2cd14e948e5d160d3409636ca8c126d0', '3', 'pegawai'),
 ('salmit@gmail.com', '7e9848d2404bdc68af3c09dca9dd37c1', '4', 'pegawai'),
@@ -675,7 +675,7 @@ ALTER TABLE `catatan_admin`
 -- AUTO_INCREMENT untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_mitra`
@@ -687,7 +687,7 @@ ALTER TABLE `penjualan_mitra`
 -- AUTO_INCREMENT untuk tabel `penjualan_sales`
 --
 ALTER TABLE `penjualan_sales`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_salmit`
@@ -699,7 +699,7 @@ ALTER TABLE `penjualan_salmit`
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
 --
 ALTER TABLE `pesanan_mitra`
-  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pesmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `sales`
@@ -717,7 +717,7 @@ ALTER TABLE `salesnya_mitra`
 -- AUTO_INCREMENT untuk tabel `stok_barang_mitra`
 --
 ALTER TABLE `stok_barang_mitra`
-  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_stokbarmit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
