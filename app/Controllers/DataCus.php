@@ -96,7 +96,7 @@ class DataCus extends BaseController
         if($this->session->get('status') == 4){
             $model = new UserModel();
             $data['user'] = $model->getdataSalesnyamitra();
-            $data['title'] = 'Tambah Customer Reseller';
+            $data['title'] = 'Tambah Customer Salesnya Mitra';
             return view('customer/tambah_customer_salmit', $data);
         }else{
             return redirect()->to('/user');
