@@ -11,29 +11,29 @@
         </div>
         <div class="box-body">
             <form class="user" method="post" action="/datacus/aksitambah">
-            <div class="form-group row">
+                <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="nama" class="control-label">Nama Customer</label>
+                        <label for="nama" class="control-label">Nama Customer</label>
                         <input type="text" class="form-control form-control-user" name="nama" id="exampleInputPassword" placeholder="Nama Lengkap">
                     </div>
                     <div class="col-sm-6">
-                    <label for="nama" class="control-label">NO Telepone</label>
-                        <input type="text" class="form-control form-control-user" name="no_telp_customer" id="exampleRepeatPassword" placeholder="No Telepone Customer">
+                        <label for="nama" class="control-label">NO Telepone</label>
+                        <input type="text" class="form-control form-control-user" name="no_telp_customer" id="exampleRepeatPassword" onkeypress="return event.charCode >= 48 && event.charCode <=57" placeholder="No Telepone Customer">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
-                    <label for="nama" class="control-label">Pilih Jenis Kelamin</label>
-                            <select class="form-control  col-md-12" name="jk">
-                                <option value="" disabled selected>Jenis kelamin</option>
-                                <option value="laki - laki">Laki - laki</option>
-                                <option value="perempuan">Perempuan</option>
-                            </select>
+                        <label for="nama" class="control-label">Pilih Jenis Kelamin</label>
+                        <select class="form-control  col-md-12" name="jk">
+                            <option value="" disabled selected>Jenis kelamin</option>
+                            <option value="laki - laki">Laki - laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">Alamat Customer</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Customer"/>
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat Customer" />
                 </div>
                 <div class="box-footer">
                     <button type="submit" name="submit" class="btn btn-primary ">Simpan</button>
