@@ -47,8 +47,7 @@ class BarangMitraModel extends Model
         return $this->db->table('stok_barang_mitra')
         ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
         ->join('salesnya_mitra','salesnya_mitra.id_mitra=mitra.id_mitra')
-        ->join('kategori','kategori.nama_kategori=stok_barang_mitra.nama_kategori')
-        ->select('kategori.harga_dusan, kategori.harga_mitra, kategori.harga_sales, kategori.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
+        ->select('stok_barang_mitra.harga_customer, stok_barang_mitra.harga_outlet, stok_barang_mitra.stok_mitra, stok_barang_mitra.nama_kategori')
         ->where('salesnya_mitra.email',['email'=> $data])
         ->get()->getResultArray();
     }
