@@ -105,7 +105,8 @@ class Barang extends BaseController
                 'nama_kategori' => $data['nama_kategori'],
                 'tgl_masuk' => $data['tgl_masuk'],
                 'jumlah' => $data['jumlah'],
-                'harga' => $data['harga']
+                'harga' => $data['harga'],
+                'aksi' => '0'
             ]);
             return redirect()->to('/barang/tampil');
             echo view('template/datatables');
@@ -150,47 +151,93 @@ class Barang extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
         if($data['sum'] == 'tambah'){
-            //akses ke tabel barang tambah barang
-            $hasil = $data['jumlah'] + $data['jumlah_tambah'];
-            $this->barangModel = new BarangModel();
-            $dataupdate = [
-                'nama_sup' => $data['nama_sup'],
-                'nama_kategori' => $data['nama_kategori'],
-                'tgl_masuk' => $data['tgl_masuk'],
-                'jumlah' => $hasil,
-                'harga' => $data['harga']
-            ];
-            $id = $data['id_barang'];
-            $update = $this->barangModel->updatebarang($dataupdate, $id);
-            // Jika berhasil melakukan ubah
-            if ($update) {
+            //panggil model stok
+            $this->stokModel = new StokModel();
+            //panggil stok berdasarkan nama kategori
+            $kate = $data['nama_kategori'];
+            $model = new StokModel();
+            $stok = $model->editstokju($kate);
 
-                // Deklarasikan session flashdata dengan tipe info
-                echo session()->setFlashdata('info', 'Updated barang successfully');
-                // Redirect ke halaman product
-                return redirect()->to('/barang/tampil');
+            //var_dump($stok);
+            //var_dump($data['jumlah']);
+            //jumlahkan
+            $upjum = $stok + $data['jumlah_tambah'];
+            //$upjum = 10 + $data['jumlah'];
+            //update stoknya
+            $dataupdate = [
+                'stok' => $upjum
+            ];
+            $kat = $data['nama_kategori'];
+
+            $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+            
+            if ($update) {
+                //akses ke tabel barang tambah barang
+                $hasil = $data['jumlah'] + $data['jumlah_tambah'];
+                $this->barangModel = new BarangModel();
+                $dataupdate = [
+                    'nama_sup' => $data['nama_sup'],
+                    'nama_kategori' => $data['nama_kategori'],
+                    'tgl_masuk' => $data['tgl_masuk'],
+                    'jumlah' => $hasil,
+                    'harga' => $data['harga'],
+                    'aksi' => '1'
+                ];
+                $id = $data['id_barang'];
+                $update1 = $this->barangModel->updatebarang($dataupdate, $id);
+                // Jika berhasil melakukan ubah
+                if ($update1) {
+
+                    // Deklarasikan session flashdata dengan tipe info
+                    echo session()->setFlashdata('info', 'Updated barang successfully');
+                    // Redirect ke halaman product
+                    return redirect()->to('/barang/tampil');
+                }
             }
         }else if($data['sum'] == 'kurang'){
             
-            //akses ke tabel barang tambah barang
-            $hasil = $data['jumlah'] - $data['jumlah_tambah'];
-            $this->barangModel = new BarangModel();
-            $dataupdate = [
-                'nama_sup' => $data['nama_sup'],
-                'nama_kategori' => $data['nama_kategori'],
-                'tgl_masuk' => $data['tgl_masuk'],
-                'jumlah' => $hasil,
-                'harga' => $data['harga']
-            ];
-            $id = $data['id_barang'];
-            $update = $this->barangModel->updatebarang($dataupdate, $id);
-            // Jika berhasil melakukan ubah
-            if ($update) {
+            //panggil model stok
+            $this->stokModel = new StokModel();
+            //panggil stok berdasarkan nama kategori
+            $kate = $data['nama_kategori'];
+            $model = new StokModel();
+            $stok = $model->editstokju($kate);
 
-                // Deklarasikan session flashdata dengan tipe info
-                echo session()->setFlashdata('info', 'Updated barang successfully');
-                // Redirect ke halaman product
-                return redirect()->to('/barang/tampil');
+            //var_dump($stok);
+            //var_dump($data['jumlah']);
+            //jumlahkan
+            $upjum = $stok - $data['jumlah_tambah'];
+            //$upjum = 10 + $data['jumlah'];
+            //update stoknya
+            $dataupdate = [
+                'stok' => $upjum
+            ];
+            $kat = $data['nama_kategori'];
+
+            $update = $this->stokModel->updatejumstok($dataupdate, $kat);
+            
+            if ($update) {
+                //akses ke tabel barang tambah barang
+                $hasil = $data['jumlah'] - $data['jumlah_tambah'];
+                $this->barangModel = new BarangModel();
+                $dataupdate = [
+                    'nama_sup' => $data['nama_sup'],
+                    'nama_kategori' => $data['nama_kategori'],
+                    'tgl_masuk' => $data['tgl_masuk'],
+                    'jumlah' => $hasil,
+                    'harga' => $data['harga'],
+                    'aksi' => '1'
+                ];
+                $id = $data['id_barang'];
+                $update1 = $this->barangModel->updatebarang($dataupdate, $id);
+                // Jika berhasil melakukan ubah
+                if ($update1) {
+
+                    // Deklarasikan session flashdata dengan tipe info
+                    echo session()->setFlashdata('info', 'Updated barang successfully');
+                    // Redirect ke halaman product
+                    return redirect()->to('/barang/tampil');
+                }
             }
         }
         

@@ -8,7 +8,7 @@ class BarangModel extends Model
 {
     protected $table = "barang";
     protected $primaryKey = "id_barang";
-    protected $allowedFields = ["nama_sup", "nama_kategori","tgl_masuk","jumlah","harga"];
+    protected $allowedFields = ["nama_sup", "nama_kategori","tgl_masuk","jumlah","harga", "aksi"];
     protected $useTimestamps = false;
     
 

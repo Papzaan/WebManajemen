@@ -43,8 +43,16 @@
                                 <td><?php echo $d["tgl_masuk"] ?></td>
                                 <td><?php echo $d["jumlah"] ?></td>
                                 <td><?php echo $d["harga"] ?></td>
-                                <td><a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                <td>
+                                    <?php if($d['aksi'] == '0'){ ?> 
+                                    <a href="<?php echo base_url() ?>/barang/edit_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                                    <a href="<?php echo base_url() ?>/barang/valid_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Benar</button>
                                         <!-- <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button> -->
+                                    <?php }?>
+                                    <?php if($d['aksi'] == '1'){ ?> 
+                                    <span>Sudah Di Edit</span>
+                                        <!-- <a href="<?php echo base_url() ?>/barang/hapus_barang/<?php echo $d["id_barang"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button> -->
+                                    <?php }?>
                                 </td>
                             </tr>
                         <?php } ?>
