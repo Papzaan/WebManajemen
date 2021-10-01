@@ -61,7 +61,7 @@
                         <!-- mbatas option -->
                     </div>
                     <div class="form-group">Jumlah Barang</label>
-                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeyup="sum();" />
+                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeypress="return event.charCode >= 48 && event.charCode <=57" onkeyup="sum();" />
                     </div>
                     <div class="form-group">Harga Total</label>
                         <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total" readonly />
