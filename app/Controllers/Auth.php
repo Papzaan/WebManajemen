@@ -43,6 +43,7 @@ class Auth extends BaseController
             //return view('auth/register');
             $model = new UserModel();
             $data['user'] = $model->getdatadafMitra();
+            $data['sales_se'] = $model->getdatadafSales();
             return view('auth/register', $data);
         }
         return redirect()->route('/');
@@ -80,10 +81,12 @@ class Auth extends BaseController
                     'no_telp' => $data['no_telp'],
                     'alamat' => $data['alamat'],
                     'jenis_kelamin' => $data['jk'],
-                    'email' => $data['email']
+                    'email' => $data['email'],
+                    'id_sales' => $data['id_sales'],
+                    'kedudukan' => 'md'
                 ]);
             } else if ($data['pegawai'] == 'sales') {
-                if($data['nama_mitra'] == 'admin'){//menjadi salesnya admin
+                if($data['id_mitra'] == 'admin'){//menjadi salesnya admin
                     //masukan data ke database sebagai sales admin
                     $this->userModel->save([
                         'email' => $data['email'],
@@ -102,12 +105,7 @@ class Auth extends BaseController
                         'email' => $data['email']
                     ]);
                 }else{
-                    
-
-                    //panggil id mitra berdasarkan nama mitra
-                    $mitra = $data['nama_mitra'];
-                    $model = new UserModel();
-                    $id_mitra = $model->getidmitra($mitra);
+                   
                     //masukan data ke database sebagai sales admin
                     $this->userModel->save([
                         'email' => $data['email'],
@@ -118,7 +116,7 @@ class Auth extends BaseController
                     //masukan data ke tabel sales sebagai sales mitra
                     $this->userRegissm = new UserRegissm();
                     $this->userRegissm->save([
-                        'id_mitra' => $id_mitra,
+                        'id_mitra' => $data['id_mitra'],
                         'nama_salmit' => $data['nama'],
                         'nik' => $data['nik'],
                         'no_telp' => $data['no_telp'],

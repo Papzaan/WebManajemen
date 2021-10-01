@@ -54,6 +54,20 @@
                                             <h1 class="h4 text-gray-900 mb-4">Daftar Mitra</h1>
                                         </div>
                                         <form class="user" method="post" action="/auth/valid_register">
+                                            <!-- selector -->
+                                            <div class="form-group"></label>
+                                                <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
+                                                <select class="form-control" id="id_sales" name="id_sales">
+                                                    <option value="" disabled selected>Pilih Salah Satu Sales Pusat</option>
+                                                    <?php foreach ($sales_se as $se) { ?>
+                                                        <option id="<?php echo $se["id_sales"]; ?>" value="<?php echo $se["id_sales"]; ?>">
+                                                            <?php echo $se["nama_se"]; ?>
+                                                        </option>
+                                                    <?php } ?>
+                                                </select>
+                                                <!-- mbatas option -->
+                                            </div>
+                                            <!-- selector -->
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="text" class="form-control form-control-user" name="nama" id="exampleFirstName" placeholder="Nama Lengkap">
@@ -108,11 +122,11 @@
                                         <!-- selector -->
                                         <div class="form-group"></label>
                                             <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                                            <select class="form-control" id="nama_mitra" name="nama_mitra">
+                                            <select class="form-control" id="id_mitra" name="id_mitra">
                                                 <option value="" disabled selected>Pilih Mitra</option>
-                                                <option value="admin" >Admin</option>
+                                                <option value="admin" >Sales Pusat</option>
                                                 <?php foreach ($user as $kr) { ?>
-                                                    <option id="<?php echo $kr["nama"]; ?>" value="<?php echo $kr["nama"]; ?>">
+                                                    <option id="<?php echo $kr["id_mitra"]; ?>" value="<?php echo $kr["id_mitra"]; ?>">
                                                         <?php echo $kr["nama"]; ?>
                                                     </option>
                                                 <?php } ?>

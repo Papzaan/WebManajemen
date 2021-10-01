@@ -8,7 +8,7 @@ class UserRegism extends Model
 {
     protected $table = "mitra";
     protected $primaryKey = "id_mitra";
-    protected $allowedFields = ["nama", "nik","no_telp","alamat","jenis_kelamin","email"];
+    protected $allowedFields = ["nama", "nik","no_telp","alamat","jenis_kelamin","email","id_sales","kedudukan"];
     protected $useTimestamps = false;
 
     public function editmitra($id){

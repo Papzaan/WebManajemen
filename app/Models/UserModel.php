@@ -38,17 +38,25 @@ class UserModel extends Model
       ->get()->getResultArray();  
     }
     public function getdatadafMitra(){
-
       return $this->db->table('mitra')
-      ->select('nama,id_mitra')
+      ->join('user','user.email=mitra.email')
+      ->select('mitra.nama,mitra.id_mitra')
+      ->where('user.status_kepegawaian',['status_kepegawaian' => 'pegawai'])
       ->get()->getResultArray();  
     }
-    public function getidmitra($mitra){
-      $data1 = $this->db->query("SELECT id_mitra FROM mitra WHERE nama='$mitra' " );
-        $dataa = $data1->getRowArray();
-
-        return $dataa['id_mitra'];
+    public function getdatadafSales(){
+      return $this->db->table('sales')
+      ->join('user','user.email=sales.email')
+      ->select('sales.nama_se,sales.id_sales')
+      ->where('user.status_kepegawaian',['status_kepegawaian' => 'pegawai'])
+      ->get()->getResultArray();  
     }
+    // public function getidmitra($mitra){
+    //   $data1 = $this->db->query("SELECT id_mitra FROM mitra WHERE nama='$mitra' " );
+    //     $dataa = $data1->getRowArray();
+
+    //     return $dataa['id_mitra'];
+    // }
 
     public function getdataSales(){
       $session = session();
