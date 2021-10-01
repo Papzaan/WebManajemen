@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Sep 2021 pada 08.31
+-- Waktu pembuatan: 01 Okt 2021 pada 08.10
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -55,20 +55,22 @@ CREATE TABLE `barang` (
   `nama_kategori` varchar(25) DEFAULT NULL,
   `tgl_masuk` date NOT NULL,
   `jumlah` int(10) NOT NULL,
-  `harga` varchar(30) NOT NULL
+  `harga` varchar(30) NOT NULL,
+  `aksi` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `jumlah`, `harga`) VALUES
-(7, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-06-01', 80, '500000'),
-(8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 100, '168000'),
-(27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000'),
-(28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000'),
-(29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 50, '68000'),
-(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000');
+INSERT INTO `barang` (`id_barang`, `nama_sup`, `nama_kategori`, `tgl_masuk`, `jumlah`, `harga`, `aksi`) VALUES
+(7, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-06-01', 80, '500000', '1'),
+(8, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-06-01', 110, '168000', '1'),
+(27, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 80, '1000000', '0'),
+(28, 'PT. Merak Jaya Abadi', 'Nanoxy 500ml', '2021-09-14', 30, '68000', '0'),
+(29, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-09-14', 80, '68000', '1'),
+(30, 'PT. Merak Jaya Abadi', 'Nanoxy 300ml', '2021-09-14', 25, '1000000', '0'),
+(35, 'PT. Merak Jaya Abadi', 'BBplus 300ml', '2021-10-01', 12, '336000', '1');
 
 -- --------------------------------------------------------
 
@@ -198,6 +200,7 @@ CREATE TABLE `customer_salmit` (
 --
 
 INSERT INTO `customer_salmit` (`no_telp_customer_salmit`, `nama_cussalmit`, `jenis_kelamin`, `alamat`, `id_salmit`) VALUES
+('09087090', 'novi', 'perempuan', 'novi lampung', 1),
 ('122323445', 'jesica', 'perempuan', 'jakarta jesica', 5),
 ('23323323', 'nanonano', 'laki - laki', 'nano lampung', 3);
 
@@ -223,10 +226,9 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`nama_kategori`, `harga_dusan`, `stok`, `harga_sales`, `harga_mitra1`, `harga_mitra2`, `harga_mitra`, `harga_outlet`) VALUES
-('@water 550ml', '150000', 8, '100000', '110000', '120000', '125000', '130000'),
-('BBplus 300ml', '168000', 14, '88000', '103000', '110000', '118000', '138000'),
-('Nanoxy 300ml', '96000', 55, '63000', '65000', '', '69000', '76000'),
-('Nanoxy 500ml', '78000', 23, '59100', '62000', '', '66000', '72000');
+('BBplus 300ml', '168000', 46, '88000', '103000', '110000', '118000', '138000'),
+('Nanoxy 300ml', '96000', 55, '63000', '65000', '66000', '69000', '76000'),
+('Nanoxy 500ml', '78000', 23, '59100', '62000', '63000', '66000', '72000');
 
 -- --------------------------------------------------------
 
@@ -341,7 +343,8 @@ INSERT INTO `penjualan_salmit` (`id_penjualan`, `no_telp_customer_salmit`, `id_s
 (1, '122323445', 5, 2, '2021-09-02', 20, '30000', 'jakarta lampung', 'lunas'),
 (2, '23323323', 3, 3, '2021-09-01', 30, '500000', 'jakarta nano', 'lunas'),
 (3, '122323445', 5, 2, '2021-09-02', 30, '500000', 'papua', 'lunas'),
-(4, '122323445', 5, 2, '2021-09-03', 8, '1344000', 'banten, banteng', 'lunas');
+(4, '122323445', 5, 2, '2021-09-03', 8, '1344000', 'banten, banteng', 'lunas'),
+(5, '09087090', 1, 2, '2021-10-01', 2, '340000', 'Serang, Banten, Jawa', 'lunas');
 
 -- --------------------------------------------------------
 
@@ -449,7 +452,7 @@ CREATE TABLE `stok_barang_mitra` (
 --
 
 INSERT INTO `stok_barang_mitra` (`id_stokbarmit`, `id_mitra`, `nama_kategori`, `harga_outlet`, `harga_customer`, `stok_mitra`) VALUES
-(2, 2, 'BBplus 300ml', '138000', '168000', 28),
+(2, 2, 'BBplus 300ml', '138000', '170000', 26),
 (3, 13, 'Nanoxy 500ml', '', '', 37),
 (4, 2, 'Nanoxy 300ml', '76000', '96000', 30),
 (5, 2, 'Nanoxy 500ml', '72000', '78000', 25),
@@ -663,7 +666,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `catatan_admin`
@@ -693,7 +696,7 @@ ALTER TABLE `penjualan_sales`
 -- AUTO_INCREMENT untuk tabel `penjualan_salmit`
 --
 ALTER TABLE `penjualan_salmit`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_mitra`
