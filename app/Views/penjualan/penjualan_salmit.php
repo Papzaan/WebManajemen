@@ -53,7 +53,7 @@
                         <select class="form-control" id="nama_kategori" name="nama_kategori" onChange="update_harga()">
                             <option value="" disabled selected>Pilih Ketegori Barang</option>
                             <?php foreach ($kategori as $kr) { ?>
-                                <option id="<?php echo $kr["harga_dusan"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
+                                <option id="<?php echo $kr["harga_customer"]; ?>" value="<?php echo $kr["nama_kategori"]; ?>">
                                     <?php echo $kr["nama_kategori"]; ?>
                                 </option>
                             <?php } ?>

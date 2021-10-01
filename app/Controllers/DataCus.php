@@ -6,6 +6,7 @@ use App\Models\UserModel;
 use App\Models\UserCustomer;
 use App\Models\UserCustomerMitra;
 use App\Models\UserCustomerSales;
+use App\Models\UserCustomerSalMit;
 
 class DataCus extends BaseController
 {
@@ -93,7 +94,10 @@ class DataCus extends BaseController
             return view('customer/tambah_customer_sales', $data);
         }else
         if($this->session->get('status') == 4){
-        
+            $model = new UserModel();
+            $data['user'] = $model->getdataSalesnyamitra();
+            $data['title'] = 'Tambah Customer Salesnya Mitra';
+            return view('customer/tambah_customer_salmit', $data);
         }else{
             return redirect()->to('/user');
         }
@@ -145,6 +149,30 @@ class DataCus extends BaseController
             'jenis_kelamin' => $data['jk'],
             'alamat' => $data['alamat'],
             'id_sales' => $data['id_sales']
+        ]);
+        return redirect()->to('/penjualan/penjualan_user');
+    }
+    public function aksitambahcussalmit(){
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
+        return redirect()->to('/auth/login');
+        }
+
+        //cek role dari session
+        if ($this->session->get('status') != 4) {
+            return redirect()->to('/user');
+        }
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //input ke tabel barang
+        $this->userCustomerSalMit = new UserCustomerSalMit();
+        $this->userCustomerSalMit->save([
+            'no_telp_customer_salmit' => $data['no_telp_customer_salmit'],
+            'nama_cussalmit' => $data['nama'],
+            'jenis_kelamin' => $data['jk'],
+            'alamat' => $data['alamat'],
+            'id_salmit' => $data['id_salmit']
         ]);
         return redirect()->to('/penjualan/penjualan_user');
     }
