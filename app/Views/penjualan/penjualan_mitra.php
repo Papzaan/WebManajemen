@@ -19,7 +19,7 @@
                         <div class="col-sm-5 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Nama Customer</label>
                             <!-- mengulang data berdasarkan data yang telah diambil dari controller -->
-                            <select class="form-control" id="nama_cus" name="nama_cus" onChange="update_nik()">
+                            <select class="form-control theSelect" id="nama_cus" name="nama_cus" onChange="update_nik()">
                                 <option value="" disabled selected>Pilih Nama Customer</option>
                                 <?php foreach ($nama_cusmit as $kr) { ?>
                                     <option id="<?php echo $kr["no_telp_customer_mit"]; ?>" value="<?php echo $kr["nama_cusmit"]; ?>">

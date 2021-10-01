@@ -595,6 +595,14 @@
                 }
             }
         </script>
+        <!-- untuk search select -->
+        <script>
+            $(document).ready(function () {
+                $('select').selectize({
+                    sortField: 'text'
+                });
+            });
+        </script>
         <!-- get nik -->
         <script>
             $("#nama_cus").change(function() {
