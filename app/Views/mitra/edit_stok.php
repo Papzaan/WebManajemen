@@ -13,7 +13,7 @@
         <div class="box-body">
             <form class="user" method="post" action="/barang_mitra/update_stok">
             <?php foreach ($user as $k) { ?>
-                <input type="text" class="form-control" name="kedudukan" id="kedudukan" data-error="Nama Barang harus diisi"  value="<?php echo $k["kedudukan"] ?>" hidden />
+                <input type="text" class="form-control" name="kedudukan" id="kedudukan"  value="<?php echo $k["kedudukan"] ?>" hidden />
                 <?php }?>
             <?php foreach ($edit_stok as $d) { ?>
                 <input type="text" class="form-control" name="id_stok" id="id_stok" data-error="Nama Barang harus diisi"  value="<?php echo $d["id_stokbarmit"] ?>" hidden />
