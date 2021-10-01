@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="no_tlp" class="control-label">No Telepon</label>
                     <div class="input-group">
-                        <input type="text" name="no_telp" id="no_telp" data-error="No Telpon harus di isi" class="form-control" placeholder="No Telepon" required>
+                        <input type="text" name="no_telp" id="no_telp" data-error="No Telpon harus di isi" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <=57" placeholder="No Telepon" required>
                         <span class="input-group-addon">
                         </span>
                     </div>
