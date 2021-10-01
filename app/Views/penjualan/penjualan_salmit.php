@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-sm-5 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">No Telepone</label>
-                            <input type="text" class="form-control form-control-user" name="no_telp_customer" id="no_telp_customer" readonly>
+                            <input type="text" class="form-control form-control-user" name="no_telp_customer" id="no_telp_customer" onkeypress="return event.charCode >= 48 && event.charCode <=57" readonly>
                         </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                             <label for="nama" class="control-label">Tambah Customer</label>
@@ -62,7 +62,7 @@
                         <!-- mbatas option -->
                     </div>
                     <div class="form-group">Jumlah Barang</label>
-                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeyup="sum();" />
+                        <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah Barang" onkeypress="return event.charCode >= 48 && event.charCode <=57" onkeyup="sum();" />
                     </div>
                     <div class="form-group">Harga Total</label>
                         <input type="text" class="form-control form-control-user" id="harga_total" name="harga_total" readonly />
