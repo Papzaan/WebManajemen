@@ -18,10 +18,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table-bordered table-hover" id="dataTablePesananMitra" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <th>No.</th>
+                            <th>No.</th>
                             <th>Nama Mitra</th>
                             <th>Nama Barang</th>
                             <th>Tanggal</th>
@@ -36,7 +36,7 @@
                     </thead>
 
                     <tbody>
-                    <?php
+                        <?php
                         $no = 1;
                         foreach ($pesan as $d) {
                         ?>
@@ -77,7 +77,7 @@
                                 <?php } ?>
                             </tr>
                         <?php } ?>
-                        
+
                         </tr>
 
 
