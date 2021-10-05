@@ -43,6 +43,26 @@
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="alamat" placeholder="Alamat" />
                 </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <select class="form-control col-md-12" name="kedudukan">
+                            <option value="" disabled selected>Tingkatan Mitra</option>
+                            <option value="md">Mitra Biasa</option>
+                            <option value="md1">Mitra Super 1</option>
+                            <option value="md2">Mitra Super 2</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <select class="form-control" id="id_sales" name="id_sales">
+                            <option value="" disabled selected>Pilih Salah Satu Sales Pusat</option>
+                            <?php foreach ($sales_se as $se) { ?>
+                                <option id="<?php echo $se["id_sales"]; ?>" value="<?php echo $se["id_sales"]; ?>">
+                                    <?php echo $se["nama_se"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
                 <!--<div class="form-group">
                     <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="pegawai" hidden value="mitra" />
                 </div>-->

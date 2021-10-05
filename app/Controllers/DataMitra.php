@@ -59,6 +59,7 @@ class DataMitra extends BaseController
         $model = new UserModel();
         $data['user'] = $model->getdataAdmin();
         //$data['mitra'] = $model->tampilmitra();
+        $data['sales_se'] = $model->getdatadafSales();
         $data['title'] = 'Input Mitra';
         return view('mitra/form_input', $data);
     }
@@ -76,7 +77,8 @@ class DataMitra extends BaseController
         $this->userModel->save([
             'email' => $data['email'],
             'password' => $password,
-            'status' => 2
+            'status' => 2,
+            'status_kepegawaian' => 'non pegawai'
         ]);
         //masukan data ke tabel mitra sebagai mitra
         $this->userRegism = new UserRegism();
@@ -87,7 +89,9 @@ class DataMitra extends BaseController
             'no_telp' => $data['no_telp'],
             'alamat' => $data['alamat'],
             'jenis_kelamin' => $data['jk'],
-            'email' => $data['email']
+            'email' => $data['email'],
+            'kedudukan' => $data['kedudukan'],
+            'id_sales' => $data['id_sales']
         ]);
         return redirect()->to('/datamitra/tampil');
     }
