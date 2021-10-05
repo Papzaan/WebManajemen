@@ -123,6 +123,7 @@ class Penjualan extends BaseController
         $data['title'] = 'Catatan Penjualan Admin';
         echo view('penjualan/catatanpenjualan', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablecatatanpenjualan');
     }
     public function laporan_penmitra()
     {
@@ -142,6 +143,7 @@ class Penjualan extends BaseController
         $data['title'] = 'Laporan Penjualan Mitra';
         echo view('penjualan/laporan_penjualan_mitra', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablecatatanpenjualanmitra');
     }
     public function laporan_pensales()
     { //penjualan sales admin
@@ -161,6 +163,7 @@ class Penjualan extends BaseController
         $data['title'] = 'Laporan Penjualan Sales';
         echo view('penjualan/laporan_penjualan_sales', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablepenjualansales');
     }
     public function laporan_pensalmit()
     { //penjualan sales admin
@@ -180,6 +183,7 @@ class Penjualan extends BaseController
         $data['title'] = 'Laporan Penjualan Salesnya Mitra';
         echo view('penjualan/laporan_penjualan_sales-mitra', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablesalesmitra');
     }
     public function penjualan_user()
     { //penjualan sales dan mitranya admin, saat mereka login
