@@ -274,6 +274,7 @@ class Barang extends BaseController
             $data['stok'] = $model->getstok();
             echo view('barang/stok', $data);
             echo view('layout/datatable');
+            echo view('datatable/datatablestok');
         } else
         if ($this->session->get('status') == 3) {
             $model = new UserModel();
@@ -283,6 +284,7 @@ class Barang extends BaseController
             $data['stok'] = $model->getstok();
             echo view('barang/stoks', $data);
             echo view('layout/datatable');
+            echo view('datatable/datatablestok');
         } else {
             return redirect()->to('/user');
         }
