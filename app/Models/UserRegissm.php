@@ -21,7 +21,8 @@ class UserRegissm extends Model
         //var_dump($data);
         return $this->db->table('salesnya_mitra')
         ->join('mitra','mitra.id_mitra=salesnya_mitra.id_mitra')
-        ->select('salesnya_mitra.id_salmit, salesnya_mitra.nama_salmit, salesnya_mitra.nik, salesnya_mitra.no_telp, salesnya_mitra.alamat, salesnya_mitra.jenis_kelamin, salesnya_mitra.email')
+        ->join('user','user.email=salesnya_mitra.email')
+        ->select('user.status_kepegawaian ,salesnya_mitra.id_salmit, salesnya_mitra.nama_salmit, salesnya_mitra.nik, salesnya_mitra.no_telp, salesnya_mitra.alamat, salesnya_mitra.jenis_kelamin, salesnya_mitra.email')
         ->where('mitra.email',['email'=> $data])
         ->get()->getResultArray();
     }
