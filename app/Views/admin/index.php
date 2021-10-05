@@ -13,7 +13,7 @@
     <!-- Content Row -->
     <div class="row">
         <!-- Barang (Total) Card -->
-        <div class="col-xl-4 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -75,6 +75,30 @@
                     </div>
                 </div>
                 <a href="#" data-toggle="modal" data-target="#PenjualanModal" class="small-box-footer">
+                    <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
+                </a>
+            </div>
+        </div>
+        <!-- Buku Kas -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Kas ASL
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Rp. 120000</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" data-toggle="modal" data-target="#KasModal" class="small-box-footer">
                     <center><i class="fa fa-arrow-circle-right"> Selengkapnya</i></center>
                 </a>
             </div>
@@ -163,7 +187,6 @@
                                 <p class="card-text"> <b><?= $stok_admin; ?></b> </p>
                                 <a class="nav-link" href="/barang/stok">
                                 <button class="btn btn-success" type="button">Lihat</button></a>
-
                             </div>
                         </div>
                     </div>
@@ -189,68 +212,148 @@
     </div>
 </div>
 
-<!-- total penjualan Barang Modal-->
-<div class="modal fade" id="PenjualanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="row col-sm-12">
-                    <div class="col-sm-6">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Total Penjualan</h5>
-                                <h5 class="card-title">Admin</h5>
-                                <p class="card-text"> <b><?= $tot_pen_admin; ?></b> </p>
-                                <a class="nav-link" href="<?php echo base_url() ?>/penjualan/catatan">
-                                <button class="btn btn-success" type="button">Lihat</button></a>
+    <!-- total penjualan Barang Modal-->
+    <div class="modal fade" id="PenjualanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Header</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Penjualan</h5>
+                                    <h5 class="card-title">Admin</h5>
+                                    <p class="card-text"> <b><?= $tot_pen_admin; ?></b> </p>
+                                    <!-- <a class="nav-link" href="<?php echo base_url() ?>/penjualan/catatan">
+                                    <button class="btn btn-success" type="button">Lihat</button></a> -->
+                                    <a href="#" data-toggle="modal" data-target="#penjualadmin" class="small-box-footer">
+                                        <button class="btn btn-success" type="button">Lihat</button></a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Total Penjualan</h5>
-                                <h5 class="card-title">Mitra</h5>
-                                <p class="card-text"><b><?= $tot_pen_mitra; ?></b> </p>
-                                <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_penmitra">
-                                <button class="btn btn-success"type="button">Lihat</button></a>
+                        <div class="col-sm-6">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Header</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Penjualan</h5>
+                                    <h5 class="card-title">Mitra</h5>
+                                    <p class="card-text"><b><?= $tot_pen_mitra; ?></b> </p>
+                                    <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_penmitra">
+                                    <button class="btn btn-success"type="button">Lihat</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Total Penjualan</h5>
-                                <h5 class="card-title">Sales</h5>
-                                <p class="card-text"><b><?= $tot_pen_sales; ?></b> </p>
-                                <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_pensales">
-                                <button class="btn btn-success"type="button">Lihat</button></a>
+                        <div class="col-sm-6">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Header</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Penjualan</h5>
+                                    <h5 class="card-title">Sales</h5>
+                                    <p class="card-text"><b><?= $tot_pen_sales; ?></b> </p>
+                                    <a class="nav-link" href="<?php echo base_url() ?>/penjualan/laporan_pensales">
+                                    <button class="btn btn-success"type="button">Lihat</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Total Penjualan</h5>
-                                <h5 class="card-title">Salesnya Mitra</h5>
-                                <p class="card-text"><b><?= $tot_pen_salmit; ?></b> </p>
-                                <a class="nav-link" href="/penjualan/laporan_pensalmit">
-                                <button class="btn btn-success"type="button">Lihat</button></a>
+                        <div class="col-sm-6">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Header</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Penjualan</h5>
+                                    <h5 class="card-title">Salesnya Mitra</h5>
+                                    <p class="card-text"><b><?= $tot_pen_salmit; ?></b> </p>
+                                    <a class="nav-link" href="/penjualan/laporan_pensalmit">
+                                    <button class="btn btn-success"type="button">Lihat</button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+        <!-- Modal Kas ASL-->
+        <div class="modal fade" id="KasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Header</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Catatan Pengeluaran</h5>
+                                        <h5 class="card-title">ASL</h5>
+                                        <p class="card-text"> <b>Rp. 50000</b> </p>
+                                        <a class="nav-link" href="#">
+                                        <button class="btn btn-success" type="button">Lihat</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Header</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Catatan Pemasukan</h5>
+                                        <h5 class="card-title">ASL</h5>
+                                        <p class="card-text"><b>Rp. 50000</b> </p>
+                                        <a class="nav-link" href="#">
+                                        <button class="btn btn-success"type="button">Lihat</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
+                
+            </div>
+        </div>
+        <!-- model Total Penjualan admin-->
+        <div class="modal fade" id="penjualadmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Header</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Penjualan Admin</h5>
+                                        <h5 class="card-title">Ke Mitra</h5>
+                                        <p class="card-text"> <b>Rp. 50000</b> </p>
+                                        <a class="nav-link" href="#">
+                                        <button class="btn btn-success" type="button">Lihat</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Header</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Penjualan Admin</h5>
+                                        <h5 class="card-title">ke Customer</h5>
+                                        <p class="card-text"><b>Rp. 50000</b> </p>
+                                        <a class="nav-link" href="#">
+                                        <button class="btn btn-success"type="button">Lihat</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- End of Main Content -->
