@@ -32,6 +32,7 @@ class Barang extends BaseController
         $data['barang'] = $model->getbarang();
         echo view('barang/lihat_data', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablebarang');
         //return view('barang/databarang', $data1);
 
     }
@@ -150,7 +151,7 @@ class Barang extends BaseController
         }
         //tangkap data dari form 
         $data = $this->request->getPost();
-        if($data['sum'] == 'tambah'){
+        if ($data['sum'] == 'tambah') {
             //panggil model stok
             $this->stokModel = new StokModel();
             //panggil stok berdasarkan nama kategori
@@ -170,7 +171,7 @@ class Barang extends BaseController
             $kat = $data['nama_kategori'];
 
             $update = $this->stokModel->updatejumstok($dataupdate, $kat);
-            
+
             if ($update) {
                 //akses ke tabel barang tambah barang
                 $hasil = $data['jumlah'] + $data['jumlah_tambah'];
@@ -194,8 +195,8 @@ class Barang extends BaseController
                     return redirect()->to('/barang/tampil');
                 }
             }
-        }else if($data['sum'] == 'kurang'){
-            
+        } else if ($data['sum'] == 'kurang') {
+
             //panggil model stok
             $this->stokModel = new StokModel();
             //panggil stok berdasarkan nama kategori
@@ -215,7 +216,7 @@ class Barang extends BaseController
             $kat = $data['nama_kategori'];
 
             $update = $this->stokModel->updatejumstok($dataupdate, $kat);
-            
+
             if ($update) {
                 //akses ke tabel barang tambah barang
                 $hasil = $data['jumlah'] - $data['jumlah_tambah'];
@@ -240,7 +241,6 @@ class Barang extends BaseController
                 }
             }
         }
-        
     }
     public function hapus_barang($id)
     {
@@ -274,7 +274,7 @@ class Barang extends BaseController
             $data['stok'] = $model->getstok();
             echo view('barang/stok', $data);
             echo view('layout/datatable');
-        }else
+        } else
         if ($this->session->get('status') == 3) {
             $model = new UserModel();
             $data['user'] = $model->getdataSales();
@@ -283,14 +283,14 @@ class Barang extends BaseController
             $data['stok'] = $model->getstok();
             echo view('barang/stoks', $data);
             echo view('layout/datatable');
-        }else{
+        } else {
             return redirect()->to('/user');
         }
-        
     }
-    public function edit_stok($id){
-         //cek apakah ada session bernama isLogin
-         if (!$this->session->has('isLogin')) {
+    public function edit_stok($id)
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
 
@@ -306,9 +306,10 @@ class Barang extends BaseController
         $data['title'] = 'Update Stok Barang';
         return view('barang/edit_stok', $data);
     }
-    public function update_stok(){
-         //cek apakah ada session bernama isLogin
-         if (!$this->session->has('isLogin')) {
+    public function update_stok()
+    {
+        //cek apakah ada session bernama isLogin
+        if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
 
@@ -316,30 +317,30 @@ class Barang extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-         //tangkap data dari form 
-         $data = $this->request->getPost();
+        //tangkap data dari form 
+        $data = $this->request->getPost();
 
-         //akses ke tabel barang
-         $this->stokModel = new StokModel();
-         $dataupdate = [
-             'nama_kategori' => $data['nama_kategori'],
-             'harga_mitra1' => $data['harga_mitra1'],
-             'harga_mitra2' => $data['harga_mitra2'],
-             'harga_mitra' => $data['harga_mitra'],
-             'harga_sales' => $data['harga_sales'],
-             'harga_outlet' => $data['harga_outlet'],
-             'harga_dusan' => $data['harga_dusan'],
-             'stok' => $data['stok']
-         ];
-         $id = $data['nama_kategori'];
-         $update = $this->stokModel->updatestok($dataupdate, $id);
-         // Jika berhasil melakukan ubah
-         if ($update) {
-             // Deklarasikan session flashdata dengan tipe info
-             echo session()->setFlashdata('info', 'Updated barang successfully');
-             // Redirect ke halaman product
-             return redirect()->to('/barang/stok');
-         }
+        //akses ke tabel barang
+        $this->stokModel = new StokModel();
+        $dataupdate = [
+            'nama_kategori' => $data['nama_kategori'],
+            'harga_mitra1' => $data['harga_mitra1'],
+            'harga_mitra2' => $data['harga_mitra2'],
+            'harga_mitra' => $data['harga_mitra'],
+            'harga_sales' => $data['harga_sales'],
+            'harga_outlet' => $data['harga_outlet'],
+            'harga_dusan' => $data['harga_dusan'],
+            'stok' => $data['stok']
+        ];
+        $id = $data['nama_kategori'];
+        $update = $this->stokModel->updatestok($dataupdate, $id);
+        // Jika berhasil melakukan ubah
+        if ($update) {
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', 'Updated barang successfully');
+            // Redirect ke halaman product
+            return redirect()->to('/barang/stok');
+        }
     }
     public function hapus_stok($id)
     {
