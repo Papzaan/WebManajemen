@@ -31,6 +31,7 @@ class DataSup extends BaseController
         $data['barang'] = $model->tampilsuplayer();
         echo view('supp/lihat_supplier', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablesupp');
         //return view('admin/index')   
     }
     public function inputsup()
