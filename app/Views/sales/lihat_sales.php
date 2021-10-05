@@ -54,14 +54,18 @@
                                 if ($d["status_kepegawaian"] == "non pegawai") { ?>
                                     <td>
                                     <a href="<?php echo base_url() ?>/datasales/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
-                                            <a href="<?php echo base_url() ?>/datasales/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                    <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_sales"] ?>" class="small-box-footer">
+                                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                    </a>
                                     </td>
                                 <?php } ?>
                                 <?php
                                 if ($d["status_kepegawaian"] == "pegawai") { ?>
                                     <td>
                                         <a href="<?php echo base_url() ?>/datasales/edit_sales/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="<?php echo base_url() ?>/datasales/hapus_sales/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_sales"] ?>" class="small-box-footer">
+                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                        </a>
                                     </td>
                                 <?php } ?>
                             </tr>
@@ -75,6 +79,48 @@
 
                     </tbody>
                 </table>
+                <!-- Hapus Modal-->
+                <?php
+                    foreach ($sales as $d) {
+                    ?>
+                    <div class="modal fade" id="HapusModal<?= $d["id_sales"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus Sales <font color="red"><?php echo $d["nama_se"] ?></font>  ?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form class="user" method="post" action="<?php echo base_url() ?>/datasales/hapus_sales">
+                                        <div class="form-group row">
+                                            <div class="col-sm-9 mb-sm-0">
+                                                <label class="control-label">Konfirmasi Password : </label>
+                                            </div>
+                                            <div class="col-sm-9 mb-sm-0">
+                                                <input type="password" name="password" class="form-control" id="password" placeholder="masukan password">
+                                                <input type="text" name="email" class="form-control" id="email" hidden value="<?php echo $d["email"] ?>">
+                                                <?php
+                                                foreach ($user as $u) {
+                                                ?>
+                                                    <input type="text" name="email_admin" class="form-control" id="email_admin" hidden value="<?php echo $u["email"] ?>">
+                                                <?php } ?>
+                                            </div>
+                                            <div class="col-sm-2 mb-sm-0">
+                                                <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
             </div>
         </div>
     </div>

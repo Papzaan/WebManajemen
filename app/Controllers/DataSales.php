@@ -174,7 +174,7 @@ class DataSales extends BaseController
             return redirect()->to('/datasales/tampil');
         }
     }
-    public function hapus_sales($email)
+    public function hapus_sales()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -185,20 +185,39 @@ class DataSales extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        //akses ke tabel mitra
-        $this->userRegiss = new UserRegiss();
+        
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //hash password digabung dengan salt
+        $password = md5($data['password']);
+        //ambil data user di database yang usernamenya sama 
         $this->userModel = new UserModel();
-        // Memanggil function delete_mitra
-        $hapus = $this->userRegiss->deletesales($email);
-        $hapus = $this->userModel->deleteuser($email);
-
-
-        // Jika berhasil melakukan hapus
-        if ($hapus) {
-            // Deklarasikan session flashdata dengan tipe warning
-            session()->setFlashdata('warning', 'Deleted product successfully');
-            // Redirect ke halaman barang
-            return redirect()->to('/datasales/tampil');
+        $user = $this->userModel->where('email', $data['email_admin'])->first();
+        if($user){
+            if($user['password'] != md5($data['password'])) {
+                //session()->setFlashdata('password', 'Password salah');
+                // Set message
+                //session()->setFlashdata('login_failed', 'Email dan password salah!');
+                session()->setFlashdata('info', '<div class="alert alert-danger text-center">Password Salah Tidak Bisa Menghapus Sales!!!!</div>');
+                return redirect()->to('/datasales/tampil');
+            }else{
+                 
+                $email = $data['email'];
+                //akses ke tabel sales
+                $this->userRegiss = new UserRegiss();
+                $this->userModel = new UserModel();
+                // Memanggil function delete_mitra
+                $hapus = $this->userRegiss->deletesales($email);
+                $hapus = $this->userModel->deleteuser($email);
+                // Jika berhasil melakukan hapus
+                if ($hapus) {
+                    // Deklarasikan session flashdata dengan tipe warning
+                    session()->setFlashdata('info', '<div class="alert alert-success text-center">Berhasil Menghapus Pegawai</div>');
+                    // Redirect ke halaman barang
+                    return redirect()->to('/datasales/tampil');
+                }
+            }
         }
     }
 }
