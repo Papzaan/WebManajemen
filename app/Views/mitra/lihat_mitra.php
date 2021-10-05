@@ -50,7 +50,7 @@
                                 <?php
                                 if ($d["status_kepegawaian"] == "non pegawai") { ?>
                                     <td>
-                                    <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
+                                        <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
                                             <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
                                     </td>
                                 <?php } ?>
@@ -59,6 +59,9 @@
                                     <td>
                                         <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
                                             <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                                <a href="#" data-toggle="modal" data-target="#HapusModal" class="small-box-footer">
+                                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus Modal</i></button>
+                                                </a>
                                     </td>
                                 <?php } ?>
                             </tr>
@@ -72,7 +75,40 @@
 
 </div>
 <!-- /.container-fluid -->
-
+<!-- Logout Modal-->
+<div class="modal fade" id="HapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="user" method="post" action="#">
+                    <div class="form-group row">
+                        <div class="col-sm-9 mb-sm-0">
+                            <label class="control-label">Konfirmasi Password : </label>
+                        </div>
+                        <div class="col-sm-9 mb-sm-0">
+                            <input type="text" name="password" class="form-control" id="password" placeholder="masukan password">
+                            <input type="text" name="id" class="form-control" id="id" hidden>
+                        </div>
+                        <div class="col-sm-2 mb-sm-0">
+                            <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <!-- End of Main Content -->
 
