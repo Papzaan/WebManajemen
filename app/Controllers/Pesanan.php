@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\PesananModel;
+
 class Pesanan extends BaseController
 {
 
@@ -31,6 +32,7 @@ class Pesanan extends BaseController
         $data['pesmit'] = $model->getpesananmitra();
         echo view('pesanan/pesanan_mitra', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablepesananmitra');
     }
     public function update_pesmit()
     {
@@ -45,7 +47,7 @@ class Pesanan extends BaseController
         }
         //tangkap data dari form 
         $data = $this->request->getPost();
-        
+
         //panggil model stok
         $this->pesananModel = new PesananModel();
         //panggil stok berdasarkan nama kategori
@@ -54,22 +56,22 @@ class Pesanan extends BaseController
         $model = new PesananModel();
         $utang = $model->editpesmit($id_pesmit);
         $bayar = $data['bayar'];
-        
+
         //pengurangan hutang
-        $total = $utang['utang'] - $bayar ;
-        
-        if($total == 0){
-            if($utang['bayar'] < 3){
+        $total = $utang['utang'] - $bayar;
+
+        if ($total == 0) {
+            if ($utang['bayar'] < 3) {
                 $pinal = $utang['bayar'] + 1;
-            }else{
+            } else {
                 $pinal = $utang['bayar'];
             }
         }
-        if($total != 0){
+        if ($total != 0) {
             //penambahan pinalty
             $pinal = $utang['bayar'] + 1;
         }
-        
+
         //var_dump($pinal);
         $dataupdate = [
             'utang' => $total,
@@ -86,7 +88,7 @@ class Pesanan extends BaseController
         }
     }
     public function transaksi_mitra()
-    {//aksinya sales executive
+    { //aksinya sales executive
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
