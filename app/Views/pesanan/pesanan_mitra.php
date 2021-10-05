@@ -104,7 +104,6 @@
                 <!-- modal untuk bayar-->
                 <!-- The edit Modal -->
                 <?php
-                $no = 1;
                 foreach ($pesmit as $d) {
                 ?>
                     <div class="modal" id="myModal<?= $d["id_pesmit"] ?>">

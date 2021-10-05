@@ -51,17 +51,18 @@
                                 if ($d["status_kepegawaian"] == "non pegawai") { ?>
                                     <td>
                                         <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
-                                            <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
+                                        <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
+                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                        </a>
                                     </td>
                                 <?php } ?>
                                 <?php
                                 if ($d["status_kepegawaian"] == "pegawai") { ?>
                                     <td>
                                         <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                            <a href="<?php echo base_url() ?>/datamitra/hapus_mitra/<?php echo $d["email"] ?> "><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus</i></button>
-                                                <a href="#" data-toggle="modal" data-target="#HapusModal" class="small-box-footer">
-                                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus Modal</i></button>
-                                                </a>
+                                        <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
+                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                        </a>
                                     </td>
                                 <?php } ?>
                             </tr>
@@ -69,45 +70,56 @@
 
                     </tbody>
                 </table>
+                    <!-- Hapus Modal-->
+                    <?php
+                    foreach ($mitra as $d) {
+                    ?>
+                    <div class="modal fade" id="HapusModal<?= $d["id_mitra"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus Mitra <font color="red"><?php echo $d["nama"] ?></font>  ?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form class="user" method="post" action="<?php echo base_url() ?>/datamitra/hapus_mitra">
+                                        <div class="form-group row">
+                                            <div class="col-sm-9 mb-sm-0">
+                                                <label class="control-label">Konfirmasi Password : </label>
+                                            </div>
+                                            <div class="col-sm-9 mb-sm-0">
+                                                <input type="password" name="password" class="form-control" id="password" placeholder="masukan password">
+                                                <input type="text" name="email" class="form-control" id="email" hidden value="<?php echo $d["email"] ?>">
+                                                <?php
+                                                foreach ($user as $u) {
+                                                ?>
+                                                    <input type="text" name="email_admin" class="form-control" id="email_admin" hidden value="<?php echo $u["email"] ?>">
+                                                <?php } ?>
+                                            </div>
+                                            <div class="col-sm-2 mb-sm-0">
+                                                <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+
+
             </div>
         </div>
     </div>
 
 </div>
 <!-- /.container-fluid -->
-<!-- Hapus Modal-->
-<div class="modal fade" id="HapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form class="user" method="post" action="#">
-                    <div class="form-group row">
-                        <div class="col-sm-9 mb-sm-0">
-                            <label class="control-label">Konfirmasi Password : </label>
-                        </div>
-                        <div class="col-sm-9 mb-sm-0">
-                            <input type="text" name="password" class="form-control" id="password" placeholder="masukan password">
-                            <input type="text" name="id" class="form-control" id="id" hidden>
-                        </div>
-                        <div class="col-sm-2 mb-sm-0">
-                            <button type="submit" class="btn btn-primary " name="masukanbayaran">Masukan</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 <!-- End of Main Content -->
 

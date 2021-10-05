@@ -73,27 +73,35 @@ class DataMitra extends BaseController
         $password = md5($data['password']);
         //masukan data ke tabel mitra sebagai mitra
         $this->userModel = new UserModel();
-        //masukan data ke tabel user sebagai mitra
-        $this->userModel->save([
-            'email' => $data['email'],
-            'password' => $password,
-            'status' => 2,
-            'status_kepegawaian' => 'non pegawai'
-        ]);
-        //masukan data ke tabel mitra sebagai mitra
-        $this->userRegism = new UserRegism();
-        //$this->userRegis->tambahMitra($data);
-        $this->userRegism->save([
-            'nama' => $data['nama'],
-            'nik' => $data['nik'],
-            'no_telp' => $data['no_telp'],
-            'alamat' => $data['alamat'],
-            'jenis_kelamin' => $data['jk'],
-            'email' => $data['email'],
-            'kedudukan' => $data['kedudukan'],
-            'id_sales' => $data['id_sales']
-        ]);
-        return redirect()->to('/datamitra/tampil');
+        $user = $this->userModel->where('email', $data['email'])->first();
+        if($user){
+            //jika email sudah terdaftar
+            session()->setFlashdata('info', '<div class="alert alert-danger text-center">Email sudah terpakai!</div>');
+            return redirect()->to('/datamitra/input_mitra');
+        }else{
+                
+                //masukan data ke tabel user sebagai mitra
+                $this->userModel->save([
+                    'email' => $data['email'],
+                    'password' => $password,
+                    'status' => 2,
+                    'status_kepegawaian' => 'non pegawai'
+                ]);
+                //masukan data ke tabel mitra sebagai mitra
+                $this->userRegism = new UserRegism();
+                //$this->userRegis->tambahMitra($data);
+                $this->userRegism->save([
+                    'nama' => $data['nama'],
+                    'nik' => $data['nik'],
+                    'no_telp' => $data['no_telp'],
+                    'alamat' => $data['alamat'],
+                    'jenis_kelamin' => $data['jk'],
+                    'email' => $data['email'],
+                    'kedudukan' => $data['kedudukan'],
+                    'id_sales' => $data['id_sales']
+                ]);
+                return redirect()->to('/datamitra/tampil');
+            }
     }
     public function edit_mitra($id)
     {
@@ -149,7 +157,7 @@ class DataMitra extends BaseController
             return redirect()->to('/datamitra/tampil');
         }
     }
-    public function hapus_mitra($email)
+    public function hapus_mitra()
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
@@ -160,20 +168,40 @@ class DataMitra extends BaseController
         if ($this->session->get('status') != 1) {
             return redirect()->to('/user');
         }
-        //akses ke tabel mitra
-        $this->userRegism = new UserRegism();
+        
+        //tangkap data dari form 
+        $data = $this->request->getPost();
+
+        //hash password digabung dengan salt
+        $password = md5($data['password']);
+        //ambil data user di database yang usernamenya sama 
         $this->userModel = new UserModel();
-        // Memanggil function delete_mitra
-        $hapus = $this->userRegism->deletemitra($email);
-        $hapus = $this->userModel->deleteuser($email);
+        $user = $this->userModel->where('email', $data['email_admin'])->first();
+        if($user){
+            if($user['password'] != md5($data['password'])) {
+                //session()->setFlashdata('password', 'Password salah');
+                // Set message
+                //session()->setFlashdata('login_failed', 'Email dan password salah!');
+                session()->setFlashdata('info', '<div class="alert alert-danger text-center">Password Salah Tidak Bisa Menghapus Mitra!!!!</div>');
+                return redirect()->to('/datamitra/tampil');
+            }else{
+                 //akses ke tabel mitra
+                $email = $data['email'];
+                $this->userRegism = new UserRegism();
+                $this->userModel = new UserModel();
+                // Memanggil function delete_mitra
+                $hapus = $this->userRegism->deletemitra($email);
+                $hapus = $this->userModel->deleteuser($email);
 
 
-        // Jika berhasil melakukan hapus
-        if ($hapus) {
-            // Deklarasikan session flashdata dengan tipe warning
-            session()->setFlashdata('info', '<div class="alert alert-success text-center">Berhasil Menghapus Pegawai</div>');
-            // Redirect ke halaman barang
-            return redirect()->to('/datamitra/tampil');
+                // Jika berhasil melakukan hapus
+                if ($hapus) {
+                    // Deklarasikan session flashdata dengan tipe warning
+                    session()->setFlashdata('info', '<div class="alert alert-success text-center">Berhasil Menghapus Pegawai</div>');
+                    // Redirect ke halaman barang
+                    return redirect()->to('/datamitra/tampil');
+                }
+            }
         }
     }
     public function terima_pegawai($email)
