@@ -32,6 +32,7 @@ class DataSales extends BaseController
         $data['title'] = ' Daftar Sales';
         echo view('sales/lihat_sales', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablesales');
         //return view('barang/databarang', $data1);
     }
     public function input_sales()
@@ -93,30 +94,31 @@ class DataSales extends BaseController
         ]);
         return redirect()->to('/datasales/tampil');
     }
-    public function terima_pegawai($email){
+    public function terima_pegawai($email)
+    {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
-           return redirect()->to('/auth/login');
-       }
+            return redirect()->to('/auth/login');
+        }
 
-       //cek role dari session
-       if ($this->session->get('status') != 1) {
-           return redirect()->to('/user');
-       }
+        //cek role dari session
+        if ($this->session->get('status') != 1) {
+            return redirect()->to('/user');
+        }
 
-       $dataupdate = [
-           'status_kepegawaian' => 'pegawai'
-       ];
-       $this->userModel = new UserModel();
-       $update = $this->userModel->terima_pegawai($dataupdate, $email);
-       // Jika berhasil melakukan ubah
-       if ($update) {
+        $dataupdate = [
+            'status_kepegawaian' => 'pegawai'
+        ];
+        $this->userModel = new UserModel();
+        $update = $this->userModel->terima_pegawai($dataupdate, $email);
+        // Jika berhasil melakukan ubah
+        if ($update) {
 
-           // Deklarasikan session flashdata dengan tipe info
-           echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Sales sebagai Pegawai</div>');
-           // Redirect ke halaman product
-           return redirect()->to('/datasales/tampil');
-       }
+            // Deklarasikan session flashdata dengan tipe info
+            echo session()->setFlashdata('info', '<div class="alert alert-success text-center">Sukses Menerima Sales sebagai Pegawai</div>');
+            // Redirect ke halaman product
+            return redirect()->to('/datasales/tampil');
+        }
     }
     public function edit_sales($id)
     {
