@@ -82,6 +82,7 @@ class Mitra extends BaseController
         $data['pesan'] = $model->getpesananmitra();
         echo view('mitra/pesanan', $data);
         echo view('layout/datatable');
+        echo view('datatable/datatablepenjualanmitra');
     }
     public function tambah_pes()
     {
@@ -120,9 +121,9 @@ class Mitra extends BaseController
         //panggil model stok
         $this->barangMitraModel = new BarangMitraModel();
         $adakategori = $this->barangMitraModel->where('nama_kategori', $data['nama_kategori'])->where('id_mitra', $data['id_mitra'])->first();
-        
+
         //cek ada kategori atau tidak
-        if($adakategori){
+        if ($adakategori) {
             //kondisi ada kategori
             //panggil stok berdasarkan nama kategori
             $kate = $data['nama_kategori'];
@@ -178,7 +179,7 @@ class Mitra extends BaseController
                     }
                 }
             }
-        }else{
+        } else {
             //masukin kategori ke barang mitra
             $this->barangMitraModel = new BarangMitraModel();
             $this->barangMitraModel->save([
@@ -242,6 +243,5 @@ class Mitra extends BaseController
                 }
             }
         }
-        
     }
 }
