@@ -4,7 +4,9 @@
         $('#dataTableMitra').DataTable({
 
             dom: 'Blfrtip',
-
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
             responsive: true,
             buttons: [{
                     extend: 'pdfHtml5',

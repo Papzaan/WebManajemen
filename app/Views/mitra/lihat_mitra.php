@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTableMitra" width="100%" cellspacing="0">
+                <table class="display nowrap" id="dataTableMitra" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>NO</th>
@@ -51,18 +51,18 @@
                                 if ($d["status_kepegawaian"] == "non pegawai") { ?>
                                     <td>
                                         <a href="<?php echo base_url() ?>/datamitra/terima_pegawai/<?php echo $d["email"] ?> "><button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-check"></i>Terima</button>
-                                        <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
-                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
-                                        </a>
+                                            <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                            </a>
                                     </td>
                                 <?php } ?>
                                 <?php
                                 if ($d["status_kepegawaian"] == "pegawai") { ?>
                                     <td>
                                         <a href="<?php echo base_url() ?>/datamitra/edit_mitra/<?php echo $d["email"] ?> "><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-                                        <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
-                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
-                                        </a>
+                                            <a href="#" data-toggle="modal" data-target="#HapusModal<?= $d["id_mitra"] ?>" class="small-box-footer">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-placement="top" title="Delete"><i class="fa fa-trash"> Hapus </i></button>
+                                            </a>
                                     </td>
                                 <?php } ?>
                             </tr>
@@ -70,15 +70,15 @@
 
                     </tbody>
                 </table>
-                    <!-- Hapus Modal-->
-                    <?php
-                    foreach ($mitra as $d) {
-                    ?>
+                <!-- Hapus Modal-->
+                <?php
+                foreach ($mitra as $d) {
+                ?>
                     <div class="modal fade" id="HapusModal<?= $d["id_mitra"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus Mitra <font color="red"><?php echo $d["nama"] ?></font>  ?</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Yakin Inggin Menghapus Mitra <font color="red"><?php echo $d["nama"] ?></font> ?</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
+                <?php } ?>
 
 
             </div>
