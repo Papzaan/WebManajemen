@@ -197,7 +197,7 @@
                                 <h5 class="card-title">Total Barang</h5>
                                 <h5 class="card-title">Mitra</h5>
                                 <p class="card-text"><b><?= $stok_mitra; ?></b> </p>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/barang/stok_para_mitra">
                                 <button class="btn btn-success"type="button">Lihat</button></a>
                             </div>
 

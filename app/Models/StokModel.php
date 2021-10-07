@@ -19,6 +19,16 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->get()->getResultArray();
     }
+    public function getstok_paramitra()
+    {
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('kategori')
+            ->join('stok_barang_mitra','stok_barang_mitra.nama_kategori=kategori.nama_kategori')
+            ->join('mitra','mitra.id_mitra=stok_barang_mitra.id_mitra')
+            ->select('mitra.nama,kategori.nama_kategori,stok_barang_mitra.stok_mitra')
+            ->get()->getResultArray();
+    }
     public function getstokm()
     {
         $session = session();
