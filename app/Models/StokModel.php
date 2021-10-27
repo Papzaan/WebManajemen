@@ -19,6 +19,12 @@ class StokModel extends Model
         return $this->db->table('kategori')
             ->get()->getResultArray();
     }
+    public function getbank(){
+        $session = session();
+        $data = $session->get('email');
+        return $this->db->table('bank')
+            ->get()->getResultArray();
+    }
     public function getstok_paramitra()
     {
         $session = session();

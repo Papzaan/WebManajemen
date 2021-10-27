@@ -105,11 +105,12 @@
                 <div class="form-group" id="rek">
                     <div class="col-xs-5">
                         <div class="form-group">
+                            <!-- norek -->
                             <select id="norekk" onChange="update()">
                                 <option value="-">Pilih Bank</option>
-                                <option value="7516756">BSI</option>
-                                <option value="4356574">BRI</option>
-                                <option value="2345678">Mandiri</option>
+                                <?php foreach ($bank as $bk) { ?>
+                                    <option value="<?php echo $bk["no_credit"]; ?>"><?php echo $bk["nama_bank"]; ?></option>
+                                <?php } ?>
                             </select>
                             <input type="text" disabled id="value">
                         </div>

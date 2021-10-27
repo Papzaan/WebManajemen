@@ -101,7 +101,8 @@ class Mitra extends BaseController
         $data['user'] = $model->getdataMitra();
         $model = new StokModel();
         $data['kategori'] = $model->getstokm();
-        //var_dump($data['kategori']);
+        $data['bank'] = $model->getbank();
+        var_dump($data['bank']);
         echo view('mitra/tambah_pesanan', $data);
         echo view('layout/datepicker');
     }
