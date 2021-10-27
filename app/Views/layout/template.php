@@ -120,11 +120,17 @@
                         </div>
                     </div>
                 </li>
-                <!-- Nav Item - Pages Collapse Menu -->
+                <!-- Nav Item - penjualan ke Customer -->
                 <li class="nav-item">
                     <a class="nav-link" href="/penjualan">
                         <i class="fa fa-shopping-cart"></i>
-                        <span>Penjualan</span></a>
+                        <span>Penjualan Ke Customer</span></a>
+                </li>
+                 <!-- Nav Item - penjualan ke Outlet -->
+                 <li class="nav-item">
+                    <a class="nav-link" href="/penjualan/penjualan_ke_outlet">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Penjualan Ke Outlet</span></a>
                 </li>
 
 
